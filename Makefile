@@ -6,7 +6,7 @@
 #    By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/06/23 12:34:16 by cybourge          #+#    #+#              #
-#    Updated: 2026/01/30 11:21:33 by cybourge         ###   ########.fr        #
+#    Updated: 2026/01/30 17:03:20 by cybourge         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,13 +21,20 @@ LINK_LIBS = -Lmlx_linux -lmlx_Linux -L/usr/lib \
 			-Imlx_linux -lXext -lX11 -lm -lz 
 
 SRCS_FILES = close_display.c\
+display_progressbar.c\
+display_progress.c\
 free_mlx_data.c\
 ft_memset.c\
+ft_putchar.c\
+ft_putnbr.c\
 handle_keypress.c\
 handle_x_buton.c\
 img_pix_put.c\
 init_mlx_data.c\
-minirt.c
+minirt.c\
+trgb_pack.c\
+trgb_unpack.c
+
 OBJS_FILES = ${SRCS_FILES:.c=.o}
 DEPS_FILES = ${SRCS_FILES:.c=.d}
 OBJS_DIR = obj

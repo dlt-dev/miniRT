@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/30 10:33:54 by cybourge          #+#    #+#             */
-/*   Updated: 2026/01/30 11:20:23 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/01/30 17:01:13 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,36 @@
 
 static int	raytrace(t_mlx_data *d)
 {
+	int			i;
+	int			j;
+	t_color		color;
+	uint32_t	colour;
+
 	if (d->mlx_win == NULL)
 		return (1);
-	img_pix_put(&(d->img), WIN_W / 2, WIN_H / 2, COLOUR1);
-	mlx_put_image_to_window(d->mlx_ptr, d->mlx_win, d->img.mlx_img, 0, 0);
+	if (d->update)
+	{
+		i = 0;
+		while (i < WIN_H)
+		{
+			j = 0;
+			while (j < WIN_W)
+			{
+				color.r = (double)j / (WIN_W - 1);
+				color.g = (double)i / (WIN_H - 1);
+				color.b = 0.6;
+				color.t = 0.0;
+				colour = trgb_pack(&color);
+				img_pix_put(&(d->img), j, i, colour);
+				j++;
+				display_progress(i, j);
+			}
+			i++;
+			usleep(3000);
+		}
+		mlx_put_image_to_window(d->mlx_ptr, d->mlx_win, d->img.mlx_img, 0, 0);
+		d->update = false;
+	}
 	return (0);
 }
 

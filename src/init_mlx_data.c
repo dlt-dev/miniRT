@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/03 12:11:44 by cybourge          #+#    #+#             */
-/*   Updated: 2026/01/30 10:51:43 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/01/30 15:06:42 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,6 @@ int	init_mlx_data(t_mlx_data *d)
 	if (i->mlx_img == NULL)
 		return (free_mlx_data(d), -1);
 	i->addr = mlx_get_data_addr(i->mlx_img, &(i->bpp), &(i->ll), &(i->endian));
+	d->update = true;
 	return (0);
 }
