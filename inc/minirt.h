@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jdelattr <jdelattr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/30 10:34:58 by cybourge          #+#    #+#             */
-/*   Updated: 2026/02/02 17:32:41 by jdelattr         ###   ########.fr       */
+/*   Updated: 2026/02/03 16:44:40 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,9 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <stdio.h>
+# include "camera.h"
+# include "ray.h"
+# include "color.h"
 
 # define WIN_H 1080
 # define WIN_W 1920
@@ -40,20 +43,13 @@ typedef struct s_img
 	int		endian;
 }			t_img;
 
-typedef struct color
-{
-	double	r;
-	double	g;
-	double	b;
-	double	t;
-}			t_color;
-
 typedef struct s_mlx_data
 {
-	void	*mlx_ptr;
-	void	*mlx_win;
-	t_img	img;
-	bool	update;
+	void		*mlx_ptr;
+	void		*mlx_win;
+	t_img		img;
+	bool		update;
+	t_camera	cam;
 }			t_mlx_data;
 
 // MLX Related Functions
@@ -70,7 +66,5 @@ void		ft_putchar(char c);
 void		ft_putnbr(int nb);
 void		display_progressbar(double percent);
 void		display_progress(int i, int j);
-uint32_t	trgb_pack(const t_color *c);
-t_color		trgb_unpack(uint32_t packed);
 
 #endif

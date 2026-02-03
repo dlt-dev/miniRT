@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jdelattr <jdelattr@student.42.fr>          +#+  +:+       +#+         #
+#    By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/06/23 12:34:16 by cybourge          #+#    #+#              #
-#    Updated: 2026/02/02 15:05:18 by jdelattr         ###   ########.fr        #
+#    Updated: 2026/02/03 16:21:08 by cybourge         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,8 @@ LINK_LIBS = -Lmlx_linux -lmlx_Linux -L/usr/lib \
 			-L$(LIB_DIR) -lmlx_Linux \
 			-Imlx_linux -lXext -lX11 -lm -lz
 
-SRCS_FILES = close_display.c\
+SRCS_FILES = camera_setup.c\
+close_display.c\
 display_progressbar.c\
 display_progress.c\
 free_mlx_data.c\
@@ -40,8 +41,21 @@ handle_x_buton.c\
 img_pix_put.c\
 init_mlx_data.c\
 minirt.c\
+ray_at.c\
+ray_color.c\
 trgb_pack.c\
-trgb_unpack.c
+trgb_unpack.c\
+vect3_add.c\
+vect3_cross.c\
+vect3_div_scalar.c\
+vect3_dot.c\
+vect3_equal.c\
+vect3_inv.c\
+vect3_length_squared.c\
+vect3_mul_scalar.c\
+vect3_norm.c\
+vect3_sub.c\
+vect3_unit.c
 
 OBJS_FILES = ${SRCS_FILES:.c=.o}
 DEPS_FILES = ${SRCS_FILES:.c=.d}
