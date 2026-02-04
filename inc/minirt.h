@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/30 10:34:58 by cybourge          #+#    #+#             */
-/*   Updated: 2026/02/03 16:44:40 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/02/04 11:25:59 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@
 # include "camera.h"
 # include "ray.h"
 # include "color.h"
+# include "object.h"
 
 # define WIN_H 1080
 # define WIN_W 1920
@@ -33,6 +34,8 @@
 # define BAR_WIDTH 50
 
 # define COLOUR1 0x00f44336
+
+# define NB_OBJ	3
 
 typedef struct s_img
 {
@@ -50,6 +53,7 @@ typedef struct s_mlx_data
 	t_img		img;
 	bool		update;
 	t_camera	cam;
+	t_sphere	sphere[NB_OBJ];
 }			t_mlx_data;
 
 // MLX Related Functions

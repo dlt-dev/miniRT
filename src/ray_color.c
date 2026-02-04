@@ -6,20 +6,33 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/03 16:14:07 by cybourge          #+#    #+#             */
-/*   Updated: 2026/02/03 16:43:57 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/02/04 14:31:15 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ray.h"
+#include "object.h"
 
-t_color	ray_color(t_ray ray)
+t_color	ray_color(t_ray ray, t_sphere *sphere)
 {
 	t_vect3	unit_dir;
 	t_color	color_start;
 	t_color	color_end;
 	t_color	color_final;
 	double	a;
+	double	t;
 
+	int i = 0;
+	while (i < 3)
+	{
+		t = sphere_is_hit(&(sphere[i]), &ray);
+		if (t > 0.0)
+		{
+			t_vect3 norm = vect3_unit(vect3_sub(ray_at(ray, t), sphere[i].c));
+			return ((t_color) {(norm.x + 1.0) * 0.5, (norm.y + 1.0) * 0.5, (norm.z + 1.0) * 0.5, 0.0});
+		}
+		i++;
+	}
 	unit_dir = vect3_unit(ray.dir);
 	a = 0.5 * (unit_dir.y + 1.0);
 	color_start = trgb_unpack(0x00a6ff37);

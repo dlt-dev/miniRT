@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/30 10:33:54 by cybourge          #+#    #+#             */
-/*   Updated: 2026/02/03 16:24:05 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/02/04 13:52:04 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,10 +65,11 @@ static int raytrace(t_mlx_data *d)
 			i = 0;
 			while (i < WIN_W)
 			{
+				
 				t_point pixel_center = vect3_add(d->cam.p00_lc, vect3_add(vect3_mul_scalar(d->cam.pix_du, i), vect3_mul_scalar(d->cam.pix_dv, j)));
 				t_vect3 ray_dir = vect3_sub(pixel_center, d->cam.cam_c);
 				t_ray ray = (t_ray) {pixel_center, ray_dir};
-				t_color	color = ray_color(ray);
+				t_color	color = ray_color(ray, (d->sphere));
 				uint32_t colour = trgb_pack(&color);
 				img_pix_put(&(d->img), i, j, colour);
 				i++;
@@ -89,6 +90,9 @@ int	main(void)
 	if (init_mlx_data(&data) < 0)
 		return (1);
 	data.cam = camera_setup(WIN_H, WIN_W);
+	data.sphere[0] = (t_sphere) {(t_vect3) {0.0, 0.0, -4.0}, 0.40, trgb_unpack(0x00FF5D29)};
+	data.sphere[1] = (t_sphere) {(t_vect3) {0.0, 0.5, -4.0}, 0.05, trgb_unpack(0x00EBA23B)};
+	data.sphere[2] = (t_sphere) {(t_vect3) {0.5, 0.0, -4.0}, 0.20, trgb_unpack(0x00EB48B8)};
 	mlx_hook(data.mlx_win, DestroyNotify, 0, handle_x_button, &data);
 	mlx_hook(data.mlx_win, KeyPress, KeyPressMask, handle_keypress, &data);
 	mlx_loop_hook(data.mlx_ptr, &raytrace, &data);

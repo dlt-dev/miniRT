@@ -6,7 +6,7 @@
 #    By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/06/23 12:34:16 by cybourge          #+#    #+#              #
-#    Updated: 2026/02/03 16:21:08 by cybourge         ###   ########.fr        #
+#    Updated: 2026/02/04 14:56:35 by cybourge         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,9 +40,12 @@ handle_keypress.c\
 handle_x_buton.c\
 img_pix_put.c\
 init_mlx_data.c\
+itv_isin.c\
 minirt.c\
 ray_at.c\
 ray_color.c\
+sphere_hit.c\
+sphere_is_hit.c\
 trgb_pack.c\
 trgb_unpack.c\
 vect3_add.c\
