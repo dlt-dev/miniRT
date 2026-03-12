@@ -1,18 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ray_at.c                                           :+:      :+:    :+:   */
+/*   itv_clamp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/02/03 15:14:20 by cybourge          #+#    #+#             */
-/*   Updated: 2026/02/18 09:39:26 by cybourge         ###   ########.fr       */
+/*   Created: 2026/02/18 13:53:39 by cybourge          #+#    #+#             */
+/*   Updated: 2026/02/18 13:55:59 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-t_vect3	ray_at(t_ray ray, double t)
+double	itv_clamp(t_itv *interval, double x)
 {
-	return (vect3_add(ray.o, vect3_mul_scalar(ray.dir, t)));
+	if (x < interval->min)
+		return (interval->min);
+	if (x > interval->max)
+		return (interval->max);
+	return (x);
 }

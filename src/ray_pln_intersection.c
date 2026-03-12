@@ -1,30 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ray.h                                              :+:      :+:    :+:   */
+/*   ray_pln_intersection.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/02/03 15:05:13 by cybourge          #+#    #+#             */
-/*   Updated: 2026/02/04 14:59:13 by cybourge         ###   ########.fr       */
+/*   Created: 2026/03/12 11:42:56 by cybourge          #+#    #+#             */
+/*   Updated: 2026/03/12 11:43:04 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef RAY_H
-# define RAY_H
+#include "minirt.h"
 
-# include "color.h"
-# include "vector3.h"
-
-typedef struct s_sphere	t_sphere;
-
-typedef struct s_ray
+bool	ray_pln_intersection(t_ray *ray, t_pln *plane, double *t)
 {
-	t_point	o;
-	t_vect3	dir;
-}	t_ray;
+	double denom = vect3_dot(plane->nnv, ray->dir);
 
-t_vect3	ray_at(t_ray ray, double t);
-t_color	ray_color(t_ray ray, t_sphere *sphere);
-
-#endif
+	if (denom > EPS || denom < -EPS)
+	{
+		double Hd = vect3_dot(vect3_sub(plane->p, ray->o), plane->nnv) / denom;
+		if (Hd >= 0)
+		{
+			*t = Hd;
+			return (true);
+		}	
+	}
+	return (false);
+}

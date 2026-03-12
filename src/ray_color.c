@@ -6,33 +6,46 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/03 16:14:07 by cybourge          #+#    #+#             */
-/*   Updated: 2026/02/04 14:31:15 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/03/12 14:37:39 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ray.h"
-#include "object.h"
+#include "minirt.h"
 
-t_color	ray_color(t_ray ray, t_sphere *sphere)
+t_color	ray_color(t_ray ray, t_mlx_data *d)
 {
-	t_vect3	unit_dir;
-	t_color	color_start;
-	t_color	color_end;
-	t_color	color_final;
-	double	a;
-	double	t;
+	t_vect3		unit_dir;
+	t_color		color_start;
+	t_color		color_end;
+	t_color		color_final;
+	t_itv		inter = (t_itv) {0.0, INFINITY};
+	t_hitinfo	info;
+	double		a;
 
-	int i = 0;
-	while (i < 3)
+	int 		i = 0;
+	bool		hit_anything = false;
+	while (i < NB_OBJ)
 	{
-		t = sphere_is_hit(&(sphere[i]), &ray);
-		if (t > 0.0)
+		if (sphere_hit(&(d->sphere[i]), &ray, &info, &inter))
 		{
-			t_vect3 norm = vect3_unit(vect3_sub(ray_at(ray, t), sphere[i].c));
-			return ((t_color) {(norm.x + 1.0) * 0.5, (norm.y + 1.0) * 0.5, (norm.z + 1.0) * 0.5, 0.0});
+			hit_anything = true;
+			inter.max = info.t;
+			color_final = d->sphere[i].color;
+			//color_final = ((t_color) {(info.n.x + 1.0) * 0.5, (info.n.y + 1.0) * 0.5, (info.n.z + 1.0) * 0.5, 0.0});
 		}
 		i++;
 	}
+	if (cldr_hit(&(d->cylinder), &ray, &info, &inter))
+		return (d->cylinder.color);
+	if (cone_hit(&(d->cone), &ray, &info, &inter))
+		return (d->cone.color);
+	if (pln_hit(&(d->plane), &ray, &info, &inter))
+		return (d->plane.color);
+	if (trgl_hit(&(d->triangle), &ray, &info, &inter))
+		return (d->triangle.color);
+	if (hit_anything)
+		return (color_final);
+	
 	unit_dir = vect3_unit(ray.dir);
 	a = 0.5 * (unit_dir.y + 1.0);
 	color_start = trgb_unpack(0x00a6ff37);

@@ -1,29 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   color.h                                            :+:      :+:    :+:   */
+/*   itv_surrounds.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/02/03 16:12:52 by cybourge          #+#    #+#             */
-/*   Updated: 2026/02/03 16:20:01 by cybourge         ###   ########.fr       */
+/*   Created: 2026/02/18 08:50:52 by cybourge          #+#    #+#             */
+/*   Updated: 2026/02/18 09:45:50 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef COLOR_H
-# define COLOR_H
+#include "minirt.h"
 
-# include <stdint.h>
-
-typedef struct color
+bool	itv_surrounds(t_itv *interval, double value)
 {
-	double	r;
-	double	g;
-	double	b;
-	double	t;
-}			t_color;
-
-uint32_t	trgb_pack(const t_color *c);
-t_color		trgb_unpack(uint32_t packed);
-
-#endif
+	return (interval->min < value && value < interval->max);
+}

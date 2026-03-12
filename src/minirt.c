@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/30 10:33:54 by cybourge          #+#    #+#             */
-/*   Updated: 2026/02/04 13:52:04 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/03/12 14:37:22 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,8 +68,9 @@ static int raytrace(t_mlx_data *d)
 				
 				t_point pixel_center = vect3_add(d->cam.p00_lc, vect3_add(vect3_mul_scalar(d->cam.pix_du, i), vect3_mul_scalar(d->cam.pix_dv, j)));
 				t_vect3 ray_dir = vect3_sub(pixel_center, d->cam.cam_c);
+				ray_dir = vect3_unit(ray_dir);
 				t_ray ray = (t_ray) {pixel_center, ray_dir};
-				t_color	color = ray_color(ray, (d->sphere));
+				t_color	color = ray_color(ray, d);
 				uint32_t colour = trgb_pack(&color);
 				img_pix_put(&(d->img), i, j, colour);
 				i++;
@@ -83,16 +84,37 @@ static int raytrace(t_mlx_data *d)
 	return (0);
 }
 
+static t_cldr	cldr_create(t_point point, t_vect3 axis, double d, double h)
+{
+	t_cldr cyl;
+
+	cyl.c = point;
+	cyl.axis = vect3_unit(axis);
+	cyl.d = d;
+	cyl.h = h;
+	cyl.end_cap_t = vect3_add(cyl.c, vect3_mul_scalar(cyl.axis, h / 2.0));
+	cyl.end_cap_b = vect3_sub(cyl.c, vect3_mul_scalar(cyl.axis, h / 2.0));
+	cyl.color = trgb_unpack(0x0029FB44);
+	return (cyl);
+}
+
 int	main(void)
 {
 	t_mlx_data	data;
 
 	if (init_mlx_data(&data) < 0)
 		return (1);
+	srand(time(NULL));
 	data.cam = camera_setup(WIN_H, WIN_W);
-	data.sphere[0] = (t_sphere) {(t_vect3) {0.0, 0.0, -4.0}, 0.40, trgb_unpack(0x00FF5D29)};
-	data.sphere[1] = (t_sphere) {(t_vect3) {0.0, 0.5, -4.0}, 0.05, trgb_unpack(0x00EBA23B)};
-	data.sphere[2] = (t_sphere) {(t_vect3) {0.5, 0.0, -4.0}, 0.20, trgb_unpack(0x00EB48B8)};
+	data.sphere[0] = (t_sphere) {(t_vect3) {0.0, 0.0, -4.0}, 0.01, trgb_unpack(0x00FFFFFF)}; // white
+	data.sphere[1] = (t_sphere) {(t_vect3) {0.0, 0.0, -5.0}, 0.1, trgb_unpack(0x002E28FE)}; // blue
+	data.sphere[2] = (t_sphere) {(t_vect3) {0.0, 1.0, -4.0}, 0.1, trgb_unpack(0x00FB2617)}; // red
+	data.sphere[3] = (t_sphere) {(t_vect3) {1.0, 0.0, -4.0}, 0.1, trgb_unpack(0x00FBF522)}; // yellow
+	data.sphere[4] = (t_sphere) {(t_vect3) {0.0, 0.0, -10.0}, 2.5, trgb_unpack(0x00000000)}; // black
+	data.plane = (t_pln) {(t_point) {0.0, -1.0, -3.0}, (t_vect3) {0.0, 1.0, 0.0}, trgb_unpack(0x00FFFFFF)};
+	data.cylinder = cldr_create((t_point ) {-3.0, 0.0, -6.0}, (t_vect3) {0.5, 0.5, 3.0}, 1.0, 1.0); // green
+	data.cone = (t_cone) {(t_point) {3.0, 0, -5.0}, (t_point) {7.0, 0, -6.0}, 1.0, trgb_unpack(0x00FF2EF5)}; // pink
+	data.triangle = (t_trgl) {(t_point) {1.0, 1.5, -4.0}, (t_point) {1.5, 2.0, -4.0}, (t_point) {-1.5, 2.0, -4.0},trgb_unpack(0x001FF8FF)};
 	mlx_hook(data.mlx_win, DestroyNotify, 0, handle_x_button, &data);
 	mlx_hook(data.mlx_win, KeyPress, KeyPressMask, handle_keypress, &data);
 	mlx_loop_hook(data.mlx_ptr, &raytrace, &data);

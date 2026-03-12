@@ -1,27 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sphere_is_hit.c                                    :+:      :+:    :+:   */
+/*   ray_disc_intersection.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/02/04 10:49:48 by cybourge          #+#    #+#             */
-/*   Updated: 2026/03/05 09:30:21 by cybourge         ###   ########.fr       */
+/*   Created: 2026/03/12 11:43:46 by cybourge          #+#    #+#             */
+/*   Updated: 2026/03/12 11:43:55 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-// Old version of sphere_hit, used for potential debugging.
-double	sphere_is_hit(t_sphere *sphere, t_ray *ray)
+bool	ray_disc_intersection(t_ray *ray, t_vect3 *disc_o, t_vect3 *disc_n, double radius, double *t)
 {
-	const t_vect3	oc = vect3_sub(sphere->c, ray->o);
-	double a = vect3_length_squared(ray->dir);
-	double h = vect3_dot(ray->dir, oc);
-	double c = vect3_length_squared(oc) - sphere->r * sphere->r;
-	double discriminant = h * h - a * c;
-	if (discriminant < 0.0)
-		return (-1.0);
-	else
-		return ((h - sqrt(discriminant)) / a);
+	t_pln	disc_plane = (t_pln) {*disc_o, *disc_n, (t_color) {0,0,0,0}};
+	bool	plane = ray_pln_intersection(ray, &disc_plane, t);
+	if (!plane)
+		return (false);
+	t_vect3 Hp = ray_at(*ray, *t);
+	t_vect3 Dd = vect3_sub(Hp, *disc_o);
+	if (vect3_dot(Dd, Dd) > radius * radius)
+		return (false);
+	return (true);
 }

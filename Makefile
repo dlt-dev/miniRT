@@ -6,7 +6,7 @@
 #    By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/06/23 12:34:16 by cybourge          #+#    #+#              #
-#    Updated: 2026/02/04 14:56:35 by cybourge         ###   ########.fr        #
+#    Updated: 2026/03/12 14:24:56 by cybourge         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,9 @@ LINK_LIBS = -Lmlx_linux -lmlx_Linux -L/usr/lib \
 			-Imlx_linux -lXext -lX11 -lm -lz
 
 SRCS_FILES = camera_setup.c\
+cldr_hit.c\
 close_display.c\
+cone_hit.c\
 display_progressbar.c\
 display_progress.c\
 free_mlx_data.c\
@@ -38,16 +40,25 @@ ft_putchar.c\
 ft_putnbr.c\
 handle_keypress.c\
 handle_x_buton.c\
+hitinfo_set_face_normal.c\
 img_pix_put.c\
 init_mlx_data.c\
-itv_isin.c\
+itv_clamp.c\
+itv_contains.c\
+itv_surrounds.c\
 minirt.c\
+pln_hit.c\
+quadratic_roots.c\
+random_double.c\
 ray_at.c\
 ray_color.c\
+ray_disc_intersection.c\
+ray_pln_intersection.c\
 sphere_hit.c\
 sphere_is_hit.c\
 trgb_pack.c\
 trgb_unpack.c\
+trgl_hit.c\
 vect3_add.c\
 vect3_cross.c\
 vect3_div_scalar.c\
