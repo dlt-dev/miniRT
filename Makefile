@@ -6,7 +6,7 @@
 #    By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/06/23 12:34:16 by cybourge          #+#    #+#              #
-#    Updated: 2026/03/12 14:24:56 by cybourge         ###   ########.fr        #
+#    Updated: 2026/03/25 08:28:22 by cybourge         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -52,7 +52,7 @@ quadratic_roots.c\
 random_double.c\
 ray_at.c\
 ray_color.c\
-ray_disc_intersection.c\
+rd_int.c\
 ray_pln_intersection.c\
 sphere_hit.c\
 sphere_is_hit.c\

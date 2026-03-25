@@ -6,13 +6,13 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/12 11:42:56 by cybourge          #+#    #+#             */
-/*   Updated: 2026/03/12 11:43:04 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/03/25 08:24:53 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-bool	ray_pln_intersection(t_ray *ray, t_pln *plane, double *t)
+bool	ray_pln_intersection(const t_ray *ray, const t_pln *plane, double *t)
 {
 	double denom = vect3_dot(plane->nnv, ray->dir);
 
@@ -25,5 +25,6 @@ bool	ray_pln_intersection(t_ray *ray, t_pln *plane, double *t)
 			return (true);
 		}	
 	}
+	*t = NAN;
 	return (false);
 }

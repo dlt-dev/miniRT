@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/03 16:14:07 by cybourge          #+#    #+#             */
-/*   Updated: 2026/03/12 14:37:39 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/03/25 11:16:11 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,13 +36,33 @@ t_color	ray_color(t_ray ray, t_mlx_data *d)
 		i++;
 	}
 	if (cldr_hit(&(d->cylinder), &ray, &info, &inter))
-		return (d->cylinder.color);
-	if (cone_hit(&(d->cone), &ray, &info, &inter))
-		return (d->cone.color);
+	{
+		if (info.front_face)
+			color_final = d->cylinder.color;
+		else
+			color_final = trgb_unpack(0x00FF1420);
+		hit_anything = true;
+		inter.max = info.t;
+	}
+		
+	// if (cone_hit(&(d->cone), &ray, &info, &inter))
+	// {
+	// 	color_final = d->cone.color;
+	// 	hit_anything = true;
+	// 	inter.max = info.t;
+	// }
 	if (pln_hit(&(d->plane), &ray, &info, &inter))
-		return (d->plane.color);
+	{
+		color_final = d->plane.color;
+		hit_anything = true;
+		inter.max = info.t;
+	}
 	if (trgl_hit(&(d->triangle), &ray, &info, &inter))
-		return (d->triangle.color);
+	{
+		color_final = d->triangle.color;
+		hit_anything = true;
+		inter.max = info.t;
+	}
 	if (hit_anything)
 		return (color_final);
 	

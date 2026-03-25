@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/30 10:34:58 by cybourge          #+#    #+#             */
-/*   Updated: 2026/03/12 14:24:43 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/03/25 08:25:23 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ typedef struct s_itv
 typedef struct s_ray
 {
 	t_point	o;
-	t_vect3	dir;
+	t_vect3	dir;	// Normalized
 }	t_ray;
 
 typedef struct s_hitinfo
@@ -112,12 +112,12 @@ typedef struct t_triangle
 typedef struct s_cylinder
 {
 	t_point	c;
-	t_vect3	axis;
-	double	d;
+	t_vect3	axis;		// Normalized
+	double	r;
 	double	h;
 	t_color	color;
-	t_point	end_cap_t; // center point on the top circle cap
-	t_point	end_cap_b; // center point on the bottom circle cap
+	t_point	capt; // center point on the top circle cap
+	t_point	capb; // center point on the bottom circle cap
 }	t_cldr;
 
 typedef struct s_mlx_data
@@ -149,8 +149,8 @@ void		ft_putnbr(int nb);
 void		display_progressbar(double percent);
 void		display_progress(int i, int j);
 int 		quadratic_roots(double a, double b, double c, t_tuple *roots);
-bool		ray_pln_intersection(t_ray *ray, t_pln *plane, double *t);
-bool		ray_disc_intersection(t_ray *ray, t_vect3 *disc_o, t_vect3 *disc_n, double radius, double *t);
+bool		ray_pln_intersection(const t_ray *ray, const t_pln *plane, double *t);
+bool		rd_int(const t_ray *ray, const t_vect3 *disc_o, const t_vect3 *disc_n, double radius, double *t);
 
 
 double		random_double(double min, double max);
@@ -160,8 +160,8 @@ uint32_t	trgb_pack(const t_color *c);
 t_color		trgb_unpack(uint32_t packed);
 
 // Object Related Functions
-bool		itv_contains(t_itv *interval, double value);
-bool		itv_surrounds(t_itv *interval, double value);
+bool		itv_contains(const t_itv *interval, double value);
+bool		itv_surrounds(const t_itv *interval, double value);
 double		itv_clamp(t_itv *interval, double value);
 
 void	hitinfo_set_face_normal(t_hitinfo *hitinfo, const t_ray *ray, const t_vect3 *outward_normal);

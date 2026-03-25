@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/12 11:42:08 by cybourge          #+#    #+#             */
-/*   Updated: 2026/03/12 11:42:18 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/03/24 09:40:33 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int quadratic_roots(double a, double b, double c, t_tuple *roots)
 	else if (discriminant > -EPS && discriminant <= EPS)
 	{
 		roots->x = -(b / (2.0 * a));
-		roots->y = roots->x;
+		roots->y = NAN;
 		return (1);
 	}
 	else
