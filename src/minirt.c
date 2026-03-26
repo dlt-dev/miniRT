@@ -6,24 +6,33 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/30 10:33:54 by cybourge          #+#    #+#             */
-/*   Updated: 2026/03/26 11:29:40 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/03/26 11:46:18 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 #include <stdio.h>
 
+static t_clr	test_colors(int i, int j)
+{
+	const t_clr		color1 = clr_unpack(0x00ffbb00);
+	const t_clr		color2 = clr_unpack(0x0015965D);
+	t_clr			color3;
+
+	if (i > WIN_H / 2 && j > WIN_W / 2)
+		color3 = color1;
+	else if (i > WIN_H / 2 && j <= WIN_W / 2)
+		color3 = color2;
+	else
+		color3 = clr_bld(color1, color2);
+	return (color3);
+}
 
 static int	raytrace(t_mlx_data *d)
 {
-	int				i;
-	int				j;
-	const t_clr		color1 = clr_unpack(0x00ffbb00);
-	const t_clr		color2 = clr_unpack(0x0015965D);
-	t_clr			color3 = color2;
-	//t_clr			color4;
-	int				step = 0;
-	
+	int		i;
+	int		j;
+	t_clr	color;
 
 	if (d->mlx_win == NULL)
 		return (1);
@@ -35,18 +44,8 @@ static int	raytrace(t_mlx_data *d)
 			j = 0;
 			while (j < WIN_W)
 			{
-				if (i > WIN_H / 2 && j > WIN_W / 2)
-				{
-					color3 = color1;
-				}
-				else if (i > WIN_H / 2 && j < WIN_W / 2)
-					color3 = color2;
-				else
-				{
-					color3 = clr_bld(color1, color2);
-				}
-				step++;
-				img_pix_put(&(d->img), j, i, clr_pack(color3));
+				color = test_colors(i, j);
+				img_pix_put(&(d->img), j, i, clr_pack(color));
 				j++;
 				display_progress(i, j);
 			}
