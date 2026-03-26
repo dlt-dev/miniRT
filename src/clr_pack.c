@@ -1,24 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   trgb_unpack.c                                      :+:      :+:    :+:   */
+/*   trgb_pack.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/30 16:51:51 by cybourge          #+#    #+#             */
-/*   Updated: 2026/01/30 17:01:58 by cybourge         ###   ########.fr       */
+/*   Created: 2026/01/30 16:51:03 by cybourge          #+#    #+#             */
+/*   Updated: 2026/03/26 10:48:18 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minirt.h"
+#include "color.h"
 
-inline t_color	trgb_unpack(uint32_t packed)
+inline uint32_t	clr_pack(const t_clr c)
 {
-	t_color	c;
-
-	c.t = ((packed >> 24) & 0xFF) / 255.0;
-	c.r = ((packed >> 16) & 0xFF) / 255.0;
-	c.g = ((packed >> 8) & 0xFF) / 255.0;
-	c.b = (packed & 0xFF) / 255.0;
-	return (c);
+	return (
+		(uint32_t)(c.t * 255.0 + 0.5) << 24 |
+		(uint32_t)(c.r * 255.0 + 0.5) << 16 |
+		(uint32_t)(c.g * 255.0 + 0.5) << 8 |
+		(uint32_t)(c.b * 255.0 + 0.5)
+		);
 }

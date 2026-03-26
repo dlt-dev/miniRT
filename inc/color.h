@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/26 09:38:16 by cybourge          #+#    #+#             */
-/*   Updated: 2026/03/26 10:12:38 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/03/26 10:55:09 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #define COLOR_H
 
 #include "interval.h"
+#include <stdint.h>
 
 typedef struct color
 {
@@ -32,6 +33,11 @@ t_clr	clr_mul(t_clr c1, double i);
 // color blending
 t_clr	clr_bld(t_clr c1, t_clr c2);
 
+// TRGB OPERATIONS
+// Returns the color c in its trgb hexadecimal form.
+inline uint32_t	clr_pack(t_clr c);
+// Returns the color c corresponding to the trgb hexadecimal color.
+inline t_clr	clr_unpack(uint32_t packed);
 
 
 #endif
