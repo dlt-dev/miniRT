@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/26 09:38:16 by cybourge          #+#    #+#             */
-/*   Updated: 2026/03/26 10:55:09 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/03/26 11:33:41 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@
 
 typedef struct color
 {
+	double	t;
 	double	r;
 	double	g;
 	double	b;
-	double	t;
 }			t_clr;
 
 // color addition
@@ -35,9 +35,9 @@ t_clr	clr_bld(t_clr c1, t_clr c2);
 
 // TRGB OPERATIONS
 // Returns the color c in its trgb hexadecimal form.
-inline uint32_t	clr_pack(t_clr c);
+uint32_t	clr_pack(t_clr c);
 // Returns the color c corresponding to the trgb hexadecimal color.
-inline t_clr	clr_unpack(uint32_t packed);
+t_clr	clr_unpack(uint32_t packed);
 
 
 #endif

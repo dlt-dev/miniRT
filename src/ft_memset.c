@@ -1,23 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   clr_pack.c                                         :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/30 16:51:03 by cybourge          #+#    #+#             */
-/*   Updated: 2026/03/26 11:32:03 by cybourge         ###   ########.fr       */
+/*   Created: 2025/10/03 12:09:50 by cybourge          #+#    #+#             */
+/*   Updated: 2026/01/30 11:04:12 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "color.h"
+#include "minirt.h"
 
-uint32_t	clr_pack(const t_clr c)
+void	*ft_memset(void *s, int c, size_t n)
 {
-	return (
-		(uint32_t)(c.t * 255.0) << 24 |
-		(uint32_t)(c.r * 255.0) << 16 |
-		(uint32_t)(c.g * 255.0) << 8 |
-		(uint32_t)(c.b * 255.0)
-		);
+	char	byte;
+	char	*addr;
+	size_t	i;
+
+	addr = s;
+	byte = c;
+	i = 0;
+	while (i < n)
+	{
+		addr[i] = byte;
+		i++;
+	}
+	return (s);
 }

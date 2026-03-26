@@ -1,23 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   clr_pack.c                                         :+:      :+:    :+:   */
+/*   display_progress.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/30 16:51:03 by cybourge          #+#    #+#             */
-/*   Updated: 2026/03/26 11:32:03 by cybourge         ###   ########.fr       */
+/*   Created: 2026/01/30 16:52:24 by cybourge          #+#    #+#             */
+/*   Updated: 2026/01/30 16:52:32 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "color.h"
+#include "minirt.h"
 
-uint32_t	clr_pack(const t_clr c)
+void	display_progress(int i, int j)
 {
-	return (
-		(uint32_t)(c.t * 255.0) << 24 |
-		(uint32_t)(c.r * 255.0) << 16 |
-		(uint32_t)(c.g * 255.0) << 8 |
-		(uint32_t)(c.b * 255.0)
-		);
+	double			current_progress;
+	static double	progress_floor = 0.0;
+
+	current_progress = ((i * WIN_W + j + 1.0) / (double)(WIN_H * WIN_W));
+	if (current_progress >= progress_floor)
+	{
+		progress_floor += 0.01;
+		display_progressbar(current_progress);
+	}
+	if (i == WIN_H - 1 && j == WIN_W - 1)
+	{
+		display_progressbar(1.0);
+		progress_floor = 0.0;
+	}
 }

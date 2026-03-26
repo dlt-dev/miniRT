@@ -1,23 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   clr_pack.c                                         :+:      :+:    :+:   */
+/*   ft_putchar.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/30 16:51:03 by cybourge          #+#    #+#             */
-/*   Updated: 2026/03/26 11:32:03 by cybourge         ###   ########.fr       */
+/*   Created: 2026/01/30 14:10:35 by cybourge          #+#    #+#             */
+/*   Updated: 2026/01/30 16:58:04 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "color.h"
+#include "minirt.h"
 
-uint32_t	clr_pack(const t_clr c)
+void	ft_putchar(char c)
 {
-	return (
-		(uint32_t)(c.t * 255.0) << 24 |
-		(uint32_t)(c.r * 255.0) << 16 |
-		(uint32_t)(c.g * 255.0) << 8 |
-		(uint32_t)(c.b * 255.0)
-		);
+	write(1, &c, 1);
 }

@@ -1,23 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   clr_pack.c                                         :+:      :+:    :+:   */
+/*   close_display.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/30 16:51:03 by cybourge          #+#    #+#             */
-/*   Updated: 2026/03/26 11:32:03 by cybourge         ###   ########.fr       */
+/*   Created: 2025/10/03 12:16:05 by cybourge          #+#    #+#             */
+/*   Updated: 2026/01/30 10:52:20 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "color.h"
+#include "minirt.h"
 
-uint32_t	clr_pack(const t_clr c)
+void	close_display(t_mlx_data *data)
 {
-	return (
-		(uint32_t)(c.t * 255.0) << 24 |
-		(uint32_t)(c.r * 255.0) << 16 |
-		(uint32_t)(c.g * 255.0) << 8 |
-		(uint32_t)(c.b * 255.0)
-		);
+	mlx_destroy_window(data->mlx_ptr, data->mlx_win);
+	data->mlx_win = NULL;
 }

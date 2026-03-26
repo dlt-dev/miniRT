@@ -1,23 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   clr_pack.c                                         :+:      :+:    :+:   */
+/*   handle_x_buton.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/30 16:51:03 by cybourge          #+#    #+#             */
-/*   Updated: 2026/03/26 11:32:03 by cybourge         ###   ########.fr       */
+/*   Created: 2025/10/03 12:18:21 by cybourge          #+#    #+#             */
+/*   Updated: 2026/01/30 10:48:43 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "color.h"
+#include "minirt.h"
 
-uint32_t	clr_pack(const t_clr c)
+int	handle_x_button(t_mlx_data *data)
 {
-	return (
-		(uint32_t)(c.t * 255.0) << 24 |
-		(uint32_t)(c.r * 255.0) << 16 |
-		(uint32_t)(c.g * 255.0) << 8 |
-		(uint32_t)(c.b * 255.0)
-		);
+	mlx_destroy_window(data->mlx_ptr, data->mlx_win);
+	data->mlx_win = NULL;
+	free_mlx_data(data);
+	exit(0);
+	return (0);
 }
