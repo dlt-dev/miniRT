@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vect3_div_scalar.c                                 :+:      :+:    :+:   */
+/*   v3_mul.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/02/03 14:28:57 by cybourge          #+#    #+#             */
-/*   Updated: 2026/02/03 14:35:11 by cybourge         ###   ########.fr       */
+/*   Created: 2026/03/26 09:03:10 by cybourge          #+#    #+#             */
+/*   Updated: 2026/03/26 09:03:16 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "vector3.h"
+#include "v3.h"
 
-t_vect3	vect3_div_scalar(t_vect3 v, double s)
+t_v3	v3_mul(t_v3 v, double s)
 {
-	return ((t_vect3){v.x / s, v.y / s, v.z / s});
+	return ((t_v3){v.x * s, v.y * s, v.z * s});
 }

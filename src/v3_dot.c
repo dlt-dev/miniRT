@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vect3_mul_scalar.c                                 :+:      :+:    :+:   */
+/*   v3_dot.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/02/03 14:27:17 by cybourge          #+#    #+#             */
-/*   Updated: 2026/02/03 14:35:01 by cybourge         ###   ########.fr       */
+/*   Created: 2026/03/26 09:02:37 by cybourge          #+#    #+#             */
+/*   Updated: 2026/03/26 09:02:42 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "vector3.h"
+#include "v3.h"
 
-t_vect3	vect3_mul_scalar(t_vect3 v, double s)
+double	v3_dot(t_v3 a, t_v3 b)
 {
-	return ((t_vect3){v.x * s, v.y * s, v.z * s});
+	return (a.x * b.x + a.y * b.y + a.z * b.z);
 }

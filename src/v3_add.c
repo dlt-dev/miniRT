@@ -1,19 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vect3_cross.c                                      :+:      :+:    :+:   */
+/*   v3_add.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/02/03 14:29:22 by cybourge          #+#    #+#             */
-/*   Updated: 2026/02/03 14:35:14 by cybourge         ###   ########.fr       */
+/*   Created: 2026/03/26 08:59:49 by cybourge          #+#    #+#             */
+/*   Updated: 2026/03/26 09:00:00 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "vector3.h"
+#include "v3.h"
 
-t_vect3	vect3_cross(t_vect3 a, t_vect3 b)
+t_v3	v3_add(t_v3 a, t_v3 b)
 {
-	return ((t_vect3){a.y * b.z - a.z * b.y, a.z * b.x - a.x * b.z, a.x * b.y
-		- a.y * b.x});
+	return ((t_v3){a.x + b.x, a.y + b.y, a.z + b.z});
 }

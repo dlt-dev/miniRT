@@ -1,18 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vect3_sub.c                                        :+:      :+:    :+:   */
+/*   v3_eql.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/02/03 14:17:38 by cybourge          #+#    #+#             */
-/*   Updated: 2026/02/03 14:34:56 by cybourge         ###   ########.fr       */
+/*   Created: 2026/03/26 08:58:41 by cybourge          #+#    #+#             */
+/*   Updated: 2026/03/26 08:59:35 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "vector3.h"
+#include "v3.h"
 
-t_vect3	vect3_sub(t_vect3 a, t_vect3 b)
+bool	deql(double a, double b)
 {
-	return ((t_vect3){a.x - b.x, a.y - b.y, a.z - b.z});
+	return (fabs(a - b) < EPS);
+}
+
+bool	v3_eql(t_v3 a, t_v3 b)
+{
+	return (deql(a.x, b.x) && deql(a.y, b.y) && deql(a.z, b.z));
 }

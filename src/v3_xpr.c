@@ -1,18 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vect3_length_squared.c                             :+:      :+:    :+:   */
+/*   v3_xpr.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/02/03 14:26:00 by cybourge          #+#    #+#             */
-/*   Updated: 2026/02/03 14:35:03 by cybourge         ###   ########.fr       */
+/*   Created: 2026/03/26 09:02:52 by cybourge          #+#    #+#             */
+/*   Updated: 2026/03/26 09:02:57 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "vector3.h"
+#include "v3.h"
 
-double	vect3_length_squared(t_vect3 v)
+t_v3	v3_xpr(t_v3 a, t_v3 b)
 {
-	return (v.x * v.x + v.y * v.y + v.z * v.z);
+	return ((t_v3){
+		a.y * b.z - a.z * b.y,
+		a.z * b.x - a.x * b.z,
+		a.x * b.y - a.y * b.x
+	});
 }

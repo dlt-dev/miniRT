@@ -1,18 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vect3_dot.c                                        :+:      :+:    :+:   */
+/*   v3_uni.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/02/03 14:26:53 by cybourge          #+#    #+#             */
-/*   Updated: 2026/02/03 14:35:08 by cybourge         ###   ########.fr       */
+/*   Created: 2026/03/26 09:01:36 by cybourge          #+#    #+#             */
+/*   Updated: 2026/03/26 09:01:44 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "vector3.h"
+#include "v3.h"
 
-double	vect3_dot(t_vect3 a, t_vect3 b)
+t_v3	v3_uni(t_v3 v)
 {
-	return (a.x * b.x + a.y * b.y + a.z * b.z);
+	double	len;
+
+	len = v3_len(v);
+	if (len < EPS)
+		return ((t_v3){0.0, 0.0, 0.0});
+	return (v3_div(v, len));
 }

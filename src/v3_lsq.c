@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vect3_norm.c                                       :+:      :+:    :+:   */
+/*   v3_lsq.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/02/03 14:26:25 by cybourge          #+#    #+#             */
-/*   Updated: 2026/02/03 14:34:59 by cybourge         ###   ########.fr       */
+/*   Created: 2026/03/26 09:00:55 by cybourge          #+#    #+#             */
+/*   Updated: 2026/03/26 09:01:01 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "vector3.h"
+#include "v3.h"
 
-double	vect3_norm(t_vect3 v)
+double	v3_lsq(t_v3 v)
 {
-	return (sqrt(vect3_length_squared(v)));
+	return (v.x * v.x + v.y * v.y + v.z * v.z);
 }

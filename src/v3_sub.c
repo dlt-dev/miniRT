@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vect3_add.c                                        :+:      :+:    :+:   */
+/*   v3_sub.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/02/03 14:16:59 by cybourge          #+#    #+#             */
-/*   Updated: 2026/02/03 14:35:17 by cybourge         ###   ########.fr       */
+/*   Created: 2026/03/26 09:00:11 by cybourge          #+#    #+#             */
+/*   Updated: 2026/03/26 09:00:18 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "vector3.h"
+#include "v3.h"
 
-t_vect3	vect3_add(t_vect3 a, t_vect3 b)
+t_v3	v3_sub(t_v3 a, t_v3 b)
 {
-	return ((t_vect3){a.x + b.x, a.y + b.y, a.z + b.z});
+	return ((t_v3){a.x - b.x, a.y - b.y, a.z - b.z});
 }

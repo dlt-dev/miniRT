@@ -1,18 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vect3_inv.c                                        :+:      :+:    :+:   */
+/*   v3_div.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/02/03 14:25:26 by cybourge          #+#    #+#             */
-/*   Updated: 2026/02/03 14:35:05 by cybourge         ###   ########.fr       */
+/*   Created: 2026/03/26 09:03:27 by cybourge          #+#    #+#             */
+/*   Updated: 2026/03/26 09:03:33 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "vector3.h"
+#include "v3.h"
 
-t_vect3	vect3_inv(t_vect3 v)
+t_v3	v3_div(t_v3 v, double s)
 {
-	return ((t_vect3){-v.x, -v.y, -v.z});
+	if (fabs(s) < EPS)
+		return ((t_v3){0.0, 0.0, 0.0});
+	return ((t_v3){v.x / s, v.y / s, v.z / s});
 }
