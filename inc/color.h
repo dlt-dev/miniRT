@@ -1,20 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   v3_div.c                                           :+:      :+:    :+:   */
+/*   color.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/03/26 09:03:27 by cybourge          #+#    #+#             */
-/*   Updated: 2026/03/26 09:59:39 by cybourge         ###   ########.fr       */
+/*   Created: 2026/03/26 09:38:16 by cybourge          #+#    #+#             */
+/*   Updated: 2026/03/26 10:12:38 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "vector3.h"
+#ifndef COLOR_H
+#define COLOR_H
 
-t_v3	v3_div(t_v3 v, double s)
+#include "interval.h"
+
+typedef struct color
 {
-	if (fabs(s) < EPS)
-		return ((t_v3){0.0, 0.0, 0.0});
-	return ((t_v3){v.x / s, v.y / s, v.z / s});
-}
+	double	r;
+	double	g;
+	double	b;
+	double	t;
+}			t_clr;
+
+// color addition
+t_clr	clr_add(t_clr c1, t_clr c2);
+// color substraction
+t_clr	clr_sub(t_clr c1, t_clr c2);
+// color multiplying
+t_clr	clr_mul(t_clr c1, double i);
+// color blending
+t_clr	clr_bld(t_clr c1, t_clr c2);
+
+
+
+#endif

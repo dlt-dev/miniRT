@@ -6,7 +6,7 @@
 #    By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/06/23 12:34:16 by cybourge          #+#    #+#              #
-#    Updated: 2026/03/26 09:26:01 by cybourge         ###   ########.fr        #
+#    Updated: 2026/03/26 10:32:13 by cybourge         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,18 +28,9 @@ LINK_LIBS = -Lmlx_linux -lmlx_Linux -L/usr/lib \
 			-L$(LIB_DIR) -lmlx_Linux \
 			-Imlx_linux -lXext -lX11 -lm -lz
 
-SRCS_FILES = test_v3.c\
-v3_add.c\
-v3_div.c\
-v3_dot.c\
-v3_eql.c\
-v3_inv.c\
-v3_len.c\
-v3_lsq.c\
-v3_mul.c\
-v3_sub.c\
-v3_uni.c\
-v3_xpr.c
+#$(notdir $(wildcard src/*.c))
+
+SRCS_FILES = $(notdir $(wildcard src/*.c))
 
 OBJS_FILES = ${SRCS_FILES:.c=.o}
 DEPS_FILES = ${SRCS_FILES:.c=.d}

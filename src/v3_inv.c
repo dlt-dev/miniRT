@@ -6,11 +6,11 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/26 09:00:32 by cybourge          #+#    #+#             */
-/*   Updated: 2026/03/26 09:00:38 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/03/26 09:59:48 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "v3.h"
+#include "vector3.h"
 
 t_v3	v3_inv(t_v3 v)
 {

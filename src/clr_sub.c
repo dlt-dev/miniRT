@@ -1,20 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   v3_div.c                                           :+:      :+:    :+:   */
+/*   clr_sub.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/03/26 09:03:27 by cybourge          #+#    #+#             */
-/*   Updated: 2026/03/26 09:59:39 by cybourge         ###   ########.fr       */
+/*   Created: 2026/03/26 10:19:20 by cybourge          #+#    #+#             */
+/*   Updated: 2026/03/26 10:19:47 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "vector3.h"
+#include "color.h"
 
-t_v3	v3_div(t_v3 v, double s)
+t_clr	clr_sub(t_clr c1, t_clr c2)
 {
-	if (fabs(s) < EPS)
-		return ((t_v3){0.0, 0.0, 0.0});
-	return ((t_v3){v.x / s, v.y / s, v.z / s});
+	const t_itv	bounds = (t_itv){0.0, 1.0};
+
+	return ((t_clr)
+		{
+			itv_clp(bounds, c1.r - c2.r),
+			itv_clp(bounds, c1.g - c2.g),
+			itv_clp(bounds, c1.b - c2.b),
+			itv_clp(bounds, c1.t - c2.t),
+		});
 }

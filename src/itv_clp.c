@@ -1,20 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   v3_div.c                                           :+:      :+:    :+:   */
+/*   itv_clp.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/03/26 09:03:27 by cybourge          #+#    #+#             */
-/*   Updated: 2026/03/26 09:59:39 by cybourge         ###   ########.fr       */
+/*   Created: 2026/02/18 13:53:39 by cybourge          #+#    #+#             */
+/*   Updated: 2026/03/26 10:34:55 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "vector3.h"
+#include "interval.h"
 
-t_v3	v3_div(t_v3 v, double s)
+double	itv_clp(t_itv interval, double x)
 {
-	if (fabs(s) < EPS)
-		return ((t_v3){0.0, 0.0, 0.0});
-	return ((t_v3){v.x / s, v.y / s, v.z / s});
+	if (x < interval.min)
+		return (interval.min);
+	if (x > interval.max)
+		return (interval.max);
+	return (x);
 }
