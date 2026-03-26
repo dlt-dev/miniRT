@@ -1,18 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   v3_eql.c                                           :+:      :+:    :+:   */
+/*   mat_idm.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/03/26 08:58:41 by cybourge          #+#    #+#             */
-/*   Updated: 2026/03/26 12:19:01 by cybourge         ###   ########.fr       */
+/*   Created: 2026/03/26 15:35:03 by cybourge          #+#    #+#             */
+/*   Updated: 2026/03/26 16:06:48 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "vector3.h"
+#include "matrix.h"
 
-bool	v3_eql(t_v3 a, t_v3 b)
+int	mat_idm(const t_mat *m1, t_mat *res)
 {
-	return (deql(a.x, b.x) && deql(a.y, b.y) && deql(a.z, b.z));
+	unsigned int	i;
+	unsigned int	j;
+
+	i = 0;
+	j = 0;
+	if (!m1 || !res)
+		return (-1);
+	if (m1->r != m1->c)
+		return (-1);
+	if (!mat_set(m1, res))
+		return (-1);
+	while (i < res->r)
+	{
+		while (j < res->c)
+		{
+			if (i == j)
+				res->m[i * res->c + j] = 1.0;
+			else
+				res->m[i * res->c + j] = 0.0;
+			j++;
+		}
+		i++;
+	}
+	return (0);
 }

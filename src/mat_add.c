@@ -1,18 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   v3_eql.c                                           :+:      :+:    :+:   */
+/*   mat_add.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/03/26 08:58:41 by cybourge          #+#    #+#             */
-/*   Updated: 2026/03/26 12:19:01 by cybourge         ###   ########.fr       */
+/*   Created: 2026/03/26 15:07:17 by cybourge          #+#    #+#             */
+/*   Updated: 2026/03/26 16:07:52 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "vector3.h"
+#include "matrix.h"
 
-bool	v3_eql(t_v3 a, t_v3 b)
+int	mat_add(const t_mat *m1, const t_mat *m2, t_mat *res)
 {
-	return (deql(a.x, b.x) && deql(a.y, b.y) && deql(a.z, b.z));
+	unsigned int	i;
+
+	i = 0;
+	if (!m1 || !m2 || !res || !m1->m || !m2->m)
+		return (-1);
+	if (m1->r != m2->r || m1->c != m2->c)
+		return (-1);
+	if (!mat_set(m1, res))
+		return (-1);
+	while (i < m1->r * m1->c)
+	{
+		res->m[i] = m1->m[i] + m2->m[i];
+		i++;
+	}
+	return (0);
 }

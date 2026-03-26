@@ -1,18 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   v3_eql.c                                           :+:      :+:    :+:   */
+/*   mat_dlt.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/03/26 08:58:41 by cybourge          #+#    #+#             */
-/*   Updated: 2026/03/26 12:19:01 by cybourge         ###   ########.fr       */
+/*   Created: 2026/03/26 15:00:33 by cybourge          #+#    #+#             */
+/*   Updated: 2026/03/26 15:00:54 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "vector3.h"
+#include "matrix.h"
 
-bool	v3_eql(t_v3 a, t_v3 b)
+void	mat_dlt(t_mat *mat)
 {
-	return (deql(a.x, b.x) && deql(a.y, b.y) && deql(a.z, b.z));
+	if (!mat || !mat->m)
+		return ;
+	free(mat->m);
+	mat->m = NULL;
 }

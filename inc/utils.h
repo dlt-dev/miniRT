@@ -1,18 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   v3_eql.c                                           :+:      :+:    :+:   */
+/*   utils.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/03/26 08:58:41 by cybourge          #+#    #+#             */
-/*   Updated: 2026/03/26 12:19:01 by cybourge         ###   ########.fr       */
+/*   Created: 2026/03/26 12:16:48 by cybourge          #+#    #+#             */
+/*   Updated: 2026/03/26 16:07:25 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "vector3.h"
+#ifndef UTILS_H
+# define UTILS_H
 
-bool	v3_eql(t_v3 a, t_v3 b)
-{
-	return (deql(a.x, b.x) && deql(a.y, b.y) && deql(a.z, b.z));
-}
+# include <stddef.h>
+# include <stdbool.h>
+# include <math.h>
+# define EPS 1e-9
+
+// Utility Functions
+void		*ft_memset(void *s, int c, size_t n);
+void		ft_putchar(char c);
+void		ft_putnbr(int nb);
+void		display_progressbar(double percent);
+void		display_progress(int i, int j);
+
+bool		deql(double a, double b);	// Equality for 2 doubles.
+
+#endif

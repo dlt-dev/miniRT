@@ -1,18 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   v3_eql.c                                           :+:      :+:    :+:   */
+/*   mat_crt.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/03/26 08:58:41 by cybourge          #+#    #+#             */
-/*   Updated: 2026/03/26 12:19:01 by cybourge         ###   ########.fr       */
+/*   Created: 2026/03/26 14:58:00 by cybourge          #+#    #+#             */
+/*   Updated: 2026/03/26 16:04:48 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "vector3.h"
+#include "matrix.h"
 
-bool	v3_eql(t_v3 a, t_v3 b)
+t_mat	*mat_crt(t_mat *m1)
 {
-	return (deql(a.x, b.x) && deql(a.y, b.y) && deql(a.z, b.z));
+	size_t	len;
+
+	if (!m1 || m1->r <= 0 || m1->c <= 0)
+		return (NULL);
+	len = sizeof(double) * m1->r * m1->c;
+	m1->m = malloc(len);
+	if (!m1->m)
+		return (NULL);
+	ft_memset(m1->m, 0, len);
+	return (m1);
 }

@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/30 10:34:58 by cybourge          #+#    #+#             */
-/*   Updated: 2026/03/26 11:02:33 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/03/26 12:17:54 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 # include <unistd.h>
 # include <stdio.h>
 # include <time.h>
+# include "utils.h"
 # include "color.h"
 # include "interval.h"
 # include "vector3.h"
@@ -66,12 +67,5 @@ int			handle_x_button(t_mlx_data *data);
 void		img_pix_put(t_img *img, int x, int y, int color);
 int			init_mlx_data(t_mlx_data *d);
 void		free_mlx_data(t_mlx_data *data);
-
-// Utility Functions
-void		*ft_memset(void *s, int c, size_t n);
-void		ft_putchar(char c);
-void		ft_putnbr(int nb);
-void		display_progressbar(double percent);
-void		display_progress(int i, int j);
 
 #endif

@@ -1,18 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   v3_eql.c                                           :+:      :+:    :+:   */
+/*   mat_set.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/03/26 08:58:41 by cybourge          #+#    #+#             */
-/*   Updated: 2026/03/26 12:19:01 by cybourge         ###   ########.fr       */
+/*   Created: 2026/03/26 15:20:23 by cybourge          #+#    #+#             */
+/*   Updated: 2026/03/26 16:06:01 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "vector3.h"
+#include "matrix.h"
 
-bool	v3_eql(t_v3 a, t_v3 b)
+int	mat_set(const t_mat *model, t_mat *subject)
 {
-	return (deql(a.x, b.x) && deql(a.y, b.y) && deql(a.z, b.z));
+	if (model->r != subject->r || model->c != subject->c || !(subject->m))
+	{
+		if (subject->m)
+			mat_dlt(subject);
+		subject->r = model->r;
+		subject->c = model->c;
+		if (!mat_crt(subject))
+			return (-1);
+	}
+	return (0);
 }
