@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/26 12:07:44 by cybourge          #+#    #+#             */
-/*   Updated: 2026/03/31 10:57:45 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/03/31 12:14:29 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,17 @@
 
 typedef double	t_m44[M44_SIZE * M44_SIZE];
 
-// GENERIC UTILITY FUNCTIONS
+// UTILITY FUNCTIONS
 // Zeroes the Matrix, returns -1 on error, 0 otherwise.
 int		m44_zro(t_m44 *m1);
 // Matrix Equality
 bool	m44_eql(const t_m44 *m1, const t_m44 *m2);
-//Access Matrix Element M(i,j), returns -1 on error, 0 otherwise.
+// Access Matrix Element M(i,j), returns -1 on error, 0 otherwise.
 int		m44_ele(const t_m44 *m1, unsigned int i, unsigned int j, double *ele);
+// Copies the Matrix, returns -1 on error, 0 otherwise.
+int		m44_cpy(const t_m44 *m1, t_m44 *res);
+
+// ARITHMETIC FUNCTIONS
 // Matrix Addition, returns -1 on error, 0 otherwise.
 int		m44_add(const t_m44 *m1, const t_m44 *m2, t_m44 *res);
 // Matrix Substraction, returns -1 on error, 0 otherwise.

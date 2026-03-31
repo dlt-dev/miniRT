@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/26 09:03:10 by cybourge          #+#    #+#             */
-/*   Updated: 2026/03/26 09:59:56 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/03/31 13:37:32 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,5 @@
 
 t_v3	v3_mul(t_v3 v, double s)
 {
-	return ((t_v3){v.x * s, v.y * s, v.z * s});
+	return ((t_v3){v.x * s, v.y * s, v.z * s, 0.0});
 }

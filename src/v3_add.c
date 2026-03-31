@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/26 08:59:49 by cybourge          #+#    #+#             */
-/*   Updated: 2026/03/26 09:59:33 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/03/31 13:33:00 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,5 @@
 
 t_v3	v3_add(t_v3 a, t_v3 b)
 {
-	return ((t_v3){a.x + b.x, a.y + b.y, a.z + b.z});
+	return ((t_v3){a.x + b.x, a.y + b.y, a.z + b.z, a.w + b.w});
 }
