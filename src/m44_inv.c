@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/31 10:25:38 by cybourge          #+#    #+#             */
-/*   Updated: 2026/03/31 13:49:05 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/03/31 14:55:57 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,10 @@ static void	eliminate_other_rows(t_m44 *a, t_m44 *b, int i)
 	while (k < M44_SIZE)
 	{
 		if (k == i)
+		{
+			k++;
 			continue ;
+		}
 		tmp = (*a)[k * M44_SIZE + i];
 		j = 0;
 		while (j < M44_SIZE)

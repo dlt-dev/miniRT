@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/31 12:12:40 by cybourge          #+#    #+#             */
-/*   Updated: 2026/03/31 12:14:35 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/03/31 14:48:00 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	m44_cpy(const t_m44 *m1, t_m44 *res)
 	i = 0;
 	while (i < M44_SIZE * M44_SIZE)
 	{
-		*(res)[i] = *(m1)[i];
+		(*res)[i] = (*m1)[i];
 		i++;
 	}
 	return (0);
