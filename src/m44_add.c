@@ -6,13 +6,13 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/31 10:17:24 by cybourge          #+#    #+#             */
-/*   Updated: 2026/03/31 10:26:08 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/03/31 11:19:49 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "matrix.h"
 
-void	m44_add(const t_m44 *m1, const t_m44 *m2, t_m44 *res)
+int	m44_add(const t_m44 *m1, const t_m44 *m2, t_m44 *res)
 {
 	int	i;
 
