@@ -1,40 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mat_idm.c                                          :+:      :+:    :+:   */
+/*   m44_crt.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/03/26 15:35:03 by cybourge          #+#    #+#             */
-/*   Updated: 2026/03/26 16:06:48 by cybourge         ###   ########.fr       */
+/*   Created: 2026/03/31 10:16:11 by cybourge          #+#    #+#             */
+/*   Updated: 2026/03/31 10:29:50 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "matrix.h"
 
-int	mat_idm(const t_mat *m1, t_mat *res)
+int	m44_zro(t_m44 *m1)
 {
-	unsigned int	i;
-	unsigned int	j;
+	int	i;
 
+	if (!m1)
+		return (-1);
 	i = 0;
-	j = 0;
-	if (!m1 || !res)
-		return (-1);
-	if (m1->r != m1->c)
-		return (-1);
-	if (!mat_set(m1, res))
-		return (-1);
-	while (i < res->r)
+	while (i < M44_SIZE * M44_SIZE)
 	{
-		while (j < res->c)
-		{
-			if (i == j)
-				res->m[i * res->c + j] = 1.0;
-			else
-				res->m[i * res->c + j] = 0.0;
-			j++;
-		}
+		(*m1)[i] = 0.0;
 		i++;
 	}
 	return (0);

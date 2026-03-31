@@ -1,27 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mat_crt.c                                          :+:      :+:    :+:   */
+/*   m44_idm.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/03/26 14:58:00 by cybourge          #+#    #+#             */
-/*   Updated: 2026/03/26 16:04:48 by cybourge         ###   ########.fr       */
+/*   Created: 2026/03/31 10:23:21 by cybourge          #+#    #+#             */
+/*   Updated: 2026/03/31 10:36:10 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "matrix.h"
 
-t_mat	*mat_crt(t_mat *m1)
+int	m44_idm(t_m44 *res)
 {
-	size_t	len;
+	int	i;
 
-	if (!m1 || m1->r <= 0 || m1->c <= 0)
-		return (NULL);
-	len = sizeof(double) * m1->r * m1->c;
-	m1->m = malloc(len);
-	if (!m1->m)
-		return (NULL);
-	ft_memset(m1->m, 0, len);
-	return (m1);
+	if (!res)
+		return (-1);
+	if (m44_zro(res) != 0)
+		return (-1);
+	i = 0;
+	while (i < M44_SIZE)
+	{
+		(*res)[i * M44_SIZE + i] = 1.0;
+		i++;
+	}
+	return (0);
 }

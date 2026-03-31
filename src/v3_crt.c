@@ -1,21 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mat_dlt.c                                          :+:      :+:    :+:   */
+/*   v3_crt.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/03/26 15:00:33 by cybourge          #+#    #+#             */
-/*   Updated: 2026/03/26 15:00:54 by cybourge         ###   ########.fr       */
+/*   Created: 2026/03/31 09:33:38 by cybourge          #+#    #+#             */
+/*   Updated: 2026/03/31 10:28:42 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "matrix.h"
+#include "vector3.h"
 
-void	mat_dlt(t_mat *mat)
+t_v3	v3_crt(double x, double y, double z)
 {
-	if (!mat || !mat->m)
-		return ;
-	free(mat->m);
-	mat->m = NULL;
+	return ((t_v3){x, y, z, 0.0});
 }

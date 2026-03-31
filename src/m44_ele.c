@@ -1,32 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mat_sub.c                                          :+:      :+:    :+:   */
+/*   m44_ele.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/03/26 15:24:23 by cybourge          #+#    #+#             */
-/*   Updated: 2026/03/26 16:06:27 by cybourge         ###   ########.fr       */
+/*   Created: 2026/03/31 10:17:03 by cybourge          #+#    #+#             */
+/*   Updated: 2026/03/31 10:17:06 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "matrix.h"
 
-int	mat_sub(const t_mat *m1, const t_mat *m2, t_mat *res)
+int	m44_ele(const t_m44 *m1, unsigned int i, unsigned int j, double *ele)
 {
-	unsigned int	i;
-
-	i = 0;
-	if (!m1 || !m2 || !res || !m1->m || !m2->m)
+	if (!m1 || !ele || i >= M44_SIZE || j >= M44_SIZE)
 		return (-1);
-	if (m1->r != m2->r || m1->c != m2->c)
-		return (-1);
-	if (!mat_set(m1, res))
-		return (-1);
-	while (i < m1->r * m1->c)
-	{
-		res->m[i] = m1->m[i] - m2->m[i];
-		i++;
-	}
+	*ele = (*m1)[i * M44_SIZE + j];
 	return (0);
 }

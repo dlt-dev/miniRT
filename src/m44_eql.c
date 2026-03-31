@@ -1,29 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mat_eql.c                                          :+:      :+:    :+:   */
+/*   m44_eql.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/03/26 15:04:13 by cybourge          #+#    #+#             */
-/*   Updated: 2026/03/26 16:04:55 by cybourge         ###   ########.fr       */
+/*   Created: 2026/03/31 10:16:35 by cybourge          #+#    #+#             */
+/*   Updated: 2026/03/31 10:16:43 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "matrix.h"
 
-bool	mat_eql(const t_mat *m1, const t_mat *m2)
+bool	m44_eql(const t_m44 *m1, const t_m44 *m2)
 {
-	unsigned int	i;
+	int	i;
 
+	if (!m1 || !m2)
+		return (false);
 	i = 0;
-	if (!m1 || !m2 || !m1->m || !m2->m)
-		return (false);
-	if (m1->r != m2->r || m1->c != m2->c)
-		return (false);
-	while (i < m1->r * m1->c)
+	while (i < M44_SIZE * M44_SIZE)
 	{
-		if (!deql(m1->m[i], m2->m[i]))
+		if (!deql((*m1)[i], (*m2)[i]))
 			return (false);
 		i++;
 	}

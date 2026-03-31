@@ -1,23 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mat_ele.c                                          :+:      :+:    :+:   */
+/*   m44_add.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/03/26 15:01:17 by cybourge          #+#    #+#             */
-/*   Updated: 2026/03/26 15:44:12 by cybourge         ###   ########.fr       */
+/*   Created: 2026/03/31 10:17:24 by cybourge          #+#    #+#             */
+/*   Updated: 2026/03/31 10:26:08 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "matrix.h"
 
-int	mat_ele(const t_mat *m1, unsigned int i, unsigned int j, double *ele)
+void	m44_add(const t_m44 *m1, const t_m44 *m2, t_m44 *res)
 {
-	if (!m1 || !m1->m || !ele)
+	int	i;
+
+	if (!m1 || !m2 || !res)
 		return (-1);
-	if (i >= m1->r || j >= m1->c)
-		return (-1);
-	*ele = m1->m[i * m1->c + j];
+	i = 0;
+	while (i < M44_SIZE * M44_SIZE)
+	{
+		(*res)[i] = (*m1)[i] + (*m2)[i];
+		i++;
+	}
 	return (0);
 }

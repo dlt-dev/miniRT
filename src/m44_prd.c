@@ -1,31 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mat_add.c                                          :+:      :+:    :+:   */
+/*   m44_prd.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/03/26 15:07:17 by cybourge          #+#    #+#             */
-/*   Updated: 2026/03/26 16:07:52 by cybourge         ###   ########.fr       */
+/*   Created: 2026/03/31 10:18:05 by cybourge          #+#    #+#             */
+/*   Updated: 2026/03/31 10:22:33 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "matrix.h"
 
-int	mat_add(const t_mat *m1, const t_mat *m2, t_mat *res)
+int	m44_prd(const t_m44 *m1, const t_m44 *m2, t_m44 *res)
 {
-	unsigned int	i;
+	int		i;
+	int		j;
+	int		k;
 
+	if (!m1 || !m2 || !res)
+		return (-1);
 	i = 0;
-	if (!m1 || !m2 || !res || !m1->m || !m2->m)
-		return (-1);
-	if (m1->r != m2->r || m1->c != m2->c)
-		return (-1);
-	if (!mat_set(m1, res))
-		return (-1);
-	while (i < m1->r * m1->c)
+	while (i < M44_SIZE)
 	{
-		res->m[i] = m1->m[i] + m2->m[i];
+		j = 0;
+		while (j < M44_SIZE)
+		{
+			(*res)[i * M44_SIZE + j] = 0.0;
+			k = 0;
+			while (k < M44_SIZE)
+			{
+				(*res)[i * M44_SIZE + j] += (*m1)[i * M44_SIZE + k]
+					* (*m2)[k * M44_SIZE + j];
+				k++;
+			}
+			j++;
+		}
 		i++;
 	}
 	return (0);

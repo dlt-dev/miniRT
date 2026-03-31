@@ -1,27 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mat_set.c                                          :+:      :+:    :+:   */
+/*   m44_sub.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/03/26 15:20:23 by cybourge          #+#    #+#             */
-/*   Updated: 2026/03/26 16:06:01 by cybourge         ###   ########.fr       */
+/*   Created: 2026/03/31 10:17:38 by cybourge          #+#    #+#             */
+/*   Updated: 2026/03/31 10:17:40 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "matrix.h"
 
-int	mat_set(const t_mat *model, t_mat *subject)
+int	m44_sub(const t_m44 *m1, const t_m44 *m2, t_m44 *res)
 {
-	if (model->r != subject->r || model->c != subject->c || !(subject->m))
+	int	i;
+
+	if (!m1 || !m2 || !res)
+		return (-1);
+	i = 0;
+	while (i < M44_SIZE * M44_SIZE)
 	{
-		if (subject->m)
-			mat_dlt(subject);
-		subject->r = model->r;
-		subject->c = model->c;
-		if (!mat_crt(subject))
-			return (-1);
+		(*res)[i] = (*m1)[i] - (*m2)[i];
+		i++;
 	}
 	return (0);
 }
