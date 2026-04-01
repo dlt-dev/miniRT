@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/26 12:07:44 by cybourge          #+#    #+#             */
-/*   Updated: 2026/03/31 15:09:35 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/04/01 09:10:20 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include "utils.h"
 # include <stdbool.h>
 # include <stddef.h>
+# include <math.h>
 
 # define M44_SIZE 4
 
