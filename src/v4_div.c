@@ -1,18 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   v3_lsq.c                                           :+:      :+:    :+:   */
+/*   v4_div.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/03/26 09:00:55 by cybourge          #+#    #+#             */
-/*   Updated: 2026/03/26 09:59:53 by cybourge         ###   ########.fr       */
+/*   Created: 2026/03/26 09:03:27 by cybourge          #+#    #+#             */
+/*   Updated: 2026/04/01 08:12:03 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "vector3.h"
+#include "vector4.h"
 
-double	v3_lsq(t_v3 v)
+t_v4	v4_div(t_v4 v, double s)
 {
-	return (v.x * v.x + v.y * v.y + v.z * v.z);
+	if (fabs(s) < EPS)
+		return ((t_v4){0.0, 0.0, 0.0, 0.0});
+	return ((t_v4){v.x / s, v.y / s, v.z / s, v.w / s});
 }

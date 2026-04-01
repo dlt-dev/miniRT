@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   v3_crt.c                                           :+:      :+:    :+:   */
+/*   v4_add.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/03/31 09:33:38 by cybourge          #+#    #+#             */
-/*   Updated: 2026/03/31 10:28:42 by cybourge         ###   ########.fr       */
+/*   Created: 2026/03/26 08:59:49 by cybourge          #+#    #+#             */
+/*   Updated: 2026/04/01 08:11:42 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "vector3.h"
+#include "vector4.h"
 
-t_v3	v3_crt(double x, double y, double z)
+t_v4	v4_add(t_v4 a, t_v4 b)
 {
-	return ((t_v3){x, y, z, 0.0});
+	return ((t_v4){a.x + b.x, a.y + b.y, a.z + b.z, a.w + b.w});
 }

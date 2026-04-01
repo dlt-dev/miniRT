@@ -1,18 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   v3_sub.c                                           :+:      :+:    :+:   */
+/*   v4_uni.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/03/26 09:00:11 by cybourge          #+#    #+#             */
-/*   Updated: 2026/03/31 13:35:36 by cybourge         ###   ########.fr       */
+/*   Created: 2026/03/26 09:01:36 by cybourge          #+#    #+#             */
+/*   Updated: 2026/04/01 08:13:11 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "vector3.h"
+#include "vector4.h"
 
-t_v3	v3_sub(t_v3 a, t_v3 b)
+t_v4	v4_uni(t_v4 v)
 {
-	return ((t_v3){a.x - b.x, a.y - b.y, a.z - b.z, a.w - b.w});
+	double	len;
+
+	len = v4_len(v);
+	if (len < EPS)
+		return ((t_v4){0.0, 0.0, 0.0, 0.0});
+	return (v4_div(v, len));
 }

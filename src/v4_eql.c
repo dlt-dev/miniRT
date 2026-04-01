@@ -1,18 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   v3_mul.c                                           :+:      :+:    :+:   */
+/*   v4_eql.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/03/26 09:03:10 by cybourge          #+#    #+#             */
-/*   Updated: 2026/03/31 13:37:32 by cybourge         ###   ########.fr       */
+/*   Created: 2026/03/26 08:58:41 by cybourge          #+#    #+#             */
+/*   Updated: 2026/04/01 08:12:20 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "vector3.h"
+#include "vector4.h"
 
-t_v3	v3_mul(t_v3 v, double s)
+bool	v4_eql(t_v4 a, t_v4 b)
 {
-	return ((t_v3){v.x * s, v.y * s, v.z * s, 0.0});
+	return (deql(a.x, b.x) && deql(a.y, b.y)
+		&& deql(a.z, b.z) && deql(a.w, b.w));
 }

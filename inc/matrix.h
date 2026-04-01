@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/26 12:07:44 by cybourge          #+#    #+#             */
-/*   Updated: 2026/03/31 14:08:33 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/03/31 15:09:35 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,6 @@ int		m44_inv(const t_m44 *m1, t_m44 *res);
 int		m44_idm(t_m44 *res);
 // Transpose Matrix, return -1 on error, 0 otherwise.
 int		m44_trp(const t_m44 *m1, t_m44 *res);
-
 
 // RAYTRACING SPECIFIC FUNCTIONS
 // Inverse of Translation matrix, return -1 on error, 0 otherwise.

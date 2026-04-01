@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/30 10:34:58 by cybourge          #+#    #+#             */
-/*   Updated: 2026/03/26 12:17:54 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/04/01 08:03:08 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
 # include "utils.h"
 # include "color.h"
 # include "interval.h"
-# include "vector3.h"
+# include "vector4.h"
 
 # define WIN_H 1080
 # define WIN_W 1920
