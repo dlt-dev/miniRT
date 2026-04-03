@@ -1,18 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar.c                                       :+:      :+:    :+:   */
+/*   objv_dlt.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/30 14:10:35 by cybourge          #+#    #+#             */
-/*   Updated: 2026/01/30 16:58:04 by cybourge         ###   ########.fr       */
+/*   Created: 2026/04/03 14:39:22 by cybourge          #+#    #+#             */
+/*   Updated: 2026/04/03 14:48:18 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minirt.h"
+#include "object.h"
 
-void	ft_putchar(char c)
+void	objv_dlt(t_objv *objv)
 {
-	write(1, &c, 1);
+	if (!objv)
+		return ;
+	if (objv->v)
+		free(objv->v);
+	objv->v = NULL;
+	objv->len = 0;
+	objv->cap = 0;
 }

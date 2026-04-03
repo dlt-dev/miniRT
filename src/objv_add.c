@@ -1,39 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   itxv_add.c                                         :+:      :+:    :+:   */
+/*   objv_add.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/03 12:30:48 by cybourge          #+#    #+#             */
-/*   Updated: 2026/04/03 14:45:00 by cybourge         ###   ########.fr       */
+/*   Created: 2026/04/03 14:40:46 by cybourge          #+#    #+#             */
+/*   Updated: 2026/04/03 14:48:24 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "intersection.h"
+#include "object.h"
 
-int	itxv_add(t_itxv *itxv, const t_itx *itx)
+int	objv_add(t_objv *objv, const t_obj *obj)
 {
-	t_itx	*new_v;
+	t_obj	*new_v;
 	size_t	new_cap;
 
-	if (!itxv || !itx)
+	if (!objv || !obj)
 		return (-1);
-	if (itxv->len >= itxv->cap)
+	if (objv->len >= objv->cap)
 	{
-		if (itxv->cap == 0)
+		if (objv->cap == 0)
 			new_cap = 1;
 		else
-			new_cap = itxv->cap * 2;
-		new_v = malloc(sizeof(t_itx) * new_cap);
+			new_cap = objv->cap * 2;
+		new_v = malloc(sizeof(t_obj) * new_cap);
 		if (!new_v)
 			return (-1);
-		ft_memcpy(new_v, itxv->v, sizeof(t_itx) * itxv->cap);
-		free(itxv->v);
-		itxv->v = new_v;
-		itxv->cap = new_cap;
+		ft_memcpy(new_v, objv->v, sizeof(t_obj) * objv->cap);
+		free(objv->v);
+		objv->v = new_v;
+		objv->cap = new_cap;
 	}
-	itxv->v[itxv->len] = *itx;
-	itxv->len++;
+	objv->v[objv->len] = *obj;
+	objv->len++;
 	return (0);
 }

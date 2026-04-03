@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/03 12:11:44 by cybourge          #+#    #+#             */
-/*   Updated: 2026/04/03 13:20:06 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/04/03 14:38:14 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include "color.h"
 # include "vector4.h"
 # include "intersection.h"
+# include <stdlib.h>
 
 typedef enum e_obj_type
 {
@@ -52,6 +53,33 @@ typedef struct s_object
 		t_cld	cy;
 	}	u_o;
 }	t_obj;
+
+// Variable size array structure (vector) that holds geometric objects
+// len	: number of objects stored.
+// cap	: total capacity of the Array.
+// v	: the actual vector.
+typedef struct s_object_vector
+{
+	size_t	len;
+	size_t	cap;
+	t_obj	*v;
+}	t_objv;
+
+// Creates an empty object vector with a capacity of cap.
+// If the allocation is unsecessfull :
+//	- cap = 0.
+//	- v = NULL.
+t_objv	objv_crt(size_t cap);
+
+// Frees the objv and sets all its field to 0.
+void	objv_dlt(t_objv	*objv);
+
+// Adds an object to the object vector.
+// Reallocates twice its capacity if needed.
+// return -1 on error, 0 on success.
+int		objv_add(t_objv *objv, const t_obj *obj);
+
+
 
 // OBJECT FUNCTIONS
 // returns an instance of sphere
