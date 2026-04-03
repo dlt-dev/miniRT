@@ -1,27 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   m44_trl.c                                          :+:      :+:    :+:   */
+/*   tpl_sort.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/01 08:50:43 by cybourge          #+#    #+#             */
-/*   Updated: 2026/04/03 10:22:09 by cybourge         ###   ########.fr       */
+/*   Created: 2026/04/03 10:16:55 by cybourge          #+#    #+#             */
+/*   Updated: 2026/04/03 10:20:13 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "transformations.h"
+#include "utils.h"
 
-int	m44_trl(double tx, double ty, double tz, t_m44 *res)
+void	tpl_sort(t_tpl *tuple)
 {
-	const t_m44	tmp = {
-		1.0, 0.0, 0.0, tx,
-		0.0, 1.0, 0.0, ty,
-		0.0, 0.0, 1.0, tz,
-		0.0, 0.0, 0.0, 1.0};
+	double	tmp;
 
-	if (!res)
-		return (-1);
-	memcpy(*res, tmp, sizeof(t_m44));
-	return (0);
+	if (tuple->x > tuple->y)
+	{
+		tmp = tuple->y;
+		tuple->y = tuple->x;
+		tuple->x = tmp;
+	}
 }

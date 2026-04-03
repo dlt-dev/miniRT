@@ -6,21 +6,22 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/01 09:07:15 by cybourge          #+#    #+#             */
-/*   Updated: 2026/04/01 11:05:25 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/04/03 10:23:38 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "transformations.h"
 
 int	m44_rotx(double r, t_m44 *res)
-{	
-	if (!res)
-		return (-1);
-	t_m44 tmp = {
+{
+	const t_m44	tmp = {
 		1.0, 0.0, 0.0, 0.0,
 		0.0, cos(r), -sin(r), 0.0,
 		0.0, sin(r), cos(r), 0.0,
 		0.0, 0.0, 0.0, 1.0};
+
+	if (!res)
+		return (-1);
 	memcpy(*res, tmp, sizeof(t_m44));
 	return (0);
 }

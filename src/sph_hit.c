@@ -6,13 +6,13 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/01 11:40:23 by cybourge          #+#    #+#             */
-/*   Updated: 2026/04/01 12:13:14 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/04/03 10:19:48 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-bool	sph_hit(const t_sph *sp, const t_ray *r, t_tuple *hit_res)
+bool	sph_hit(const t_sph *sp, const t_ray *r, t_tpl *hit_res)
 {
 	t_v4	sp_ray;
 	double	a;
@@ -29,6 +29,7 @@ bool	sph_hit(const t_sph *sp, const t_ray *r, t_tuple *hit_res)
 	{
 		hit_res->x = (-b - sqrt(d)) / (2 * a);
 		hit_res->y = (-b + sqrt(d)) / (2 * a);
+		tpl_sort(hit_res);
 		return (true);
 	}
 	hit_res->x = NAN;

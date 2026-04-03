@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/01 09:19:37 by cybourge          #+#    #+#             */
-/*   Updated: 2026/04/01 11:06:45 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/04/03 10:21:43 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,14 @@
 
 int	m44_she(t_spara p, t_m44 *res)
 {
-	if (!res)
-		return (-1);
-	t_m44 tmp = {
+	const t_m44	tmp = {
 		1.0, p.xy, p.xz, 0.0,
 		p.yx, 1.0, p.yz, 0.0,
 		p.zx, p.zy, 1.0, 0.0,
 		0.0, 0.0, 0.0, 1.0};
+
+	if (!res)
+		return (-1);
 	memcpy(*res, tmp, sizeof(t_m44));
 	return (0);
 }
