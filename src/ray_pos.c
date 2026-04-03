@@ -6,11 +6,11 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/01 10:22:00 by cybourge          #+#    #+#             */
-/*   Updated: 2026/04/01 12:13:27 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/04/03 12:11:08 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minirt.h"
+#include "ray.h"
 
 t_pt	ray_pos(const t_ray *ray, double t)
 {

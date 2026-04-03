@@ -1,18 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sph_crt.c                                          :+:      :+:    :+:   */
+/*   ray.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/01 11:16:57 by cybourge          #+#    #+#             */
-/*   Updated: 2026/04/03 12:13:35 by cybourge         ###   ########.fr       */
+/*   Created: 2026/04/03 12:10:01 by cybourge          #+#    #+#             */
+/*   Updated: 2026/04/03 12:11:12 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "object.h"
+#ifndef RAY_H
+# define RAY_H
 
-t_sph	sph_crt(void)
+# include "vector4.h"
+
+// The Direction must be Normalized !
+typedef struct s_ray
 {
-	return ((t_sph){pt_crt(0.0, 0.0, 0.0), 1.0, clr_unpack(0x00E12621)});
-}
+	t_pt	o;
+	t_v4	dir;
+}	t_ray;
+
+// RAY FUNCTIONS
+// returns the point at the given distance t along the ray r.
+t_pt		ray_pos(const t_ray *ray, double t);
+
+#endif

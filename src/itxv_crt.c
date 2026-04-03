@@ -1,18 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sph_crt.c                                          :+:      :+:    :+:   */
+/*   itxv_crt.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/01 11:16:57 by cybourge          #+#    #+#             */
-/*   Updated: 2026/04/03 12:13:35 by cybourge         ###   ########.fr       */
+/*   Created: 2026/04/03 12:26:48 by cybourge          #+#    #+#             */
+/*   Updated: 2026/04/03 12:29:23 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "object.h"
+#include "intersection.h"
 
-t_sph	sph_crt(void)
+t_itxv	itxv_crt(size_t cap)
 {
-	return ((t_sph){pt_crt(0.0, 0.0, 0.0), 1.0, clr_unpack(0x00E12621)});
+	t_itxv	itxv;
+
+	itxv.len = 0;
+	itxv.cap = cap;
+	if (cap == 0)
+	{
+		itxv.v = NULL;
+		return (itxv);
+	}
+	itxv.v = malloc(sizeof(t_itx) * cap);
+	if (!itxv.v)
+		itxv.cap = 0;
+	return (itxv);
 }

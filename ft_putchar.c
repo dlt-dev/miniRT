@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sph_crt.c                                          :+:      :+:    :+:   */
+/*   ft_putchar.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/01 11:16:57 by cybourge          #+#    #+#             */
-/*   Updated: 2026/04/03 12:13:35 by cybourge         ###   ########.fr       */
+/*   Created: 2026/01/30 14:10:35 by cybourge          #+#    #+#             */
+/*   Updated: 2026/01/30 16:58:04 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "object.h"
+#include "minirt.h"
 
-t_sph	sph_crt(void)
+void	ft_putchar(char c)
 {
-	return ((t_sph){pt_crt(0.0, 0.0, 0.0), 1.0, clr_unpack(0x00E12621)});
+	write(1, &c, 1);
 }

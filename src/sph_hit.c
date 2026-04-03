@@ -6,33 +6,48 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/01 11:40:23 by cybourge          #+#    #+#             */
-/*   Updated: 2026/04/03 10:19:48 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/04/03 13:18:26 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minirt.h"
+#include "object.h"
 
-bool	sph_hit(const t_sph *sp, const t_ray *r, t_tpl *hit_res)
+// Used to store the data relating to a second degree polynomial.
+typedef struct s_polynome_2
 {
-	t_v4	sp_ray;
 	double	a;
 	double	b;
 	double	c;
-	double	d;
+	double	delta;
+	double	r1;
+	double	r2;
+}	t_pol2;
 
-	sp_ray = v4_sub(r->o, sp->c);
-	a = v4_dot(r->dir, r->dir);
-	b = 2 * v4_dot(r->dir, sp_ray);
-	c = v4_dot(sp_ray, sp_ray) - 1;
-	d = b * b - 4 * a * c;
-	if (d >= 0)
+bool	sph_hit(const t_obj *obj, const t_ray *r, t_itxv *itxv)
+{
+	const t_sph		*sp = &(obj->u_o.sp);
+	const t_v4		sp_ray = v4_sub(r->o, sp->c);
+	t_pol2			sph_eq;
+	t_itx			itx;
+
+	sph_eq.a = v4_dot(r->dir, r->dir);
+	sph_eq.b = 2 * v4_dot(r->dir, sp_ray);
+	sph_eq.c = v4_dot(sp_ray, sp_ray) - 1;
+	sph_eq.delta = sph_eq.b * sph_eq.b - 4 * sph_eq.a * sph_eq.c;
+	itx.obj = obj;
+	if (sph_eq.delta > 0)
 	{
-		hit_res->x = (-b - sqrt(d)) / (2 * a);
-		hit_res->y = (-b + sqrt(d)) / (2 * a);
-		tpl_sort(hit_res);
+		itx.t = (-sph_eq.b - sqrt(sph_eq.delta)) / (2 * sph_eq.a);
+		itxv_add(itxv, &itx);
+		itx.t = (-sph_eq.b + sqrt(sph_eq.delta)) / (2 * sph_eq.a);
+		itxv_add(itxv, &itx);
 		return (true);
 	}
-	hit_res->x = NAN;
-	hit_res->y = NAN;
+	else if (sph_eq.delta == 0)
+	{
+		itx.t = (-sph_eq.b / (2 * sph_eq.a));
+		itxv_add(itxv, &itx);
+		return (true);
+	}
 	return (false);
 }

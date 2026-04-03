@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/26 12:16:48 by cybourge          #+#    #+#             */
-/*   Updated: 2026/04/03 10:19:13 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/04/03 12:39:59 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ typedef struct s_tuple
 
 // Utility Functions
 void		*ft_memset(void *s, int c, size_t n);
+void		*ft_memcpy(void *dest, const void *src, size_t n);
 void		ft_putchar(char c);
 void		ft_putnbr(int nb);
 void		display_progressbar(double percent);
