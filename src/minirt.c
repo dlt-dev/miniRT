@@ -6,10 +6,9 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/30 10:33:54 by cybourge          #+#    #+#             */
-/*   Updated: 2026/04/07 11:25:15 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/04/07 12:08:00 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "minirt.h"
 #include <stdio.h>

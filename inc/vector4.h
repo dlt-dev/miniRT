@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/03 14:39:09 by cybourge          #+#    #+#             */
-/*   Updated: 2026/04/01 08:11:28 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/04/07 11:55:35 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 
 # include <math.h>
 # include <stdbool.h>
+# include <stdio.h>
+# include <string.h>
 # include "utils.h"
 
 
@@ -30,11 +32,18 @@ typedef struct s_vector4
 }			t_v4;
 
 typedef t_v4	t_pt;	// Used to represent points in 3D space.
+typedef const t_v4	*t_cpv4; // Used to shorten function header : 42 norm.
 
 // Creates a Point, automatically setting w to 1.0.
 t_pt		pt_crt(double x, double y, double z);
 // Creates a Vector3, automatically setting w to 0.0.
 t_v4		v4_crt(double x, double y, double z);
+// Prints the vector in column form.
+void		v4_prt(const t_v4 *v);
+// Prints the vectors in column form : v1 (operation) v2 = v3
+void		v4_prt_bop(t_cpv4 v1, t_cpv4 v2, t_cpv4 v3, const char *op);
+// Prints the vectors in column form : (operation) v1 = v2
+void		v4_prt_uop(const t_v4 *v1, const t_v4 *v2, const char *op);
 
 // COMPARISON
 bool		v4_eql(t_v4 a, t_v4 b);		// Equality for 2 vectors.
