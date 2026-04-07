@@ -6,17 +6,18 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/31 14:39:37 by cybourge          #+#    #+#             */
-/*   Updated: 2026/03/31 15:04:35 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/04/07 11:00:49 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+/*
 #include "matrix.h"
 #include "utils.h"
 
 #include <assert.h>
 #include <stdio.h>
 
-/*
+
 // Fill matrix with sequential values
 void fill_seq(t_m44 *m)
 {
@@ -93,6 +94,7 @@ void test_m44_add_sub()
     m44_add(&a, &b, &res);
     for (int i = 0; i < 16; i++)
         assert(res[i] == 2 * a[i]);
+	m44_prt_bop(&a, &b, &res, "+");
 
     m44_sub(&res, &a, &res);
     assert(m44_eql(&res, &a));
@@ -127,6 +129,7 @@ void test_m44_prd()
 
     m44_prd(&a, &id, &res);
     assert(m44_eql(&a, &res));
+	m44_prt_bop(&a, &id, &res, "*");
 }
 
 void test_m44_trp()
@@ -137,14 +140,17 @@ void test_m44_trp()
     m44_trp(&a, &res);
 
     for (int i = 0; i < 4; i++)
+	{
         for (int j = 0; j < 4; j++)
             assert(res[i * 4 + j] == a[j * 4 + i]);
+	}
+	m44_prt_uop(&a, &res, "Transpose");
 }
 
 void test_m44_inv_product_identity()
 {
     t_m44 a = {
-        4, 7, 2, 0,
+        4, 456.0, 2, 0,
         3, 6, 1, 0,
         2, 5, 1, 0,
         0, 0, 0, 1
@@ -155,10 +161,11 @@ void test_m44_inv_product_identity()
     t_m44 id;
 
     assert(m44_inv(&a, &inv) == 0);
+	m44_prt_uop(&a, &inv, "Inverse");
     assert(m44_prd(&a, &inv, &prod) == 0);
+	m44_prt_bop(&a, &inv, &prod, "*");
     assert(m44_idm(&id) == 0);
-
-   assert(m44_eql(&prod, &id) == true);
+	assert(m44_eql(&prod, &id) == true);
 }
 
 void test_m44_inv_singular()

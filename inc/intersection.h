@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/03 12:14:14 by cybourge          #+#    #+#             */
-/*   Updated: 2026/04/03 13:18:59 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/04/07 09:48:12 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <stdlib.h>
 # include "utils.h"
+# include <stdio.h>
 
 typedef struct s_object t_obj;
 
@@ -56,5 +57,8 @@ void	itxv_sort(const t_itxv *itxv);
 // Returns the smallest non negative itx inside the itxv.
 // itxv is assumed to be sorted in ascending order.
 t_itx	itxv_hit(const t_itxv *itxv);
+
+// Prints the intersection vector.
+void	itxv_prt(const t_itxv *itxv);
 
 #endif

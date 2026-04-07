@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/26 12:07:44 by cybourge          #+#    #+#             */
-/*   Updated: 2026/04/01 09:10:20 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/04/07 10:25:54 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,15 @@
 # include <stdbool.h>
 # include <stddef.h>
 # include <math.h>
+# include <stdio.h>
+# include <string.h>
 
 # define M44_SIZE 4
 
 typedef double	t_m44[M44_SIZE * M44_SIZE];
+
+// Exists the shorten function prototypes due to the 42 norm.
+typedef const t_m44* t_cpm44;
 
 // UTILITY FUNCTIONS
 // Zeroes the Matrix, returns -1 on error, 0 otherwise.
@@ -31,6 +36,12 @@ bool	m44_eql(const t_m44 *m1, const t_m44 *m2);
 int		m44_ele(const t_m44 *m1, unsigned int i, unsigned int j, double *ele);
 // Copies the Matrix, returns -1 on error, 0 otherwise.
 int		m44_cpy(const t_m44 *m1, t_m44 *res);
+// Prints the Matrix row by row.
+void	m44_prt(const t_m44 *m1);
+// Prints the Matrixes as : m1 (Binary Operator) m2 = m3.
+void	m44_prt_bop(t_cpm44 m1, t_cpm44 m2, t_cpm44 m3, const char *bop);
+// Prints the Matrixes as : m1 (Unary Operator / Operation) = m2.
+void	m44_prt_uop(const t_m44 *m1, const t_m44 *m2, const char *uop);
 
 // ARITHMETIC FUNCTIONS
 // Matrix Addition, returns -1 on error, 0 otherwise.
