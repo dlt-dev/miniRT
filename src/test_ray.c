@@ -6,11 +6,12 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/01 10:50:40 by cybourge          #+#    #+#             */
-/*   Updated: 2026/04/07 13:28:48 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/04/07 13:46:29 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "ray.h"
+/*
+
 # include "transformations.h"
 
 void	pt_display(const t_pt *p)
@@ -45,3 +46,4 @@ int main()
 	ray_trf(&ray, &scl, &trf2);
 	ray_prt(&trf2);
 }
+*/

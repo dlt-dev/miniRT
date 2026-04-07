@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/03 12:11:44 by cybourge          #+#    #+#             */
-/*   Updated: 2026/04/07 09:06:31 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/04/07 15:34:41 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include "utils.h"
 # include "color.h"
 # include "vector4.h"
+# include "matrix.h"
 # include "intersection.h"
 # include <stdlib.h>
 # include <stdio.h>
@@ -41,6 +42,7 @@ typedef struct s_sphere
 {
 	t_pt	c;
 	double	r;
+	t_m44	tm;
 	t_clr	clr;
 }	t_sph;
 
