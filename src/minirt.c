@@ -6,13 +6,13 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/30 10:33:54 by cybourge          #+#    #+#             */
-/*   Updated: 2026/04/07 12:41:08 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/04/07 13:12:46 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 #include <stdio.h>
-
+/*
 static t_clr	test_colors(int i, int j)
 {
 	const t_clr		color1 = clr_unpack(0x00ffbb00);
@@ -71,3 +71,4 @@ int	main(void)
 	free_mlx_data(&data);
 	return (0);
 }
+*/
