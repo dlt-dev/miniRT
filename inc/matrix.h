@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/26 12:07:44 by cybourge          #+#    #+#             */
-/*   Updated: 2026/04/07 11:15:28 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/04/07 12:28:17 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define MATRIX_H
 
 # include "utils.h"
+# include "vector4.h"
 # include <stdbool.h>
 # include <stddef.h>
 # include <math.h>
@@ -42,6 +43,8 @@ void	m44_prt(const t_m44 *m1);
 void	m44_prt_bop(t_cpm44 m1, t_cpm44 m2, t_cpm44 m3, const char *bop);
 // Prints the Matrixes as : (Unary Operator / Operation) m1  = m2.
 void	m44_prt_uop(const t_m44 *m1, const t_m44 *m2, const char *uop);
+// Prints the Matrix Vector product as : m1 * v1 = v2.
+void	m44_prt_vprd(const t_m44 *m1, const t_v4 *v1, const t_v4 *v2);
 
 // ARITHMETIC FUNCTIONS
 // Matrix Addition, returns -1 on error, 0 otherwise.
@@ -52,6 +55,8 @@ int		m44_sub(const t_m44 *m1, const t_m44 *m2, t_m44 *res);
 int		m44_mul(const t_m44 *m1, double scalar, t_m44 *res);
 // Matrix Product, returns -1 on error, 0 otherwise.
 int		m44_prd(const t_m44 *m1, const t_m44 *m2, t_m44 *res);
+// Matrix Vector Product, returns -1 on error, 0 otherwise.
+int		m44_vprd(const t_m44 *m1, const t_v4 *v1, t_v4 *res);
 // Matrix Inverse using Gauss-Jordan, returns -1 on error, 0 otherwise.
 int		m44_inv(const t_m44 *m1, t_m44 *res);
 // Identity Matrix, returns -1 on error, 0 otherwise.

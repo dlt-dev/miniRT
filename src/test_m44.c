@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/31 14:39:37 by cybourge          #+#    #+#             */
-/*   Updated: 2026/04/07 11:25:07 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/04/07 12:40:50 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -242,6 +242,37 @@ void test_m44_inv_rot()
     assert(m44_eql(&inv, &trp)); // rotation inverse = transpose
 }
 
+void	test_m44_vprd()
+{
+	// Example 4x4 matrix (row-major)
+    t_m44 mat = {
+        1, 2, 3, 4,
+        5, 6, 7, 8,
+        9, 10, 11, 12,
+        13, 14, 15, 16
+    };
+
+    // Example vector
+    t_v4 vec = {0.0, 0.0, 0.0, 0.0};
+
+    // Expected result manually calculated
+    // t_v4 expected = {
+    //     1+2+3+4,     // x = 10
+    //     5+6+7+8,     // y = 26
+    //     9+10+11+12,  // z = 42
+    //     13+14+15+16  // w = 58
+    // };
+	t_v4 expected = {0.0, 0.0, 0.0, 0.0};
+
+    t_v4 result;
+
+    int status = m44_vprd(&mat, &vec, &result);
+    assert(status == 0);              // Ensure function succeeded
+    assert(v4_eql(result, expected)); // Check the vector result
+
+    m44_prt_vprd(&mat, &vec, &result);
+}
+
 // -------------------- MAIN --------------------
 
 int main(void)
@@ -267,6 +298,7 @@ int main(void)
     test_m44_inv_translation();
     test_m44_inv_rot();
 	printf("Good\n");
+	test_m44_vprd();
     printf("All tests passed!\n");
     return 0;
 }
