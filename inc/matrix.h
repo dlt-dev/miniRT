@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/26 12:07:44 by cybourge          #+#    #+#             */
-/*   Updated: 2026/04/07 10:25:54 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/04/07 11:15:28 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int		m44_cpy(const t_m44 *m1, t_m44 *res);
 void	m44_prt(const t_m44 *m1);
 // Prints the Matrixes as : m1 (Binary Operator) m2 = m3.
 void	m44_prt_bop(t_cpm44 m1, t_cpm44 m2, t_cpm44 m3, const char *bop);
-// Prints the Matrixes as : m1 (Unary Operator / Operation) = m2.
+// Prints the Matrixes as : (Unary Operator / Operation) m1  = m2.
 void	m44_prt_uop(const t_m44 *m1, const t_m44 *m2, const char *uop);
 
 // ARITHMETIC FUNCTIONS

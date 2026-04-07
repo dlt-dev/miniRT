@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/31 14:39:37 by cybourge          #+#    #+#             */
-/*   Updated: 2026/04/07 11:00:49 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/04/07 11:25:07 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -163,7 +163,7 @@ void test_m44_inv_product_identity()
     assert(m44_inv(&a, &inv) == 0);
 	m44_prt_uop(&a, &inv, "Inverse");
     assert(m44_prd(&a, &inv, &prod) == 0);
-	m44_prt_bop(&a, &inv, &prod, "*");
+	m44_prt_bop(&a, &inv, &prod, "Multiplied");
     assert(m44_idm(&id) == 0);
 	assert(m44_eql(&prod, &id) == true);
 }
