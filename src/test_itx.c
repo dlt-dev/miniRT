@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/07 13:46:01 by cybourge          #+#    #+#             */
-/*   Updated: 2026/04/07 15:34:41 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/04/08 08:23:27 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ static void	display_sphere(const t_sph *sp)
 		sp->c.x, sp->c.y, sp->c.z, sp->c.w,
 		sp->r
 		);
-	m44_prt(&(sp->tm));
 }
 
 int main()
@@ -34,20 +33,20 @@ int main()
 	t_itxv	itxv = itxv_crt(1);
 	if (!(itxv.v))
 		return (1);
-	t_obj	obj1 = {SPHERE, {sph_crt()}};
-	t_obj	obj2 = {SPHERE, {sph_crt()}};
-	t_obj	obj3 = {SPHERE, {sph_crt()}};
-	t_obj	obj4 = {SPHERE, {sph_crt()}};
+	t_obj	obj1 = sph_crt();
+	t_obj	obj2 = sph_crt();
+	t_obj	obj3 = sph_crt();
+	t_obj	obj4 = sph_crt();
 	t_ray	ray1 = {pt_crt(0, 0, -5), v4_crt(0, 0, 1)}; // Double Hit
 	//t_ray	ray2 = {pt_crt(0, 1, -5), v4_crt(0, 0, 1)}; // Tangent Hit
 	t_ray	ray3 = {pt_crt(0, 2, -5), v4_crt(0, 0, 1)}; // Miss
 	t_ray	ray4 = {pt_crt(0, 0, 0), v4_crt(0, 0, 1)};	// Single Hit from inside.
 	
 	display_sphere(&(obj1.u_o.sp));
-	m44_scl(2, 2, 2, &(obj1.u_o.sp.tm));
+	m44_scl(2, 2, 2, &(obj1.tm));
 	display_sphere(&(obj1.u_o.sp));
 	
-	m44_trl(2, 3, 4, &(obj2.u_o.sp.tm));
+	m44_trl(2, 3, 4, &(obj2.tm));
 	
 	if (sph_hit(&obj1, &ray1, &itxv))
 		printf("Hit 1!\n");

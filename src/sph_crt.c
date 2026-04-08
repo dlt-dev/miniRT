@@ -6,19 +6,21 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/01 11:16:57 by cybourge          #+#    #+#             */
-/*   Updated: 2026/04/07 15:35:53 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/04/08 08:22:09 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "object.h"
 
-t_sph	sph_crt(void)
+t_obj	sph_crt(void)
 {
-	t_sph	sphere;
+	t_obj	sphere;
 
-	sphere.c = pt_crt(0, 0, 0);
-	sphere.r = 1.0;
-	sphere.clr = clr_unpack(0x002d46d2);
+	sphere.type = SPHERE;
+	sphere.u_o.sp.c = pt_crt(0, 0, 0);
+	sphere.u_o.sp.r = 1.0;
+	sphere.u_o.sp.clr = clr_unpack(0x002d46d2);
 	m44_idm(&(sphere.tm));
+	m44_idm(&(sphere.itm));
 	return (sphere);
 }

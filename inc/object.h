@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/03 12:11:44 by cybourge          #+#    #+#             */
-/*   Updated: 2026/04/07 15:34:41 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/04/08 08:33:12 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include "color.h"
 # include "vector4.h"
 # include "matrix.h"
+# include "transformations.h"
 # include "intersection.h"
 # include <stdlib.h>
 # include <stdio.h>
@@ -42,13 +43,14 @@ typedef struct s_sphere
 {
 	t_pt	c;
 	double	r;
-	t_m44	tm;
 	t_clr	clr;
 }	t_sph;
 
 typedef struct s_object
 {
 	t_oty		type;
+	t_m44		tm;
+	t_m44		itm;
 	union
 	{
 		t_sph	sp;
@@ -90,8 +92,20 @@ void		obj_prt(const t_obj *obj);
 void		objv_prt(const t_objv *objv);
 
 // OBJECT FUNCTIONS
-// returns an instance of sphere
-t_sph		sph_crt(void);
+// Returns an instance of a sphere obj
+t_obj		sph_crt(void);
+// Applies a translation by updating obj's matrixes.
+// returns -1 on error, 0 otherwise.
+int			obj_trl(const t_obj *obj, double tx, double ty, double tz);
+// Applies a scaling transformation by updating obj's matrixes.
+// Returns -1 on error, 0 otherwise.
+int			obj_scl(const t_obj *obj, double sx, double sy, double sz);
+// Applies a rotation transformation by updating obj's matrixes.
+// Returns -1 on error, 0 otherwise.
+int			obj_rot(const t_obj *obj, double rx, double ry, double rz);
+// Applies a shearing transformation by updating obj's natrixes.
+// Returns -1 on error, 0 otherwise.
+int			obj_she(const t_obj *obj, t_spara param);
 // returns wether a ray hits a sphere object and adds the intersection to itxv.
 bool		sph_hit(const t_obj *obj, const t_ray *r, t_itxv *itxv);
 
