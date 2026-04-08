@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/03 12:11:44 by cybourge          #+#    #+#             */
-/*   Updated: 2026/04/08 08:33:12 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/04/08 09:59:33 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,16 +96,16 @@ void		objv_prt(const t_objv *objv);
 t_obj		sph_crt(void);
 // Applies a translation by updating obj's matrixes.
 // returns -1 on error, 0 otherwise.
-int			obj_trl(const t_obj *obj, double tx, double ty, double tz);
+int			obj_trl(t_obj *obj, double tx, double ty, double tz);
 // Applies a scaling transformation by updating obj's matrixes.
 // Returns -1 on error, 0 otherwise.
-int			obj_scl(const t_obj *obj, double sx, double sy, double sz);
+int			obj_scl(t_obj *obj, double sx, double sy, double sz);
 // Applies a rotation transformation by updating obj's matrixes.
 // Returns -1 on error, 0 otherwise.
-int			obj_rot(const t_obj *obj, double rx, double ry, double rz);
-// Applies a shearing transformation by updating obj's natrixes.
+int			obj_rot(t_obj *obj, double rx, double ry, double rz);
+// Applies a shearing transformation by updating obj's matrixes.
 // Returns -1 on error, 0 otherwise.
-int			obj_she(const t_obj *obj, t_spara param);
+int			obj_she(t_obj *obj, t_spara param);
 // returns wether a ray hits a sphere object and adds the intersection to itxv.
 bool		sph_hit(const t_obj *obj, const t_ray *r, t_itxv *itxv);
 

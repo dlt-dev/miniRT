@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/26 12:07:44 by cybourge          #+#    #+#             */
-/*   Updated: 2026/04/07 12:28:17 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/04/08 10:01:10 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ int		m44_add(const t_m44 *m1, const t_m44 *m2, t_m44 *res);
 int		m44_sub(const t_m44 *m1, const t_m44 *m2, t_m44 *res);
 // Matrix Scalar Multiplication, returns -1 on error, 0 otherwise.
 int		m44_mul(const t_m44 *m1, double scalar, t_m44 *res);
-// Matrix Product, returns -1 on error, 0 otherwise.
+// Matrix Product : m1 * m2, returns -1 on error, 0 otherwise.
 int		m44_prd(const t_m44 *m1, const t_m44 *m2, t_m44 *res);
 // Matrix Vector Product, returns -1 on error, 0 otherwise.
 int		m44_vprd(const t_m44 *m1, const t_v4 *v1, t_v4 *res);
@@ -61,15 +61,17 @@ int		m44_vprd(const t_m44 *m1, const t_v4 *v1, t_v4 *res);
 int		m44_inv(const t_m44 *m1, t_m44 *res);
 // Identity Matrix, returns -1 on error, 0 otherwise.
 int		m44_idm(t_m44 *res);
-// Transpose Matrix, return -1 on error, 0 otherwise.
+// Transpose Matrix, returns -1 on error, 0 otherwise.
 int		m44_trp(const t_m44 *m1, t_m44 *res);
 
 // RAYTRACING SPECIFIC FUNCTIONS
-// Inverse of Translation matrix, return -1 on error, 0 otherwise.
+// Inverse of Translation matrix, returns -1 on error, 0 otherwise.
 int		m44_inv_trl(const t_m44 *m1, t_m44 *res);
-// Inverse of Rotation matrix, return -1 on error, 0 otherwise.
+// Inverse of Rotation matrix, returns -1 on error, 0 otherwise.
 int		m44_inv_rot(const t_m44 *m1, t_m44 *res);
-// Inverse of Scaling matrix, return -1 on error, 0 otherwise.
+// Inverse of Scaling matrix, returns -1 on error, 0 otherwise.
 int		m44_inv_scl(const t_m44 *m1, t_m44 *res);
+// Inverse of a Shearing matrix, returns -1 on error, 0 otherwise.
+int		m44_inv_she(const t_m44 *m1, t_m44 *res);
 
 #endif

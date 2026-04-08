@@ -6,12 +6,13 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/31 14:39:37 by cybourge          #+#    #+#             */
-/*   Updated: 2026/04/07 12:40:50 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/04/08 10:57:25 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 /*
 #include "matrix.h"
+#include "transformations.h"
 #include "utils.h"
 
 #include <assert.h>
@@ -273,6 +274,29 @@ void	test_m44_vprd()
     m44_prt_vprd(&mat, &vec, &result);
 }
 
+void test_shearing_inverse(void)
+{
+    t_spara param = { 0.000002, 0.3, 0.1, 0.4, 0.05, 0.15 }; // arbitrary values
+    t_m44 she, she_inv, prod, id;
+
+    // Create shearing matrix
+    assert(m44_she(param, &she) == 0);
+
+    // Compute its inverse
+    assert(m44_inv_she(&she, &she_inv) == 0);
+
+    // Multiply inverse by original
+    m44_prd(&she_inv, &she, &prod);
+	m44_prt_bop(&she_inv, &she, &prod, "*");
+    // Identity matrix
+    assert(m44_idm(&id) == 0);
+
+    // Check equality
+    assert(m44_eql(&prod, &id) && "Shearing inverse test failed!");
+
+    printf("Shearing inverse test passed!\n");
+}
+
 // -------------------- MAIN --------------------
 
 int main(void)
@@ -299,6 +323,8 @@ int main(void)
     test_m44_inv_rot();
 	printf("Good\n");
 	test_m44_vprd();
+	printf("===== Part 4 =====\n");
+	test_shearing_inverse();
     printf("All tests passed!\n");
     return 0;
 }
