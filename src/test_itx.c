@@ -6,11 +6,11 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/07 13:46:01 by cybourge          #+#    #+#             */
-/*   Updated: 2026/04/08 10:50:07 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/04/08 12:20:13 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
+/*
 #include "intersection.h"
 #include "object.h"
 #include "color.h"
@@ -76,3 +76,4 @@ int main()
 	itxv_dlt(&itxv);
 	objv_dlt(&objv);
 }
+*/

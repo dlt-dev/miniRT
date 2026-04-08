@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/08 09:05:44 by cybourge          #+#    #+#             */
-/*   Updated: 2026/04/08 09:22:22 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/04/08 11:42:52 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static int	obj_rot_axis(t_obj *obj, double ang, int (*rot_fn)(double, t_m44 *))
 	return (0);
 }
 
-// Angles are in radiant, should be in [0; 2pi[
+// Angles are in radiant.
 // Performs Rotation along X then Y then Z
 int	obj_rot(t_obj *obj, double rx, double ry, double rz)
 {
