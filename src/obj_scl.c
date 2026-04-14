@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/08 08:58:02 by cybourge          #+#    #+#             */
-/*   Updated: 2026/04/08 10:57:46 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/04/14 12:37:24 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,13 @@ int	obj_scl(t_obj *obj, double sx, double sy, double sz)
 		return (-1);
 	if (m44_inv_scl(&scl_mat, &iscl_mat) == -1)
 		return (-1);
-	if (m44_prd(&scl_mat, &(obj->tm), &res_mat) == -1)
+	if (m44_prd(&scl_mat, &(obj->sclm), &res_mat) == -1)
 		return (-1);
-	if (m44_cpy(&res_mat, &(obj->tm)) == -1)
+	if (m44_cpy(&res_mat, &(obj->sclm)) == -1)
 		return (-1);
-	if (m44_prd(&(obj->itm), &iscl_mat, &res_mat) == -1)
+	if (m44_prd(&(obj->isclm), &iscl_mat, &res_mat) == -1)
 		return (-1);
-	if (m44_cpy(&res_mat, &(obj->itm)) == -1)
+	if (m44_cpy(&res_mat, &(obj->isclm)) == -1)
 		return (-1);
 	return (0);
 }

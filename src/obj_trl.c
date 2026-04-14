@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/08 08:39:04 by cybourge          #+#    #+#             */
-/*   Updated: 2026/04/08 09:01:21 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/04/14 12:42:56 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,13 @@ int	obj_trl(t_obj *obj, double tx, double ty, double tz)
 		return (-1);
 	if (m44_inv_trl(&trl_mat, &itrl_mat) == -1)
 		return (-1);
-	if (m44_prd(&trl_mat, &(obj->tm), &res_mat) == -1)
+	if (m44_prd(&trl_mat, &(obj->trlm), &res_mat) == -1)
 		return (-1);
-	if (m44_cpy(&res_mat, &(obj->tm)) == -1)
+	if (m44_cpy(&res_mat, &(obj->trlm)) == -1)
 		return (-1);
-	if (m44_prd(&(obj->itm), &itrl_mat, &res_mat) == -1)
+	if (m44_prd(&(obj->itrlm), &itrl_mat, &res_mat) == -1)
 		return (-1);
-	if (m44_cpy(&res_mat, &(obj->itm)) == -1)
+	if (m44_cpy(&res_mat, &(obj->itrlm)) == -1)
 		return (-1);
 	return (0);
 }

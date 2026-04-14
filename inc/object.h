@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/03 12:11:44 by cybourge          #+#    #+#             */
-/*   Updated: 2026/04/08 09:59:33 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/04/14 11:52:49 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,14 @@ typedef struct s_object
 	t_oty		type;
 	t_m44		tm;
 	t_m44		itm;
+	t_m44		trlm;
+	t_m44		sclm;
+	t_m44		rotm;
+	t_m44		shem;
+	t_m44		itrlm;
+	t_m44		isclm;
+	t_m44		irotm;
+	t_m44		ishem;
 	union
 	{
 		t_sph	sp;
@@ -106,6 +114,9 @@ int			obj_rot(t_obj *obj, double rx, double ry, double rz);
 // Applies a shearing transformation by updating obj's matrixes.
 // Returns -1 on error, 0 otherwise.
 int			obj_she(t_obj *obj, t_spara param);
+// Applies all the stored transformations to the object.
+// Returns -1 on error, 0 otherwise.
+int			obj_trf(t_obj *obj);
 // returns wether a ray hits a sphere object and adds the intersection to itxv.
 bool		sph_hit(const t_obj *obj, const t_ray *r, t_itxv *itxv);
 
