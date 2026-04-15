@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/26 12:07:44 by cybourge          #+#    #+#             */
-/*   Updated: 2026/04/08 10:01:10 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/04/15 10:33:46 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,9 @@ int		m44_ele(const t_m44 *m1, unsigned int i, unsigned int j, double *ele);
 int		m44_cpy(const t_m44 *m1, t_m44 *res);
 // Prints the Matrix row by row.
 void	m44_prt(const t_m44 *m1);
-// Prints the Matrixes as : m1 (Binary Operator) m2 = m3.
+// Prints the Matrixes as : m1 (Binary Operator or Operation) m2 = m3.
 void	m44_prt_bop(t_cpm44 m1, t_cpm44 m2, t_cpm44 m3, const char *bop);
-// Prints the Matrixes as : (Unary Operator / Operation) m1  = m2.
+// Prints the Matrixes as : (Unary Operator or Operation) m1  = m2.
 void	m44_prt_uop(const t_m44 *m1, const t_m44 *m2, const char *uop);
 // Prints the Matrix Vector product as : m1 * v1 = v2.
 void	m44_prt_vprd(const t_m44 *m1, const t_v4 *v1, const t_v4 *v2);
