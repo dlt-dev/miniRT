@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/08 08:58:02 by cybourge          #+#    #+#             */
-/*   Updated: 2026/04/15 11:15:06 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/04/21 10:19:48 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,6 @@
 int	add_sclm(t_m44 const *m1, t_m44 const *m2, t_m44 *res)
 {
 	if (!m1 || !m2 || !res)
-		return (-1);
-	if (m44_idm(res) == -1)
 		return (-1);
 	(*res)[0] = (*m1)[0] * (*m2)[0];
 	(*res)[5] = (*m1)[5] * (*m2)[5];

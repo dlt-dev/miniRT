@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/30 10:33:54 by cybourge          #+#    #+#             */
-/*   Updated: 2026/04/21 08:42:42 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/04/21 10:20:54 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,10 +41,17 @@ static int	draw_simple_scene(t_mlx_data *data)
 	scene.ro = pt_crt(0, 0, -5);
 	scene.wall_z = 10;
 	scene.wall_s = 7;
-	scene.cvs_px = 1000;
+	scene.cvs_px = WIN_H;
 	scene.px_siz = scene.wall_s / scene.cvs_px;
 	scene.half = scene.wall_s / 2.0;
 	scene.obj1 = sph_crt();
+	
+	obj_trl(&(scene.obj1), 1, 0, 2);
+	obj_rot(&(scene.obj1), 3, 4, 6);
+	obj_scl(&(scene.obj1), 0.5, 0.5, 0.5);
+	obj_she(&(scene.obj1), (t_spara){1,0,0,0,0,0});
+	obj_trl(&(scene.obj1), -1, 0, -2);
+	obj_trf(&(scene.obj1));
 	y = 0;
 	while (y < WIN_H - 1)
 	{
