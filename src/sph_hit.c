@@ -6,26 +6,19 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/01 11:40:23 by cybourge          #+#    #+#             */
-/*   Updated: 2026/04/15 11:26:18 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/04/21 08:41:18 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "object.h"
 
-// Used to store the data relating to a second degree polynomial.
-typedef struct s_polynome_2
-{
-	double	a;
-	double	b;
-	double	c;
-	double	delta;
-	double	r1;
-	double	r2;
-}	t_pol2;
-
 // Adds the roots to the itxv, returns wether it added anything or not.
 static bool	add_roots(t_pol2 *sph_eq, t_itx *itx, t_itxv *itxv)
 {
+	if (!itxv && sph_eq->delta >= 0.0)
+		return (true);
+	else if (!itxv)
+		return (false);
 	if (sph_eq->delta > 0)
 	{
 		itx->t = (-sph_eq->b - sqrt(sph_eq->delta)) / (2 * sph_eq->a);

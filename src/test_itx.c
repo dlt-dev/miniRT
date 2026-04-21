@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/07 13:46:01 by cybourge          #+#    #+#             */
-/*   Updated: 2026/04/08 12:20:13 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/04/21 08:43:05 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int main()
 	t_ray	ray1 = {pt_crt(0, 0, -5), v4_crt(0, 0, 1)}; // Double Hit
 	t_ray	ray2 = {pt_crt(0, 1, -5), v4_crt(0, 0, 1)}; // Tangent Hit
 	t_ray	ray3 = {pt_crt(0, 2, -5), v4_crt(0, 0, 1)}; // Miss
-	t_ray	ray4 = {pt_crt(0, 0, 0), v4_crt(0, 0, 1)};	// Single Hit from inside.
+	t_ray	ray4 = {pt_crt(0, 0, 0), v4_crt(0, 0, 1)};	// Single Hit inside.
 	
 	display_sphere(&(obj1.u_o.sp));
 	obj_scl(&obj1, 2, 2, 2);

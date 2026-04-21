@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   m44_prt_uop.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jdelattr <jdelattr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/07 10:06:27 by cybourge          #+#    #+#             */
-/*   Updated: 2026/04/17 17:56:10 by jdelattr         ###   ########.fr       */
+/*   Updated: 2026/04/21 08:42:07 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -141,4 +141,3 @@ void	m44_prt_uop(const t_m44 *m1, const t_m44 *m2, const char *uop)
 	m44_fill_mat(m2, b2, w2);
 	m44_print_uop(b1, w1, b2, w2, uop);
 }
-

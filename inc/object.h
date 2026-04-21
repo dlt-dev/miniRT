@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/03 12:11:44 by cybourge          #+#    #+#             */
-/*   Updated: 2026/04/14 11:52:49 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/04/21 08:41:31 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,17 @@
 # include "intersection.h"
 # include <stdlib.h>
 # include <stdio.h>
+
+// Used to store the data relating to a second degree polynomial.
+typedef struct s_polynome_2
+{
+	double	a;
+	double	b;
+	double	c;
+	double	delta;
+	double	r1;
+	double	r2;
+}	t_pol2;
 
 typedef enum e_obj_type
 {

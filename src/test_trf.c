@@ -6,14 +6,14 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/08 11:11:33 by cybourge          #+#    #+#             */
-/*   Updated: 2026/04/15 11:27:03 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/04/15 11:29:45 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "transformations.h"
 #include "object.h"
 #include "ray.h"
-
+/*
 # define PI 3.14159265358979323846
 
 int	main(void)
@@ -40,3 +40,4 @@ int	main(void)
 	itxv_dlt(&itxv);
 	return (0);
 }
+*/
