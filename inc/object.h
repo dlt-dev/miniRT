@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/03 12:11:44 by cybourge          #+#    #+#             */
-/*   Updated: 2026/04/21 08:41:31 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/04/21 10:57:33 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ typedef struct s_object
 	t_oty		type;
 	t_m44		tm;
 	t_m44		itm;
+	t_m44		itrpm;
 	t_m44		trlm;
 	t_m44		sclm;
 	t_m44		rotm;
@@ -128,7 +129,10 @@ int			obj_she(t_obj *obj, t_spara param);
 // Applies all the stored transformations to the object.
 // Returns -1 on error, 0 otherwise.
 int			obj_trf(t_obj *obj);
-// returns wether a ray hits a sphere object and adds the intersection to itxv.
+// Returns wether a ray hits a sphere object and adds the intersection to itxv.
 bool		sph_hit(const t_obj *obj, const t_ray *r, t_itxv *itxv);
+// Writes the normalized normal vector to a sphere "obj" at point "pt" into "nrml".
+// Returns -1 on error, 0 otherwize.
+int			sph_nrml(const t_obj *obj, const t_pt *pt, t_v4 *nrml);
 
 #endif

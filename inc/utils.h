@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/26 12:16:48 by cybourge          #+#    #+#             */
-/*   Updated: 2026/04/03 12:39:59 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/04/21 11:58:04 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <stdbool.h>
 # include <math.h>
 # define EPS 1e-9
+# define PI 3.14159265358979323846
 
 typedef struct s_tuple
 {
