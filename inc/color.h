@@ -6,15 +6,17 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/26 09:38:16 by cybourge          #+#    #+#             */
-/*   Updated: 2026/03/26 11:33:41 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/04/21 15:00:14 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef COLOR_H
-#define COLOR_H
+# define COLOR_H
 
-#include "interval.h"
-#include <stdint.h>
+# include "interval.h"
+# include <stdint.h>
+# define BLACK 0x00000000
+# define WHITE 0x00FFFFFF
 
 typedef struct color
 {

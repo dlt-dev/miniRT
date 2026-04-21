@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/26 10:19:57 by cybourge          #+#    #+#             */
-/*   Updated: 2026/03/26 10:34:52 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/04/21 14:59:47 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@ t_clr	clr_mul(t_clr c1, double i)
 
 	return ((t_clr)
 		{
+			itv_clp(bounds, c1.t * i),
 			itv_clp(bounds, c1.r * i),
 			itv_clp(bounds, c1.g * i),
 			itv_clp(bounds, c1.b * i),
-			itv_clp(bounds, c1.t * i),
 		});
 }
