@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/14 12:11:44 by cybourge          #+#    #+#             */
-/*   Updated: 2026/04/21 11:02:39 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/04/21 13:09:20 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int	obj_trf(t_obj *obj)
 		return (-1);
 	if (m44_prd(&res1, &res2, &(obj->itm)) == -1)
 		return (-1);
-	if (m44_trp(&(obj->itm), &(obj->itrpm)) == -1)
+	if (m44_trp(&(obj->itm), &(obj->ittm)) == -1)
 		return (-1);
 	return (0);
 }

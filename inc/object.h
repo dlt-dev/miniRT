@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/03 12:11:44 by cybourge          #+#    #+#             */
-/*   Updated: 2026/04/21 10:57:33 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/04/21 13:09:02 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ typedef struct s_object
 	t_oty		type;
 	t_m44		tm;
 	t_m44		itm;
-	t_m44		itrpm;
+	t_m44		ittm;
 	t_m44		trlm;
 	t_m44		sclm;
 	t_m44		rotm;
