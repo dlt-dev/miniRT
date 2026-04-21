@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/21 11:18:04 by cybourge          #+#    #+#             */
-/*   Updated: 2026/04/21 13:06:21 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/04/21 13:47:03 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,16 @@ int	main(void)
 		printf("Not Normed");
 	if (!deql(v4_len(n2), 1.0))
 		printf("Not Normed");
-	v4_prt(&n1);
-	v4_prt(&n2);
+	
+	t_v4	v1 = v4_crt(1, -1, 0);
+	t_v4	v2 = v4_crt(0, 1, 0);
+	t_v4	rfl1 = v4_rfl(&v1, &v2);
+	
+	t_v4	v3 = v4_crt(0, -1, 0);
+	t_v4	v4 = v4_crt(sqrt(2)/2.0, sqrt(2)/2.0, 0);
+	t_v4	rfl2 = v4_rfl(&v3, &v4);
+	
+	v4_prt(&rfl1);
+	v4_prt(&rfl2);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/03 14:39:09 by cybourge          #+#    #+#             */
-/*   Updated: 2026/04/07 11:55:35 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/04/21 13:39:19 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,5 +61,8 @@ t_v4		v4_xpr(t_v4 a, t_v4 b);		// Cross product.
 // SCALAR OPERATIONS
 t_v4		v4_mul(t_v4 v, double s);	// Scalar multiplication.
 t_v4		v4_div(t_v4 v, double s);	// Scalar division.
+
+// GEOMETRIC FUNCTIONS
+t_v4		v4_rfl(const t_v4 *in, const t_v4 *nrml); // Reflect in by nmrl.
 
 #endif
