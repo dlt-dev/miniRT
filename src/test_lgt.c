@@ -6,12 +6,13 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/21 14:39:43 by cybourge          #+#    #+#             */
-/*   Updated: 2026/04/21 15:21:07 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/04/21 15:21:56 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "object.h"
 
+/*
 int main(void)
 {
 	t_hit	hit1 = (t_hit)
@@ -70,3 +71,4 @@ int main(void)
 	
 	return (0);
 }
+*/

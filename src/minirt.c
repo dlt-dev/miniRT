@@ -6,13 +6,12 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/30 10:33:54 by cybourge          #+#    #+#             */
-/*   Updated: 2026/04/21 11:17:51 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/04/21 15:40:48 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 #include <stdio.h>
-
 
 /*
 static t_clr	test_colors(int i, int j)
@@ -60,7 +59,7 @@ static int	raytrace(t_mlx_data *d)
 }
 */
 
-/*
+
 typedef struct	s_simple_scene
 {
 	t_pt	ro;		// Ray origin.
@@ -81,6 +80,8 @@ static int	draw_simple_scene(t_mlx_data *data)
 	double	world_x;
 	t_v4	position;
 	t_ray	ray;
+	t_lgt	light;
+	t_itxv	itxv;
 
 	if (data->mlx_win == NULL)
 		return (1);
@@ -93,12 +94,18 @@ static int	draw_simple_scene(t_mlx_data *data)
 	scene.px_siz = scene.wall_s / scene.cvs_px;
 	scene.half = scene.wall_s / 2.0;
 	scene.obj1 = sph_crt();
+	scene.obj1.mtrl.clr = clr_unpack(0x001F31FF); //(t_clr) {0.0, 1.0, 0.2, 1.0};
+
+	light.pos = pt_crt(-10, 10, -10);
+	light.clr = clr_unpack(WHITE);
+
+	itxv = itxv_crt(2);
 	
-	obj_trl(&(scene.obj1), 1, 0, 2);
-	obj_rot(&(scene.obj1), 3, 4, 6);
-	obj_scl(&(scene.obj1), 0.5, 0.5, 0.5);
-	obj_she(&(scene.obj1), (t_spara){1,0,0,0,0,0});
-	obj_trl(&(scene.obj1), -1, 0, -2);
+	// obj_trl(&(scene.obj1), 1, 0, 2);
+	// obj_rot(&(scene.obj1), 3, 4, 6);
+	// obj_scl(&(scene.obj1), 0.5, 0.5, 0.5);
+	// obj_she(&(scene.obj1), (t_spara){1,0,0,0,0,0});
+	// obj_trl(&(scene.obj1), -1, 0, -2);
 	obj_trf(&(scene.obj1));
 	y = 0;
 	while (y < WIN_H - 1)
@@ -110,10 +117,20 @@ static int	draw_simple_scene(t_mlx_data *data)
 			world_x = -scene.half + scene.px_siz * x;
 			position = v4_crt(world_x, world_y, scene.wall_s);
 			ray = (t_ray){scene.ro, v4_uni(v4_sub(position, scene.ro))};
-			if (sph_hit(&(scene.obj1), &ray, NULL))
-				img_pix_put(&(data->img), x, y, clr_pack(scene.obj1.u_o.sp.clr));
+			if (sph_hit(&(scene.obj1), &ray, &itxv))
+			{
+				itxv_sort(&itxv);
+				t_itx	itx = itxv_hit(&itxv);
+				t_hit	hit;
+				hit.hp = ray_pos(&ray, itx.t);
+				hit.rd = v4_inv(ray.dir);
+				sph_nrml(itx.obj, &(hit.hp), &(hit.nrm));
+				t_clr	clr = obj_lgt(itx.obj, &light, &hit);
+				img_pix_put(&(data->img), x, y, clr_pack(clr));
+				itxv.len = 0;
+			}
 			else
-				img_pix_put(&(data->img), x, y, 0x00000000);
+				img_pix_put(&(data->img), x, y, BLACK);
 			x++;
 			display_progress(x, y);
 		}
@@ -121,6 +138,7 @@ static int	draw_simple_scene(t_mlx_data *data)
 	}
 	mlx_put_image_to_window(data->mlx_ptr, data->mlx_win, data->img.mlx_img, 0, 0);
 	data->update = false;
+	itxv_dlt(&itxv);
 	return (0);
 }
 
@@ -138,4 +156,3 @@ int	main(void)
 	free_mlx_data(&data);
 	return (0);
 }
-*/

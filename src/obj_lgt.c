@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/21 14:19:52 by cybourge          #+#    #+#             */
-/*   Updated: 2026/04/21 15:04:05 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/04/21 15:39:15 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,5 @@ t_clr	obj_lgt(const t_obj *obj, const t_lgt *light, const t_hit *data)
 		else
 			specular = clr_mul(light->clr, obj->mtrl.spc * pow(rdrd, obj->mtrl.shi));
 	}
-	v4_prt((t_v4 *)&ambient);
-	v4_prt((t_v4 *)&diffuse);
-	v4_prt((t_v4 *)&specular);
 	return (clr_add(ambient, clr_add(diffuse, specular)));
 }
