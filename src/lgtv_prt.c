@@ -1,26 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   clr_sub.c                                          :+:      :+:    :+:   */
+/*   lgtv_prt.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/03/26 10:19:20 by cybourge          #+#    #+#             */
-/*   Updated: 2026/04/22 14:16:46 by cybourge         ###   ########.fr       */
+/*   Created: 2026/04/22 09:45:30 by cybourge          #+#    #+#             */
+/*   Updated: 2026/04/22 14:16:04 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "color.h"
+#include "light.h"
 
-t_clr	clr_sub(t_clr c1, t_clr c2)
+void	lgtv_prt(const t_lgtv *lgtv)
 {
-	const t_itv	bounds = (t_itv){0.0, 1.0};
+	size_t	i;
 
-	return ((t_clr)
-		{
-			itv_clp(bounds, c1.t - c2.t),
-			itv_clp(bounds, c1.r - c2.r),
-			itv_clp(bounds, c1.g - c2.g),
-			itv_clp(bounds, c1.b - c2.b),
-		});
+	printf("Lights (%ld) : \n", lgtv->len);
+	i = 0;
+	while (i < lgtv->len)
+	{
+		printf("pos");
+		v4_lprt(&(lgtv->v[i].pos));
+		printf(", color");
+		v4_lprt((const t_v4 *)&(lgtv->v[i].clr));
+		printf("\n");
+		i++;
+	}
+	if (i == 0)
+		printf("\n");
 }

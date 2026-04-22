@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/21 10:38:01 by cybourge          #+#    #+#             */
-/*   Updated: 2026/04/21 13:28:45 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/04/22 14:17:04 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 // obj	 : Sphere, wpt : Point in World Space, 
 // wnrml : Set by the function : Normal to the surface in World Space
-int			sph_nrml(const t_obj *obj, const t_pt *wpt, t_v4 *wnrml)
+int	sph_nrml(const t_obj *obj, const t_pt *wpt, t_v4 *wnrml)
 {
 	t_v4	onrml;
 	t_pt	opt;

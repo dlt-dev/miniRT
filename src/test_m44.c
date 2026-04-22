@@ -6,11 +6,10 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/31 14:39:37 by cybourge          #+#    #+#             */
-/*   Updated: 2026/04/08 12:09:05 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/04/22 14:14:22 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/*
 #include "matrix.h"
 #include "transformations.h"
 #include "utils.h"
@@ -18,7 +17,7 @@
 #include <assert.h>
 #include <stdio.h>
 
-
+/*
 // Fill matrix with sequential values
 void fill_seq(t_m44 *m)
 {
@@ -94,7 +93,8 @@ void test_m44_add_sub()
 
     m44_add(&a, &b, &res);
     for (int i = 0; i < 16; i++)
-        assert(res[i] == 2 * a[i]);
+		assert(res[i] == 2 * a[i]);
+	
 	m44_prt_bop(&a, &b, &res, "+");
 
     m44_sub(&res, &a, &res);

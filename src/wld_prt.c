@@ -1,26 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   clr_sub.c                                          :+:      :+:    :+:   */
+/*   wld_prt.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/03/26 10:19:20 by cybourge          #+#    #+#             */
-/*   Updated: 2026/04/22 14:16:46 by cybourge         ###   ########.fr       */
+/*   Created: 2026/04/22 14:00:53 by cybourge          #+#    #+#             */
+/*   Updated: 2026/04/22 14:09:36 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "color.h"
+#include "world.h"
 
-t_clr	clr_sub(t_clr c1, t_clr c2)
+void	wld_prt(const t_wld *wld)
 {
-	const t_itv	bounds = (t_itv){0.0, 1.0};
-
-	return ((t_clr)
-		{
-			itv_clp(bounds, c1.t - c2.t),
-			itv_clp(bounds, c1.r - c2.r),
-			itv_clp(bounds, c1.g - c2.g),
-			itv_clp(bounds, c1.b - c2.b),
-		});
+	if (!wld)
+		return ;
+	printf("World :\n");
+	objv_prt(&(wld->objs));
+	lgtv_prt(&(wld->lgts));
 }

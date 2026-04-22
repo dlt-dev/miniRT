@@ -1,26 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   clr_sub.c                                          :+:      :+:    :+:   */
+/*   test_wld.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/03/26 10:19:20 by cybourge          #+#    #+#             */
-/*   Updated: 2026/04/22 14:16:46 by cybourge         ###   ########.fr       */
+/*   Created: 2026/04/22 14:00:19 by cybourge          #+#    #+#             */
+/*   Updated: 2026/04/22 14:07:24 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "color.h"
+#include "world.h"
 
-t_clr	clr_sub(t_clr c1, t_clr c2)
+int	main(void)
 {
-	const t_itv	bounds = (t_itv){0.0, 1.0};
+	t_wld	wld;
 
-	return ((t_clr)
-		{
-			itv_clp(bounds, c1.t - c2.t),
-			itv_clp(bounds, c1.r - c2.r),
-			itv_clp(bounds, c1.g - c2.g),
-			itv_clp(bounds, c1.b - c2.b),
-		});
+	wld_ini_dflt(&wld);
+	wld_prt(&wld);
+	return (0);
 }

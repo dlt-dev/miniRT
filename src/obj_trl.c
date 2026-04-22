@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/08 08:39:04 by cybourge          #+#    #+#             */
-/*   Updated: 2026/04/21 10:18:38 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/04/22 14:15:13 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ int	obj_trl(t_obj *obj, double tx, double ty, double tz)
 		return (-1);
 	if (add_trlm(&trl_mat, &(obj->trlm), &(obj->trlm)) == -1)
 		return (-1);
-	
 	if (add_trlm(&itrl_mat, &(obj->itrlm), &(obj->itrlm)) == -1)
 		return (-1);
 	return (0);

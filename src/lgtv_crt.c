@@ -1,26 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   clr_sub.c                                          :+:      :+:    :+:   */
+/*   lgtv_crt.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/03/26 10:19:20 by cybourge          #+#    #+#             */
-/*   Updated: 2026/04/22 14:16:46 by cybourge         ###   ########.fr       */
+/*   Created: 2026/04/22 09:35:09 by cybourge          #+#    #+#             */
+/*   Updated: 2026/04/22 14:16:17 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "color.h"
+#include "light.h"
 
-t_clr	clr_sub(t_clr c1, t_clr c2)
+t_lgtv	lgtv_crt(size_t cap)
 {
-	const t_itv	bounds = (t_itv){0.0, 1.0};
+	t_lgtv	lgtv;
 
-	return ((t_clr)
-		{
-			itv_clp(bounds, c1.t - c2.t),
-			itv_clp(bounds, c1.r - c2.r),
-			itv_clp(bounds, c1.g - c2.g),
-			itv_clp(bounds, c1.b - c2.b),
-		});
+	lgtv.len = 0;
+	lgtv.cap = cap;
+	if (cap == 0)
+	{
+		lgtv.v = NULL;
+		return (lgtv);
+	}
+	lgtv.v = malloc(sizeof(t_lgt) * cap);
+	if (!lgtv.v)
+	{
+		lgtv.cap = 0;
+		return (lgtv);
+	}
+	return (lgtv);
 }

@@ -1,26 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   clr_sub.c                                          :+:      :+:    :+:   */
+/*   wld_add_obj.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/03/26 10:19:20 by cybourge          #+#    #+#             */
-/*   Updated: 2026/04/22 14:16:46 by cybourge         ###   ########.fr       */
+/*   Created: 2026/04/22 13:54:05 by cybourge          #+#    #+#             */
+/*   Updated: 2026/04/22 13:58:58 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "color.h"
+#include "world.h"
 
-t_clr	clr_sub(t_clr c1, t_clr c2)
+int	wld_add_obj(t_wld *wld, const t_obj *obj)
 {
-	const t_itv	bounds = (t_itv){0.0, 1.0};
-
-	return ((t_clr)
-		{
-			itv_clp(bounds, c1.t - c2.t),
-			itv_clp(bounds, c1.r - c2.r),
-			itv_clp(bounds, c1.g - c2.g),
-			itv_clp(bounds, c1.b - c2.b),
-		});
+	if (!wld || !obj)
+		return (-1);
+	objv_add(&(wld->objs), obj);
+	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/03 14:39:09 by cybourge          #+#    #+#             */
-/*   Updated: 2026/04/21 13:39:19 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/04/22 09:52:49 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,8 @@ t_pt		pt_crt(double x, double y, double z);
 t_v4		v4_crt(double x, double y, double z);
 // Prints the vector in column form.
 void		v4_prt(const t_v4 *v);
+// Prints the vector in line form.
+void		v4_lprt(const t_v4 *v);
 // Prints the vectors in column form : v1 (operation) v2 = v3
 void		v4_prt_bop(t_cpv4 v1, t_cpv4 v2, t_cpv4 v3, const char *op);
 // Prints the vectors in column form : (operation) v1 = v2
