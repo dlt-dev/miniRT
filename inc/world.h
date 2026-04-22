@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/22 11:37:45 by cybourge          #+#    #+#             */
-/*   Updated: 2026/04/22 13:57:33 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/04/22 14:27:38 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,10 @@ int		wld_add_obj(t_wld *wld, const t_obj *obj);
 // Adds a light to the world.
 // Returns -1 on error, 0 otherwise.
 int		wld_add_lgt(t_wld *wld, const t_lgt *light);
+
+// Writes the intersections of ray with world in inter.
+// Returns -1 on error, 0 otherwise.
+int		wld_itx(const t_wld *world, const t_ray *ray, t_itv *itxv);
 
 
 

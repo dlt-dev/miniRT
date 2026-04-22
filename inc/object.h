@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/03 12:11:44 by cybourge          #+#    #+#             */
-/*   Updated: 2026/04/22 13:31:36 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/04/22 14:38:53 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,22 @@ typedef struct s_polynome_2
 	double	r1;
 	double	r2;
 }	t_pol2;
+
+// Used to store the variables used when computing the lightning of an object.
+// ldn : lightv dot normal
+// rdrd : light reflect for raydir
+typedef struct s_object_lighting
+{
+	t_clr	eff_clr;
+	t_clr	ambient;
+	t_clr	diffuse;
+	t_clr	specular;
+	t_v4	lightv;
+	t_v4	nlightv;
+	t_v4	reflectv;
+	double	ldn;
+	double	rdrd;
+}	t_obj_lgt;
 
 typedef	struct s_material
 {

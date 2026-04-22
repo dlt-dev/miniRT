@@ -6,12 +6,13 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/22 14:00:19 by cybourge          #+#    #+#             */
-/*   Updated: 2026/04/22 14:07:24 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/04/22 14:42:07 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "world.h"
 
+/*
 int	main(void)
 {
 	t_wld	wld;
@@ -20,3 +21,4 @@ int	main(void)
 	wld_prt(&wld);
 	return (0);
 }
+*/
