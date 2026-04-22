@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/03 12:14:14 by cybourge          #+#    #+#             */
-/*   Updated: 2026/04/21 15:28:49 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/04/22 08:19:55 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,25 @@
 
 # include <stdlib.h>
 # include "utils.h"
+# include "vector4.h"
+# include "ray.h"
 # include <stdio.h>
 
 typedef struct s_object t_obj;
 
+// Structure that holds the data resulting from an object hit.
+// obj : The object that was hit.
+// t : the parameter along the ray for which the object is hit.
+// hp : Hit Point in World Space
+// rd : the ray's direction vector from which the hit resulted.
+// nrm : normal vector to the surface at the hitpoint.
 typedef struct s_intersection
 {
 	const t_obj	*obj;
-	double	t;
+	double		t;
+	t_pt		hp;
+	t_v4		rd;
+	t_v4		nrm;
 }	t_itx;
 
 // Vector structure that holds intersections
@@ -36,6 +47,11 @@ typedef struct s_intersection_vector
 	t_itx	*v;
 }	t_itxv;
 
+// Initialises the hit information of the itx, 
+// the obj and t fields must have been set before calling this function.
+// returns -1 on error, 0 otherwise.
+int		itx_ini(t_itx *itx, const t_ray *ray);
+
 // Creates an empty intersection vector with a capacity of cap.
 // If the allocation is unsucessfull :
 // 	- cap = 0;
@@ -44,6 +60,9 @@ t_itxv	itxv_crt(size_t cap);
 
 // Frees the itxv and sets all of its fields to 0;
 void	itxv_dlt(t_itxv *itxv);
+
+// Clears the itxv of its elements.
+void	itxv_clr(t_itxv *itxv);
 
 // Adds an intersection to the intersection vector.
 // If there isn't enough capacity,

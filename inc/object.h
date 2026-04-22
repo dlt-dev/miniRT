@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/03 12:11:44 by cybourge          #+#    #+#             */
-/*   Updated: 2026/04/21 15:03:13 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/04/22 08:09:23 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,17 +110,6 @@ typedef struct s_light
 	t_pt	pos;
 }	t_lgt;
 
-// Structure that holds the data resulting from an object hit.
-// hp : Hit Point in World Space
-// rd : the ray's direction vector from which the hit resulted.
-// nrm : normal vector to the surface at the hitpoint.
-typedef struct t_hit
-{
-	t_pt	hp;
-	t_v4	rd;
-	t_v4	nrm;
-}	t_hit;
-
 // Creates an empty object vector with a capacity of cap.
 // If the allocation is unsecessfull :
 //	- cap = 0.
@@ -162,7 +151,7 @@ int			obj_trf(t_obj *obj);
 
 // Lights an object.
 // Returns the color.
-t_clr		obj_lgt(const t_obj *obj, const t_lgt *light, const t_hit *data);
+t_clr		obj_lgt(const t_obj *obj, const t_lgt *light, const t_itx *data);
 // Returns an instance of a sphere obj
 t_obj		sph_crt(void);
 // Returns wether a ray hits a sphere object and adds the intersection to itxv.

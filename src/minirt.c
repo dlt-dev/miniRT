@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/30 10:33:54 by cybourge          #+#    #+#             */
-/*   Updated: 2026/04/21 15:40:48 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/04/22 08:24:13 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,11 +101,11 @@ static int	draw_simple_scene(t_mlx_data *data)
 
 	itxv = itxv_crt(2);
 	
-	// obj_trl(&(scene.obj1), 1, 0, 2);
-	// obj_rot(&(scene.obj1), 3, 4, 6);
-	// obj_scl(&(scene.obj1), 0.5, 0.5, 0.5);
-	// obj_she(&(scene.obj1), (t_spara){1,0,0,0,0,0});
-	// obj_trl(&(scene.obj1), -1, 0, -2);
+	obj_trl(&(scene.obj1), 1, 0, 2);
+	obj_rot(&(scene.obj1), 3, 4, 6);
+	obj_scl(&(scene.obj1), 0.5, 0.5, 0.5);
+	obj_she(&(scene.obj1), (t_spara){1,0,0,0,0,0});
+	obj_trl(&(scene.obj1), -1, 0, -2);
 	obj_trf(&(scene.obj1));
 	y = 0;
 	while (y < WIN_H - 1)
@@ -121,13 +121,11 @@ static int	draw_simple_scene(t_mlx_data *data)
 			{
 				itxv_sort(&itxv);
 				t_itx	itx = itxv_hit(&itxv);
-				t_hit	hit;
-				hit.hp = ray_pos(&ray, itx.t);
-				hit.rd = v4_inv(ray.dir);
-				sph_nrml(itx.obj, &(hit.hp), &(hit.nrm));
-				t_clr	clr = obj_lgt(itx.obj, &light, &hit);
+				itx_ini(&itx, &ray);
+				sph_nrml(itx.obj, &(itx.hp), &(itx.nrm));
+				t_clr	clr = obj_lgt(itx.obj, &light, &itx);
 				img_pix_put(&(data->img), x, y, clr_pack(clr));
-				itxv.len = 0;
+				itxv_clr(&itxv);
 			}
 			else
 				img_pix_put(&(data->img), x, y, BLACK);

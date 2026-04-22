@@ -6,13 +6,13 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/21 14:19:52 by cybourge          #+#    #+#             */
-/*   Updated: 2026/04/21 15:39:15 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/04/22 08:09:38 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "object.h"
 
-t_clr	obj_lgt(const t_obj *obj, const t_lgt *light, const t_hit *data)
+t_clr	obj_lgt(const t_obj *obj, const t_lgt *light, const t_itx *data)
 {
 	t_clr	eff_clr;
 	t_clr	ambient;
