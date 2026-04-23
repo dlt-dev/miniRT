@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   matrix.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jdelattr <jdelattr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/26 12:07:44 by cybourge          #+#    #+#             */
-/*   Updated: 2026/04/15 10:33:46 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/04/23 11:24:34 by jdelattr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,43 @@
 # include <string.h>
 
 # define M44_SIZE 4
+
+// bop
+typedef struct s_m44_mat_disp
+{
+	char	b[4][4][64];
+	int		w[4];
+}t_m44_mat_disp;
+
+typedef struct s_m44_bop_disp
+{
+	t_m44_mat_disp	m[3];
+	char	const	*bop;
+}t_m44_bop_disp;
+
+// uop
+typedef struct s_m44_uop_disp
+{
+	char	b1[4][4][64];
+	int		w1[4];
+	char	b2[4][4][64];
+	int		w2[4];
+	char	const	*uop;
+}t_m44_uop_disp;
+
+// vprd
+typedef struct s_m44_vprd_disp
+{
+	char	m_buf[4][4][64];
+	int		m_w[4];
+	char	v1_buf[4][64];
+	char	v2_buf[4][64];
+	int		v_w[2];
+}t_m44_vprd_disp;
+
+
+
+
 
 typedef double	t_m44[M44_SIZE * M44_SIZE];
 
@@ -74,4 +111,10 @@ int		m44_inv_scl(const t_m44 *m1, t_m44 *res);
 // Inverse of a Shearing matrix, returns -1 on error, 0 otherwise.
 int		m44_inv_she(const t_m44 *m1, t_m44 *res);
 
+
+void	m44_print_rows(char buf[4][4][64], int col_width[4]);
+void	m44_fill_widths(char buf[4][4][64], int col_width[4]);
+void	m44_fill_buf(const t_m44 *m, char buf[4][4][64]);
+void	m44_set_borders(char **left, char **right);
+void	m44_fmt_value(double value, char out[64]);
 #endif

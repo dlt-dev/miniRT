@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/30 10:33:54 by cybourge          #+#    #+#             */
-/*   Updated: 2026/04/23 10:54:38 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/04/23 11:40:55 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,11 +66,11 @@ static int	draw_simple_scene(t_mlx_data *data)
 	// obj_trl(&(scene.obj1), -1, 0, -2);
 	obj_trf(&(scene.obj1));
 	y = 0;
-	while (y < WIN_H - 1)
+	while (y < WIN_H)
 	{
 		world_y = scene.half - scene.px_siz * y;
 		x = 0;
-		while (x < WIN_W - 1)
+		while (x < WIN_W)
 		{
 			world_x = -scene.half + scene.px_siz * x;
 			position = v4_crt(world_x, world_y, scene.wall_s);
