@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/03 12:11:44 by cybourge          #+#    #+#             */
-/*   Updated: 2026/04/23 10:30:39 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/04/23 11:12:41 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # include "transformations.h"
 # include "intersection.h"
 # include "light.h"
+# include "material.h"
 # include <stdlib.h>
 # include <stdio.h>
 
@@ -50,15 +51,6 @@ typedef struct s_object_lighting
 	double	ldn;
 	double	rdrd;
 }	t_obj_lgt;
-
-typedef	struct s_material
-{
-	t_clr	clr;
-	double	amb;
-	double	dif;
-	double	spc;
-	double	shi;
-}	t_mtl;
 
 typedef enum e_obj_type
 {
@@ -98,6 +90,7 @@ typedef struct s_object
 	t_m44		irotm;
 	t_m44		ishem;
 	t_mtl		mtrl;
+	bool		(*hit)(const t_obj*, const t_ray*, t_itxv*);
 	union
 	{
 		t_sph	sp;
@@ -159,7 +152,7 @@ int			obj_trf(t_obj *obj);
 // Lights an object.
 // Returns the color.
 t_clr		obj_lgt(const t_obj *obj, const t_lgt *light, const t_itx *data);
-// Returns an instance of a sphere obj
+// Returns an instance of a sphere obj with default values.
 t_obj		sph_crt(void);
 // Returns wether a ray hits a sphere object and adds the intersection to itxv.
 bool		sph_hit(const t_obj *obj, const t_ray *r, t_itxv *itxv);

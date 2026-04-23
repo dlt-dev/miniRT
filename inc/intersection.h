@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/03 12:14:14 by cybourge          #+#    #+#             */
-/*   Updated: 2026/04/22 08:19:55 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/04/23 11:32:47 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,9 @@ typedef struct s_intersection_vector
 // the obj and t fields must have been set before calling this function.
 // returns -1 on error, 0 otherwise.
 int		itx_ini(t_itx *itx, const t_ray *ray);
+
+// Displays the intersection and its fields.
+void	itx_prt(const t_itx *itx);
 
 // Creates an empty intersection vector with a capacity of cap.
 // If the allocation is unsucessfull :
