@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/26 12:07:44 by cybourge          #+#    #+#             */
-/*   Updated: 2026/04/23 14:01:40 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/04/23 15:16:38 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,20 +23,25 @@
 
 # define M44_SIZE 4
 
-// prt_bop
+typedef double			t_m44[M44_SIZE * M44_SIZE];
+// Exists the shorten function prototypes due to the 42 norm.
+typedef const t_m44*	t_cpm44;
+
+// Stores variables for the m44_mat_disp functions : 42 Norm
 typedef struct s_m44_mat_disp
 {
 	char	b[4][4][64];
 	int		w[4];
 }	t_m44_mat_disp;
 
+// Stores variables for the m44_bop_disp functions : 42 Norm
 typedef struct s_m44_bop_disp
 {
 	t_m44_mat_disp	m[3];
 	char const		*bop;
 }	t_m44_bop_disp;
 
-// prt_uop
+// Stores variables for the m44_uop_disp functions : 42 Norm
 typedef struct s_m44_uop_disp
 {
 	char		b1[4][4][64];
@@ -46,7 +51,7 @@ typedef struct s_m44_uop_disp
 	char const	*uop;
 }	t_m44_uop_disp;
 
-// prt_vprd
+// Stores variables for the m44_vprd_disp functions : 42 Norm
 typedef struct s_m44_vprd_disp
 {
 	char	m_buf[4][4][64];
@@ -56,10 +61,16 @@ typedef struct s_m44_vprd_disp
 	int		v_w[2];
 }	t_m44_vprd_disp;
 
-typedef double			t_m44[M44_SIZE * M44_SIZE];
-
-// Exists the shorten function prototypes due to the 42 norm.
-typedef const t_m44*	t_cpm44;
+// Stores Variables for the m44_vtrf function : 42 Norm
+typedef struct s_m44_view_transform_var
+{
+	t_v4	forward;
+	t_v4	upn;
+	t_v4	left;
+	t_v4	true_up;
+	t_m44	trl;
+	t_m44	orientation;
+}	t_m44_vtrf_var;
 
 // UTILITY FUNCTIONS
 // Zeroes the Matrix, returns -1 on error, 0 otherwise.
@@ -79,13 +90,14 @@ void	m44_prt_uop(const t_m44 *m1, const t_m44 *m2, const char *uop);
 // Prints the Matrix Vector product as : m1 * v1 = v2.
 void	m44_prt_vprd(const t_m44 *m1, const t_v4 *v1, const t_v4 *v2);
 
+// Utility Functions for matrix display functions.
 // Fill the rows of the matrix.
 void	m44_print_rows(char buf[4][4][64], int col_width[4]);
 // COMMENT TBD
-void	m44_print_row_left(t_m44_vprd_disp *d, int row,
+void	m44_print_row_left_vprd(t_m44_vprd_disp *d, int row,
 			const char *left, const char *right);
 // COMMENT TBD
-void	m44_print_row_right(t_m44_vprd_disp *d, int row,
+void	m44_print_row_right_vprd(t_m44_vprd_disp *d, int row,
 			const char *left, const char *right);
 // Fill the widhts of the matrix.
 void	m44_fill_widths(char buf[4][4][64], int col_width[4]);
@@ -123,5 +135,11 @@ int		m44_inv_rot(const t_m44 *m1, t_m44 *res);
 int		m44_inv_scl(const t_m44 *m1, t_m44 *res);
 // Inverse of a Shearing matrix, returns -1 on error, 0 otherwise.
 int		m44_inv_she(const t_m44 *m1, t_m44 *res);
+// Writes a view transformation matrix defined by the parameters into res.
+// from : Origin of the view.
+// to : Endpoint of the view.
+// up : Upwards direction.
+// returns -1 on error, 0 otherwise.
+int		m44_vtrf(const t_pt *from, const t_pt *to, const t_v4 *up, t_m44 *res);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/07 12:33:30 by cybourge          #+#    #+#             */
-/*   Updated: 2026/04/23 13:53:53 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/04/23 15:16:47 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,8 +74,8 @@ static void	m44_print_vprd(t_m44_vprd_disp *d)
 	row = 0;
 	while (row < 4)
 	{
-		m44_print_row_left(d, row, left[row], right[row]);
-		m44_print_row_right(d, row, left[row], right[row]);
+		m44_print_row_left_vprd(d, row, left[row], right[row]);
+		m44_print_row_right_vprd(d, row, left[row], right[row]);
 		row++;
 	}
 }

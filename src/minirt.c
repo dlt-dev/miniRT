@@ -6,14 +6,14 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/30 10:33:54 by cybourge          #+#    #+#             */
-/*   Updated: 2026/04/23 13:48:43 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/04/23 15:12:33 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 #include <stdio.h>
 
-
+/*
 typedef struct	s_simple_scene
 {
 	t_pt	ro;		// Ray origin.
@@ -108,3 +108,4 @@ int	main(void)
 	free_mlx_data(&data);
 	return (0);
 }
+*/

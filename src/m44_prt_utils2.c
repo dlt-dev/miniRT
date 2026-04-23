@@ -6,13 +6,13 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/23 13:53:45 by cybourge          #+#    #+#             */
-/*   Updated: 2026/04/23 13:55:16 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/04/23 15:17:12 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "matrix.h"
 
-void	m44_print_row_left(t_m44_vprd_disp *d, int row,
+void	m44_print_row_left_vprd(t_m44_vprd_disp *d, int row,
 		const char *left, const char *right)
 {
 	int		col;
@@ -36,7 +36,7 @@ void	m44_print_row_left(t_m44_vprd_disp *d, int row,
 		printf("   ");
 }
 
-void	m44_print_row_right(t_m44_vprd_disp *d, int row,
+void	m44_print_row_right_vprd(t_m44_vprd_disp *d, int row,
 		const char *left, const char *right)
 {
 	printf("%s %*s %s\n", left, d->v_w[1], d->v2_buf[row], right);
