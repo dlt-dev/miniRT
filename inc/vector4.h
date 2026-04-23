@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/03 14:39:09 by cybourge          #+#    #+#             */
-/*   Updated: 2026/04/22 09:52:49 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/04/23 10:37:02 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@
 # include <stdio.h>
 # include <string.h>
 # include "utils.h"
-
 
 // x,y,z are the 3 coordinates of the vector in 3D space.
 // w is a binary value that represents if the vector is a point or not :
@@ -32,7 +31,6 @@ typedef struct s_vector4
 }			t_v4;
 
 typedef t_v4	t_pt;	// Used to represent points in 3D space.
-typedef const t_v4	*t_cpv4; // Used to shorten function header : 42 norm.
 
 // Creates a Point, automatically setting w to 1.0.
 t_pt		pt_crt(double x, double y, double z);
@@ -43,7 +41,12 @@ void		v4_prt(const t_v4 *v);
 // Prints the vector in line form.
 void		v4_lprt(const t_v4 *v);
 // Prints the vectors in column form : v1 (operation) v2 = v3
-void		v4_prt_bop(t_cpv4 v1, t_cpv4 v2, t_cpv4 v3, const char *op);
+void		v4_prt_bop(
+				const t_v4 *v1,
+				const t_v4 *v2,
+				const t_v4 *v3,
+				const char *op
+				);
 // Prints the vectors in column form : (operation) v1 = v2
 void		v4_prt_uop(const t_v4 *v1, const t_v4 *v2, const char *op);
 
