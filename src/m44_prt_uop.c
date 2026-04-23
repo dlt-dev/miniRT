@@ -3,14 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   m44_prt_uop.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jdelattr <jdelattr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/07 10:06:27 by cybourge          #+#    #+#             */
-/*   Updated: 2026/04/21 08:42:07 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/04/22 15:32:54 by jdelattr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "matrix.h"
+
+typedef struct s_m44_uop_disp
+{
+	char	b1[4][4][64];
+	int		w1[4];
+	char	b2[4][4][64];
+	int		w2[4];
+	char	const	*uop;
+}t_m44_uop_disp;
 
 // void	m44_prt_uop(const t_m44 *m1, const t_m44 *m2, const char *uop)
 // {
@@ -82,13 +91,48 @@ static void	m44_fill_mat(const t_m44 *m, char buf[4][4][64], int col_w[4])
 	}
 }
 
-static void	m44_print_uop(char b1[4][4][64], int w1[4],
-		char b2[4][4][64], int w2[4], const char *uop)
+static void	m44_print_row_left(t_m44_uop_disp *d, int row,
+		const char *left, const char *right)
+{
+	int		col;
+
+	printf("%s", left);
+	col = 0;
+	while (col < 4)
+	{
+		printf(" %*s", d->w1[col], d->b1[row][col]);
+		col++;
+	}
+	printf(" %s ", right);
+	if (row == 1)
+		printf("%s", d->uop);
+	else
+		printf("%*s", (int)strlen(d->uop), "");
+}
+
+static void	m44_print_row_right(t_m44_uop_disp *d, int row,
+		const char *left, const char *right)
+{
+	int	col;
+
+	printf(" %s", left);
+	col = 0;
+	while (col < 4)
+	{
+		printf(" %*s", d->w2[col], d->b2[row][col]);
+		col++;
+	}
+	printf(" %s", right);
+	if (row == 1)
+		printf(" =");
+	printf("\n");
+}
+
+static void	m44_print_uop(t_m44_uop_disp *d)
 {
 	char	*left[4];
 	char	*right[4];
 	int		row;
-	int		col;
 
 	left[0] = "╭";
 	left[1] = "│";
@@ -101,43 +145,20 @@ static void	m44_print_uop(char b1[4][4][64], int w1[4],
 	row = 0;
 	while (row < 4)
 	{
-		printf("%s", left[row]);
-		col = 0;
-		while (col < 4)
-		{
-			printf(" %*s", w1[col], b1[row][col]);
-			col++;
-		}
-		printf(" %s ", right[row]);
-		if (row == 1)
-			printf("%s", uop);
-		else
-			printf("%*s", (int)strlen(uop), "");
-		printf(" %s", left[row]);
-		col = 0;
-		while (col < 4)
-		{
-			printf(" %*s", w2[col], b2[row][col]);
-			col++;
-		}
-		printf(" %s", right[row]);
-		if (row == 1)
-			printf(" =");
-		printf("\n");
+		m44_print_row_left(d, row, left[row], right[row]);
+		m44_print_row_right(d, row, left[row], right[row]);
 		row++;
 	}
 }
 
 void	m44_prt_uop(const t_m44 *m1, const t_m44 *m2, const char *uop)
 {
-	char	b1[4][4][64];
-	char	b2[4][4][64];
-	int		w1[4];
-	int		w2[4];
+	t_m44_uop_disp	d;
 
 	if (!m1 || !m2 || !uop)
 		return ;
-	m44_fill_mat(m1, b1, w1);
-	m44_fill_mat(m2, b2, w2);
-	m44_print_uop(b1, w1, b2, w2, uop);
+	d.uop = uop;
+	m44_fill_mat(m1, d.b1, d.w1);
+	m44_fill_mat(m2, d.b2, d.w2);
+	m44_print_uop(&d);
 }

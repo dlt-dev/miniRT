@@ -6,11 +6,20 @@
 /*   By: jdelattr <jdelattr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/07 12:33:30 by cybourge          #+#    #+#             */
-/*   Updated: 2026/04/17 17:49:50 by jdelattr         ###   ########.fr       */
+/*   Updated: 2026/04/22 15:32:12 by jdelattr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "matrix.h"
+
+typedef struct s_m44_vprd_disp
+{
+	char	m_buf[4][4][64];
+	int		m_w[4];
+	char	v1_buf[4][64];
+	char	v2_buf[4][64];
+	int		v_w[2];
+}t_m44_vprd_disp;
 
 // void	m44_prt_vprd(const t_m44 *m1, const t_v4 *v1, const t_v4 *v2)
 // {
@@ -98,13 +107,41 @@ static void	m44_fill_vec(const t_v4 *v, char v_buf[4][64], int *v_w)
 	}
 }
 
-static void	m44_print_vprd(char m_buf[4][4][64], int m_w[4],
-		char v1_buf[4][64], char v2_buf[4][64], int v_w[2])
+static void	m44_print_row_left(t_m44_vprd_disp *d, int row,
+		const char *left, const char *right)
+{
+	int		col;
+
+	printf("%s", left);
+	col = 0;
+	while (col < 4)
+	{
+		printf(" %*s", d->m_w[col], d->m_buf[row][col]);
+		col++;
+	}
+	printf(" %s", right);
+	if (row == 1)
+		printf(" * ");
+	else
+		printf("   ");
+	printf("%s %*s %s", left, d->v_w[0], d->v1_buf[row], right);
+	if (row == 1)
+		printf(" = ");
+	else
+		printf("   ");
+}
+
+static void	m44_print_row_right(t_m44_vprd_disp *d, int row,
+		const char *left, const char *right)
+{
+	printf("%s %*s %s\n", left, d->v_w[1], d->v2_buf[row], right);
+}
+
+static void	m44_print_vprd(t_m44_vprd_disp *d)
 {
 	char	*left[4];
 	char	*right[4];
 	int		row;
-	int		col;
 
 	left[0] = "╭";
 	left[1] = "│";
@@ -117,40 +154,20 @@ static void	m44_print_vprd(char m_buf[4][4][64], int m_w[4],
 	row = 0;
 	while (row < 4)
 	{
-		printf("%s", left[row]);
-		col = 0;
-		while (col < 4)
-		{
-			printf(" %*s", m_w[col], m_buf[row][col]);
-			col++;
-		}
-		printf(" %s", right[row]);
-		if (row == 1)
-			printf(" * ");
-		else
-			printf("   ");
-		printf("%s %*s %s", left[row], v_w[0], v1_buf[row], right[row]);
-		if (row == 1)
-			printf(" = ");
-		else
-			printf("   ");
-		printf("%s %*s %s\n", left[row], v_w[1], v2_buf[row], right[row]);
+		m44_print_row_left(d, row, left[row], right[row]);
+		m44_print_row_right(d, row, left[row], right[row]);
 		row++;
 	}
 }
 
 void	m44_prt_vprd(const t_m44 *m1, const t_v4 *v1, const t_v4 *v2)
 {
-	char	m_buf[4][4][64];
-	char	v1_buf[4][64];
-	char	v2_buf[4][64];
-	int		m_w[4];
-	int		v_w[2];
+	t_m44_vprd_disp	d;
 
 	if (!m1 || !v1 || !v2)
 		return ;
-	m44_fill_mat(m1, m_buf, m_w);
-	m44_fill_vec(v1, v1_buf, &v_w[0]);
-	m44_fill_vec(v2, v2_buf, &v_w[1]);
-	m44_print_vprd(m_buf, m_w, v1_buf, v2_buf, v_w);
+	m44_fill_mat(m1, d.m_buf, d.m_w);
+	m44_fill_vec(v1, d.v1_buf, &d.v_w[0]);
+	m44_fill_vec(v2, d.v2_buf, &d.v_w[1]);
+	m44_print_vprd(&d);
 }

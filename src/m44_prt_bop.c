@@ -6,7 +6,7 @@
 /*   By: jdelattr <jdelattr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/07 09:38:27 by cybourge          #+#    #+#             */
-/*   Updated: 2026/04/17 17:57:11 by jdelattr         ###   ########.fr       */
+/*   Updated: 2026/04/22 15:34:59 by jdelattr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,18 @@
 // 		(*m3)[12], (*m3)[13], (*m3)[14], (*m3)[15]
 // 		);
 // }
+
+typedef struct s_m44_mat_disp
+{
+	char	b[4][4][64];
+	int		w[4];
+}t_m44_mat_disp;
+
+typedef struct s_m44_bop_disp
+{
+	t_m44_mat_disp	m[3];
+	char	const	*bop;
+}t_m44_bop_disp;
 
 static void	m44_fmt_value(double value, char out[64])
 {
@@ -84,13 +96,45 @@ static void	m44_fill_mat(const t_m44 *m, char buf[4][4][64], int col_w[4])
 	}
 }
 
-static void	m44_print_bop(char b1[4][4][64], int w1[4], char b2[4][4][64],
-		int w2[4], char b3[4][4][64], int w3[4], const char *bop)
+static void	m44_print_mat_row(t_m44_mat_disp *m, int row,
+		const char *left, const char *right)
+{
+	int		col;
+
+	printf("%s", left);
+	col = 0;
+	while (col < 4)
+	{
+		printf(" %*s", m->w[col], m->b[row][col]);
+		col++;
+	}
+	printf(" %s", right);
+}
+
+static void	m44_print_bop_row(t_m44_bop_disp *d, int row,
+		const char *left, const char *right)
+{
+	m44_print_mat_row(&d->m[0], row, left, right);
+	printf(" ");
+	if (row == 1)
+		printf("%s", d->bop);
+	else
+		printf("%*s", (int)strlen(d->bop), "");
+	printf(" ");
+	m44_print_mat_row(&d->m[1], row, left, right);
+	if (row == 1)
+		printf(" = ");
+	else
+		printf("   ");
+	m44_print_mat_row(&d->m[2], row, left, right);
+	printf("\n");
+}
+
+static void	m44_print_bop(t_m44_bop_disp *d)
 {
 	char	*left[4];
 	char	*right[4];
 	int		row;
-	int		col;
 
 	left[0] = "╭";
 	left[1] = "│";
@@ -103,55 +147,20 @@ static void	m44_print_bop(char b1[4][4][64], int w1[4], char b2[4][4][64],
 	row = 0;
 	while (row < 4)
 	{
-		printf("%s", left[row]);
-		col = 0;
-		while (col < 4)
-		{
-			printf(" %*s", w1[col], b1[row][col]);
-			col++;
-		}
-		printf(" %s ", right[row]);
-		if (row == 1)
-			printf("%s", bop);
-		else
-			printf("%*s", (int)strlen(bop), "");
-		printf(" %s", left[row]);
-		col = 0;
-		while (col < 4)
-		{
-			printf(" %*s", w2[col], b2[row][col]);
-			col++;
-		}
-		printf(" %s", right[row]);
-		if (row == 1)
-			printf(" = ");
-		else
-			printf("   ");
-		printf("%s", left[row]);
-		col = 0;
-		while (col < 4)
-		{
-			printf(" %*s", w3[col], b3[row][col]);
-			col++;
-		}
-		printf(" %s\n", right[row]);
+		m44_print_bop_row(d, row, left[row], right[row]);
 		row++;
 	}
 }
 
 void	m44_prt_bop(t_cpm44 m1, t_cpm44 m2, t_cpm44 m3, const char *bop)
 {
-	char	b1[4][4][64];
-	char	b2[4][4][64];
-	char	b3[4][4][64];
-	int		w1[4];
-	int		w2[4];
-	int		w3[4];
+	t_m44_bop_disp	d;
 
 	if (!m1 || !m2 || !m3 || !bop)
 		return ;
-	m44_fill_mat(m1, b1, w1);
-	m44_fill_mat(m2, b2, w2);
-	m44_fill_mat(m3, b3, w3);
-	m44_print_bop(b1, w1, b2, w2, b3, w3, bop);
+	d.bop = bop;
+	m44_fill_mat(m1, d.m[0].b, d.m[0].w);
+	m44_fill_mat(m2, d.m[1].b, d.m[1].w);
+	m44_fill_mat(m3, d.m[2].b, d.m[2].w);
+	m44_print_bop(&d);
 }
