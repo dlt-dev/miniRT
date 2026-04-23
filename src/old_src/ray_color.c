@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/03 16:14:07 by cybourge          #+#    #+#             */
-/*   Updated: 2026/03/25 11:16:11 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/04/23 09:58:34 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ t_color	ray_color(t_ray ray, t_mlx_data *d)
 	t_color		color_start;
 	t_color		color_end;
 	t_color		color_final;
-	t_itv		inter = (t_itv) {0.0, INFINITY};
+	t_itv		inter =  itv_crt(0.0, INFINITY);
 	t_hitinfo	info;
 	double		a;
 

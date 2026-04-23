@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/26 09:38:16 by cybourge          #+#    #+#             */
-/*   Updated: 2026/04/21 15:00:14 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/04/23 10:31:25 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,11 @@ typedef struct color
 	double	t;
 	double	r;
 	double	g;
-	double	b;
+	double	b;	
 }			t_clr;
+
+// Returns a color defined by the parameters.
+t_clr	clr_crt(double t, double r, double g, double b);
 
 // color addition
 t_clr	clr_add(t_clr c1, t_clr c2);

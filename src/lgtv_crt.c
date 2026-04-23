@@ -1,23 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   clr_unpack.c                                       :+:      :+:    :+:   */
+/*   lgtv_crt.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/30 16:51:51 by cybourge          #+#    #+#             */
-/*   Updated: 2026/04/23 09:52:04 by cybourge         ###   ########.fr       */
+/*   Created: 2026/04/22 09:35:09 by cybourge          #+#    #+#             */
+/*   Updated: 2026/04/22 14:16:17 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "color.h"
+#include "light.h"
 
-t_clr	clr_unpack(uint32_t packed)
+t_lgtv	lgtv_crt(size_t cap)
 {
-	return (clr_crt(
-			((packed >> 24) & 0xFF) / 255.0,
-			((packed >> 16) & 0xFF) / 255.0,
-			((packed >> 8) & 0xFF) / 255.0,
-			(packed & 0xFF) / 255.0
-		));
+	t_lgtv	lgtv;
+
+	lgtv.len = 0;
+	lgtv.cap = cap;
+	if (cap == 0)
+	{
+		lgtv.v = NULL;
+		return (lgtv);
+	}
+	lgtv.v = malloc(sizeof(t_lgt) * cap);
+	if (!lgtv.v)
+	{
+		lgtv.cap = 0;
+		return (lgtv);
+	}
+	return (lgtv);
 }

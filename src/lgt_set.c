@@ -1,23 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   clr_unpack.c                                       :+:      :+:    :+:   */
+/*   lgt_set.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/30 16:51:51 by cybourge          #+#    #+#             */
-/*   Updated: 2026/04/23 09:52:04 by cybourge         ###   ########.fr       */
+/*   Created: 2026/04/22 10:40:37 by cybourge          #+#    #+#             */
+/*   Updated: 2026/04/22 10:42:00 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "color.h"
+#include "light.h"
 
-t_clr	clr_unpack(uint32_t packed)
+void	lgt_set(t_lgt *light, t_pt pos, uint32_t clr)
 {
-	return (clr_crt(
-			((packed >> 24) & 0xFF) / 255.0,
-			((packed >> 16) & 0xFF) / 255.0,
-			((packed >> 8) & 0xFF) / 255.0,
-			(packed & 0xFF) / 255.0
-		));
+	if (!light)
+		return ;
+	light->pos = pos;
+	light->clr = clr_unpack(clr);
 }

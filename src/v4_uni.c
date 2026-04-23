@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/26 09:01:36 by cybourge          #+#    #+#             */
-/*   Updated: 2026/04/01 08:13:11 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/04/23 10:09:18 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,6 @@ t_v4	v4_uni(t_v4 v)
 
 	len = v4_len(v);
 	if (len < EPS)
-		return ((t_v4){0.0, 0.0, 0.0, 0.0});
+		return (v4_crt(0, 0, 0));
 	return (v4_div(v, len));
 }

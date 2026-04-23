@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/31 09:33:38 by cybourge          #+#    #+#             */
-/*   Updated: 2026/04/01 08:11:53 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/04/23 10:10:22 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,10 @@
 
 t_v4	v4_crt(double x, double y, double z)
 {
-	return ((t_v4){x, y, z, 0.0});
+	return ((t_v4){
+		.x = x,
+		.y = y,
+		.z = z,
+		.w = 0.0
+	});
 }

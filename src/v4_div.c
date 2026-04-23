@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/26 09:03:27 by cybourge          #+#    #+#             */
-/*   Updated: 2026/04/01 08:12:03 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/04/23 10:07:25 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,11 @@
 t_v4	v4_div(t_v4 v, double s)
 {
 	if (fabs(s) < EPS)
-		return ((t_v4){0.0, 0.0, 0.0, 0.0});
-	return ((t_v4){v.x / s, v.y / s, v.z / s, v.w / s});
+		return (v4_crt(0, 0, 0));
+	return ((t_v4){
+		.x = v.x / s,
+		.y = v.y / s,
+		.z = v.z / s,
+		.w = v.w / s
+	});
 }

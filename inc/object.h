@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/03 12:11:44 by cybourge          #+#    #+#             */
-/*   Updated: 2026/04/22 08:09:23 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/04/23 10:30:39 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # include "matrix.h"
 # include "transformations.h"
 # include "intersection.h"
+# include "light.h"
 # include <stdlib.h>
 # include <stdio.h>
 
@@ -34,6 +35,22 @@ typedef struct s_polynome_2
 	double	r2;
 }	t_pol2;
 
+// Used to store the variables used when computing the lightning of an object.
+// ldn : lightv dot normal
+// rdrd : light reflect for raydir
+typedef struct s_object_lighting
+{
+	t_clr	eff_clr;
+	t_clr	ambient;
+	t_clr	diffuse;
+	t_clr	specular;
+	t_v4	lightv;
+	t_v4	nlightv;
+	t_v4	reflectv;
+	double	ldn;
+	double	rdrd;
+}	t_obj_lgt;
+
 typedef	struct s_material
 {
 	t_clr	clr;
@@ -42,7 +59,6 @@ typedef	struct s_material
 	double	spc;
 	double	shi;
 }	t_mtl;
-
 
 typedef enum e_obj_type
 {
@@ -101,17 +117,8 @@ typedef struct s_object_vector
 	t_obj	*v;
 }	t_objv;
 
-// Defines a Point Light
-// clr : Intensity / color of the light
-// pos : Position of the light
-typedef struct s_light
-{
-	t_clr	clr;		
-	t_pt	pos;
-}	t_lgt;
-
 // Creates an empty object vector with a capacity of cap.
-// If the allocation is unsecessfull :
+// If the allocation is unsucessfull :
 //	- cap = 0.
 //	- v = NULL.
 t_objv	objv_crt(size_t cap);

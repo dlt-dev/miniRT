@@ -1,23 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   clr_unpack.c                                       :+:      :+:    :+:   */
+/*   wld_dlt.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/30 16:51:51 by cybourge          #+#    #+#             */
-/*   Updated: 2026/04/23 09:52:04 by cybourge         ###   ########.fr       */
+/*   Created: 2026/04/22 13:52:28 by cybourge          #+#    #+#             */
+/*   Updated: 2026/04/22 13:53:50 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "color.h"
+#include "world.h"
 
-t_clr	clr_unpack(uint32_t packed)
+void	wld_dlt(t_wld *wld)
 {
-	return (clr_crt(
-			((packed >> 24) & 0xFF) / 255.0,
-			((packed >> 16) & 0xFF) / 255.0,
-			((packed >> 8) & 0xFF) / 255.0,
-			(packed & 0xFF) / 255.0
-		));
+	if (!wld)
+		return ;
+	objv_dlt(&(wld->objs));
+	lgtv_dlt(&(wld->lgts));
 }

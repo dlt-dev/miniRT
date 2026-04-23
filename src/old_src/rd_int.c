@@ -17,7 +17,7 @@ bool	rd_int(const t_ray *ray, const t_vect3 *disc_o, const t_vect3 *disc_n, doub
 	t_vect3	pln_norm = vect3_unit(*disc_n);
 	t_pln	disc_plane = (t_pln) {*disc_o, pln_norm, (t_color) {0,0,0,0}};
 	//t_hitinfo	nothing;
-	//t_itv		inter = (t_itv){0, INFINITY};
+	//t_itv		inter =  itv_crt(0.0, INFINITY);
 	
 	//bool plane = pln_hit(&disc_plane, (t_ray *)ray, &nothing, &inter);
 	

@@ -6,13 +6,17 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/07 11:43:22 by cybourge          #+#    #+#             */
-/*   Updated: 2026/04/07 12:06:29 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/04/23 10:56:24 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vector4.h"
 
-void	v4_prt_bop(t_cpv4 v1, t_cpv4 v2, t_cpv4 v3, const char *op)
+void	v4_prt_bop(
+	const t_v4 *v1,
+	const t_v4 *v2,
+	const t_v4 *v3,
+	const char *op)
 {
 	int	pad_len;
 
