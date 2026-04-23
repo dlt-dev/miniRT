@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/22 11:37:45 by cybourge          #+#    #+#             */
-/*   Updated: 2026/04/23 13:01:17 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/04/23 13:56:21 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 // Structure that holds the objects and light of a scene
 // objs : geometric object vector
 // lgts : lights
-typedef struct	s_world
+typedef struct s_world
 {
 	t_objv	objs;
 	t_lgtv	lgts;
@@ -55,10 +55,5 @@ t_clr	wld_shd(const t_wld *world, const t_itx *itx);
 // itxv is given to reduce memory allocations,
 // it should have been created before calling this function.
 t_clr	wld_clr_at(const t_wld *world, const t_ray *ray, t_itxv *itxv);
-
-
-
-
-
 
 #endif

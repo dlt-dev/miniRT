@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/26 12:07:44 by cybourge          #+#    #+#             */
-/*   Updated: 2026/04/23 13:54:43 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/04/23 14:01:40 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,17 +33,17 @@ typedef struct s_m44_mat_disp
 typedef struct s_m44_bop_disp
 {
 	t_m44_mat_disp	m[3];
-	char	const	*bop;
+	char const		*bop;
 }	t_m44_bop_disp;
 
 // prt_uop
 typedef struct s_m44_uop_disp
 {
-	char	b1[4][4][64];
-	int		w1[4];
-	char	b2[4][4][64];
-	int		w2[4];
-	char	const	*uop;
+	char		b1[4][4][64];
+	int			w1[4];
+	char		b2[4][4][64];
+	int			w2[4];
+	char const	*uop;
 }	t_m44_uop_disp;
 
 // prt_vprd
@@ -56,11 +56,10 @@ typedef struct s_m44_vprd_disp
 	int		v_w[2];
 }	t_m44_vprd_disp;
 
-
-typedef double	t_m44[M44_SIZE * M44_SIZE];
+typedef double			t_m44[M44_SIZE * M44_SIZE];
 
 // Exists the shorten function prototypes due to the 42 norm.
-typedef const t_m44* t_cpm44;
+typedef const t_m44*	t_cpm44;
 
 // UTILITY FUNCTIONS
 // Zeroes the Matrix, returns -1 on error, 0 otherwise.
@@ -84,10 +83,10 @@ void	m44_prt_vprd(const t_m44 *m1, const t_v4 *v1, const t_v4 *v2);
 void	m44_print_rows(char buf[4][4][64], int col_width[4]);
 // COMMENT TBD
 void	m44_print_row_left(t_m44_vprd_disp *d, int row,
-		const char *left, const char *right);
+			const char *left, const char *right);
 // COMMENT TBD
 void	m44_print_row_right(t_m44_vprd_disp *d, int row,
-	const char *left, const char *right);
+			const char *left, const char *right);
 // Fill the widhts of the matrix.
 void	m44_fill_widths(char buf[4][4][64], int col_width[4]);
 // Fill the buffer with values.

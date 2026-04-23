@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/22 09:21:50 by cybourge          #+#    #+#             */
-/*   Updated: 2026/04/22 09:48:24 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/04/23 13:59:18 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,5 @@ int		lgtv_add(t_lgtv *lgtv, const t_lgt *light);
 
 // Displays the light vector
 void	lgtv_prt(const t_lgtv *lgtv);
-
-
 
 #endif

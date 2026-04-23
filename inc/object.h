@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/03 12:11:44 by cybourge          #+#    #+#             */
-/*   Updated: 2026/04/23 11:58:30 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/04/23 13:58:18 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,6 @@ typedef struct s_sphere
 	double	r;
 }	t_sph;
 
-
 typedef struct s_object
 {
 	t_oty		type;
@@ -90,8 +89,8 @@ typedef struct s_object
 	t_m44		irotm;
 	t_m44		ishem;
 	t_mtl		mtrl;
-	bool		(*hit)(const t_obj*, const t_ray*, t_itxv*);
-	int 		(*nrml)(const t_obj *, const t_pt *, t_v4 *);
+	bool		(*hit)(const t_obj *, const t_ray *, t_itxv *);
+	int			(*nrml)(const t_obj *, const t_pt *, t_v4 *);
 	union
 	{
 		t_sph	sp;
@@ -115,15 +114,15 @@ typedef struct s_object_vector
 // If the allocation is unsucessfull :
 //	- cap = 0.
 //	- v = NULL.
-t_objv	objv_crt(size_t cap);
+t_objv		objv_crt(size_t cap);
 
 // Frees the objv and sets all its field to 0.
-void	objv_dlt(t_objv	*objv);
+void		objv_dlt(t_objv	*objv);
 
 // Adds an object to the object vector.
 // Reallocates twice its capacity if needed.
 // return -1 on error, 0 on success.
-int		objv_add(t_objv *objv, const t_obj *obj);
+int			objv_add(t_objv *objv, const t_obj *obj);
 
 // Returns the string literal corresponding the the object type.
 const char	*oty_prt(t_oty	type);
@@ -157,7 +156,8 @@ t_clr		obj_lgt(const t_obj *obj, const t_lgt *light, const t_itx *data);
 t_obj		sph_crt(void);
 // Returns wether a ray hits a sphere object and adds the intersection to itxv.
 bool		sph_hit(const t_obj *obj, const t_ray *r, t_itxv *itxv);
-// Writes the normalized normal vector to a sphere "obj" at point "pt" into "nrml".
+// Writes the normalized normal vector to a sphere "obj"
+// at point "pt" into "nrml".
 // Returns -1 on error, 0 otherwize.
 int			sph_nrml(const t_obj *obj, const t_pt *pt, t_v4 *nrml);
 

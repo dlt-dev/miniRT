@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/03 12:14:14 by cybourge          #+#    #+#             */
-/*   Updated: 2026/04/23 12:20:38 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/04/23 13:59:06 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 # include "ray.h"
 # include <stdio.h>
 
-typedef struct s_object t_obj;
+typedef struct s_object	t_obj;
 
 // Structure that holds the data resulting from an object hit.
 // obj : The object that was hit.

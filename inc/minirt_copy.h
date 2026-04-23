@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minirt.h                                           :+:      :+:    :+:   */
+/*   minirt_copy.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/30 10:34:58 by cybourge          #+#    #+#             */
-/*   Updated: 2026/03/26 10:59:40 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/04/23 14:03:47 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINIRT_H
-# define MINIRT_H
+#ifndef MINIRT_COPY_H
+# define MINIRT_COPY_H
 
 # include "mlx.h"
 # include <X11/X.h>
@@ -148,10 +148,11 @@ void		ft_putchar(char c);
 void		ft_putnbr(int nb);
 void		display_progressbar(double percent);
 void		display_progress(int i, int j);
-int 		quadratic_roots(double a, double b, double c, t_tuple *roots);
-bool		ray_pln_intersection(const t_ray *ray, const t_pln *plane, double *t);
-bool		rd_int(const t_ray *ray, const t_vect3 *disc_o, const t_vect3 *disc_n, double radius, double *t);
-
+int			quadratic_roots(double a, double b, double c, t_tuple *roots);
+bool		ray_pln_intersection(const t_ray *ray,
+				const t_pln *plane, double *t);
+bool		rd_int(const t_ray *ray, const t_vect3 *disc_o,
+				const t_vect3 *disc_n, double radius, double *t);
 
 double		random_double(double min, double max);
 
@@ -164,18 +165,24 @@ bool		itv_contains(const t_itv *interval, double value);
 bool		itv_surrounds(const t_itv *interval, double value);
 double		itv_clamp(t_itv *interval, double value);
 
-void	hitinfo_set_face_normal(t_hitinfo *hitinfo, const t_ray *ray, const t_vect3 *outward_normal);
+void		hitinfo_set_face_normal(t_hitinfo *hitinfo, const t_ray *ray,
+				const t_vect3 *outward_normal);
 
 double		sphere_is_hit(t_sphere *sphere, t_ray *ray);
 bool		sphere_is_hit_test(t_sphere *sphere, t_ray *ray);
-bool		sphere_hit(t_sphere *sphere, t_ray *ray, t_hitinfo *info, t_itv *iterval);
-bool		pln_hit(t_pln *plane, t_ray *ray, t_hitinfo *info, t_itv *interval);
-bool		cldr_hit(t_cldr *cylinder, t_ray *ray, t_hitinfo *info, t_itv *interval);
-bool		cone_hit(t_cone *cone, t_ray *ray, t_hitinfo *info, t_itv *interval);
-bool		trgl_hit(t_trgl *triangle, t_ray *ray, t_hitinfo *info, t_itv *interval);
+bool		sphere_hit(t_sphere *sphere, t_ray *ray, t_hitinfo *info,
+				t_itv *iterval);
+bool		pln_hit(t_pln *plane, t_ray *ray, t_hitinfo *info,
+				t_itv *interval);
+bool		cldr_hit(t_cldr *cylinder, t_ray *ray, t_hitinfo *info,
+				t_itv *interval);
+bool		cone_hit(t_cone *cone, t_ray *ray, t_hitinfo *info,
+				t_itv *interval);
+bool		trgl_hit(t_trgl *triangle, t_ray *ray, t_hitinfo *info,
+				t_itv *interval);
 
 // Ray Functions
-t_vect3	ray_at(t_ray ray, double t);
-t_color	ray_color(t_ray ray, t_mlx_data *d);
+t_vect3		ray_at(t_ray ray, double t);
+t_color		ray_color(t_ray ray, t_mlx_data *d);
 
 #endif
