@@ -6,61 +6,11 @@
 /*   By: jdelattr <jdelattr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/07 12:33:30 by cybourge          #+#    #+#             */
-/*   Updated: 2026/04/23 11:30:41 by jdelattr         ###   ########.fr       */
+/*   Updated: 2026/04/23 12:15:50 by jdelattr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "matrix.h"
-
-/*typedef struct s_m44_vprd_disp
-{
-	char	m_buf[4][4][64];
-	int		m_w[4];
-	char	v1_buf[4][64];
-	char	v2_buf[4][64];
-	int		v_w[2];
-}t_m44_vprd_disp;*/
-
-// void	m44_prt_vprd(const t_m44 *m1, const t_v4 *v1, const t_v4 *v2)
-// {
-// 	if (!m1 || !v1 || !v2)
-// 		return ;
-// 	printf(
-// 		"╭%8.3f %8.3f %8.3f %8.3f╮   ╭ %8.3f ╮   ╭ %8.3f ╮\n"
-// 		"│%8.3f %8.3f %8.3f %8.3f│ * │ %8.3f │ = │ %8.3f │\n"
-// 		"│%8.3f %8.3f %8.3f %8.3f│   │ %8.3f │   │ %8.3f │\n"
-// 		"╰%8.3f %8.3f %8.3f %8.3f╯   ╰ %8.3f ╯   ╰ %8.3f ╯\n",
-// 		(*m1)[0], (*m1)[1], (*m1)[2], (*m1)[3],
-// 		v1->x, v2->x,
-// 		(*m1)[4], (*m1)[5], (*m1)[6], (*m1)[7],
-// 		v1->y, v2->y,
-// 		(*m1)[8], (*m1)[9], (*m1)[10], (*m1)[11],
-// 		v1->z, v2->z,
-// 		(*m1)[12], (*m1)[13], (*m1)[14], (*m1)[15],
-// 		v1->w, v2->w
-// 		);
-// }
-
-/*static void	m44_fmt_value(double value, char out[64])
-{
-	int	end;
-
-	if (value == 0.0)
-	{
-		out[0] = '0';
-		out[1] = '\0';
-		return ;
-	}
-	snprintf(out, 64, " %.17g", value);
-	end = (int)strlen(out) - 1;
-	while (end > 0 && out[end] == '0')
-	{
-		out[end] = '\0';
-		end--;
-	}
-	if (end > 0 && out[end] == '.')
-		out[end] = '\0';
-}*/
 
 static void	m44_fill_mat(const t_m44 *m1, char m_buf[4][4][64], int m_w[4])
 {
