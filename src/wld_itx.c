@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/23 10:47:26 by cybourge          #+#    #+#             */
-/*   Updated: 2026/04/23 11:10:41 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/04/23 13:51:36 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	wld_itx(const t_wld *world, const t_ray *ray, t_itxv *itxv)
 {
 	size_t	i;
-	
+
 	if (!world || !ray || !itxv)
 		return (-1);
 	i = 0;

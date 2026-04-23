@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   m44_prt_vprd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jdelattr <jdelattr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/07 12:33:30 by cybourge          #+#    #+#             */
-/*   Updated: 2026/04/23 12:15:50 by jdelattr         ###   ########.fr       */
+/*   Updated: 2026/04/23 13:53:53 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,36 +55,6 @@ static void	m44_fill_vec(const t_v4 *v, char v_buf[4][64], int *v_w)
 			*v_w = len;
 		row++;
 	}
-}
-
-static void	m44_print_row_left(t_m44_vprd_disp *d, int row,
-		const char *left, const char *right)
-{
-	int		col;
-
-	printf("%s", left);
-	col = 0;
-	while (col < 4)
-	{
-		printf(" %*s", d->m_w[col], d->m_buf[row][col]);
-		col++;
-	}
-	printf(" %s", right);
-	if (row == 1)
-		printf(" * ");
-	else
-		printf("   ");
-	printf("%s %*s %s", left, d->v_w[0], d->v1_buf[row], right);
-	if (row == 1)
-		printf(" = ");
-	else
-		printf("   ");
-}
-
-static void	m44_print_row_right(t_m44_vprd_disp *d, int row,
-		const char *left, const char *right)
-{
-	printf("%s %*s %s\n", left, d->v_w[1], d->v2_buf[row], right);
 }
 
 static void	m44_print_vprd(t_m44_vprd_disp *d)

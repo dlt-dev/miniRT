@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   matrix.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jdelattr <jdelattr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/26 12:07:44 by cybourge          #+#    #+#             */
-/*   Updated: 2026/04/23 12:14:39 by jdelattr         ###   ########.fr       */
+/*   Updated: 2026/04/23 13:54:43 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,13 @@ typedef struct s_m44_mat_disp
 {
 	char	b[4][4][64];
 	int		w[4];
-}t_m44_mat_disp;
+}	t_m44_mat_disp;
 
 typedef struct s_m44_bop_disp
 {
 	t_m44_mat_disp	m[3];
 	char	const	*bop;
-}t_m44_bop_disp;
+}	t_m44_bop_disp;
 
 // prt_uop
 typedef struct s_m44_uop_disp
@@ -44,7 +44,7 @@ typedef struct s_m44_uop_disp
 	char	b2[4][4][64];
 	int		w2[4];
 	char	const	*uop;
-}t_m44_uop_disp;
+}	t_m44_uop_disp;
 
 // prt_vprd
 typedef struct s_m44_vprd_disp
@@ -54,7 +54,7 @@ typedef struct s_m44_vprd_disp
 	char	v1_buf[4][64];
 	char	v2_buf[4][64];
 	int		v_w[2];
-}t_m44_vprd_disp;
+}	t_m44_vprd_disp;
 
 
 typedef double	t_m44[M44_SIZE * M44_SIZE];
@@ -82,6 +82,12 @@ void	m44_prt_vprd(const t_m44 *m1, const t_v4 *v1, const t_v4 *v2);
 
 // Fill the rows of the matrix.
 void	m44_print_rows(char buf[4][4][64], int col_width[4]);
+// COMMENT TBD
+void	m44_print_row_left(t_m44_vprd_disp *d, int row,
+		const char *left, const char *right);
+// COMMENT TBD
+void	m44_print_row_right(t_m44_vprd_disp *d, int row,
+	const char *left, const char *right);
 // Fill the widhts of the matrix.
 void	m44_fill_widths(char buf[4][4][64], int col_width[4]);
 // Fill the buffer with values.
