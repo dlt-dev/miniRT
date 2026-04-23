@@ -1,33 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test_wld.c                                         :+:      :+:    :+:   */
+/*   material.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/22 14:00:19 by cybourge          #+#    #+#             */
-/*   Updated: 2026/04/23 11:33:00 by cybourge         ###   ########.fr       */
+/*   Created: 2026/04/23 11:11:32 by cybourge          #+#    #+#             */
+/*   Updated: 2026/04/23 11:25:58 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "world.h"
+#ifndef MATERIAL_H
+# define MATERIAL_H
 
+# include "color.h"
 
-int	main(void)
+// Material for a Phong Lighting model.
+typedef	struct s_material
 {
-	t_wld	wld;
-	t_ray	ray;
-	t_itxv	itxv;
-	t_itx	hit;
+	t_clr	clr;
+	double	amb;
+	double	dif;
+	double	spc;
+	double	shi;
+}	t_mtl;
 
-	ray = (t_ray) {.o = pt_crt(0, 0, -5), .dir = v4_crt(0,0,1)};
-	wld_ini_dflt(&wld);
-	itxv = itxv_crt(1);
-	wld_itx(&wld, &ray, &itxv);
-	hit = itxv_hit(&itxv);
-	itx_ini(&hit, &ray);
-	// need prt itx here
-	itxv_prt(&itxv);
-	wld_prt(&wld);
-	return (0);
-}
+#endif

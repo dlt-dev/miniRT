@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/01 11:16:57 by cybourge          #+#    #+#             */
-/*   Updated: 2026/04/22 14:14:56 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/04/23 11:27:16 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,11 @@ t_obj	sph_crt(void)
 	m44_idm(&(sphere.irotm));
 	m44_idm(&(sphere.shem));
 	m44_idm(&(sphere.ishem));
-	sphere.mtrl = (t_mtl){clr_unpack(WHITE), 0.1, 0.9, 0.9, 200.0};
+	sphere.mtrl.clr = clr_unpack(WHITE);
+	sphere.mtrl.amb = 0.1;
+	sphere.mtrl.dif = 0.9;
+	sphere.mtrl.spc = 0.9;
+	sphere.mtrl.shi = 200.0;
+	sphere.hit = sph_hit;
 	return (sphere);
 }
