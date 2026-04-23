@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/22 11:37:45 by cybourge          #+#    #+#             */
-/*   Updated: 2026/04/23 10:57:18 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/04/23 13:01:17 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,18 @@ int		wld_add_obj(t_wld *wld, const t_obj *obj);
 // Returns -1 on error, 0 otherwise.
 int		wld_add_lgt(t_wld *wld, const t_lgt *light);
 
-// Writes the intersections of ray with world in inter.
+// Writes the intersections of ray with world in itxv.
 // Returns -1 on error, 0 otherwise.
 int		wld_itx(const t_wld *world, const t_ray *ray, t_itxv *itxv);
+
+// Returns the color at the intersection.
+// shd : Shading
+t_clr	wld_shd(const t_wld *world, const t_itx *itx);
+
+// Returns the color of the ray.
+// itxv is given to reduce memory allocations,
+// it should have been created before calling this function.
+t_clr	wld_clr_at(const t_wld *world, const t_ray *ray, t_itxv *itxv);
 
 
 

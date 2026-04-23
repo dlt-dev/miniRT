@@ -6,14 +6,14 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/30 10:33:54 by cybourge          #+#    #+#             */
-/*   Updated: 2026/04/23 11:40:55 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/04/23 13:48:43 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 #include <stdio.h>
 
-/*
+
 typedef struct	s_simple_scene
 {
 	t_pt	ro;		// Ray origin.
@@ -22,7 +22,7 @@ typedef struct	s_simple_scene
 	int		cvs_px;	// Canvas pixels count.
 	double	px_siz;	// Pixel size.
 	double	half;	// Midpoint on the wall.
-	t_obj	obj1;	// Object we want to draw.
+	t_wld	wld;	// Object we want to draw.
 }	t_ssc;
 
 static int	draw_simple_scene(t_mlx_data *data)
@@ -34,8 +34,8 @@ static int	draw_simple_scene(t_mlx_data *data)
 	double	world_x;
 	t_v4	position;
 	t_ray	ray;
-	t_lgt	light;
 	t_itxv	itxv;
+	t_clr	clr;
 
 	if (data->mlx_win == NULL)
 		return (1);
@@ -47,24 +47,30 @@ static int	draw_simple_scene(t_mlx_data *data)
 	scene.cvs_px = WIN_H;
 	scene.px_siz = scene.wall_s / scene.cvs_px;
 	scene.half = scene.wall_s / 2.0;
-	scene.obj1 = sph_crt();
-	scene.obj1.mtrl.amb = 0.1;
-	scene.obj1.mtrl.spc = 0.8;
-	scene.obj1.mtrl.shi = 0.99999;
-	scene.obj1.mtrl.clr = clr_unpack(0x001F31FF);
+	wld_ini_dflt(&(scene.wld));
+	scene.wld.objs.v[0].mtrl.amb = 0.1;
+	scene.wld.objs.v[0].mtrl.spc = 0.8;
+	scene.wld.objs.v[0].mtrl.shi = 0.8;
+	scene.wld.objs.v[0].mtrl.clr = clr_unpack(BLUE);
+	scene.wld.objs.v[1].mtrl.amb = 0.3;
+	scene.wld.objs.v[1].mtrl.clr = clr_unpack(RED);
 
-	light.pos = pt_crt(-10, 10, -10);
-	light.clr = clr_unpack(WHITE);
-	light.clr = clr_mul(light.clr, 0.75);
+	scene.wld.lgts.v[0].clr = clr_mul(scene.wld.lgts.v[0].clr, 0.75);
 
 	itxv = itxv_crt(2);
 	
-	obj_trl(&(scene.obj1), 1, 0, 2);
-	obj_rot(&(scene.obj1), 3, 4, 6);
-	obj_scl(&(scene.obj1), 0.5, 0.5, 0.5);
-	obj_she(&(scene.obj1), (t_spara){1,0.0,0,0,0,0});
-	// obj_trl(&(scene.obj1), -1, 0, -2);
-	obj_trf(&(scene.obj1));
+	obj_trl(&(scene.wld.objs.v[0]), 1, 0, 2);
+	obj_rot(&(scene.wld.objs.v[0]), 3, 4, 6);
+	obj_scl(&(scene.wld.objs.v[0]), 0.5, 0.5, 0.5);
+	obj_she(&(scene.wld.objs.v[0]), (t_spara){1,0.0,0,0,0,0});
+	//obj_trl(&(scene.wld.objs.v[0]), -1, 0, -2);
+	obj_trl(&(scene.wld.objs.v[1]), -1, 0, -2);
+	obj_rot(&(scene.wld.objs.v[1]), 3, 4, 6);
+	obj_scl(&(scene.wld.objs.v[1]), 0.5, 0.5, 0.5);
+	obj_she(&(scene.wld.objs.v[1]), (t_spara){1,0.0,0,0,0,0});
+	
+	obj_trf(&(scene.wld.objs.v[0]));
+	obj_trf(&(scene.wld.objs.v[1]));
 	y = 0;
 	while (y < WIN_H)
 	{
@@ -75,18 +81,8 @@ static int	draw_simple_scene(t_mlx_data *data)
 			world_x = -scene.half + scene.px_siz * x;
 			position = v4_crt(world_x, world_y, scene.wall_s);
 			ray = (t_ray){scene.ro, v4_uni(v4_sub(position, scene.ro))};
-			if (sph_hit(&(scene.obj1), &ray, &itxv))
-			{
-				itxv_sort(&itxv);
-				t_itx	itx = itxv_hit(&itxv);
-				itx_ini(&itx, &ray);
-				sph_nrml(itx.obj, &(itx.hp), &(itx.nrm));
-				t_clr	clr = obj_lgt(itx.obj, &light, &itx);
-				img_pix_put(&(data->img), x, y, clr_pack(clr));
-				itxv_clr(&itxv);
-			}
-			else
-				img_pix_put(&(data->img), x, y, BLACK);
+			clr = wld_clr_at(&(scene.wld), &ray, &itxv);
+			img_pix_put(&(data->img), x, y, clr_pack(clr));
 			x++;
 			display_progress(x, y);
 		}
@@ -112,4 +108,3 @@ int	main(void)
 	free_mlx_data(&data);
 	return (0);
 }
-*/

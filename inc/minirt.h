@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jdelattr <jdelattr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/30 10:34:58 by cybourge          #+#    #+#             */
-/*   Updated: 2026/04/23 11:16:50 by jdelattr         ###   ########.fr       */
+/*   Updated: 2026/04/23 13:33:13 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,10 @@
 # include "vector4.h"
 # include "ray.h"
 # include "object.h"
+# include "world.h"
 
-# define WIN_H 1002
-# define WIN_W 1002
+# define WIN_H 1000
+# define WIN_W 1000
 # define WIN_NAME "minirt"
 
 # define BAR_WIDTH 50

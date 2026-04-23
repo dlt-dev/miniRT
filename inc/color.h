@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/26 09:38:16 by cybourge          #+#    #+#             */
-/*   Updated: 2026/04/23 10:31:25 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/04/23 13:38:01 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,10 @@
 
 # include "interval.h"
 # include <stdint.h>
-# define BLACK 0x00000000
-# define WHITE 0x00FFFFFF
+# define BLACK	0x00000000
+# define WHITE	0x00FFFFFF
+# define BLUE	0x001F31FF
+# define RED	0x00B51922
 
 typedef struct color
 {
