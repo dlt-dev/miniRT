@@ -1,23 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   clr_unpack.c                                       :+:      :+:    :+:   */
+/*   clr_crt.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/30 16:51:51 by cybourge          #+#    #+#             */
-/*   Updated: 2026/04/23 09:52:04 by cybourge         ###   ########.fr       */
+/*   Created: 2026/04/23 09:41:30 by cybourge          #+#    #+#             */
+/*   Updated: 2026/04/23 09:42:53 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "color.h"
 
-t_clr	clr_unpack(uint32_t packed)
+t_clr	clr_crt(double t, double r, double g, double b)
 {
-	return (clr_crt(
-			((packed >> 24) & 0xFF) / 255.0,
-			((packed >> 16) & 0xFF) / 255.0,
-			((packed >> 8) & 0xFF) / 255.0,
-			(packed & 0xFF) / 255.0
-		));
+	t_clr	clr;
+
+	clr.t = t;
+	clr.r = r;
+	clr.g = g;
+	clr.b = b;
+	return (clr);
 }

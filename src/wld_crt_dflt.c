@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/22 13:17:37 by cybourge          #+#    #+#             */
-/*   Updated: 2026/04/22 14:08:51 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/04/23 09:43:27 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	wld_ini_dflt(t_wld *wld)
 	if (wld->lgts.cap == 0)
 		return (objv_dlt(&(wld->objs)), -1);
 	wld->objs.v[0] = sph_crt();
-	wld->objs.v[0].mtrl.clr = (t_clr){0, 0.8, 1.0, 0.6};
+	wld->objs.v[0].mtrl.clr = clr_crt(0, 0.8, 1.0, 0.6);
 	wld->objs.v[0].mtrl.dif = 0.7;
 	wld->objs.v[0].mtrl.spc = 0.2;
 	wld->objs.v[1] = sph_crt();
