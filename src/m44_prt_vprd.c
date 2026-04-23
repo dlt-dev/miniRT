@@ -6,20 +6,20 @@
 /*   By: jdelattr <jdelattr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/07 12:33:30 by cybourge          #+#    #+#             */
-/*   Updated: 2026/04/22 15:32:12 by jdelattr         ###   ########.fr       */
+/*   Updated: 2026/04/23 11:30:41 by jdelattr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "matrix.h"
 
-typedef struct s_m44_vprd_disp
+/*typedef struct s_m44_vprd_disp
 {
 	char	m_buf[4][4][64];
 	int		m_w[4];
 	char	v1_buf[4][64];
 	char	v2_buf[4][64];
 	int		v_w[2];
-}t_m44_vprd_disp;
+}t_m44_vprd_disp;*/
 
 // void	m44_prt_vprd(const t_m44 *m1, const t_v4 *v1, const t_v4 *v2)
 // {
@@ -41,7 +41,7 @@ typedef struct s_m44_vprd_disp
 // 		);
 // }
 
-static void	m44_fmt_value(double value, char out[64])
+/*static void	m44_fmt_value(double value, char out[64])
 {
 	int	end;
 
@@ -60,7 +60,7 @@ static void	m44_fmt_value(double value, char out[64])
 	}
 	if (end > 0 && out[end] == '.')
 		out[end] = '\0';
-}
+}*/
 
 static void	m44_fill_mat(const t_m44 *m1, char m_buf[4][4][64], int m_w[4])
 {

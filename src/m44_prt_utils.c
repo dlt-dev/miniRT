@@ -6,13 +6,13 @@
 /*   By: jdelattr <jdelattr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/22 15:23:59 by jdelattr          #+#    #+#             */
-/*   Updated: 2026/04/22 15:25:00 by jdelattr         ###   ########.fr       */
+/*   Updated: 2026/04/23 11:25:41 by jdelattr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "matrix.h"
 
-static void	m44_fmt_value(double value, char out[64])
+void	m44_fmt_value(double value, char out[64])
 {
 	int	end;
 
@@ -33,7 +33,7 @@ static void	m44_fmt_value(double value, char out[64])
 		out[end] = '\0';
 }
 
-static void	m44_set_borders(char **left, char **right)
+void	m44_set_borders(char **left, char **right)
 {
 	left[0] = "╭";
 	left[1] = "│";
@@ -45,7 +45,7 @@ static void	m44_set_borders(char **left, char **right)
 	right[3] = "╯";
 }
 
-static void	m44_fill_buf(const t_m44 *m, char buf[4][4][64])
+void	m44_fill_buf(const t_m44 *m, char buf[4][4][64])
 {
 	int	row;
 	int	col;
@@ -63,7 +63,7 @@ static void	m44_fill_buf(const t_m44 *m, char buf[4][4][64])
 	}
 }
 
-static void	m44_fill_widths(char buf[4][4][64], int col_width[4])
+void	m44_fill_widths(char buf[4][4][64], int col_width[4])
 {
 	int	row;
 	int	col;
@@ -85,7 +85,7 @@ static void	m44_fill_widths(char buf[4][4][64], int col_width[4])
 	}
 }
 
-static void	m44_print_rows(char buf[4][4][64], int col_width[4])
+void	m44_print_rows(char buf[4][4][64], int col_width[4])
 {
 	char	*left[4];
 	char	*right[4];

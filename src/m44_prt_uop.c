@@ -6,20 +6,20 @@
 /*   By: jdelattr <jdelattr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/07 10:06:27 by cybourge          #+#    #+#             */
-/*   Updated: 2026/04/22 15:32:54 by jdelattr         ###   ########.fr       */
+/*   Updated: 2026/04/23 11:30:02 by jdelattr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "matrix.h"
 
-typedef struct s_m44_uop_disp
+/*typedef struct s_m44_uop_disp
 {
 	char	b1[4][4][64];
 	int		w1[4];
 	char	b2[4][4][64];
 	int		w2[4];
 	char	const	*uop;
-}t_m44_uop_disp;
+}t_m44_uop_disp;*/
 
 // void	m44_prt_uop(const t_m44 *m1, const t_m44 *m2, const char *uop)
 // {
@@ -47,7 +47,7 @@ typedef struct s_m44_uop_disp
 // 		);
 // }
 
-static void	m44_fmt_value(double value, char out[64])
+/*static void	m44_fmt_value(double value, char out[64])
 {
 	int	end;
 
@@ -66,7 +66,7 @@ static void	m44_fmt_value(double value, char out[64])
 	}
 	if (end > 0 && out[end] == '.')
 		out[end] = '\0';
-}
+}*/
 
 static void	m44_fill_mat(const t_m44 *m, char buf[4][4][64], int col_w[4])
 {
