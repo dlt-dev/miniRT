@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/03 12:14:14 by cybourge          #+#    #+#             */
-/*   Updated: 2026/04/23 11:32:47 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/04/23 12:20:38 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ typedef struct s_object t_obj;
 // hp : Hit Point in World Space
 // rd : the ray's direction vector from which the hit resulted.
 // nrm : normal vector to the surface at the hitpoint.
+// in : Wether the intersection happens from inside the object or not.
 typedef struct s_intersection
 {
 	const t_obj	*obj;
@@ -34,6 +35,7 @@ typedef struct s_intersection
 	t_pt		hp;
 	t_v4		rd;
 	t_v4		nrm;
+	bool		in;
 }	t_itx;
 
 // Vector structure that holds intersections
@@ -47,10 +49,10 @@ typedef struct s_intersection_vector
 	t_itx	*v;
 }	t_itxv;
 
-// Initialises the hit information of the itx, 
+// Calculates the hit information of the itx, 
 // the obj and t fields must have been set before calling this function.
 // returns -1 on error, 0 otherwise.
-int		itx_ini(t_itx *itx, const t_ray *ray);
+int		itx_cal(t_itx *itx, const t_ray *ray);
 
 // Displays the intersection and its fields.
 void	itx_prt(const t_itx *itx);

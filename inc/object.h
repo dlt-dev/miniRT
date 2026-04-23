@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/03 12:11:44 by cybourge          #+#    #+#             */
-/*   Updated: 2026/04/23 11:12:41 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/04/23 11:58:30 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,7 @@ typedef struct s_object
 	t_m44		ishem;
 	t_mtl		mtrl;
 	bool		(*hit)(const t_obj*, const t_ray*, t_itxv*);
+	int 		(*nrml)(const t_obj *, const t_pt *, t_v4 *);
 	union
 	{
 		t_sph	sp;

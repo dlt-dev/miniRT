@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/22 14:00:19 by cybourge          #+#    #+#             */
-/*   Updated: 2026/04/23 11:33:00 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/04/23 12:19:39 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ int	main(void)
 	itxv = itxv_crt(1);
 	wld_itx(&wld, &ray, &itxv);
 	hit = itxv_hit(&itxv);
-	itx_ini(&hit, &ray);
-	// need prt itx here
+	itx_cal(&hit, &ray);
+	itx_prt(&hit);
 	itxv_prt(&itxv);
 	wld_prt(&wld);
 	return (0);

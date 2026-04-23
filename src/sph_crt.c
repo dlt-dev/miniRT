@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/01 11:16:57 by cybourge          #+#    #+#             */
-/*   Updated: 2026/04/23 11:27:16 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/04/23 12:02:24 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,5 +36,6 @@ t_obj	sph_crt(void)
 	sphere.mtrl.spc = 0.9;
 	sphere.mtrl.shi = 200.0;
 	sphere.hit = sph_hit;
+	sphere.nrml = sph_nrml;
 	return (sphere);
 }
