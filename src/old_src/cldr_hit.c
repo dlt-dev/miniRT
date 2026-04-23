@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/10 09:39:09 by cybourge          #+#    #+#             */
-/*   Updated: 2026/03/25 14:06:10 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/04/23 09:58:19 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int	inf_cyl_roots(const t_cldr *cyl, const t_ray *ray, t_tuple *res)
 static
 void	set_root(const t_cldr_idata *data, t_qr *rts, double r)
 {
-	const t_itv	cyl_bounds = (t_itv){0.0, data->cyl->h};
+	const t_itv	cyl_bounds =  itv_crt(0.0, data->cyl->h);
 	t_vect3		c_to_hp;
 	
 	if (!isnan(r) && r > 0.0)
