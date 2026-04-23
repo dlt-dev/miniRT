@@ -1,32 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   material.h                                         :+:      :+:    :+:   */
+/*   cam_prt.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/23 11:11:32 by cybourge          #+#    #+#             */
-/*   Updated: 2026/04/23 17:41:45 by cybourge         ###   ########.fr       */
+/*   Created: 2026/04/23 15:45:28 by cybourge          #+#    #+#             */
+/*   Updated: 2026/04/23 16:12:48 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MATERIAL_H
-# define MATERIAL_H
+#include "camera.h"
 
-# include "color.h"
-
-// Material for a Phong Lighting model.
-typedef struct s_material
+void	cam_prt(const t_cam *cam)
 {
-	t_clr	clr;
-	double	amb;
-	double	dif;
-	double	spc;
-	double	shi;
-}	t_mtl;
-
-// Sets the value of a material to default values.
-// TBD !!!!!
-void	mtl_ini(const t_mtl *mtl);
-
-#endif
+	printf("Camera (%ld x %ld) :\n", cam->hsz, cam->vsz);
+	printf("FOV: %lf, Half-Width: %lf, Half-Height: %lf, Pixel Size: %lf\n",
+		cam->fov, cam->hwi, cam->hhe, cam->pxs);
+	printf("Transformation Matrix :\n");
+	m44_prt(&(cam->vtf));
+}

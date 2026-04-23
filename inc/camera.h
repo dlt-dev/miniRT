@@ -6,28 +6,44 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/03 15:24:47 by cybourge          #+#    #+#             */
-/*   Updated: 2026/04/01 08:03:26 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/04/23 17:07:32 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CAMERA_H
 # define CAMERA_H
 
-# include "v3.h"
+# include "matrix.h"
+# include "ray.h"
+# include "world.h"
 
+// hsz : Horizontal size (Pixels)
+// vsz : Vertical size (Pixels)
+// fov : Field of View (Radiant)
+// hwi  : Half-Width
+// hhe  : Half-Height
+// pxs : Pixel Size
+// vtf : View Transform Matrix
+// ivtf : Inverse of the View Transform Matrix.
 typedef struct s_camera
 {
-	double		foc_l;
-	t_v3		cam_c;
-	double		vp_h;	// viewport height
-	double		vp_w;	// viewport width
-	t_v3		vp_u;	// viewport horizontal vector
-	t_v3		vp_v;	// viewport vertical vector
-	t_v3		pix_du; // viewport horizontal delta vector from pixel to pixel
-	t_v3		pix_dv; // viewport vertical delta vector from pixel to pixel
-	t_point		p00_lc; // position of the upper left pixel of the viewport
-}			t_camera;
+	size_t	hsz;
+	size_t	vsz;
+	double	fov;
+	double	hwi;
+	double	hhe;
+	double	pxs;
+	t_m44	vtf;
+	t_m44	ivtf;
+}	t_cam;
 
-t_camera	camera_setup(int img_h, int img_w);
+// Creates a camera with identity matrix as its default view transform.
+void	cam_ini(t_cam *cam, size_t hsize, size_t vsize, double fov);
+
+// Displays the camera.
+void	cam_prt(const t_cam *cam);
+
+// Generates a ray that passes through the pixel P(px,py).
+t_ray	cam_gen_ray(const t_cam *cam, unsigned int px, unsigned int py);
 
 #endif

@@ -3,17 +3,17 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jdelattr <jdelattr@student.42.fr>          +#+  +:+       +#+         #
+#    By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/06/23 12:34:16 by cybourge          #+#    #+#              #
-#    Updated: 2026/04/22 14:49:13 by jdelattr         ###   ########.fr        #
+#    Updated: 2026/04/23 18:24:08 by cybourge         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # ls -1 src | sed ':a;N;$!ba;s/\n/\\\n/g'
 
 CC = cc
-C_FLAGS = -Wall -Wextra -Werror -MMD 
+C_FLAGS = -Wall -Wextra -Werror -MMD -g
 #-o1
 
 RED = \033[31;1;3m

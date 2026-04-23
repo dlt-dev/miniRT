@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/30 10:34:58 by cybourge          #+#    #+#             */
-/*   Updated: 2026/04/23 13:33:13 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/04/23 17:27:33 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@
 # include "ray.h"
 # include "object.h"
 # include "world.h"
+# include "camera.h"
 
 # define WIN_H 1000
 # define WIN_W 1000
@@ -63,5 +64,12 @@ int			handle_x_button(t_mlx_data *data);
 void		img_pix_put(t_img *img, int x, int y, int color);
 int			init_mlx_data(t_mlx_data *d);
 void		free_mlx_data(t_mlx_data *data);
+
+// Renders the world as seen through the camera.
+int		render(
+				t_mlx_data *data,
+				const t_cam *camera,
+				const t_wld *world
+			);
 
 #endif
