@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/30 10:34:58 by cybourge          #+#    #+#             */
-/*   Updated: 2026/04/24 08:13:40 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/04/24 10:45:42 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@
 # include "world.h"
 # include "camera.h"
 
-# define WIN_H 1370
-# define WIN_W 2560
+# define WIN_H 1080
+# define WIN_W 1920
 # define WIN_NAME "minirt"
 
 # define BAR_WIDTH 50
@@ -57,19 +57,45 @@ typedef struct s_mlx_data
 	bool		update;
 }			t_mlx_data;
 
-// MLX FUNCTIONS
-void		close_display(t_mlx_data *data);
-int			handle_keypress(int keysym, t_mlx_data *data);
-int			handle_x_button(t_mlx_data *data);
-void		img_pix_put(t_img *img, int x, int y, int color);
-int			init_mlx_data(t_mlx_data *d);
-void		free_mlx_data(t_mlx_data *data);
+typedef struct s_scene
+{
+	t_mlx_data	mlx;
+	t_wld		world;
+	t_cam		camera;
+	t_itxv		itxv;
+}	t_scn;
 
-// Renders the world as seen through the camera.
-int		render(
-				t_mlx_data *data,
-				const t_cam *camera,
-				const t_wld *world
-			);
+// Structure that holds variables used in rendering a scene : 42 norm
+typedef struct s_render_utils
+{
+	size_t	x;
+	size_t	y;
+	t_ray	ray;
+	t_clr	clr;
+}	t_rdr_utils;
+
+// MLX FUNCTIONS
+void	close_display(t_mlx_data *data);
+int		handle_keypress(int keysym, t_mlx_data *data);
+int		handle_x_button(t_mlx_data *data);
+void	img_pix_put(t_img *img, int x, int y, int color);
+int		init_mlx_data(t_mlx_data *d);
+void	free_mlx_data(t_mlx_data *data);
+
+// Renders the scene's world as seen through the scene's camera
+// using the scene's mlx parameters.
+int		scn_render(t_scn *scene);
+
+// Utility function to setup the objects in the world
+int		scn_dflt_objs(t_wld *world);
+
+// Utility function to setup the lights in the world.
+int		scn_dflt_lgts(t_wld *world);
+
+// Utility function to setup the camera.
+int		scn_dflt_cam(t_cam *camera);
+
+// Utility function to setup the whole scene.
+int		scn_setup(t_scn *scene);
 
 #endif

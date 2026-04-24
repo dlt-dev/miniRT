@@ -6,13 +6,17 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/21 14:19:52 by cybourge          #+#    #+#             */
-/*   Updated: 2026/04/24 09:47:53 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/04/24 09:53:27 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "object.h"
 
-t_clr	obj_lgt(const t_obj *obj, const t_lgt *light, const t_itx *data, bool shadowed)
+t_clr	obj_lgt(
+	const t_obj *obj,
+	const t_lgt *light,
+	const t_itx *data,
+	bool shadowed)
 {
 	t_obj_lgt	l;
 

@@ -1,0 +1,27 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   scn_setup.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/04/24 10:34:22 by cybourge          #+#    #+#             */
+/*   Updated: 2026/04/24 10:41:09 by cybourge         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "minirt.h"
+
+int	scn_setup(t_scn *scene)
+{
+	if (scn_dflt_objs(&(scene->world)) < 0)
+		return (-1);
+	if (scn_dflt_lgts(&(scene->world)) < 0)
+		return (-1);
+	if (scn_dflt_cam(&(scene->camera)) < 0)
+		return (-1);
+	scene->itxv = itxv_crt(10);
+	if (scene->itxv.v == NULL)
+		return (-1);
+	return (0);
+}
