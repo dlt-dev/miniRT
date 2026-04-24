@@ -1,30 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   wld_clr_at.c                                       :+:      :+:    :+:   */
+/*   test_shadows.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/23 12:50:08 by cybourge          #+#    #+#             */
-/*   Updated: 2026/04/24 09:19:30 by cybourge         ###   ########.fr       */
+/*   Created: 2026/04/24 08:52:46 by cybourge          #+#    #+#             */
+/*   Updated: 2026/04/24 09:29:55 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "world.h"
+#include "minirt.h"
 
-// If no objects are hit, Returns BLACK as default.
-t_clr	wld_clr_at(const t_wld *world, const t_ray *ray, t_itxv *itxv)
+/*
+int main(void)
 {
-	t_itx	hit;
-	t_clr	clr;
-
-	itxv_clr(itxv);
-	wld_itx(world, ray, itxv);
-	hit = itxv_hit(itxv);
-	itxv_clr(itxv);
-	if (hit.obj == NULL)
-		return (clr_unpack(BLACK));
-	itx_cal(&hit, ray);
-	clr = wld_shd(world, &hit, itxv);
-	return (clr);
+	
+	return (0);
 }
+*/

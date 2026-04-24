@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/22 11:37:45 by cybourge          #+#    #+#             */
-/*   Updated: 2026/04/23 13:56:21 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/04/24 09:20:17 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int		wld_itx(const t_wld *world, const t_ray *ray, t_itxv *itxv);
 
 // Returns the color at the intersection.
 // shd : Shading
-t_clr	wld_shd(const t_wld *world, const t_itx *itx);
+t_clr	wld_shd(const t_wld *world, const t_itx *itx, t_itxv *itxv);
 
 // Returns the color of the ray.
 // itxv is given to reduce memory allocations,

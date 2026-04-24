@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/03 12:14:14 by cybourge          #+#    #+#             */
-/*   Updated: 2026/04/23 13:59:06 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/04/24 09:38:04 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,17 +22,20 @@
 typedef struct s_object	t_obj;
 
 // Structure that holds the data resulting from an object hit.
-// obj : The object that was hit.
-// t : the parameter along the ray for which the object is hit.
-// hp : Hit Point in World Space
-// rd : the ray's direction vector from which the hit resulted.
-// nrm : normal vector to the surface at the hitpoint.
-// in : Wether the intersection happens from inside the object or not.
+// obj	: The object that was hit.
+// t	: the parameter along the ray for which the object is hit.
+// hp	: Hit Point in World Space
+// ohp	: Over Hit Point, Hit point but slightly elevated by the normal.
+//			Used to remove shadow acne.
+// rd	: the ray's direction vector from which the hit resulted.
+// nrm	: normal vector to the surface at the hitpoint.
+// in	: Wether the intersection happens from inside the object or not.
 typedef struct s_intersection
 {
 	const t_obj	*obj;
 	double		t;
 	t_pt		hp;
+	t_pt		ohp;
 	t_v4		rd;
 	t_v4		nrm;
 	bool		in;

@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/03 12:11:44 by cybourge          #+#    #+#             */
-/*   Updated: 2026/04/23 13:58:18 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/04/24 09:15:25 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -151,7 +151,7 @@ int			obj_trf(t_obj *obj);
 
 // Lights an object.
 // Returns the color.
-t_clr		obj_lgt(const t_obj *obj, const t_lgt *light, const t_itx *data);
+t_clr		obj_lgt(const t_obj *obj, const t_lgt *light, const t_itx *data, bool shadowed);
 // Returns an instance of a sphere obj with default values.
 t_obj		sph_crt(void);
 // Returns wether a ray hits a sphere object and adds the intersection to itxv.

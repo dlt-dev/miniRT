@@ -6,13 +6,13 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/21 14:19:52 by cybourge          #+#    #+#             */
-/*   Updated: 2026/04/22 14:42:50 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/04/24 09:47:53 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "object.h"
 
-t_clr	obj_lgt(const t_obj *obj, const t_lgt *light, const t_itx *data)
+t_clr	obj_lgt(const t_obj *obj, const t_lgt *light, const t_itx *data, bool shadowed)
 {
 	t_obj_lgt	l;
 
@@ -20,7 +20,7 @@ t_clr	obj_lgt(const t_obj *obj, const t_lgt *light, const t_itx *data)
 	l.lightv = v4_uni(v4_sub(light->pos, data->hp));
 	l.ambient = clr_mul(l.eff_clr, obj->mtrl.amb);
 	l.ldn = v4_dot(l.lightv, data->nrm);
-	if (l.ldn < 0)
+	if (l.ldn < 0 || shadowed)
 	{
 		l.diffuse = clr_unpack(BLACK);
 		l.specular = clr_unpack(BLACK);
