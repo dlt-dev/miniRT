@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/30 10:34:58 by cybourge          #+#    #+#             */
-/*   Updated: 2026/04/24 10:45:42 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/04/24 11:00:36 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@
 # include "world.h"
 # include "camera.h"
 
-# define WIN_H 1080
-# define WIN_W 1920
+# define WIN_H 144
+# define WIN_W 256
 # define WIN_NAME "minirt"
 
 # define BAR_WIDTH 50
@@ -77,25 +77,33 @@ typedef struct s_render_utils
 // MLX FUNCTIONS
 void	close_display(t_mlx_data *data);
 int		handle_keypress(int keysym, t_mlx_data *data);
-int		handle_x_button(t_mlx_data *data);
+int		handle_x_button(t_scn *scene);
 void	img_pix_put(t_img *img, int x, int y, int color);
 int		init_mlx_data(t_mlx_data *d);
 void	free_mlx_data(t_mlx_data *data);
 
 // Renders the scene's world as seen through the scene's camera
 // using the scene's mlx parameters.
+// Returns -1 on error, 0 otherwise.
 int		scn_render(t_scn *scene);
 
 // Utility function to setup the objects in the world
+// Returns -1 on error, 0 otherwise.
 int		scn_dflt_objs(t_wld *world);
 
 // Utility function to setup the lights in the world.
+// Returns -1 on error, 0 otherwise.
 int		scn_dflt_lgts(t_wld *world);
 
 // Utility function to setup the camera.
+// Returns -1 on error, 0 otherwise.
 int		scn_dflt_cam(t_cam *camera);
 
 // Utility function to setup the whole scene.
+// Returns -1 on error, 0 otherwise.
 int		scn_setup(t_scn *scene);
+
+// Deletes the allocated memory in a acene.
+void	scn_dlt(t_scn *scene);
 
 #endif
