@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/30 10:33:54 by cybourge          #+#    #+#             */
-/*   Updated: 2026/04/24 10:52:06 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/04/24 11:26:56 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ int	main(void)
 		return (1);
 	if (scn_setup(&scene) < 0)
 		return (1);
-	mlx_hook(scene.mlx.mlx_win, DestroyNotify, 0,
-		(void *)handle_x_button, &(scene.mlx));
+	mlx_hook(scene.mlx.mlx_win, DestroyNotify, StructureNotifyMask,
+		(void *)handle_x_button, &(scene));
 	mlx_hook(scene.mlx.mlx_win, KeyPress, KeyPressMask,
 		(void *)handle_keypress, &(scene.mlx));
 	mlx_loop_hook(scene.mlx.mlx_ptr, (void *)scn_render, &scene);
