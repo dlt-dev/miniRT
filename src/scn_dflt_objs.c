@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/24 10:22:42 by cybourge          #+#    #+#             */
-/*   Updated: 2026/04/24 10:41:22 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/04/24 14:37:01 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,50 +21,52 @@ static void	setup_bg(t_wld *world)
 	world->objs.v[0] = sph_crt();
 	obj_scl(&(world->objs.v[0]), 10, 0.01, 10);
 	obj_trf(&(world->objs.v[0]));
-	world->objs.v[0].mtrl.clr = clr_crt(0.0, 1.0, 0.9, 0.9);
-	world->objs.v[0].mtrl.spc = 0;
+	world->objs.v[0].mtrl.clr = clr_unpack(0x00171680); //0x002834DB
+	world->objs.v[0].mtrl.spc = 0.1;
 	world->objs.v[1] = sph_crt();
 	obj_scl(&(world->objs.v[1]), 10, 0.01, 10);
 	obj_rot(&(world->objs.v[1]), PI / 2.0, -PI / 4.0, 0.0);
 	obj_trl(&(world->objs.v[1]), 0, 0, 5);
 	obj_trf(&(world->objs.v[1]));
-	world->objs.v[1].mtrl.clr = clr_crt(0.0, 1.0, 0.9, 0.9);
-	world->objs.v[1].mtrl.spc = 0;
+	world->objs.v[1].mtrl.clr = clr_unpack(BLACK); //0x00288edb
+	world->objs.v[1].mtrl.spc = 0.1;
 	world->objs.v[2] = sph_crt();
 	obj_scl(&(world->objs.v[2]), 10, 0.01, 10);
 	obj_rot(&(world->objs.v[2]), PI / 2.0, PI / 4.0, 0.0);
 	obj_trl(&(world->objs.v[2]), 0, 0, 5);
 	obj_trf(&(world->objs.v[2]));
-	world->objs.v[2].mtrl.clr = clr_crt(0.0, 1.0, 0.9, 0.9);
-	world->objs.v[2].mtrl.spc = 0;
+	world->objs.v[2].mtrl.clr = clr_unpack(BLACK);
+	world->objs.v[2].mtrl.spc = 0.1;
 }
 
 // Utility function that sets up the Middle, Left and Right Spheres.
 // Sphere 4 Setup : Middle Sphere
 // Sphere 5 Setup : Right Sphere
 // Sphere 6 Setup : Left Sphere
-static void	setup_ele(t_wld *world)
+static void	setup_ele(t_wld *world, size_t offset)
 {
-	world->objs.v[3] = sph_crt();
-	obj_trl(&(world->objs.v[3]), -0.5, 1.0, 0.5);
-	obj_trf(&(world->objs.v[3]));
-	world->objs.v[3].mtrl.clr = clr_crt(0.0, 0.1, 1.0, 0.5);
-	world->objs.v[3].mtrl.dif = 0.7;
-	world->objs.v[3].mtrl.spc = 0.3;
-	world->objs.v[4] = sph_crt();
-	obj_scl(&(world->objs.v[4]), 0.5, 0.5, 0.5);
-	obj_trl(&(world->objs.v[4]), 1.5, 0.5, -0.5);
-	obj_trf(&(world->objs.v[4]));
-	world->objs.v[4].mtrl.clr = clr_crt(0.0, 0.5, 1.0, 0.1);
-	world->objs.v[4].mtrl.dif = 0.7;
-	world->objs.v[4].mtrl.spc = 0.3;
-	world->objs.v[5] = sph_crt();
-	obj_trl(&(world->objs.v[5]), -1.5, 0.33, -0.75);
-	obj_scl(&(world->objs.v[5]), 0.33, 0.33, 0.33);
-	obj_trf(&(world->objs.v[5]));
-	world->objs.v[5].mtrl.clr = clr_crt(0.0, 1.0, 0.8, 0.1);
-	world->objs.v[5].mtrl.dif = 0.7;
-	world->objs.v[5].mtrl.spc = 0.3;
+	world->objs.v[offset + 0] = sph_crt();
+	obj_trl(&(world->objs.v[offset + 0]), -0.5, 1.0, 0.5);
+	obj_trf(&(world->objs.v[offset + 0]));
+	world->objs.v[offset + 0].mtrl.clr = clr_unpack(0x00db1230);
+	world->objs.v[offset + 0].mtrl.dif = 0.7;
+	world->objs.v[offset + 0].mtrl.spc = 0.3;
+	world->objs.v[offset + 0].mtrl.shi = 10;
+	world->objs.v[offset + 1] = sph_crt();
+	obj_scl(&(world->objs.v[offset + 1]), 0.5, 0.5, 0.5);
+	obj_trl(&(world->objs.v[offset + 1]), 1.5, 0.5, -0.5);
+	obj_trf(&(world->objs.v[offset + 1]));
+	world->objs.v[offset + 1].mtrl.clr = clr_unpack(0x00db2834);
+	world->objs.v[offset + 1].mtrl.dif = 0.5;
+	world->objs.v[offset + 1].mtrl.spc = 0.9;
+	world->objs.v[offset + 2] = sph_crt();
+	obj_trl(&(world->objs.v[offset + 2]), -1.5, 0.33, -0.75);
+	obj_scl(&(world->objs.v[offset + 2]), 0.33, 0.33, 0.33);
+	obj_trf(&(world->objs.v[offset + 2]));
+	world->objs.v[offset + 2].mtrl.clr = clr_unpack(0x00db3012);
+	world->objs.v[offset + 2].mtrl.dif = 0.9;
+	world->objs.v[offset + 2].mtrl.spc = 0.9;
+	world->objs.v[offset + 2].mtrl.shi = 1000000;
 }
 
 int	scn_dflt_objs(t_wld *world)
@@ -74,6 +76,6 @@ int	scn_dflt_objs(t_wld *world)
 		return (-1);
 	world->objs.len = 6;
 	setup_bg(world);
-	setup_ele(world);
+	setup_ele(world, 3);
 	return (0);
 }

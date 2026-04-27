@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/24 10:28:50 by cybourge          #+#    #+#             */
-/*   Updated: 2026/04/24 10:30:41 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/04/24 14:42:08 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,15 @@
 
 int	scn_dflt_lgts(t_wld *world)
 {
+	t_clr	clr;
+
 	world->lgts = lgtv_crt(2);
 	if (world->lgts.cap == 0)
 		return (-1);
 	world->lgts.len = 2;
-	lgt_set(&(world->lgts.v[0]), pt_crt(-10, 10, -10), WHITE);
-	lgt_set(&(world->lgts.v[1]), pt_crt(10, 10, 10), WHITE);
+	clr = clr_mul(clr_unpack(WHITE), 0.60);
+	lgt_set(&(world->lgts.v[0]), pt_crt(-10, 10, -10), clr_pack(clr));
+	clr = clr_mul(clr_unpack(WHITE), 0.5);
+	lgt_set(&(world->lgts.v[1]), pt_crt(10, 10, -10), clr_pack(clr));
 	return (0);
 }
