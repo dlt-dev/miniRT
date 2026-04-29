@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/29 08:14:33 by cybourge          #+#    #+#             */
-/*   Updated: 2026/04/29 14:42:02 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/04/29 15:09:57 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,23 +46,36 @@ typedef struct s_parser_fun
 // Prints a Parsing structure to stdout.
 void	prs_prt(const t_prs *prs);
 
-// Parsing Functions:
+// Parses the data for an ambient light.
+// Returns -1 on errors, 0 otherwise.
 int	prs_ambient(t_prs *prs, char **ltab);
+// Parses the data for a camera.
+// Returns -1 on errors, 0 otherwise.
 int	prs_camera(t_prs *prs, char **ltab);
+// Parses the data for a point light.
+// Returns -1 on errors, 0 otherwise.
 int	prs_light(t_prs *prs, char **ltab);
+// Parses the data for a sphere.
+// Returns -1 on errors, 0 otherwise.
 int	prs_sphere(t_prs *prs, char **ltab);
+// TBD : Parses the data for a plane.
+// Returns -1 on errors, 0 otherwise.
 int	prs_plane(t_prs *prs, char **ltab);
+// TBD : Parses the data for a cylinder.
+// Returns -1 on errors, 0 otherwise.
 int	prs_cylinder(t_prs *prs, char **ltab);
-
 // Parses the lines in a file.
 // Returns -1 on errors, 0 otherwise.
 int	prs_lines(t_prs *prs);
-
-// Parses a color given by input and writes the results in clr.
+// Parses a color in string form : "r,g,b" where r,g,b ∈ [0,255]
+// writes the results in clr.
+// Returns -1 on errors, 0 otherwise.
 int	prs_clr(const char *input, t_clr *clr);
-// Parses a triplet of numbers stored in str.
+// Parses a triplet of numbers in string form : "x,y,z" where x,y,z ∈ ℝ
+// writes the result in v.
+// Returns -1 on errors, 0 otherwise.
 int	prs_v3(char *str, t_v4 *v, bool is_vector);
-// Checks if the scenes minimal parameters have been properly set.
+// Checks if the scene's minimal parameters have been properly set.
 // Returns -1 if not, 0 otherwise.
 int	prs_cmplt(t_prs *prs);
 // TBD
