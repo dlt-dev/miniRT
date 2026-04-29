@@ -1,33 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   gnl.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jdelattr <jdelattr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/25 17:52:35 by jdelattr          #+#    #+#             */
-/*   Updated: 2026/02/21 15:48:01 by jdelattr         ###   ########.fr       */
+/*   Created: 2026/04/29 08:06:39 by cybourge          #+#    #+#             */
+/*   Updated: 2026/04/29 12:51:47 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
-#include <fcntl.h>
-#include <stdio.h>
-#include <unistd.h>
+#include "utils.h"
 
-size_t	ft_strlen(const char *s)
-{
-	size_t	i;
-
-	i = 0;
-	while (s[i])
-	{
-		i++;
-	}
-	return (i);
-}
-
-void	ft_free_and_null(char **ptr)
+static void	ft_free_and_null(char **ptr)
 {
 	if (*ptr)
 	{
@@ -36,7 +21,7 @@ void	ft_free_and_null(char **ptr)
 	}
 }
 
-void	*ft_extract_line(char **stock)
+static void	*ft_extract_line(char **stock)
 {
 	char	*line;
 	char	*newline;
@@ -62,12 +47,12 @@ void	*ft_extract_line(char **stock)
 	return (line);
 }
 
-int	ft_read_and_append(int fd, char **stock, char *buffer)
+static int	ft_read_and_append(int fd, char **stock, char *buffer)
 {
 	ssize_t	bytes;
 	char	*tmp;
 
-	bytes = read(fd, buffer, BUFFER_SIZE);
+	bytes = read(fd, buffer, GNL_BUFFER_SIZE);
 	if (bytes > 0)
 	{
 		buffer[bytes] = '\0';
@@ -78,15 +63,17 @@ int	ft_read_and_append(int fd, char **stock, char *buffer)
 	return (bytes);
 }
 
-char	*get_next_line(int fd)
+char	*gnl(int fd)
 {
 	static char	*stock;
 	char		*buffer;
 	char		*line;
 	ssize_t		bytes;
 
+	if (fd == GNL_CLEAR)
+		return (free(stock), NULL);
 	bytes = 1;
-	buffer = (char *)malloc(BUFFER_SIZE + 1);
+	buffer = (char *)malloc(GNL_BUFFER_SIZE + 1);
 	if (buffer == NULL)
 		return (NULL);
 	while (!ft_strchr(stock, '\n') && bytes > 0)
@@ -105,19 +92,3 @@ char	*get_next_line(int fd)
 		ft_free_and_null(&stock);
 	return (line);
 }
-
-/* int	main(void)
-{
-	int	fd = 0;
-	char	*str = NULL;
-
-	fd = open("01text.txt", O_RDONLY);
-	str = get_next_line(fd);
-	while (str != NULL)
-	{
-		printf("{%s}", str);
-		free(str);
-		str = get_next_line(fd);
-	}
-	return (0);
-} */

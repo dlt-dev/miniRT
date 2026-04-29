@@ -1,22 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   obj_prt.c                                          :+:      :+:    :+:   */
+/*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/07 09:03:32 by cybourge          #+#    #+#             */
-/*   Updated: 2026/04/29 14:03:18 by cybourge         ###   ########.fr       */
+/*   Created: 2026/04/29 07:59:24 by cybourge          #+#    #+#             */
+/*   Updated: 2026/04/29 07:59:31 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "object.h"
+#include "utils.h"
 
-void	obj_prt(const t_obj *obj)
+int	ft_strcmp(const char *s1, const char *s2)
 {
-	if (!obj)
-		return ;
-	printf("%s\n", oty_prt(obj->type));
-	m44_prt(&(obj->tm));
-	m44_prt(&(obj->itm));
+	size_t			i;
+	unsigned char	*str1;
+	unsigned char	*str2;
+
+	i = 0;
+	str1 = (unsigned char *)s1;
+	str2 = (unsigned char *)s2;
+	while (str1[i] && str2[i])
+	{
+		if (str1[i] != str2[i])
+			return (str1[i] - str2[i]);
+		i++;
+	}
+	return (str1[i] - str2[i]);
 }

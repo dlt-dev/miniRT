@@ -1,22 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   obj_prt.c                                          :+:      :+:    :+:   */
+/*   tab_len.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/07 09:03:32 by cybourge          #+#    #+#             */
-/*   Updated: 2026/04/29 14:03:18 by cybourge         ###   ########.fr       */
+/*   Created: 2026/04/29 07:58:26 by cybourge          #+#    #+#             */
+/*   Updated: 2026/04/29 12:31:53 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "object.h"
+#include "utils.h"
 
-void	obj_prt(const t_obj *obj)
+int	tab_len(char **tab)
 {
-	if (!obj)
-		return ;
-	printf("%s\n", oty_prt(obj->type));
-	m44_prt(&(obj->tm));
-	m44_prt(&(obj->itm));
+	int	i;
+
+	i = 0;
+	while (tab[i] != NULL)
+		i++;
+	return (i);
 }

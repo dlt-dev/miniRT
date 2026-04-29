@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/23 15:45:28 by cybourge          #+#    #+#             */
-/*   Updated: 2026/04/23 16:12:48 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/04/29 14:00:58 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,4 +19,6 @@ void	cam_prt(const t_cam *cam)
 		cam->fov, cam->hwi, cam->hhe, cam->pxs);
 	printf("Transformation Matrix :\n");
 	m44_prt(&(cam->vtf));
+	printf("Inverse Transformation Matrix : \n");
+	m44_prt(&(cam->ivtf));
 }

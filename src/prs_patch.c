@@ -1,22 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   obj_prt.c                                          :+:      :+:    :+:   */
+/*   prs_patch.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/07 09:03:32 by cybourge          #+#    #+#             */
-/*   Updated: 2026/04/29 14:03:18 by cybourge         ###   ########.fr       */
+/*   Created: 2026/04/29 14:39:06 by cybourge          #+#    #+#             */
+/*   Updated: 2026/04/29 14:39:15 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "object.h"
+#include "parser.h"
 
-void	obj_prt(const t_obj *obj)
+// TBD
+// Returns -1 on errors, 0 otherwise.
+int	prs_patch(t_prs *prs)
 {
-	if (!obj)
-		return ;
-	printf("%s\n", oty_prt(obj->type));
-	m44_prt(&(obj->tm));
-	m44_prt(&(obj->itm));
+	if (prs->amb_count > 0)
+		printf("AMBIENT LIGHT PATCH TBD\n");
+	return (0);
 }

@@ -1,22 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   obj_prt.c                                          :+:      :+:    :+:   */
+/*   prs_prt.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/07 09:03:32 by cybourge          #+#    #+#             */
-/*   Updated: 2026/04/29 14:03:18 by cybourge         ###   ########.fr       */
+/*   Created: 2026/04/29 14:36:45 by cybourge          #+#    #+#             */
+/*   Updated: 2026/04/29 14:36:50 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "object.h"
+#include "parser.h"
 
-void	obj_prt(const t_obj *obj)
+void	prs_prt(const t_prs *prs)
 {
-	if (!obj)
-		return ;
-	printf("%s\n", oty_prt(obj->type));
-	m44_prt(&(obj->tm));
-	m44_prt(&(obj->itm));
+	printf("Filename : %s\n", prs->fname);
+	objv_prt(&(prs->scn->world.objs));
+	lgtv_prt(&(prs->scn->world.lgts));
+	cam_prt(&(prs->scn->camera));
 }

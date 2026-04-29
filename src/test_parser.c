@@ -1,35 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minirt.c                                           :+:      :+:    :+:   */
+/*   test_parser.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/30 10:33:54 by cybourge          #+#    #+#             */
-/*   Updated: 2026/04/29 12:40:40 by cybourge         ###   ########.fr       */
+/*   Created: 2026/04/29 08:15:36 by cybourge          #+#    #+#             */
+/*   Updated: 2026/04/29 14:46:47 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minirt.h"
-#include <stdio.h>
+#include "parser.h"
 
-/*
-int	main(void)
+int	main(int argc, char **argv)
 {
 	t_scn	scene;
+	t_prs	parser;
 
-	if (init_mlx_data(&(scene.mlx)) < 0)
+	if (argc < 2)
+	{
+		printf("Return a default scene.\n");
 		return (1);
-	if (scn_setup(&scene) < 0)
+	}
+	else if (argc > 2)
+	{
+		printf("Too many files given in argument\n");
 		return (1);
-	mlx_hook(scene.mlx.mlx_win, DestroyNotify, StructureNotifyMask,
-		(void *)handle_x_button, &(scene));
-	mlx_hook(scene.mlx.mlx_win, KeyPress, KeyPressMask,
-		(void *)handle_keypress, &(scene.mlx));
-	mlx_loop_hook(scene.mlx.mlx_ptr, (void *)scn_render, &scene);
-	mlx_loop(scene.mlx.mlx_ptr);
-	free_mlx_data(&(scene.mlx));
+	}
+	parser.scn = &scene;
+	memset(&scene, 0, sizeof(t_scn));
+	parser.fname = argv[1];
+	parser.amb_count = 0;
+	parser.cam_count = 0;
+	if (prs_rtfile(&parser) == -1)
+	{
+		scn_dlt(&scene);
+		printf("Error Encountered\n");
+		return (1);
+	}
+	prs_prt(&parser); // debug print to check results.
 	scn_dlt(&scene);
 	return (0);
 }
-*/

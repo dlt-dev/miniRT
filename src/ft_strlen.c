@@ -1,22 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   obj_prt.c                                          :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/07 09:03:32 by cybourge          #+#    #+#             */
-/*   Updated: 2026/04/29 14:03:18 by cybourge         ###   ########.fr       */
+/*   Created: 2026/04/29 08:06:03 by cybourge          #+#    #+#             */
+/*   Updated: 2026/04/29 08:06:09 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "object.h"
+#include "utils.h"
 
-void	obj_prt(const t_obj *obj)
+size_t	ft_strlen(const char *s)
 {
-	if (!obj)
-		return ;
-	printf("%s\n", oty_prt(obj->type));
-	m44_prt(&(obj->tm));
-	m44_prt(&(obj->itm));
+	size_t	i;
+
+	i = 0;
+	while (s[i])
+	{
+		i++;
+	}
+	return (i);
 }

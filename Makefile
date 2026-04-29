@@ -6,7 +6,7 @@
 #    By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/06/23 12:34:16 by cybourge          #+#    #+#              #
-#    Updated: 2026/04/24 10:57:00 by cybourge         ###   ########.fr        #
+#    Updated: 2026/04/29 12:50:56 by cybourge         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -77,7 +77,7 @@ $(LIB_BIN): $(MLXDIR)
 	@printf "$(GREEN)MiniLibX ready!$(RESET)\n"
 
 leaks: $(NAME)
-	valgrind --leak-check=full --show-leak-kinds=all ./minirt
+	valgrind --leak-check=full --show-leak-kinds=all ./minirt hello.rt
 
 clean:
 	rm -rf $(OBJS_DIR)
