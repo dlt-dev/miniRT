@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/26 12:16:48 by cybourge          #+#    #+#             */
-/*   Updated: 2026/04/29 14:15:51 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/04/30 11:30:04 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,4 +67,7 @@ bool		is_validf(const char *str);
 bool		is_validui(const char *str);
 // Returns true if the fields of the array properly define a color.
 bool		is_validclr(char **tab);
+
+//Prints an error message on stderr, returns ret.
+int			ft_err_prt(const char *msg, int ret);
 #endif

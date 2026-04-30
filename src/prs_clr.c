@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/29 14:16:15 by cybourge          #+#    #+#             */
-/*   Updated: 2026/04/29 14:44:35 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/04/30 11:41:10 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,21 +33,18 @@ int	prs_clr(const char *input, t_clr *clr)
 		return (-1);
 	if (tab_len(clr_tab) < 3)
 	{
-		printf("Not enough color fields given\n");
 		tab_dlt(clr_tab);
-		return (-1);
+		return (ft_err_prt("Not enough color fields given\n", -1));
 	}
 	if (tab_len(clr_tab) > 3)
 	{
-		printf("Too many color fields given\n");
 		tab_dlt(clr_tab);
-		return (-1);
+		return (ft_err_prt("Too many color fields given\n", -1));
 	}
 	if (!is_validclr(clr_tab))
 	{
-		printf("Invalid color fields\n");
 		tab_dlt(clr_tab);
-		return (-1);
+		return (ft_err_prt("Invalid color fields\n", -1));
 	}
 	clr_write(clr, clr_tab);
 	tab_dlt(clr_tab);

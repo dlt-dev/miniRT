@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/24 10:22:42 by cybourge          #+#    #+#             */
-/*   Updated: 2026/04/24 14:37:01 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/04/30 11:28:22 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,14 @@ static void	setup_bg(t_wld *world)
 	world->objs.v[0] = sph_crt();
 	obj_scl(&(world->objs.v[0]), 10, 0.01, 10);
 	obj_trf(&(world->objs.v[0]));
-	world->objs.v[0].mtrl.clr = clr_unpack(0x00171680); //0x002834DB
+	world->objs.v[0].mtrl.clr = clr_unpack(0x00171680);
 	world->objs.v[0].mtrl.spc = 0.1;
 	world->objs.v[1] = sph_crt();
 	obj_scl(&(world->objs.v[1]), 10, 0.01, 10);
 	obj_rot(&(world->objs.v[1]), PI / 2.0, -PI / 4.0, 0.0);
 	obj_trl(&(world->objs.v[1]), 0, 0, 5);
 	obj_trf(&(world->objs.v[1]));
-	world->objs.v[1].mtrl.clr = clr_unpack(BLACK); //0x00288edb
+	world->objs.v[1].mtrl.clr = clr_unpack(BLACK);
 	world->objs.v[1].mtrl.spc = 0.1;
 	world->objs.v[2] = sph_crt();
 	obj_scl(&(world->objs.v[2]), 10, 0.01, 10);

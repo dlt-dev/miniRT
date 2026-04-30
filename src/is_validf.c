@@ -6,11 +6,33 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/29 14:13:50 by cybourge          #+#    #+#             */
-/*   Updated: 2026/04/29 14:49:47 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/04/30 12:05:41 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "utils.h"
+
+static bool	scan_float(const char *s, int *digits, int *dots)
+{
+	int	i;
+
+	i = 0;
+	while (s[i])
+	{
+		if (s[i] >= '0' && s[i] <= '9')
+			(*digits)++;
+		else if (s[i] == '.')
+		{
+			(*dots)++;
+			if (*dots > 1)
+				return (false);
+		}
+		else
+			return (false);
+		i++;
+	}
+	return (true);
+}
 
 // Returns wether the argument is a string that represents a valid float.
 // A valid float is a series of numbers 
@@ -19,31 +41,17 @@
 bool	is_validf(const char *str)
 {
 	int	i;
-	int	dot_count;
-	int	digit_count;
+	int	digits;
+	int	dots;
 
-	if (!str || *str == '\0')
+	if (!str || !*str)
 		return (false);
 	i = 0;
-	dot_count = 0;
-	digit_count = 0;
+	digits = 0;
+	dots = 0;
 	if (str[i] == '-' || str[i] == '+')
 		i++;
-	if (str[i] == '\0')
+	if (!scan_float(str + i, &digits, &dots))
 		return (false);
-	while (str[i])
-	{
-		if (str[i] >= '0' && str[i] <= '9')
-			digit_count++;
-		else if (str[i] == '.')
-		{
-			dot_count++;
-			if (dot_count > 1)
-				return (false);
-		}
-		else
-			return (false);
-		i++;
-	}
-	return (digit_count > 0);
+	return (digits > 0);
 }

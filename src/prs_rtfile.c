@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/29 14:39:53 by cybourge          #+#    #+#             */
-/*   Updated: 2026/04/30 11:20:44 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/04/30 11:36:50 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,19 +28,19 @@ static bool	valid_fname(const char *file)
 int	prs_rtfile(t_prs *prs)
 {
 	if (!valid_fname(prs->fname))
-	{
-		printf("Invalid extension ! expected : \"[filename].rt\"\n");
-		return (-1);
-	}
+		return (ft_err_prt("Invalid extension !\
+			expected : \"[filename].rt\"\n", -1));
 	prs->fd = open(prs->fname, O_RDONLY);
 	if (prs->fd < 0)
 	{
-		printf("Could not open file : %s\n", prs->fname);
+		ft_err_prt("Could not open file : ", -1);
+		ft_err_prt(prs->fname, -1);
+		ft_err_prt("\n", -1);
 		return (close(prs->fd), -1);
 	}
-	if (prs_lines(prs) < 0) // Parse the lines of the file.
+	if (prs_lines(prs) < 0)
 		return (close(prs->fd), -1);
-	if (prs_cmplt(prs) < 0) // Check if all the data is complete
+	if (prs_cmplt(prs) < 0)
 		return (close(prs->fd), -1);
 	return (close(prs->fd), 0);
 }

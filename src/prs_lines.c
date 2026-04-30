@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/29 14:34:22 by cybourge          #+#    #+#             */
-/*   Updated: 2026/04/29 14:47:15 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/04/30 11:57:07 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,22 +48,17 @@ static int	prs_line(t_prs *prs, const char *line)
 	if (!ltab)
 		return (-1);
 	if (tab_len(ltab) == 0)
-	{
-		tab_dlt(ltab);
-		return (0);
-	}
+		return (tab_dlt(ltab), 0);
 	fun = match_obj_id(ltab[0]);
 	if (!fun)
 	{
-		printf("Invalid Identifier detected : %s\n", ltab[0]);
-		tab_dlt(ltab);
-		return (-1);
+		ft_err_prt("Invalid Identifier detected : ", -1);
+		ft_err_prt(ltab[0], -1);
+		ft_err_prt("\n", -1);
+		return (tab_dlt(ltab), -1);
 	}
 	if (fun(prs, ltab) < 0)
-	{
-		tab_dlt(ltab);
-		return (-1);
-	}
+		return (tab_dlt(ltab), -1);
 	tab_dlt(ltab);
 	return (0);
 }

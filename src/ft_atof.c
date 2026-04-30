@@ -6,38 +6,58 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/29 07:57:42 by cybourge          #+#    #+#             */
-/*   Updated: 2026/04/29 14:48:49 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/04/30 12:06:22 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "utils.h"
 
-double	ft_atof(const char *str)
+static void	parse_sign(const char **s, double *sign)
+{
+	if (**s == '-' || **s == '+')
+	{
+		if (**s == '-')
+			*sign = -1.0;
+		(*s)++;
+	}
+}
+
+static double	parse_integer(const char **s)
 {
 	double	result;
-	double	sign;
+
+	result = 0.0;
+	while (**s >= '0' && **s <= '9')
+		result = result * 10.0 + (*(*s)++ - '0');
+	return (result);
+}
+
+static double	parse_fraction(const char **s)
+{
 	double	fraction;
 	double	divisor;
 
-	result = 0.0;
-	sign = 1.0;
 	fraction = 0.0;
 	divisor = 10.0;
-	if (*str == '-' || *str == '+')
+	if (**s == '.')
 	{
-		if (*str == '-')
-			sign = -1.0;
-		str++;
-	}
-	while (*str >= '0' && *str <= '9')
-		result = result * 10.0 + (*str++ - '0');
-	if (*str == '.')
-	{
-		while (*++str >= '0' && *str <= '9')
+		while (*++(*s) >= '0' && **s <= '9')
 		{
-			fraction += (*str - '0') / divisor;
+			fraction += (**s - '0') / divisor;
 			divisor *= 10.0;
 		}
 	}
-	return (sign * (result + fraction));
+	return (fraction);
+}
+
+double	ft_atof(const char *str)
+{
+	double	sign;
+	double	result;
+
+	sign = 1.0;
+	result = 0.0;
+	parse_sign(&str, &sign);
+	result = parse_integer(&str);
+	return (sign * (result + parse_fraction(&str)));
 }

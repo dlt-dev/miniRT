@@ -1,22 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   prs_patch.c                                        :+:      :+:    :+:   */
+/*   ft_err_prt.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/29 14:39:06 by cybourge          #+#    #+#             */
-/*   Updated: 2026/04/29 14:39:15 by cybourge         ###   ########.fr       */
+/*   Created: 2026/04/30 11:30:14 by cybourge          #+#    #+#             */
+/*   Updated: 2026/04/30 11:31:22 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parser.h"
+#include "utils.h"
 
-// TBD
-// Returns -1 on errors, 0 otherwise.
-int	prs_patch(t_prs *prs)
+int	ft_err_prt(const char *msg, int ret)
 {
-	if (prs->amb_count > 0)
-		printf("AMBIENT LIGHT PATCH TBD\n");
-	return (0);
+	write(STDERR_FILENO, msg, ft_strlen(msg));
+	return (ret);
 }

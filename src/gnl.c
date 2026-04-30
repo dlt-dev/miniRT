@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/29 08:06:39 by cybourge          #+#    #+#             */
-/*   Updated: 2026/04/29 12:51:47 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/04/30 12:07:14 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,11 +80,7 @@ char	*gnl(int fd)
 	{
 		bytes = ft_read_and_append(fd, &stock, buffer);
 		if (bytes < 0)
-		{
-			ft_free_and_null(&stock);
-			free(buffer);
-			return (NULL);
-		}
+			return (ft_free_and_null(&stock), free(buffer), NULL);
 	}
 	free(buffer);
 	line = ft_extract_line(&stock);
