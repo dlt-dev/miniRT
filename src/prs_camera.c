@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/29 14:18:28 by cybourge          #+#    #+#             */
-/*   Updated: 2026/04/29 14:45:11 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/04/30 10:23:34 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ static int	prs_cam_trf(char **ltab, t_cam *cam)
 		return (-1);
 	}
 	up = v4_crt(0, 1, 0);
-	if (v4_dot(up, dir) == 0)
+	if (v4_eql(v4_crt(0,0,0), v4_xpr(up, dir)))
 		up = v4_crt(1, 0, 0);
 	to = v4_add(from, dir);
 	m44_vtrf(&from, &to, &up, &(cam->vtf));
