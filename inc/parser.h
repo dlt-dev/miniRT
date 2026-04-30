@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/29 08:14:33 by cybourge          #+#    #+#             */
-/*   Updated: 2026/04/29 15:11:32 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/04/30 11:25:16 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,18 +17,12 @@
 # include "minirt.h"
 
 // Structure used to hold that parameters of the ambient light.
-typedef struct s_ambient_light
-{
-	double	intensity;
-	t_clr	clr;
-}	t_ambl;
 
 typedef struct s_parser
 {
 	char	*fname;
 	int		fd;
 	t_scn	*scn;
-	t_ambl	ambl;
 	int		cam_count;
 	int		amb_count;
 }	t_prs;
@@ -79,8 +73,6 @@ int		prs_v3(char *str, t_v4 *v, bool is_vector);
 // Checks if the scene's minimal parameters have been properly set.
 // Returns -1 if not, 0 otherwise.
 int		prs_cmplt(t_prs *prs);
-// TBD
-int		prs_patch(t_prs *prs);
 // Parses a .rt file
 // Returns -1 on errors, 0 otherwise.
 int		prs_rtfile(t_prs *prs);

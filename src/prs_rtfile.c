@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/29 14:39:53 by cybourge          #+#    #+#             */
-/*   Updated: 2026/04/29 14:40:08 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/04/30 11:20:44 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,6 @@ int	prs_rtfile(t_prs *prs)
 	if (prs_lines(prs) < 0) // Parse the lines of the file.
 		return (close(prs->fd), -1);
 	if (prs_cmplt(prs) < 0) // Check if all the data is complete
-		return (close(prs->fd), -1);
-	if (prs_patch(prs) < 0) // Patch for ambient light
 		return (close(prs->fd), -1);
 	return (close(prs->fd), 0);
 }

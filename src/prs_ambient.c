@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/29 14:17:52 by cybourge          #+#    #+#             */
-/*   Updated: 2026/04/29 14:45:24 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/04/30 11:25:07 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,14 +41,15 @@ int	prs_ambient(t_prs *prs, char **ltab)
 		printf("Invalid Ambient Light intensity\n");
 		return (-1);
 	}
-	prs->ambl.intensity = ft_atof(ltab[1]);
-	if (!itv_cnt(bounds, prs->ambl.intensity))
+	prs->scn->world.amb.intensity = ft_atof(ltab[1]);
+	if (!itv_cnt(bounds, prs->scn->world.amb.intensity))
 	{
 		printf("Ambient Light intensity must be between [0.0, 1.0]\n");
 		return (-1);
 	}
-	if (prs_clr(ltab[2], &(prs->ambl.clr)) == -1)
+	if (prs_clr(ltab[2], &(prs->scn->world.amb.clr)) == -1)
 		return (-1);
+	prs->scn->world.amb.clr = clr_mul(prs->scn->world.amb.clr, prs->scn->world.amb.intensity);
 	prs->amb_count++;
 	return (0);
 }

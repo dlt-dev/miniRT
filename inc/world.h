@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/22 11:37:45 by cybourge          #+#    #+#             */
-/*   Updated: 2026/04/24 09:20:17 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/04/30 10:52:30 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,13 @@
 # include "light.h"
 # include <stdio.h>
 
+// Structure that Holds the Ambient light for the world.
+typedef struct s_ambient_light
+{
+	double	intensity;
+	t_clr	clr;
+}	t_ambl;
+
 // Structure that holds the objects and light of a scene
 // objs : geometric object vector
 // lgts : lights
@@ -24,6 +31,7 @@ typedef struct s_world
 {
 	t_objv	objs;
 	t_lgtv	lgts;
+	t_ambl	amb;
 }	t_wld;
 
 // Initilizes a world defined by default.

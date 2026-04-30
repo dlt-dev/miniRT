@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/23 12:31:48 by cybourge          #+#    #+#             */
-/*   Updated: 2026/04/24 09:53:04 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/04/30 11:15:33 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,8 @@ t_clr	wld_shd(const t_wld *world, const t_itx *itx, t_itxv *itxv)
 	while (i < world->lgts.len)
 	{
 		shadowed = is_shadowed(world, &(world->lgts.v[i]), itx, itxv);
-		fclr = clr_add(obj_lgt(itx->obj, &(world->lgts.v[i]),
-					itx, shadowed), fclr);
+		fclr = clr_add(obj_lgt(itx->obj, &(world->lgts.v[i]), itx, shadowed),
+					clr_bld(world->amb.clr, clr_mul(itx->obj->mtrl.clr, itx->obj->mtrl.amb)));
 		i++;
 	}
 	return (fclr);
