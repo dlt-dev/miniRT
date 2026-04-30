@@ -6,21 +6,46 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/30 10:33:54 by cybourge          #+#    #+#             */
-/*   Updated: 2026/04/29 12:40:40 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/04/30 09:33:57 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
+#include "parser.h"
 #include <stdio.h>
 
-/*
-int	main(void)
+
+int	main(int argc, char **argv)
 {
 	t_scn	scene;
+	t_prs	parser;
 
-	if (init_mlx_data(&(scene.mlx)) < 0)
+	if (argc < 2)
+	{
+		printf("Return a default scene.\n");
+		if (scn_setup(&scene) < 0)
+			return (1);
+	}
+	else if (argc > 2)
+	{
+		printf("Too many files given in argument\n");
 		return (1);
-	if (scn_setup(&scene) < 0)
+	}
+	else
+	{
+		parser.scn = &scene;
+		memset(&scene, 0, sizeof(t_scn));
+		parser.fname = argv[1];
+		parser.amb_count = 0;
+		parser.cam_count = 0;
+		if (prs_rtfile(&parser) == -1)
+		{
+			scn_dlt(&scene);
+			printf("Error Encountered\n");
+			return (1);
+		}
+	}
+	if (init_mlx_data(&(scene.mlx)) < 0)
 		return (1);
 	mlx_hook(scene.mlx.mlx_win, DestroyNotify, StructureNotifyMask,
 		(void *)handle_x_button, &(scene));
@@ -32,4 +57,3 @@ int	main(void)
 	scn_dlt(&scene);
 	return (0);
 }
-*/

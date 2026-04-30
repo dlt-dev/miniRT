@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/24 10:14:29 by cybourge          #+#    #+#             */
-/*   Updated: 2026/04/24 10:21:57 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/04/30 09:55:57 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@ int	scn_render(t_scn *scn)
 				clr_pack(var.clr));
 			var.x++;
 		}
-		display_progress(var.x, var.y);
 		var.y++;
+		display_progress(var.x, var.y);
 	}
 	mlx_put_image_to_window(scn->mlx.mlx_ptr, scn->mlx.mlx_win,
 		scn->mlx.img.mlx_img, 0, 0);

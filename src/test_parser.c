@@ -6,12 +6,13 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/29 08:15:36 by cybourge          #+#    #+#             */
-/*   Updated: 2026/04/29 14:46:47 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/04/30 09:31:01 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parser.h"
 
+/*
 int	main(int argc, char **argv)
 {
 	t_scn	scene;
@@ -42,3 +43,4 @@ int	main(int argc, char **argv)
 	scn_dlt(&scene);
 	return (0);
 }
+*/

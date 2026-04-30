@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/31 14:39:37 by cybourge          #+#    #+#             */
-/*   Updated: 2026/04/22 14:14:22 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/04/30 09:25:11 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -327,5 +327,16 @@ int main(void)
 	test_shearing_inverse();
     printf("All tests passed!\n");
     return 0;
+}
+*/
+/*
+int	main()
+{
+	t_m44	test;
+
+	m44_idm(&test);
+	test[3] = 123.1546544;
+	m44_prt(&test);
+	return (0);
 }
 */
