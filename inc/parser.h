@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/29 08:14:33 by cybourge          #+#    #+#             */
-/*   Updated: 2026/04/30 11:25:16 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/05/06 09:12:35 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,15 @@ int		prs_clr(const char *input, t_clr *clr);
 // writes the result in v.
 // Returns -1 on errors, 0 otherwise.
 int		prs_v3(char *str, t_v4 *v, bool is_vector);
+// Parses an objects material data given in string form :
+// "a,b,c,d" where :
+// a = ambient light effect.
+// b = specular light effect.
+// c = diffuse light effect.
+// d = shininess of the object.
+// writes the results in v.
+// Returns -1 on error, 0 otherwise.
+int		prs_mat(const char *str, t_mtl *mat);
 // Checks if the scene's minimal parameters have been properly set.
 // Returns -1 if not, 0 otherwise.
 int		prs_cmplt(t_prs *prs);
