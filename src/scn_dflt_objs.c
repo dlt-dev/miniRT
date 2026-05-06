@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/24 10:22:42 by cybourge          #+#    #+#             */
-/*   Updated: 2026/04/30 11:28:22 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/05/06 13:39:56 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,24 +18,23 @@
 // Sphere 3 Setup : Right Wall
 static void	setup_bg(t_wld *world)
 {
-	world->objs.v[0] = sph_crt();
-	obj_scl(&(world->objs.v[0]), 10, 0.01, 10);
+	world->objs.v[0] = pln_crt();
+	obj_rot(&(world->objs.v[0]), PI / 2.0, -PI / 4.0, 0.0);
+	obj_trl(&(world->objs.v[0]), 0, 0, 5);
 	obj_trf(&(world->objs.v[0]));
-	world->objs.v[0].mtrl.clr = clr_unpack(0x00171680);
+	world->objs.v[0].mtrl.clr = clr_unpack(WHITE);
 	world->objs.v[0].mtrl.spc = 0.1;
-	world->objs.v[1] = sph_crt();
-	obj_scl(&(world->objs.v[1]), 10, 0.01, 10);
+	world->objs.v[1] = pln_crt();
 	obj_rot(&(world->objs.v[1]), PI / 2.0, -PI / 4.0, 0.0);
 	obj_trl(&(world->objs.v[1]), 0, 0, 5);
 	obj_trf(&(world->objs.v[1]));
-	world->objs.v[1].mtrl.clr = clr_unpack(BLACK);
+	world->objs.v[1].mtrl.clr = clr_unpack(BLUE);
 	world->objs.v[1].mtrl.spc = 0.1;
-	world->objs.v[2] = sph_crt();
-	obj_scl(&(world->objs.v[2]), 10, 0.01, 10);
+	world->objs.v[2] = pln_crt();
 	obj_rot(&(world->objs.v[2]), PI / 2.0, PI / 4.0, 0.0);
 	obj_trl(&(world->objs.v[2]), 0, 0, 5);
 	obj_trf(&(world->objs.v[2]));
-	world->objs.v[2].mtrl.clr = clr_unpack(BLACK);
+	world->objs.v[2].mtrl.clr = clr_unpack(RED);
 	world->objs.v[2].mtrl.spc = 0.1;
 }
 
@@ -71,11 +70,11 @@ static void	setup_ele(t_wld *world, size_t offset)
 
 int	scn_dflt_objs(t_wld *world)
 {
-	world->objs = objv_crt(6);
+	world->objs = objv_crt(4);
 	if (world->objs.cap == 0)
 		return (-1);
-	world->objs.len = 6;
+	world->objs.len = 4;
 	setup_bg(world);
-	setup_ele(world, 3);
+	setup_ele(world, 1);
 	return (0);
 }

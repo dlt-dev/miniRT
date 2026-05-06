@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/03 12:11:44 by cybourge          #+#    #+#             */
-/*   Updated: 2026/04/24 09:51:21 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/05/06 13:41:03 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ typedef enum e_obj_type
 
 typedef struct s_plane
 {
+	t_v4	nrml;
 }	t_pln;
 
 typedef struct s_cylinder
@@ -74,6 +75,7 @@ typedef struct s_sphere
 	double	r;
 }	t_sph;
 
+// ittm : Inverse transpose tranformation matrix.
 typedef struct s_object
 {
 	t_oty		type;
@@ -164,5 +166,13 @@ bool		sph_hit(const t_obj *obj, const t_ray *r, t_itxv *itxv);
 // at point "pt" into "nrml".
 // Returns -1 on error, 0 otherwize.
 int			sph_nrml(const t_obj *obj, const t_pt *pt, t_v4 *nrml);
+
+// Returns an instance of a plane obj with default values.
+t_obj		pln_crt(void);
+// Returns wether a ray hits a plane object and adds the intersection to itxv.
+bool		pln_hit(const t_obj *obj, const t_ray *r, t_itxv *itxv);
+// Writes the normal vector of the plane object into nrml.
+// Returns -1 on errors, 0 otherwise.
+int			pln_nrml(const t_obj *obj, const t_pt *pt, t_v4 *nrml);
 
 #endif
