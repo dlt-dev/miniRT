@@ -3,106 +3,40 @@
 /*                                                        :::      ::::::::   */
 /*   m44_prt_uop.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jdelattr <jdelattr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/07 10:06:27 by cybourge          #+#    #+#             */
-/*   Updated: 2026/04/23 12:16:08 by jdelattr         ###   ########.fr       */
+/*   Updated: 2026/05/06 08:33:27 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "matrix.h"
 
-static void	m44_fill_mat(const t_m44 *m, char buf[4][4][64], int col_w[4])
+// Third and Fourth arguments of the printf are the width of the display and
+// the precicion of the numbers.
+void	m44_prt_uop(const t_m44 *m1, const t_m44 *m2, const char *operation)
 {
-	int	row;
-	int	col;
-	int	len;
+	const size_t	op_padd = ft_strlen(operation);
 
-	col = 0;
-	while (col < 4)
-	{
-		col_w[col] = 0;
-		row = 0;
-		while (row < 4)
-		{
-			m44_fmt_value((*m)[row * 4 + col], buf[row][col]);
-			len = (int)strlen(buf[row][col]);
-			if (len > col_w[col])
-				col_w[col] = len;
-			row++;
-		}
-		col++;
-	}
-}
-
-static void	m44_print_row_left(t_m44_uop_disp *d, int row,
-		const char *left, const char *right)
-{
-	int		col;
-
-	printf("%s", left);
-	col = 0;
-	while (col < 4)
-	{
-		printf(" %*s", d->w1[col], d->b1[row][col]);
-		col++;
-	}
-	printf(" %s ", right);
-	if (row == 1)
-		printf("%s", d->uop);
-	else
-		printf("%*s", (int)strlen(d->uop), "");
-}
-
-static void	m44_print_row_right(t_m44_uop_disp *d, int row,
-		const char *left, const char *right)
-{
-	int	col;
-
-	printf(" %s", left);
-	col = 0;
-	while (col < 4)
-	{
-		printf(" %*s", d->w2[col], d->b2[row][col]);
-		col++;
-	}
-	printf(" %s", right);
-	if (row == 1)
-		printf(" =");
-	printf("\n");
-}
-
-static void	m44_print_uop(t_m44_uop_disp *d)
-{
-	char	*left[4];
-	char	*right[4];
-	int		row;
-
-	left[0] = "╭";
-	left[1] = "│";
-	left[2] = "│";
-	left[3] = "╰";
-	right[0] = "╮";
-	right[1] = "│";
-	right[2] = "│";
-	right[3] = "╯";
-	row = 0;
-	while (row < 4)
-	{
-		m44_print_row_left(d, row, left[row], right[row]);
-		m44_print_row_right(d, row, left[row], right[row]);
-		row++;
-	}
-}
-
-void	m44_prt_uop(const t_m44 *m1, const t_m44 *m2, const char *uop)
-{
-	t_m44_uop_disp	d;
-
-	if (!m1 || !m2 || !uop)
-		return ;
-	d.uop = uop;
-	m44_fill_mat(m1, d.b1, d.w1);
-	m44_fill_mat(m2, d.b2, d.w2);
-	m44_print_uop(&d);
+	printf(
+		"%2$*1$s╭ %5$*4$.*3$g %6$*4$.*3$g %7$*4$.*3$g %8$*4$.*3$g ╮   "
+		"╭ %21$*4$.*3$g %22$*4$.*3$g %23$*4$.*3$g %24$*4$.*3$g ╮\n"
+		"%25$s│ %9$*4$.*3$g %10$*4$.*3$g %11$*4$.*3$g %12$*4$.*3$g │ = "
+		"│ %26$*4$.*3$g %27$*4$.*3$g %28$*4$.*3$g %29$*4$.*3$g │\n"
+		"%2$*1$s│ %13$*4$.*3$g %14$*4$.*3$g %15$*4$.*3$g %16$*4$.*3$g │   "
+		"│ %30$*4$.*3$g %31$*4$.*3$g %32$*4$.*3$g %33$*4$.*3$g │\n"
+		"%2$*1$s╰ %17$*4$.*3$g %18$*4$.*3$g %19$*4$.*3$g %20$*4$.*3$g ╯   "
+		"╰ %34$*4$.*3$g %35$*4$.*3$g %36$*4$.*3$g %37$*4$.*3$g ╯\n",
+		(int)op_padd, "",
+		3, 3 + 5,
+		(*m1)[0], (*m1)[1], (*m1)[2], (*m1)[3],
+		(*m1)[4], (*m1)[5], (*m1)[6], (*m1)[7],
+		(*m1)[8], (*m1)[9], (*m1)[10], (*m1)[11],
+		(*m1)[12], (*m1)[13], (*m1)[14], (*m1)[15],
+		(*m2)[0], (*m2)[1], (*m2)[2], (*m2)[3],
+		operation,
+		(*m2)[4], (*m2)[5], (*m2)[6], (*m2)[7],
+		(*m2)[8], (*m2)[9], (*m2)[10], (*m2)[11],
+		(*m2)[12], (*m2)[13], (*m2)[14], (*m2)[15]
+		);
 }

@@ -6,88 +6,31 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/07 12:33:30 by cybourge          #+#    #+#             */
-/*   Updated: 2026/04/23 15:16:47 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/05/06 08:33:54 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "matrix.h"
 
-static void	m44_fill_mat(const t_m44 *m1, char m_buf[4][4][64], int m_w[4])
-{
-	int	row;
-	int	col;
-	int	len;
-
-	col = 0;
-	while (col < 4)
-	{
-		m_w[col] = 0;
-		row = 0;
-		while (row < 4)
-		{
-			m44_fmt_value((*m1)[row * 4 + col], m_buf[row][col]);
-			len = (int)strlen(m_buf[row][col]);
-			if (len > m_w[col])
-				m_w[col] = len;
-			row++;
-		}
-		col++;
-	}
-}
-
-static void	m44_fill_vec(const t_v4 *v, char v_buf[4][64], int *v_w)
-{
-	double	vals[4];
-	int		row;
-	int		len;
-
-	vals[0] = v->x;
-	vals[1] = v->y;
-	vals[2] = v->z;
-	vals[3] = v->w;
-	*v_w = 0;
-	row = 0;
-	while (row < 4)
-	{
-		m44_fmt_value(vals[row], v_buf[row]);
-		len = (int)strlen(v_buf[row]);
-		if (len > *v_w)
-			*v_w = len;
-		row++;
-	}
-}
-
-static void	m44_print_vprd(t_m44_vprd_disp *d)
-{
-	char	*left[4];
-	char	*right[4];
-	int		row;
-
-	left[0] = "╭";
-	left[1] = "│";
-	left[2] = "│";
-	left[3] = "╰";
-	right[0] = "╮";
-	right[1] = "│";
-	right[2] = "│";
-	right[3] = "╯";
-	row = 0;
-	while (row < 4)
-	{
-		m44_print_row_left_vprd(d, row, left[row], right[row]);
-		m44_print_row_right_vprd(d, row, left[row], right[row]);
-		row++;
-	}
-}
-
+// Third and Fourth arguments of the printf are the width of the display and
+// the precicion of the numbers.
 void	m44_prt_vprd(const t_m44 *m1, const t_v4 *v1, const t_v4 *v2)
 {
-	t_m44_vprd_disp	d;
-
-	if (!m1 || !v1 || !v2)
-		return ;
-	m44_fill_mat(m1, d.m_buf, d.m_w);
-	m44_fill_vec(v1, d.v1_buf, &d.v_w[0]);
-	m44_fill_vec(v2, d.v2_buf, &d.v_w[1]);
-	m44_print_vprd(&d);
+	printf(
+		"╭ %3$*2$.*1$g %4$*2$.*1$g %5$*2$.*1$g %6$*2$.*1$g ╮   "
+		"╭ %19$*2$.*1$g ╮   ╭ %23$*2$.*1$g ╮\n"
+		"│ %7$*2$.*1$g %8$*2$.*1$g %9$*2$.*1$g %10$*2$.*1$g │ * "
+		"│ %20$*2$.*1$g │ = │ %24$*2$.*1$g │\n"
+		"│ %11$*2$.*1$g %12$*2$.*1$g %13$*2$.*1$g %14$*2$.*1$g │   "
+		"│ %21$*2$.*1$g │   │ %25$*2$.*1$g │\n"
+		"╰ %15$*2$.*1$g %16$*2$.*1$g %17$*2$.*1$g %18$*2$.*1$g ╯   "
+		"╰ %22$*2$.*1$g ╯   ╰ %26$*2$.*1$g ╯\n",
+		9, 9 + 5,
+		(*m1)[0], (*m1)[1], (*m1)[2], (*m1)[3],
+		(*m1)[4], (*m1)[5], (*m1)[6], (*m1)[7],
+		(*m1)[8], (*m1)[9], (*m1)[10], (*m1)[11],
+		(*m1)[12], (*m1)[13], (*m1)[14], (*m1)[15],
+		v1->x, v1->y, v1->z, v1->w,
+		v2->x, v2->y, v2->z, v2->w
+		);
 }

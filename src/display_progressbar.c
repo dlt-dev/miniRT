@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/30 12:10:10 by cybourge          #+#    #+#             */
-/*   Updated: 2026/01/30 17:02:44 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/05/06 08:35:56 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,6 @@ void	display_progressbar(double percent)
 	else
 	{
 		write(1, "\e[37m] \e[1;32m Image Generated !    ", 23 + 8 + 6);
-		write(1, "\e[0m", 4);
+		write(1, "\e[0m\n", 5);
 	}
 }
