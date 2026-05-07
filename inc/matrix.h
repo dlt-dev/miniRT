@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/26 12:07:44 by cybourge          #+#    #+#             */
-/*   Updated: 2026/04/23 15:16:38 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/05/07 08:05:25 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -141,5 +141,9 @@ int		m44_inv_she(const t_m44 *m1, t_m44 *res);
 // up : Upwards direction.
 // returns -1 on error, 0 otherwise.
 int		m44_vtrf(const t_pt *from, const t_pt *to, const t_v4 *up, t_m44 *res);
+
+// Rotation Matrix that rotates src_v into dst_v is written into res.
+// Returns -1 on errors, 0 otherwise.
+int		m44_vrv(const t_v4 *src, const t_v4 *dst, t_m44 *res);
 
 #endif

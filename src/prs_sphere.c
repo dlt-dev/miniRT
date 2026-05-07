@@ -6,24 +6,19 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/29 14:19:34 by cybourge          #+#    #+#             */
-/*   Updated: 2026/05/06 09:23:32 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/05/07 08:25:15 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parser.h"
 
-static int	process_transforms(t_prs *prs,
-	t_obj *sphere,
-	t_pt *center,
-	double radius)
+static int	process_transforms(t_obj *sphere, t_pt *center, double radius)
 {
 	if (obj_trl(sphere, center->x, center->y, center->z) == -1)
 		return (-1);
 	if (obj_scl(sphere, radius, radius, radius) == -1)
 		return (-1);
 	if (obj_trf(sphere) == -1)
-		return (-1);
-	if (objv_add(&(prs->scn->world.objs), sphere) == -1)
 		return (-1);
 	return (0);
 }
@@ -52,7 +47,9 @@ int	prs_sphere(t_prs *prs, char **ltab)
 		return (ft_err_prt("Invalid Sphere Color\n", -1));
 	if (tab_len(ltab) == 5 && prs_mat(ltab[4], &(sphere.mtrl)) == -1)
 		return (ft_err_prt("Invalid Sphere Material Data : ", -1));
-	if (process_transforms(prs, &sphere, &center, radius) == -1)
+	if (process_transforms(&sphere, &center, radius) == -1)
 		return (ft_err_prt("Critical Error in Sphere Transformations\n", -1));
+	if (objv_add(&(prs->scn->world.objs), &sphere) == -1)
+		return (ft_err_prt("Could not add Sphere to World\n", -1));
 	return (0);
 }
