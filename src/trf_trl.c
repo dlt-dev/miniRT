@@ -6,11 +6,11 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/08 08:39:04 by cybourge          #+#    #+#             */
-/*   Updated: 2026/04/22 14:15:13 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/06/02 10:42:25 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "object.h"
+#include "transformations.h"
 
 // m1 and m2 are assumed to be pure translation matrices only.
 int	add_trlm(t_m44 const *m1, t_m44 const *m2, t_m44 *res)
@@ -23,7 +23,7 @@ int	add_trlm(t_m44 const *m1, t_m44 const *m2, t_m44 *res)
 	return (0);
 }
 
-int	obj_trl(t_obj *obj, double tx, double ty, double tz)
+int	trf_trl(t_trf *trf, double tx, double ty, double tz)
 {
 	t_m44	trl_mat;
 	t_m44	itrl_mat;
@@ -32,9 +32,9 @@ int	obj_trl(t_obj *obj, double tx, double ty, double tz)
 		return (-1);
 	if (m44_inv_trl(&trl_mat, &itrl_mat) == -1)
 		return (-1);
-	if (add_trlm(&trl_mat, &(obj->trlm), &(obj->trlm)) == -1)
+	if (add_trlm(&trl_mat, &(trf->trlm), &(trf->trlm)) == -1)
 		return (-1);
-	if (add_trlm(&itrl_mat, &(obj->itrlm), &(obj->itrlm)) == -1)
+	if (add_trlm(&itrl_mat, &(trf->itrlm), &(trf->itrlm)) == -1)
 		return (-1);
 	return (0);
 }

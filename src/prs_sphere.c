@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/29 14:19:34 by cybourge          #+#    #+#             */
-/*   Updated: 2026/06/02 09:45:55 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/06/02 11:29:17 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,16 @@
 
 static int	process_transforms(t_obj *sphere, t_pt *center, double radius)
 {
-	if (obj_trl(sphere, center->x, center->y, center->z) == -1)
+	t_trf	trfs;
+
+	trf_ini(&trfs);
+	if (trf_trl(&trfs, center->x, center->y, center->z) == -1)
 		return (-1);
-	if (obj_scl(sphere, radius, radius, radius) == -1)
+	if (trf_scl(&trfs, radius, radius, radius) == -1)
 		return (-1);
-	if (obj_trf(sphere) == -1)
+	if (trf_trf(&trfs) == -1)
+		return (-1);
+	if (obj_trf(sphere, &trfs) == -1)
 		return (-1);
 	return (0);
 }

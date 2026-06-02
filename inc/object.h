@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/03 12:11:44 by cybourge          #+#    #+#             */
-/*   Updated: 2026/06/02 08:56:00 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/06/02 11:26:44 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,15 +81,7 @@ typedef struct s_object
 	t_oty		type;
 	t_m44		tm;
 	t_m44		itm;
-	t_m44		ittm;
-	t_m44		trlm;
-	t_m44		sclm;
-	t_m44		rotm;
-	t_m44		shem;
-	t_m44		itrlm;
-	t_m44		isclm;
-	t_m44		irotm;
-	t_m44		ishem;
+	t_m44		itmt;
 	t_mtl		mtrl;
 	bool		(*hit)(const t_obj *, const t_ray *, t_itxv *);
 	int			(*nrml)(const t_obj *, const t_pt *, t_v4 *);
@@ -135,21 +127,9 @@ void		objv_prt(const t_objv *objv);
 
 // OBJECT FUNCTIONS
 
-// Applies a translation by updating obj's matrixes.
-// returns -1 on error, 0 otherwise.
-int			obj_trl(t_obj *obj, double tx, double ty, double tz);
-// Applies a scaling transformation by updating obj's matrixes.
+// Applies all the transformations to the object.
 // Returns -1 on error, 0 otherwise.
-int			obj_scl(t_obj *obj, double sx, double sy, double sz);
-// Applies a rotation transformation by updating obj's matrixes.
-// Returns -1 on error, 0 otherwise.
-int			obj_rot(t_obj *obj, double rx, double ry, double rz);
-// Applies a shearing transformation by updating obj's matrixes.
-// Returns -1 on error, 0 otherwise.
-int			obj_she(t_obj *obj, t_spara param);
-// Applies all the stored transformations to the object.
-// Returns -1 on error, 0 otherwise.
-int			obj_trf(t_obj *obj);
+int			obj_trf(t_obj *obj, t_trf const *trf);
 
 // Lights an object.
 // Returns the color.

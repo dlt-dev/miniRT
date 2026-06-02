@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/21 10:38:01 by cybourge          #+#    #+#             */
-/*   Updated: 2026/04/22 14:17:04 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/06/02 11:19:04 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	sph_nrml(const t_obj *obj, const t_pt *wpt, t_v4 *wnrml)
 	if (m44_vprd(&(obj->itm), wpt, &opt) == -1)
 		return (-1);
 	onrml = v4_sub(opt, pt_crt(0.0, 0.0, 0.0));
-	if (m44_vprd(&(obj->ittm), &onrml, wnrml) == -1)
+	if (m44_vprd(&(obj->itmt), &onrml, wnrml) == -1)
 		return (-1);
 	wnrml->w = 0;
 	*wnrml = v4_uni(*wnrml);

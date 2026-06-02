@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/22 13:17:37 by cybourge          #+#    #+#             */
-/*   Updated: 2026/04/23 09:43:27 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/06/02 11:21:07 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@
 //  - 0.5 radius sphere at the Origin.
 int	wld_ini_dflt(t_wld *wld)
 {
+	t_trf	trf;
+
 	wld->objs = objv_crt(2);
 	if (wld->objs.cap == 0)
 		return (-1);
@@ -25,13 +27,17 @@ int	wld_ini_dflt(t_wld *wld)
 	if (wld->lgts.cap == 0)
 		return (objv_dlt(&(wld->objs)), -1);
 	wld->objs.v[0] = sph_crt();
+	trf_ini(&trf);
+	trf_trf(&trf);
+	obj_trf(&(wld->objs.v[0]), &trf);
 	wld->objs.v[0].mtrl.clr = clr_crt(0, 0.8, 1.0, 0.6);
 	wld->objs.v[0].mtrl.dif = 0.7;
 	wld->objs.v[0].mtrl.spc = 0.2;
 	wld->objs.v[1] = sph_crt();
-	obj_scl(&(wld->objs.v[1]), 0.5, 0.5, 0.5);
-	obj_trf(&(wld->objs.v[0]));
-	obj_trf(&(wld->objs.v[1]));
+	trf_ini(&trf);
+	trf_scl(&trf, 0.5, 0.5, 0.5);
+	trf_trf(&trf);
+	obj_trf(&(wld->objs.v[1]), &trf);
 	lgt_set(&(wld->lgts.v[0]), pt_crt(-10, 10, -10), WHITE);
 	wld->objs.len = 2;
 	wld->lgts.len = 1;

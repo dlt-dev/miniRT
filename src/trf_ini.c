@@ -1,23 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   obj_trf.c                                          :+:      :+:    :+:   */
+/*   trf_ini.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/06/02 11:00:37 by cybourge          #+#    #+#             */
-/*   Updated: 2026/06/02 11:26:48 by cybourge         ###   ########.fr       */
+/*   Created: 2026/06/02 11:05:49 by cybourge          #+#    #+#             */
+/*   Updated: 2026/06/02 11:28:53 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "object.h"
+#include "transformations.h"
 
-int	obj_trf(t_obj *obj, t_trf const *trfs)
+void	trf_ini(t_trf *trf)
 {
-	if (!obj || !trfs)
-		return (-1);
-	m44_cpy(&(trfs->tm), &(obj->tm));
-	m44_cpy(&(trfs->itm), &(obj->itm));
-	m44_cpy(&(trfs->itmt), &(obj->itmt));
-	return (0);
+	m44_idm(&(trf->tm));
+	m44_idm(&(trf->itm));
+	m44_idm(&(trf->itmt));
+	m44_idm(&(trf->trlm));
+	m44_idm(&(trf->sclm));
+	m44_idm(&(trf->rotm));
+	m44_idm(&(trf->shem));
+	m44_idm(&(trf->itrlm));
+	m44_idm(&(trf->isclm));
+	m44_idm(&(trf->irotm));
+	m44_idm(&(trf->ishem));
 }

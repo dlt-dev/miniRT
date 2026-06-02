@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/01 11:16:57 by cybourge          #+#    #+#             */
-/*   Updated: 2026/04/30 11:16:35 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/06/02 11:26:34 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,15 +21,7 @@ t_obj	sph_crt(void)
 	sphere.u_o.sp.r = 1.0;
 	m44_idm(&(sphere.tm));
 	m44_idm(&(sphere.itm));
-	m44_idm(&(sphere.ittm));
-	m44_idm(&(sphere.trlm));
-	m44_idm(&(sphere.itrlm));
-	m44_idm(&(sphere.sclm));
-	m44_idm(&(sphere.isclm));
-	m44_idm(&(sphere.rotm));
-	m44_idm(&(sphere.irotm));
-	m44_idm(&(sphere.shem));
-	m44_idm(&(sphere.ishem));
+	m44_idm(&(sphere.itmt));
 	sphere.mtrl.clr = clr_unpack(WHITE);
 	sphere.mtrl.amb = 0.5;
 	sphere.mtrl.dif = 0.9;
