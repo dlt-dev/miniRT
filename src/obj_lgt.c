@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/21 14:19:52 by cybourge          #+#    #+#             */
-/*   Updated: 2026/04/30 11:50:41 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/06/02 09:01:25 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ t_clr	obj_lgt(
 {
 	t_obj_lgt	l;
 
-	l.eff_clr = clr_bld(obj->mtrl.clr, light->clr);
+	l.eff_clr = clr_bld(obj_gclr(obj, &(data->hp)), light->clr);
 	l.lightv = v4_uni(v4_sub(light->pos, data->hp));
 	l.ambient = clr_unpack(BLACK);
 	l.ldn = v4_dot(l.lightv, data->nrm);

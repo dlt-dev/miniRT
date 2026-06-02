@@ -1,34 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   material.h                                         :+:      :+:    :+:   */
+/*   pat_lgrad1.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/23 11:11:32 by cybourge          #+#    #+#             */
-/*   Updated: 2026/06/02 08:22:32 by cybourge         ###   ########.fr       */
+/*   Created: 2026/06/02 09:26:59 by cybourge          #+#    #+#             */
+/*   Updated: 2026/06/02 09:51:58 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MATERIAL_H
-# define MATERIAL_H
+#include "pattern.h"
 
-# include "color.h"
-# include "pattern.h"
-
-// Material for a Phong Lighting model.
-typedef struct s_material
+t_clr	pat_lgrad1(t_pt const *p)
 {
-	t_clr	clr;
-	double	amb;
-	double	dif;
-	double	spc;
-	double	shi;
-	t_patt	pat;	
-}	t_mtl;
+	const t_clr		clr1 = clr_unpack(RED);
+	const t_clr		clr2 = clr_unpack(BLUE);
+	const t_clr		dst = clr_sub(clr2, clr1);
+	const double	step = p->x - floor(p->x);
 
-// Sets the value of a material to default values.
-// TBD !!!!!
-void	mtl_ini(const t_mtl *mtl);
-
-#endif
+	// Need OBJ to Pattern space conversion here
+	return (clr_add(clr1, clr_mul(dst, step)));
+}
