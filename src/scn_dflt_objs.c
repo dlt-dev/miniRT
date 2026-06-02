@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/24 10:22:42 by cybourge          #+#    #+#             */
-/*   Updated: 2026/06/02 13:36:17 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/06/02 13:53:05 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ static void	setup_bg(t_wld *world)
 	world->objs.v[2].mtrl.clr = clr_unpack(RED);
 	world->objs.v[2].mtrl.spc = 0.1;
 	trf_ini(&trf);
-	trf_trl(&trf, EPS, EPS, EPS);
 	trf_trf(&trf);
 	pat_trf(&(world->objs.v[2].mtrl.pat), &trf);
 	world->objs.v[2].mtrl.pat.pat = pat_chkr1;
