@@ -6,16 +6,18 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/02 09:36:14 by cybourge          #+#    #+#             */
-/*   Updated: 2026/06/02 09:51:54 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/06/02 12:03:55 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pattern.h"
 
-t_clr	pat_ring1(t_pt const *p)
+t_clr	pat_ring1(const t_pat *pat, t_pt const *p)
 {
-	// Need OBJ to Pattern space conversion here
-	if ((int) floor(sqrt(p->x * p->x + p->z * p->z)) % 2 == 0)
+	t_pt	pat_pt;
+
+	m44_vprd(&(pat->itm), p, &pat_pt);
+	if ((int) floor(sqrt(pat_pt.x * pat_pt.x + pat_pt.z * pat_pt.z)) % 2 == 0)
 		return (clr_unpack(WHITE));
 	return (clr_unpack(BLUE));
 }

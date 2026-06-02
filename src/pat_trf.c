@@ -1,23 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pat_chkr1.c                                        :+:      :+:    :+:   */
+/*   pat_trf.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/06/02 09:44:14 by cybourge          #+#    #+#             */
-/*   Updated: 2026/06/02 13:36:40 by cybourge         ###   ########.fr       */
+/*   Created: 2026/06/02 12:06:25 by cybourge          #+#    #+#             */
+/*   Updated: 2026/06/02 13:18:55 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pattern.h"
 
-t_clr	pat_chkr1(const t_pat *pat, t_pt const *p)
+int	pat_trf(t_pat *pat, const t_trf *trf)
 {
-	t_pt	pat_pt;
-
-	m44_vprd(&(pat->itm), p, &pat_pt);
-	if ((int)(floor(pat_pt.x) + floor(pat_pt.y) + floor(pat_pt.z)) % 2 == 0)
-		return (clr_unpack(WHITE));
-	return (clr_unpack(BLACK));
+	if (!pat || !trf)
+		return (-1);
+	m44_cpy(&(trf->tm), &(pat->tm));
+	m44_cpy(&(trf->itm), &(pat->itm));
+	return (0);
 }

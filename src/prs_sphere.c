@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/29 14:19:34 by cybourge          #+#    #+#             */
-/*   Updated: 2026/06/02 11:29:17 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/06/02 12:09:22 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,6 @@ int	prs_sphere(t_prs *prs, char **ltab)
 	if (radius <= 0.0)
 		return (ft_err_prt("Sphere Radius Must be Positive\n", -1));
 	sphere = sph_crt();
-	sphere.mtrl.pat = CHECKER;
 	if (prs_clr(ltab[3], &(sphere.mtrl.clr)) == -1)
 		return (ft_err_prt("Invalid Sphere Color\n", -1));
 	if (tab_len(ltab) == 5 && prs_mat(ltab[4], &(sphere.mtrl)) == -1)

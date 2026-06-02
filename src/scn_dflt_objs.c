@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/24 10:22:42 by cybourge          #+#    #+#             */
-/*   Updated: 2026/06/02 11:33:06 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/06/02 13:36:17 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,12 +35,17 @@ static void	setup_bg(t_wld *world)
 	world->objs.v[1].mtrl.spc = 0.1;
 	world->objs.v[2] = pln_crt();
 	trf_ini(&trf);
-	trf_rot(&trf, PI / 2.0, PI / 4.0, 0.0);
+	trf_rot(&trf, PI / 2.0, PI / 4.0, PI / 6.0);
 	trf_trl(&trf, 0, 0, 5);
 	trf_trf(&trf);
 	obj_trf(&(world->objs.v[2]), &trf);
 	world->objs.v[2].mtrl.clr = clr_unpack(RED);
 	world->objs.v[2].mtrl.spc = 0.1;
+	trf_ini(&trf);
+	trf_trl(&trf, EPS, EPS, EPS);
+	trf_trf(&trf);
+	pat_trf(&(world->objs.v[2].mtrl.pat), &trf);
+	world->objs.v[2].mtrl.pat.pat = pat_chkr1;
 }
 
 // Utility function that sets up the left Sphere.
@@ -48,6 +53,7 @@ static void	setup_ele2(t_wld *world, size_t offset)
 {
 	t_trf	trf;
 
+	world->objs.v[offset + 2] = sph_crt();
 	trf_ini(&trf);
 	trf_trl(&trf, -1.5, 0.33, -0.75);
 	trf_scl(&trf, 0.33, 0.33, 0.33);
@@ -57,6 +63,11 @@ static void	setup_ele2(t_wld *world, size_t offset)
 	world->objs.v[offset + 2].mtrl.dif = 0.9;
 	world->objs.v[offset + 2].mtrl.spc = 0.9;
 	world->objs.v[offset + 2].mtrl.shi = 1000000;
+	trf_ini(&trf);
+	trf_scl(&trf, 0.1, 0.1, 0.1);
+	trf_trf(&trf);
+	pat_trf(&(world->objs.v[offset + 2].mtrl.pat), &trf);
+	world->objs.v[offset + 2].mtrl.pat.pat = pat_strp1;
 }
 
 // Utility function that sets up the Middle and Right Spheres.
@@ -75,6 +86,12 @@ static void	setup_ele1(t_wld *world, size_t offset)
 	world->objs.v[offset + 0].mtrl.dif = 0.7;
 	world->objs.v[offset + 0].mtrl.spc = 0.3;
 	world->objs.v[offset + 0].mtrl.shi = 10;
+	trf_ini(&trf);
+	trf_rot(&trf, PI / 2.0, 0.0, 0.0);
+	trf_scl(&trf, 0.5, 0.5, 0.5);
+	trf_trf(&trf);
+	pat_trf(&(world->objs.v[offset + 0].mtrl.pat), &trf);
+	world->objs.v[offset + 0].mtrl.pat.pat = pat_chkr1;
 	world->objs.v[offset + 1] = sph_crt();
 	trf_ini(&trf);
 	trf_scl(&trf, 0.5, 0.5, 0.5);
@@ -84,7 +101,11 @@ static void	setup_ele1(t_wld *world, size_t offset)
 	world->objs.v[offset + 1].mtrl.clr = clr_unpack(0x00db2834);
 	world->objs.v[offset + 1].mtrl.dif = 0.5;
 	world->objs.v[offset + 1].mtrl.spc = 0.9;
-	world->objs.v[offset + 2] = sph_crt();
+	trf_ini(&trf);
+	trf_rot(&trf, PI / 2.0, 0.0, 0.0);
+	trf_trf(&trf);
+	pat_trf(&(world->objs.v[offset + 1].mtrl.pat), &trf);
+	world->objs.v[offset + 1].mtrl.pat.pat = pat_lgrad1;
 }
 
 int	scn_dflt_objs(t_wld *world)

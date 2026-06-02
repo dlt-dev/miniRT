@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/23 11:11:32 by cybourge          #+#    #+#             */
-/*   Updated: 2026/06/02 08:22:32 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/06/02 13:21:32 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,10 @@ typedef struct s_material
 	double	dif;
 	double	spc;
 	double	shi;
-	t_patt	pat;	
+	t_pat	pat;
 }	t_mtl;
 
 // Sets the value of a material to default values.
-// TBD !!!!!
-void	mtl_ini(const t_mtl *mtl);
+void	mtl_ini(t_mtl *mtl);
 
 #endif

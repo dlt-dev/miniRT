@@ -1,23 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pat_chkr1.c                                        :+:      :+:    :+:   */
+/*   mtl_ini.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/06/02 09:44:14 by cybourge          #+#    #+#             */
-/*   Updated: 2026/06/02 13:36:40 by cybourge         ###   ########.fr       */
+/*   Created: 2026/06/02 11:50:11 by cybourge          #+#    #+#             */
+/*   Updated: 2026/06/02 11:53:17 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pattern.h"
+#include "material.h"
 
-t_clr	pat_chkr1(const t_pat *pat, t_pt const *p)
+void	mtl_ini(t_mtl *mtl)
 {
-	t_pt	pat_pt;
-
-	m44_vprd(&(pat->itm), p, &pat_pt);
-	if ((int)(floor(pat_pt.x) + floor(pat_pt.y) + floor(pat_pt.z)) % 2 == 0)
-		return (clr_unpack(WHITE));
-	return (clr_unpack(BLACK));
+	mtl->clr = clr_unpack(RED);
+	mtl->amb = 0.5;
+	mtl->dif = 0.8;
+	mtl->spc = 0.5;
+	mtl->shi = 100.0;
+	m44_idm(&(mtl->pat.tm));
+	m44_idm(&(mtl->pat.itm));
+	mtl->pat.pat = NULL;
 }

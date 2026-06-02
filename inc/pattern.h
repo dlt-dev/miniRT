@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/02 07:59:11 by cybourge          #+#    #+#             */
-/*   Updated: 2026/06/02 09:52:51 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/06/02 12:06:15 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,26 +18,27 @@
 # include "matrix.h"
 # include "transformations.h"
 
-// Pattern types
-typedef enum e_pat_types
+typedef struct s_pattern
 {
-	NONE = 0,
-	STRIPPED_X,
-	LIN_GRAD_X,
-	RING_XZ,
-	CHECKER
-}	t_patt;
+	t_m44	tm;
+	t_m44	itm;
+	t_clr	(*pat)(const struct s_pattern *, const t_pt *);
+}	t_pat;
+
+// Applies the transformations to the pattern.
+// Returns -1 on error, 0 otherwise.
+int		pat_trf(t_pat *pat, const t_trf *trf);
 
 // returns the color of a X vertical stripped pattern RED and WHITE at point p
-t_clr	pat_strp1(t_pt const *p);
+t_clr	pat_strp1(const t_pat *pat, t_pt const *p);
 
 // returns the color of a gradient pattern between RED and BLUE.
-t_clr	pat_lgrad1(t_pt const *p);
+t_clr	pat_lgrad1(const t_pat *pat, t_pt const *p);
 
 // returns the color of a ring pattern WHITE BLUE.
-t_clr	pat_ring1(t_pt const *p);
+t_clr	pat_ring1(const t_pat *pat, t_pt const *p);
 
 // returns the color of a WHITE BLACK Checker pattern.
-t_clr	pat_chkr1(t_pt const *p);
+t_clr	pat_chkr1(const t_pat *pat, t_pt const *p);
 
 #endif
