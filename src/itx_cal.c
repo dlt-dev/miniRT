@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/22 08:12:48 by cybourge          #+#    #+#             */
-/*   Updated: 2026/05/06 13:10:54 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/06/02 14:02:19 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,6 @@ int	itx_cal(t_itx *itx, const t_ray *ray)
 	else
 		itx->in = false;
 	itx->ohp = v4_add(itx->hp, v4_mul(itx->nrm, EPS));
+	itx->rflv = v4_rfl(&(ray->dir), &(itx->nrm));
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/24 10:22:42 by cybourge          #+#    #+#             */
-/*   Updated: 2026/06/02 13:53:05 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/06/03 09:18:26 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ static void	setup_ele2(t_wld *world, size_t offset)
 	world->objs.v[offset + 2].mtrl.dif = 0.9;
 	world->objs.v[offset + 2].mtrl.spc = 0.9;
 	world->objs.v[offset + 2].mtrl.shi = 1000000;
+	world->objs.v[offset + 2].mtrl.rfl = 1.0;
 	trf_ini(&trf);
 	trf_scl(&trf, 0.1, 0.1, 0.1);
 	trf_trf(&trf);

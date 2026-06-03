@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/22 11:37:45 by cybourge          #+#    #+#             */
-/*   Updated: 2026/04/30 10:52:30 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/06/03 09:17:11 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 # include "object.h"
 # include "light.h"
 # include <stdio.h>
+
+# define REC_MAX	5
 
 // Structure that Holds the Ambient light for the world.
 typedef struct s_ambient_light
@@ -57,11 +59,11 @@ int		wld_itx(const t_wld *world, const t_ray *ray, t_itxv *itxv);
 
 // Returns the color at the intersection.
 // shd : Shading
-t_clr	wld_shd(const t_wld *world, const t_itx *itx, t_itxv *itxv);
+t_clr	wld_shd(const t_wld *world, const t_itx *itx, t_itxv *itxv, int r);
 
 // Returns the color of the ray.
 // itxv is given to reduce memory allocations,
 // it should have been created before calling this function.
-t_clr	wld_clr_at(const t_wld *world, const t_ray *ray, t_itxv *itxv);
+t_clr	wld_clr_at(const t_wld *world, const t_ray *ray, t_itxv *itxv, int r);
 
 #endif

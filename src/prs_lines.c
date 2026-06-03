@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/29 14:34:22 by cybourge          #+#    #+#             */
-/*   Updated: 2026/04/30 11:57:07 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/06/03 10:21:27 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,12 @@ int	prs_lines(t_prs *prs)
 	while (line != NULL)
 	{
 		len = ft_strlen(line);
+		if (len > 0 && line[0] == '#')
+		{
+			free(line);
+			line = gnl(prs->fd);
+			continue ;
+		}
 		if (len > 0 && line[len - 1] == '\n')
 			line[len - 1] = '\0';
 		if (prs_line(prs, line) == -1)

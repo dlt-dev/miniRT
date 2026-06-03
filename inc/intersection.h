@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/03 12:14:14 by cybourge          #+#    #+#             */
-/*   Updated: 2026/04/24 09:38:04 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/06/03 07:50:43 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ typedef struct s_object	t_obj;
 // rd	: the ray's direction vector from which the hit resulted.
 // nrm	: normal vector to the surface at the hitpoint.
 // in	: Wether the intersection happens from inside the object or not.
+// rflv	: reflection vector around the normal.
 typedef struct s_intersection
 {
 	const t_obj	*obj;
@@ -38,6 +39,7 @@ typedef struct s_intersection
 	t_pt		ohp;
 	t_v4		rd;
 	t_v4		nrm;
+	t_v4		rflv;
 	bool		in;
 }	t_itx;
 

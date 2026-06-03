@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/06 08:47:31 by cybourge          #+#    #+#             */
-/*   Updated: 2026/06/02 08:43:20 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/06/03 09:57:28 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,9 @@ static int	check_n_write(t_mtl *mat, char **abcd)
 	mat->shi = ft_atof(abcd[3]);
 	if (!(mat->shi > 0.0))
 		return (ft_err_prt("Material Shininess must be > 0.0\n", -1));
+	mat->rfl = ft_atof(abcd[4]);
+	if (!(mat->rfl >= 0.0 && mat->rfl <= 1.0))
+		return (ft_err_prt("Material Reflectiveness must be in [0, 1]\n", -1));
 	return (0);
 }
 
@@ -35,6 +38,7 @@ static int	check_n_write(t_mtl *mat, char **abcd)
 // b = specular light effect.
 // c = diffuse light effect.
 // d = shininess of the object.
+// e = reflectivness of the object
 // writes the results in v.
 // Returns -1 on error, 0 otherwise.
 int	prs_mat(const char *str, t_mtl *mat)
@@ -46,13 +50,13 @@ int	prs_mat(const char *str, t_mtl *mat)
 		return (-1);
 	abcd = ft_split(str, ',');
 	len = tab_len(abcd);
-	if (len != 4)
+	if (len != 5)
 	{
 		tab_dlt(abcd);
 		return (-1);
 	}
 	if (!is_validf(abcd[0]) || !is_validf(abcd[1])
-		|| !is_validf(abcd[2]) || !is_validf(abcd[3]))
+		|| !is_validf(abcd[2]) || !is_validf(abcd[3]) || !is_validf(abcd[4]))
 	{
 		tab_dlt(abcd);
 		return (-1);
