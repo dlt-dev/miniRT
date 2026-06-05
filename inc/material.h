@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/23 11:11:32 by cybourge          #+#    #+#             */
-/*   Updated: 2026/06/02 13:56:45 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/06/03 12:16:18 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,14 @@
 # include "pattern.h"
 
 // Material for a Phong Lighting model.
+// clr	: Colour
+// amb	: Ambient light reflection
+// dif	: Diffuse reflection
+// spc	: Specular reflection
+// shi	: Shininess 
+// rfl	: Reflection 0 = no reflect 1.0 = full reflect
+// tsp	: Transparency
+// ref	: Refraction
 typedef struct s_material
 {
 	t_clr	clr;
@@ -25,6 +33,8 @@ typedef struct s_material
 	double	spc;
 	double	shi;
 	double	rfl;
+	double	tsp;
+	double	ref;
 	t_pat	pat;
 }	t_mtl;
 

@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/06 08:47:31 by cybourge          #+#    #+#             */
-/*   Updated: 2026/06/03 09:57:28 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/06/05 11:24:33 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,16 +29,24 @@ static int	check_n_write(t_mtl *mat, char **abcd)
 	mat->rfl = ft_atof(abcd[4]);
 	if (!(mat->rfl >= 0.0 && mat->rfl <= 1.0))
 		return (ft_err_prt("Material Reflectiveness must be in [0, 1]\n", -1));
+	mat->tsp = ft_atof(abcd[5]);
+	if (!(mat->tsp >= 0.0 && mat->tsp <= 1.0))
+		return (ft_err_prt("Material Transparency must be in [0, 1]\n", -1));
+	mat->ref = ft_atof(abcd[6]);
+	if (!(mat->ref >= 1.0))
+		return (ft_err_prt("Material Refraction Index must be >= 1.0\n", -1));
 	return (0);
 }
 
 // Parses an objects material data given in string form :
-// "a,b,c,d" where :
+// "a,b,c,d,e,f,g" where :
 // a = ambient light effect.
 // b = specular light effect.
 // c = diffuse light effect.
 // d = shininess of the object.
 // e = reflectivness of the object
+// f = transparency of the object
+// g = refraction index of the object
 // writes the results in v.
 // Returns -1 on error, 0 otherwise.
 int	prs_mat(const char *str, t_mtl *mat)
@@ -50,13 +58,14 @@ int	prs_mat(const char *str, t_mtl *mat)
 		return (-1);
 	abcd = ft_split(str, ',');
 	len = tab_len(abcd);
-	if (len != 5)
+	if (len != 7)
 	{
 		tab_dlt(abcd);
 		return (-1);
 	}
 	if (!is_validf(abcd[0]) || !is_validf(abcd[1])
-		|| !is_validf(abcd[2]) || !is_validf(abcd[3]) || !is_validf(abcd[4]))
+		|| !is_validf(abcd[2]) || !is_validf(abcd[3]) || !is_validf(abcd[4])
+		|| !is_validf(abcd[5]) || !is_validf(abcd[6]))
 	{
 		tab_dlt(abcd);
 		return (-1);

@@ -1,28 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mtl_ini.c                                          :+:      :+:    :+:   */
+/*   objl_last.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/06/02 11:50:11 by cybourge          #+#    #+#             */
-/*   Updated: 2026/06/05 12:17:51 by cybourge         ###   ########.fr       */
+/*   Created: 2026/06/05 09:41:33 by cybourge          #+#    #+#             */
+/*   Updated: 2026/06/05 10:19:38 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "material.h"
+#include "object.h"
 
-void	mtl_ini(t_mtl *mtl)
+const t_obj	*objl_last(const t_objl *objl)
 {
-	mtl->clr = clr_unpack(RED);
-	mtl->amb = 0.5;
-	mtl->dif = 0.8;
-	mtl->spc = 0.5;
-	mtl->shi = 100.0;
-	mtl->rfl = 0.0;
-	mtl->tsp = 0.5;
-	mtl->ref = 1.5;
-	m44_idm(&(mtl->pat.tm));
-	m44_idm(&(mtl->pat.itm));
-	mtl->pat.pat = NULL;
+	if (objl == NULL)
+		return (NULL);
+	while (objl->next != NULL)
+		objl = objl->next;
+	return (objl->obj);
 }

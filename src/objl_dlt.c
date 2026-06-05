@@ -1,28 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mtl_ini.c                                          :+:      :+:    :+:   */
+/*   objl_dlt.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/06/02 11:50:11 by cybourge          #+#    #+#             */
-/*   Updated: 2026/06/05 12:17:51 by cybourge         ###   ########.fr       */
+/*   Created: 2026/06/05 09:40:34 by cybourge          #+#    #+#             */
+/*   Updated: 2026/06/05 10:17:04 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "material.h"
+#include "object.h"
 
-void	mtl_ini(t_mtl *mtl)
+void	objl_dlt(t_objl **objl, const t_obj *to_delete)
 {
-	mtl->clr = clr_unpack(RED);
-	mtl->amb = 0.5;
-	mtl->dif = 0.8;
-	mtl->spc = 0.5;
-	mtl->shi = 100.0;
-	mtl->rfl = 0.0;
-	mtl->tsp = 0.5;
-	mtl->ref = 1.5;
-	m44_idm(&(mtl->pat.tm));
-	m44_idm(&(mtl->pat.itm));
-	mtl->pat.pat = NULL;
+	t_objl	*cur;
+	t_objl	*prev;
+
+	if (objl == NULL || *objl == NULL || to_delete == NULL)
+		return ;
+	cur = *objl;
+	prev = NULL;
+	while (cur != NULL)
+	{
+		if (cur->obj == to_delete)
+		{
+			if (prev == NULL)
+				*objl = cur->next;
+			else
+				prev->next = cur->next;
+			free(cur);
+			return ;
+		}
+		prev = cur;
+		cur = cur->next;
+	}
 }

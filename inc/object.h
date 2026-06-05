@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/03 12:11:44 by cybourge          #+#    #+#             */
-/*   Updated: 2026/06/02 11:26:44 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/06/05 10:19:16 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,6 +103,29 @@ typedef struct s_object_vector
 	size_t	cap;
 	t_obj	*v;
 }	t_objv;
+
+// Linked list structure that hold pointers to existing objects.
+typedef struct s_object_list
+{
+	const t_obj					*obj;
+	struct s_object_list	*next;
+}	t_objl;
+
+// Adds new_obj at the end of the objl
+// Returns -1 on error, 0 otherwise.
+int		objl_add(t_objl **objl, const t_obj *new_obj);
+
+// Removes the first occurence of to_delete from objl
+void	objl_dlt(t_objl **objl, const t_obj *to_delete);
+
+// Returns true if to_find is in objl
+bool	objl_isin(const t_objl *objl, const t_obj *to_find);
+
+// Returns the last obj in objl, NULL is objl is empty.
+const t_obj	*objl_last(const t_objl *objl);
+
+// Frees each node of the objl
+void	objl_free(t_objl *objl);
 
 // Creates an empty object vector with a capacity of cap.
 // If the allocation is unsucessfull :

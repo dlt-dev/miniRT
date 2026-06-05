@@ -1,28 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mtl_ini.c                                          :+:      :+:    :+:   */
+/*   objl_isin.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/06/02 11:50:11 by cybourge          #+#    #+#             */
-/*   Updated: 2026/06/05 12:17:51 by cybourge         ###   ########.fr       */
+/*   Created: 2026/06/05 09:41:06 by cybourge          #+#    #+#             */
+/*   Updated: 2026/06/05 09:41:22 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "material.h"
+#include "object.h"
 
-void	mtl_ini(t_mtl *mtl)
+bool	objl_isin(const t_objl *objl, const t_obj *to_find)
 {
-	mtl->clr = clr_unpack(RED);
-	mtl->amb = 0.5;
-	mtl->dif = 0.8;
-	mtl->spc = 0.5;
-	mtl->shi = 100.0;
-	mtl->rfl = 0.0;
-	mtl->tsp = 0.5;
-	mtl->ref = 1.5;
-	m44_idm(&(mtl->pat.tm));
-	m44_idm(&(mtl->pat.itm));
-	mtl->pat.pat = NULL;
+	while (objl != NULL)
+	{
+		if (objl->obj == to_find)
+			return (true);
+		objl = objl->next;
+	}
+	return (false);
 }

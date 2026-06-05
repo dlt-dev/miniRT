@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/03 12:14:14 by cybourge          #+#    #+#             */
-/*   Updated: 2026/06/03 07:50:43 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/06/05 10:41:23 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,19 +27,26 @@ typedef struct s_object	t_obj;
 // hp	: Hit Point in World Space
 // ohp	: Over Hit Point, Hit point but slightly elevated by the normal.
 //			Used to remove shadow acne.
+// uhp	: Under Hit Point, Hit point but slightly lozered by the normal.
+//			Used to create refracted rays.
 // rd	: the ray's direction vector from which the hit resulted.
 // nrm	: normal vector to the surface at the hitpoint.
 // in	: Wether the intersection happens from inside the object or not.
 // rflv	: reflection vector around the normal.
+// n1	: Refractive index of the material being EXITED
+// n2	: Refractive index of the material being ENTERED
 typedef struct s_intersection
 {
 	const t_obj	*obj;
 	double		t;
 	t_pt		hp;
 	t_pt		ohp;
+	t_pt		uhp;
 	t_v4		rd;
 	t_v4		nrm;
 	t_v4		rflv;
+	double		n1;
+	double		n2;
 	bool		in;
 }	t_itx;
 
@@ -57,7 +64,7 @@ typedef struct s_intersection_vector
 // Calculates the hit information of the itx, 
 // the obj and t fields must have been set before calling this function.
 // returns -1 on error, 0 otherwise.
-int		itx_cal(t_itx *itx, const t_ray *ray);
+int		itx_cal(t_itx *itx, const t_ray *ray, const t_itxv *itxv);
 
 // Displays the intersection and its fields.
 void	itx_prt(const t_itx *itx);

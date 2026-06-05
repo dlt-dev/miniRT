@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/24 10:22:42 by cybourge          #+#    #+#             */
-/*   Updated: 2026/06/03 09:18:26 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/06/05 12:17:32 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ static void	setup_bg(t_wld *world)
 	obj_trf(&(world->objs.v[0]), &trf);
 	world->objs.v[0].mtrl.clr = clr_unpack(WHITE);
 	world->objs.v[0].mtrl.spc = 0.1;
+	world->objs.v[0].mtrl.tsp = 0.0;
 	world->objs.v[1] = pln_crt();
 	trf_ini(&trf);
 	trf_rot(&trf, PI / 2.0, -PI / 4.0, 0.0);
@@ -33,6 +34,7 @@ static void	setup_bg(t_wld *world)
 	obj_trf(&(world->objs.v[1]), &trf);
 	world->objs.v[1].mtrl.clr = clr_unpack(BLUE);
 	world->objs.v[1].mtrl.spc = 0.1;
+	world->objs.v[1].mtrl.tsp = 0.0;
 	world->objs.v[2] = pln_crt();
 	trf_ini(&trf);
 	trf_rot(&trf, PI / 2.0, PI / 4.0, PI / 6.0);
@@ -41,6 +43,7 @@ static void	setup_bg(t_wld *world)
 	obj_trf(&(world->objs.v[2]), &trf);
 	world->objs.v[2].mtrl.clr = clr_unpack(RED);
 	world->objs.v[2].mtrl.spc = 0.1;
+	world->objs.v[2].mtrl.tsp = 0.0;
 	trf_ini(&trf);
 	trf_trf(&trf);
 	pat_trf(&(world->objs.v[2].mtrl.pat), &trf);

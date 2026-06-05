@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/23 12:31:48 by cybourge          #+#    #+#             */
-/*   Updated: 2026/06/03 10:34:13 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/06/05 14:23:47 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,27 +57,93 @@ static t_clr	reflected_clr(const t_wld *world, const t_itx *itx, int r)
 	return (clr_mul(rfl_clr, itx->obj->mtrl.rfl));
 }
 
+static t_clr	refracted_clr(const t_wld *world, const t_itx *itx, int r)
+{
+	const double	n_ratio = itx->n1 / itx->n2;
+	const double	cos_i = v4_dot(itx->rd, itx->nrm);
+	const double	sin2_t = n_ratio * n_ratio * (1 - cos_i * cos_i);
+	double			cos_t;
+	t_ray			rfr_ray;
+	t_clr			clrs[3];
+	t_itxv			rfr_itxv;
+
+	if (deql(itx->obj->mtrl.tsp, 0.0) || r == 0 || sin2_t > 1.0)
+		return (clr_unpack(BLACK));
+	cos_t = sqrt(1.0 - sin2_t);
+	rfr_ray.dir = v4_sub(v4_mul(itx->nrm, n_ratio * cos_i - cos_t),
+			v4_mul(itx->rd, n_ratio));
+	rfr_ray.o = itx->uhp;
+	rfr_itxv = itxv_crt(2);
+	if (rfr_itxv.cap == 0)
+		return (ft_err_prt("Refraction ERROR\n", 1), clr_unpack(BLACK));
+	clrs[3] = clr_mul(wld_clr_at(world, &rfr_ray, &rfr_itxv, r - 1),
+			itx->obj->mtrl.tsp);
+	itxv_dlt(&rfr_itxv);
+	return (clrs[3]);
+}
+
+static double	schlick(const t_itx *itx)
+{
+	double	cos;
+	double	n;
+	double	sin2_t;
+	double	cos_t;
+	double	r0;
+
+	cos = v4_dot(itx->rd, itx->nrm);
+	if (itx->n1 > itx->n2)
+	{
+		n = itx->n1 / itx->n2;
+		sin2_t = n * n * (1.0 - cos * cos);
+		if (sin2_t > 1.0)
+			return (1.0);
+		cos_t = sqrt(1.0 - sin2_t);
+		cos = cos_t;
+	}
+	r0 = (itx->n1 - itx->n2) / ((itx->n1 + itx->n2) * (itx->n1 + itx->n2));
+	r0 = r0 * r0;
+	return (r0 + (1 - r0) * pow((1 - cos), 5));
+}
+
+// Color table is as follows [ambient, reflected, surface, refracted]
+static t_clr	add_colours(t_clr clrs[4], const t_itx *itx)
+{
+	t_clr	clr1;
+	double	rfl;
+
+	if (itx->obj->mtrl.ref > 0.0 && itx->obj->mtrl.tsp > 0.0)
+	{
+		rfl = schlick(itx);
+		clr1 = clr_add(clrs[2], clr_add(clr_mul(clrs[1], rfl),
+					clr_mul(clrs[3], 1 - rfl)));
+		return (clr_add(clr1, clrs[0]));
+	}
+	clr1 = clr_add(clrs[2], clr_add(clrs[1], clrs[3]));
+	return (clr_add(clr1, clrs[0]));
+}
+
+// clrs : // [ambient, reflected, surface, refracted]
 t_clr	wld_shd(const t_wld *world, const t_itx *itx, t_itxv *itxv, int r)
 {
-	t_clr	fclr;
-	t_clr	aclr;
-	t_clr	rclr;
+	t_clr	clrs[4];
 	size_t	i;
-	bool	shadowed;
+	bool	shade;
 
 	i = 0;
-	fclr = clr_unpack(BLACK);
+	clrs[2] = clr_unpack(BLACK);
+	clrs[3] = clr_unpack(BLACK);
 	while (i < world->lgts.len)
 	{
-		shadowed = is_shadowed(world, &(world->lgts.v[i]), itx, itxv);
-		fclr = clr_add(obj_lgt(itx->obj, &(world->lgts.v[i]), itx, shadowed),
-				fclr);
+		shade = is_shadowed(world, &(world->lgts.v[i]), itx, itxv);
+		clrs[2] = clr_add(obj_lgt(itx->obj, &(world->lgts.v[i]), itx, shade),
+				clrs[2]);
 		i++;
 	}
-	rclr = reflected_clr(world, itx, r);
-	aclr = clr_bld(world->amb.clr,
-			clr_mul(obj_gclr(itx->obj, &(itx->ohp)), itx->obj->mtrl.amb));
-	fclr = clr_add(fclr, aclr);
-	fclr = clr_add(fclr, rclr);
-	return (fclr);
+	clrs[1] = reflected_clr(world, itx, r);
+	clrs[0] = clr_mul(world->amb.clr,
+			world->amb.intensity * itx->obj->mtrl.amb);
+	clrs[3] = refracted_clr(world, itx, r);
+	return (add_colours(clrs, itx));
 }
+// ambclr = clr_add(obj_gclr(itx->obj, &(itx->ohp)),
+// 		clr_mul(world->amb.clr, itx->obj->mtrl.amb));
