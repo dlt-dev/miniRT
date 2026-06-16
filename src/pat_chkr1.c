@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/02 09:44:14 by cybourge          #+#    #+#             */
-/*   Updated: 2026/06/02 13:36:40 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/06/16 08:58:24 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,6 @@ t_clr	pat_chkr1(const t_pat *pat, t_pt const *p)
 
 	m44_vprd(&(pat->itm), p, &pat_pt);
 	if ((int)(floor(pat_pt.x) + floor(pat_pt.y) + floor(pat_pt.z)) % 2 == 0)
-		return (clr_unpack(WHITE));
-	return (clr_unpack(BLACK));
+		return (pat->clr1);
+	return (pat->clr2);
 }

@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/30 10:34:58 by cybourge          #+#    #+#             */
-/*   Updated: 2026/04/24 11:45:00 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/06/16 10:29:46 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,9 @@
 # include "world.h"
 # include "camera.h"
 
-# define WIN_H		1080 // 144
-# define WIN_W  	1920 // 256
-# define WIN_NAME 	"minirt"
+# define WIN_H		800//1080 // 144
+# define WIN_W  	800//1920 // 256
+# define WIN_NAME 	"miniRT"
 
 # define BAR_WIDTH 50
 

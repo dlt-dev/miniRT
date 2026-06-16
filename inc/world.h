@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/22 11:37:45 by cybourge          #+#    #+#             */
-/*   Updated: 2026/06/03 09:17:11 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/06/16 12:19:40 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include "light.h"
 # include <stdio.h>
 
-# define REC_MAX	5
+# define REC_MAX	20
 
 // Structure that Holds the Ambient light for the world.
 typedef struct s_ambient_light

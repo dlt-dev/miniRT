@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/02 07:59:11 by cybourge          #+#    #+#             */
-/*   Updated: 2026/06/02 12:06:15 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/06/16 08:58:00 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ typedef struct s_pattern
 	t_m44	tm;
 	t_m44	itm;
 	t_clr	(*pat)(const struct s_pattern *, const t_pt *);
+	t_clr	clr1;
+	t_clr	clr2;
 }	t_pat;
 
 // Applies the transformations to the pattern.

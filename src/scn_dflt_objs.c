@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/24 10:22:42 by cybourge          #+#    #+#             */
-/*   Updated: 2026/06/05 15:51:34 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/06/16 13:27:06 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,11 +47,6 @@ static void	setup_bg(t_wld *world)
 	world->objs.v[2].mtrl.dif = 0.0;
 	world->objs.v[2].mtrl.ref = 1.0;
 	world->objs.v[2].mtrl.amb = 1.0;
-	
-	// trf_ini(&trf);
-	// trf_trf(&trf);
-	// pat_trf(&(world->objs.v[2].mtrl.pat), &trf);
-	//world->objs.v[2].mtrl.pat.pat = pat_chkr1;
 }
 
 // Utility function that sets up the left Sphere.

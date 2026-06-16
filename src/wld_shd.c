@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/23 12:31:48 by cybourge          #+#    #+#             */
-/*   Updated: 2026/06/05 16:14:04 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/06/16 13:25:35 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,8 @@ static double	is_shadowed(
 	t_v4	lthp;
 	t_v4	dir;
 	t_ray	shadow_ray;
-	//t_itx	hit;
 	double	dist;
+	bool	test;
 
 	itxv_clr(itxv);
 	lthp = v4_sub(light->pos, itx->ohp);
@@ -53,13 +53,9 @@ static double	is_shadowed(
 	dir = v4_uni(lthp);
 	shadow_ray = (t_ray){.dir = dir, .o = itx->ohp};
 	wld_itx(world, &shadow_ray, itxv);
-	//hit = itxv_hit(itxv);
-	bool test = check_obj(itxv, dist);
+	test = check_obj(itxv, dist);
 	itxv_clr(itxv);
 	return (test);
-	// if (hit.obj != NULL && hit.t < dist)
-	// 	return (true);
-	// return (false);
 }
 
 // TBD : Better Error Handling
@@ -146,7 +142,7 @@ static t_clr	add_colours(t_clr clrs[4], const t_itx *itx)
 	return (clr_add(clr1, clrs[0]));
 }
 
-// clrs : // [ambient, reflected, surface, refracted]
+// clrs : [ambient, reflected, surface, refracted]
 t_clr	wld_shd(const t_wld *world, const t_itx *itx, t_itxv *itxv, int r)
 {
 	t_clr	clrs[4];
@@ -155,7 +151,6 @@ t_clr	wld_shd(const t_wld *world, const t_itx *itx, t_itxv *itxv, int r)
 
 	i = 0;
 	clrs[2] = clr_unpack(BLACK);
-	clrs[3] = clr_unpack(BLACK);
 	while (i < world->lgts.len)
 	{
 		shade = is_shadowed(world, &(world->lgts.v[i]), itx, itxv);

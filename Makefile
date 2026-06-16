@@ -6,14 +6,14 @@
 #    By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/06/23 12:34:16 by cybourge          #+#    #+#              #
-#    Updated: 2026/05/06 09:24:13 by cybourge         ###   ########.fr        #
+#    Updated: 2026/06/16 10:33:26 by cybourge         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # ls -1 src | sed ':a;N;$!ba;s/\n/\\\n/g'
 
 CC = cc
-C_FLAGS = -Wall -Wextra -Werror -MMD -g
+C_FLAGS = -Wall -Wextra -MMD -g
 #-o1
 
 RED = \033[31;1;3m
@@ -50,7 +50,7 @@ SRCS = $(wildcard $(SRCS_DIR)/*.c)
 OBJS = $(patsubst $(SRCS_DIR)/%.c,$(OBJS_DIR)/%.o,$(SRCS))
 DEPS = $(OBJS:.o=.d)
 
-NAME = minirt
+NAME = miniRT
 
 
 all: $(NAME)

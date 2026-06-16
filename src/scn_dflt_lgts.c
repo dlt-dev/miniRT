@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/24 10:28:50 by cybourge          #+#    #+#             */
-/*   Updated: 2026/06/03 09:47:35 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/06/16 13:23:17 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,7 @@ int	scn_dflt_lgts(t_wld *world)
 	lgt_set(&(world->lgts.v[0]), pt_crt(-10, 10, -10), clr_pack(clr));
 	clr = clr_mul(clr_unpack(WHITE), 0.5);
 	lgt_set(&(world->lgts.v[1]), pt_crt(10, 10, -10), clr_pack(clr));
-	// world->amb.intensity = 0.01;
-	// world->amb.clr = clr_unpack(WHITE);
-	memset(&(world->amb), 0, sizeof(t_ambl));
+	world->amb.intensity = 0.0;
+	world->amb.clr = clr_unpack(BLACK);
 	return (0);
 }

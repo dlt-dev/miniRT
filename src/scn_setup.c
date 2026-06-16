@@ -6,11 +6,14 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/24 10:34:22 by cybourge          #+#    #+#             */
-/*   Updated: 2026/04/24 10:41:09 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/06/16 13:26:30 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
+
+int	test_scn1(t_scn *scene);
+int	test_scn2(t_scn *scene);
 
 int	scn_setup(t_scn *scene)
 {
