@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test_scn2.c                                        :+:      :+:    :+:   */
+/*   test_scn3.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/06/16 11:00:54 by cybourge          #+#    #+#             */
-/*   Updated: 2026/06/16 16:52:50 by cybourge         ###   ########.fr       */
+/*   Created: 2026/06/16 14:27:43 by cybourge          #+#    #+#             */
+/*   Updated: 2026/06/16 16:41:35 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,18 +32,17 @@ static void set_default_wall(t_mtl *mtrl)
 	trf_scl(&transform, 0.5, 0.5, 0.5);
 	trf_trf(&transform);
 	pat_trf(&(mtrl->pat), &transform);
-	mtrl->pat.pat = NULL;
-	mtrl->clr = clr_unpack(BLACK);
+	mtrl->pat.pat = pat_chkr1;
 	mtrl->pat.clr1 = clr_crt(0.0, 0.0, 0.0, 0.0);
 	mtrl->pat.clr2 = clr_crt(0.0, 0.75, 0.75, 0.75);
 }
 
-int test_scn2(t_scn *scene)
+int test_scn3(t_scn *scene)
 {
 	// Camera setup
 	t_cam		*cam = &(scene->camera);
-	const t_pt	from = pt_crt(0, 2.0, -5);
-	const t_pt	to = pt_crt(0.0, -0.5, 0.0);
+	const t_pt	from = pt_crt(0, 0, -20);
+	const t_pt	to = pt_crt(0.0, 0, 1.0);
 	const t_pt	up = v4_crt(0, 1, 0);
 	cam_ini(cam, WIN_W, WIN_H, 0.5);
 	m44_vtrf(&from, &to, &up, &(cam->vtf));
@@ -54,12 +53,12 @@ int test_scn2(t_scn *scene)
 	if (lights.cap == 0)
 		return (-1);
 	lights.len = 1;
-	lgt_set(&(lights.v[0]), pt_crt(0, 0, 0), WHITE);
+	lgt_set(&(lights.v[0]), pt_crt(-5, 10, 0), WHITE);
 	scene->world.lgts = lights;
 
 	// Ambient Light
-	scene->world.amb.clr = clr_unpack(BLACK);
-	scene->world.amb.intensity = 0.0;
+	scene->world.amb.clr = clr_unpack(WHITE);
+	scene->world.amb.intensity = 0.5;
 
 	// Object Setup 
 	scene->world.objs = objv_crt(2);
@@ -71,31 +70,27 @@ int test_scn2(t_scn *scene)
 	// Index to keep track of which object we are working on
 	int		index = 0;
 
-	// East Wall Setup
-	t_obj	*east_wall = &(scene->world.objs.v[index]);
-	*east_wall = pln_crt();
-	set_default_mats(&(east_wall->mtrl));
-	set_default_wall(&(east_wall->mtrl));
+	// Plane
+	t_obj	*plane = &(scene->world.objs.v[index]);
+	*plane = pln_crt();
+	set_default_mats(&(plane->mtrl));
+	set_default_wall(&(plane->mtrl));
 	trf_ini(&transforms);
-	trf_trl(&transforms, 0, -0.5, 0);
+	trf_trl(&transforms, 0, -1, 0);
 	trf_trf(&transforms);
-	obj_trf(east_wall, &transforms);
-	east_wall->mtrl.rfl = 1.0;
+	obj_trf(plane, &transforms);
+	plane->mtrl.rfl = 0.1;
 	index++;
 
-	// Background Ball 3
-	t_obj	*bg_ball3 = &(scene->world.objs.v[index]);
-	*bg_ball3 = sph_crt();
-	set_default_mats(&(bg_ball3->mtrl));
+	// Cylinder Test
+	t_obj	*cylinder = &(scene->world.objs.v[index]);
+	*cylinder = cld_crt();
 	trf_ini(&transforms);
-	trf_scl(&transforms, 0.5, 0.5, 0.5);
-	trf_trl(&transforms, 0, 0, 0);
+	trf_rot(&transforms, PI/2.0, PI/4.0, PI/6.0);
+	trf_trl(&transforms, -5, 0, 0);
+	trf_scl(&transforms, 1, 2, 1);
 	trf_trf(&transforms);
-	obj_trf(bg_ball3, &transforms);
-	bg_ball3->mtrl.clr = clr_crt(0.0, 0.2, 0.1, 0.8);
-	bg_ball3->mtrl.shi = 10;
-	bg_ball3->mtrl.spc = 0.4;
-	bg_ball3->mtrl.tsp = 1.0;
+	obj_trf(cylinder, &transforms);
 	index++;
 
 	return (0);

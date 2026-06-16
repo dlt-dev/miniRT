@@ -6,14 +6,14 @@
 #    By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/06/23 12:34:16 by cybourge          #+#    #+#              #
-#    Updated: 2026/06/16 10:33:26 by cybourge         ###   ########.fr        #
+#    Updated: 2026/06/16 16:40:25 by cybourge         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # ls -1 src | sed ':a;N;$!ba;s/\n/\\\n/g'
 
 CC = cc
-C_FLAGS = -Wall -Wextra -MMD -g
+C_FLAGS = -Wall -Wextra  -MMD -g #-Werror
 #-o1
 
 RED = \033[31;1;3m

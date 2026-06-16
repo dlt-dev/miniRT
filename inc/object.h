@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/03 12:11:44 by cybourge          #+#    #+#             */
-/*   Updated: 2026/06/05 10:19:16 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/06/16 15:40:09 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,9 @@ typedef struct s_plane
 
 typedef struct s_cylinder
 {
+	bool	closed;
+	double	min;
+	double	max;
 }	t_cld;
 
 typedef struct s_sphere
@@ -177,6 +180,15 @@ bool		pln_hit(const t_obj *obj, const t_ray *r, t_itxv *itxv);
 // Writes the normal vector of the plane object into nrml.
 // Returns -1 on errors, 0 otherwise.
 int			pln_nrml(const t_obj *obj, const t_pt *pt, t_v4 *nrml);
+
+// Returns an instance of a cylinder with default values.
+t_obj		cld_crt(void);
+// Returns wether a ray hits a cylinder object and adds the intersection to itxv.
+bool		cld_hit(const t_obj *obj, const t_ray *r, t_itxv *itxv);
+// Writes the normalized normal vector to the cylinder at point pt in nrml.
+// Returns -1 on errors, 0 otherwise.
+int			cld_nrml(const t_obj *obj, const t_pt *pt, t_v4 *nmrl);
+
 
 // Returns the color of an object at a specific point.
 t_clr		obj_gclr(const t_obj *obj, const t_pt *p);

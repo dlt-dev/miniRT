@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/24 10:34:22 by cybourge          #+#    #+#             */
-/*   Updated: 2026/06/16 13:26:30 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/06/16 16:48:31 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,17 @@
 
 int	test_scn1(t_scn *scene);
 int	test_scn2(t_scn *scene);
+int	test_scn3(t_scn *scene);
 
 int	scn_setup(t_scn *scene)
 {
-	if (scn_dflt_objs(&(scene->world)) < 0)
-		return (-1);
-	if (scn_dflt_lgts(&(scene->world)) < 0)
-		return (-1);
-	if (scn_dflt_cam(&(scene->camera)) < 0)
+	// if (scn_dflt_objs(&(scene->world)) < 0)
+	// 	return (-1);
+	// if (scn_dflt_lgts(&(scene->world)) < 0)
+	// 	return (-1);
+	// if (scn_dflt_cam(&(scene->camera)) < 0)
+	// 	return (-1);
+	if (test_scn2(scene) == -1)
 		return (-1);
 	scene->itxv = itxv_crt(10);
 	if (scene->itxv.v == NULL)

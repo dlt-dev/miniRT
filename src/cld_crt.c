@@ -1,28 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mtl_ini.c                                          :+:      :+:    :+:   */
+/*   cld_crt.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/06/02 11:50:11 by cybourge          #+#    #+#             */
-/*   Updated: 2026/06/16 14:01:07 by cybourge         ###   ########.fr       */
+/*   Created: 2026/06/16 13:58:25 by cybourge          #+#    #+#             */
+/*   Updated: 2026/06/16 16:17:35 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "material.h"
+#include "object.h"
 
-void	mtl_ini(t_mtl *mtl)
+t_obj	cld_crt(void)
 {
-	mtl->clr = clr_unpack(RED);
-	mtl->amb = 0.1;
-	mtl->dif = 0.9;
-	mtl->spc = 0.9;
-	mtl->shi = 200;
-	mtl->rfl = 0.0;
-	mtl->ref = 1.0;
-	mtl->tsp = 0.0;
-	m44_idm(&(mtl->pat.tm));
-	m44_idm(&(mtl->pat.itm));
-	mtl->pat.pat = NULL;
+	t_obj	cylinder;
+	
+	cylinder.type = CYLINDER;
+	cylinder.u_o.cy.closed = true;
+	cylinder.u_o.cy.min = 1.0;
+	cylinder.u_o.cy.max = 2.0;
+	m44_idm(&(cylinder.tm));
+	m44_idm(&(cylinder.itm));
+	m44_idm(&(cylinder.itmt));
+	mtl_ini(&(cylinder.mtrl));
+	cylinder.hit = cld_hit;
+	cylinder.nrml = cld_nrml;
+	return (cylinder);
 }
