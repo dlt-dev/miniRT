@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cld_crt.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jdelattr <jdelattr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/16 13:58:25 by cybourge          #+#    #+#             */
-/*   Updated: 2026/06/17 10:55:00 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/06/17 12:33:12 by jdelattr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ t_obj	cld_crt(void)
 	
 	cylinder.type = CYLINDER;
 	cylinder.u_o.cy.closed = true;
-	cylinder.u_o.cy.min = -0.5;
-	cylinder.u_o.cy.max = 0.5;
+	cylinder.u_o.cy.min = 0;
+	cylinder.u_o.cy.max = 1;
 	m44_idm(&(cylinder.tm));
 	m44_idm(&(cylinder.itm));
 	m44_idm(&(cylinder.itmt));

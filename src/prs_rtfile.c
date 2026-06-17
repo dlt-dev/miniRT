@@ -6,7 +6,7 @@
 /*   By: jdelattr <jdelattr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/29 14:39:53 by cybourge          #+#    #+#             */
-/*   Updated: 2026/06/17 11:16:25 by jdelattr         ###   ########.fr       */
+/*   Updated: 2026/06/17 12:19:17 by jdelattr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,11 +39,7 @@ int	prs_rtfile(t_prs *prs)
 		return (close(prs->fd), -1);
 	}
 	if (prs_lines(prs) < 0)
-	{
-		printf("Ouch\n");
 		return (close(prs->fd), -1);
-	}
-		
 	if (prs_cmplt(prs) < 0)
 		return (close(prs->fd), -1);
 	return (close(prs->fd), 0);

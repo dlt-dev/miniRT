@@ -6,7 +6,7 @@
 /*   By: jdelattr <jdelattr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/29 14:34:22 by cybourge          #+#    #+#             */
-/*   Updated: 2026/06/17 11:19:16 by jdelattr         ###   ########.fr       */
+/*   Updated: 2026/06/17 12:19:48 by jdelattr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ static t_parsef	match_obj_id(const char *identifier)
 	{"sp", prs_sphere},
 	{"pl", prs_plane},
 	{"cy", prs_cylinder},
+	{"co", prs_cone},
 	{NULL, NULL}
 	};
 	size_t					i;
