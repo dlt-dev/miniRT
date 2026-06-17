@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   prs_lines.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jdelattr <jdelattr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/29 14:34:22 by cybourge          #+#    #+#             */
-/*   Updated: 2026/06/17 10:05:31 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/06/17 11:19:16 by jdelattr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ static t_parsef	match_obj_id(const char *identifier)
 	{"sp", prs_sphere},
 	{"pl", prs_plane},
 	{"cy", prs_cylinder},
-	{"co", prs_cone},
 	{NULL, NULL}
 	};
 	size_t					i;
@@ -45,7 +44,7 @@ static int	prs_line(t_prs *prs, const char *line)
 	char		**ltab;
 	t_parsef	fun;
 
-	ltab = ft_split(line, ' '); // TO BE CHANGED TO WHITESPACES.
+	ltab = ft_split(line, " \t");
 	if (!ltab)
 		return (-1);
 	if (tab_len(ltab) == 0)

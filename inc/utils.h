@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jdelattr <jdelattr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/26 12:16:48 by cybourge          #+#    #+#             */
-/*   Updated: 2026/04/30 11:30:04 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/06/17 11:14:32 by jdelattr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ char		*ft_substr(char const *s, unsigned int start, size_t len);
 char		*ft_strchr(const char *str, int c);
 char		*ft_strdup(const char *s);
 size_t		ft_strlen(const char *s);
-char		**ft_split(char const *s, char c); // to be changed to a string as seperators.
+char		**ft_split(char const *s, char *sep);
 void		display_progressbar(double percent);
 void		display_progress(int i, int j);
 
@@ -70,4 +70,5 @@ bool		is_validclr(char **tab);
 
 //Prints an error message on stderr, returns ret.
 int			ft_err_prt(const char *msg, int ret);
+
 #endif
