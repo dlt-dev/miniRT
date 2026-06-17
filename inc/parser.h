@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/29 08:14:33 by cybourge          #+#    #+#             */
-/*   Updated: 2026/05/06 09:12:35 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/06/17 10:31:54 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,16 @@ typedef struct s_parser_fun
 	t_parsef	func;
 }	t_prs_func;
 
+// Structure Used to hold cylinder related data while parsing.
+typedef struct s_cyl_data
+{
+	t_pt	c;
+	t_v4	ax;
+	double	rad;
+	double	h;
+	t_clr	clr;
+}	t_cyldata;
+
 // Prints a Parsing structure to stdout.
 void	prs_prt(const t_prs *prs);
 
@@ -52,15 +62,18 @@ int		prs_light(t_prs *prs, char **ltab);
 // Parses the data for a sphere.
 // Returns -1 on errors, 0 otherwise.
 int		prs_sphere(t_prs *prs, char **ltab);
-// TBD : Parses the data for a plane.
+// Parses the data for a plane.
 // Returns -1 on errors, 0 otherwise.
 int		prs_plane(t_prs *prs, char **ltab);
 // TBD : Parses the data for a cylinder.
 // Returns -1 on errors, 0 otherwise.
 int		prs_cylinder(t_prs *prs, char **ltab);
+// TBD : Parses the data for a cone.
+// Returns -1 on errors, 0 otherwise.
+int		prs_cone(t_prs *prs, char **ltab);
+
 // Parses the lines in a file.
 // Returns -1 on errors, 0 otherwise.
-
 int		prs_lines(t_prs *prs);
 // Parses a color in string form : "r,g,b" where r,g,b ∈ [0,255]
 // writes the results in clr.

@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/29 14:34:22 by cybourge          #+#    #+#             */
-/*   Updated: 2026/06/03 10:21:27 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/06/17 10:05:31 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ static t_parsef	match_obj_id(const char *identifier)
 	{"sp", prs_sphere},
 	{"pl", prs_plane},
 	{"cy", prs_cylinder},
+	{"co", prs_cone},
 	{NULL, NULL}
 	};
 	size_t					i;

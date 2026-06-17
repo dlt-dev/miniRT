@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/16 14:27:43 by cybourge          #+#    #+#             */
-/*   Updated: 2026/06/17 09:59:57 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/06/17 10:54:13 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ int test_scn3(t_scn *scene)
 	if (lights.cap == 0)
 		return (-1);
 	lights.len = 1;
-	lgt_set(&(lights.v[0]), pt_crt(-5, 10, 0), WHITE);
+	lgt_set(&(lights.v[0]), pt_crt(-5, 10, -3), WHITE);
 	scene->world.lgts = lights;
 
 	// Ambient Light
@@ -86,9 +86,9 @@ int test_scn3(t_scn *scene)
 	t_obj	*cylinder = &(scene->world.objs.v[index]);
 	*cylinder = cld_crt();
 	trf_ini(&transforms);
-	trf_rot(&transforms, PI/2.0, PI/4.0, PI/6.0);
-	trf_trl(&transforms, -5, 0, 0);
-	trf_scl(&transforms, 1, 2, 1);
+	//trf_rot(&transforms, PI/2.0, 0, PI/6.0);
+	trf_trl(&transforms, 0, 2, 0);
+	trf_scl(&transforms, 1, 5, 1);
 	trf_trf(&transforms);
 	obj_trf(cylinder, &transforms);
 	index++;
@@ -98,7 +98,7 @@ int test_scn3(t_scn *scene)
 	*cone = con_crt();
 	trf_ini(&transforms);
 	//trf_rot(&transforms, 0,0,0);
-	trf_trl(&transforms, 0, 1, 0);
+	trf_trl(&transforms, 20, 1, 20);
 	trf_scl(&transforms, 1, 5, 1);
 	trf_trf(&transforms);
 	obj_trf(cone, &transforms);
