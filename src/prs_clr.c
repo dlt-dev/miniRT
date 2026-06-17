@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   prs_clr.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jdelattr <jdelattr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/29 14:16:15 by cybourge          #+#    #+#             */
-/*   Updated: 2026/04/30 11:41:10 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/06/17 11:20:04 by jdelattr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	prs_clr(const char *input, t_clr *clr)
 {
 	char		**clr_tab;
 
-	clr_tab = ft_split(input, ',');
+	clr_tab = ft_split(input, ",");
 	if (!clr_tab)
 		return (-1);
 	if (tab_len(clr_tab) < 3)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   prs_mat.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jdelattr <jdelattr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/06 08:47:31 by cybourge          #+#    #+#             */
-/*   Updated: 2026/06/05 11:24:33 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/06/16 16:36:47 by jdelattr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ int	prs_mat(const char *str, t_mtl *mat)
 
 	if (!str || !mat)
 		return (-1);
-	abcd = ft_split(str, ',');
+	abcd = ft_split(str, ",");
 	len = tab_len(abcd);
 	if (len != 7)
 	{

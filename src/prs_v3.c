@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   prs_v3.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jdelattr <jdelattr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/29 14:17:10 by cybourge          #+#    #+#             */
-/*   Updated: 2026/04/29 14:17:19 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/06/16 16:39:23 by jdelattr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	prs_v3(char *str, t_v4 *v, bool is_vector)
 
 	if (!str || !v)
 		return (-1);
-	xyz = ft_split(str, ',');
+	xyz = ft_split(str, ",");
 	len = tab_len(xyz);
 	if (len != 3)
 	{
