@@ -6,13 +6,14 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/30 10:33:54 by cybourge          #+#    #+#             */
-/*   Updated: 2026/06/16 16:40:55 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/06/17 09:57:32 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 #include "parser.h"
 #include <stdio.h>
+
 
 int	main(int argc, char **argv)
 {

@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/16 14:03:27 by cybourge          #+#    #+#             */
-/*   Updated: 2026/06/16 16:36:58 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/06/17 08:23:34 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,7 @@ bool	cld_hit(const t_obj *obj, const t_ray *r, t_itxv *itxv)
 	bool	hit;
 	
 	ray_trf(r, &(obj->itm), &trf_ray);
+	hit = false;
 	if (intersect_walls(obj, &trf_ray, itxv))
 		hit = true;
 	if (intersect_caps(obj, &trf_ray, itxv))

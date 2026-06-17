@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/03 12:11:44 by cybourge          #+#    #+#             */
-/*   Updated: 2026/06/16 15:40:09 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/06/17 08:13:35 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,8 @@ typedef enum e_obj_type
 	DEFAULT = 0,
 	SPHERE,
 	PLANE,
-	CYLINDER
+	CYLINDER,
+	CONE
 }	t_oty;
 
 typedef struct s_plane
@@ -78,6 +79,13 @@ typedef struct s_sphere
 	double	r;
 }	t_sph;
 
+typedef struct s_cone
+{
+	bool	closed;
+	double	min;
+	double	max;
+}	t_con;
+
 // ittm : Inverse transpose tranformation matrix.
 typedef struct s_object
 {
@@ -93,6 +101,7 @@ typedef struct s_object
 		t_sph	sp;
 		t_pln	pl;
 		t_cld	cy;
+		t_con	co;
 	}	u_o;
 }	t_obj;
 
@@ -187,8 +196,15 @@ t_obj		cld_crt(void);
 bool		cld_hit(const t_obj *obj, const t_ray *r, t_itxv *itxv);
 // Writes the normalized normal vector to the cylinder at point pt in nrml.
 // Returns -1 on errors, 0 otherwise.
-int			cld_nrml(const t_obj *obj, const t_pt *pt, t_v4 *nmrl);
+int			cld_nrml(const t_obj *obj, const t_pt *pt, t_v4 *nrml);
 
+// Returns an instance of a cone with default values.
+t_obj		con_crt(void);
+// Returns wether a ray hits a cone object and adds the intersection to itxv.
+bool		con_hit(const t_obj *obj, const t_ray *r, t_itxv *itxv);
+// Writes the normaliwed normal vector to the cone at point pt in nrml.
+// Returns -1 on errors, 0 otherwise.
+int			con_nrml(const t_obj *obj, const t_pt *pt, t_v4 *nrml);
 
 // Returns the color of an object at a specific point.
 t_clr		obj_gclr(const t_obj *obj, const t_pt *p);

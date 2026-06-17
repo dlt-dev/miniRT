@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/16 14:27:43 by cybourge          #+#    #+#             */
-/*   Updated: 2026/06/16 16:41:35 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/06/17 09:59:57 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,10 +61,10 @@ int test_scn3(t_scn *scene)
 	scene->world.amb.intensity = 0.5;
 
 	// Object Setup 
-	scene->world.objs = objv_crt(2);
+	scene->world.objs = objv_crt(3);
 	if (scene->world.objs.cap == 0)
 		return (-1);
-	scene->world.objs.len = 2;
+	scene->world.objs.len = 3;
 	// Transformation structure to hold transformations of objects
 	t_trf	transforms;
 	// Index to keep track of which object we are working on
@@ -91,6 +91,17 @@ int test_scn3(t_scn *scene)
 	trf_scl(&transforms, 1, 2, 1);
 	trf_trf(&transforms);
 	obj_trf(cylinder, &transforms);
+	index++;
+
+	// Cone Test
+	t_obj	*cone = &(scene->world.objs.v[index]);
+	*cone = con_crt();
+	trf_ini(&transforms);
+	//trf_rot(&transforms, 0,0,0);
+	trf_trl(&transforms, 0, 1, 0);
+	trf_scl(&transforms, 1, 5, 1);
+	trf_trf(&transforms);
+	obj_trf(cone, &transforms);
 	index++;
 
 	return (0);
