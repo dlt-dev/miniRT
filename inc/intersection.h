@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/03 12:14:14 by cybourge          #+#    #+#             */
-/*   Updated: 2026/06/05 10:41:23 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/06/18 09:24:10 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ typedef struct s_object	t_obj;
 // rflv	: reflection vector around the normal.
 // n1	: Refractive index of the material being EXITED
 // n2	: Refractive index of the material being ENTERED
+// u	: Texture Mapping coordinate.
+// v	: Texture Mapping coordinate.
 typedef struct s_intersection
 {
 	const t_obj	*obj;
@@ -48,6 +50,8 @@ typedef struct s_intersection
 	double		n1;
 	double		n2;
 	bool		in;
+	double		u;
+	double		v;
 }	t_itx;
 
 // Vector structure that holds intersections

@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/02 07:59:11 by cybourge          #+#    #+#             */
-/*   Updated: 2026/06/16 08:58:00 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/06/18 10:12:24 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,5 +42,8 @@ t_clr	pat_ring1(const t_pat *pat, t_pt const *p);
 
 // returns the color of a WHITE BLACK Checker pattern.
 t_clr	pat_chkr1(const t_pat *pat, t_pt const *p);
+
+//TBD :
+t_clr	pat_sphckr(const t_pat *pat, t_pt const *p);
 
 #endif

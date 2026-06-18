@@ -1,23 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pat_chkr1.c                                        :+:      :+:    :+:   */
+/*   sph_cord.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/06/02 09:44:14 by cybourge          #+#    #+#             */
-/*   Updated: 2026/06/18 11:40:48 by cybourge         ###   ########.fr       */
+/*   Created: 2026/06/18 11:33:42 by cybourge          #+#    #+#             */
+/*   Updated: 2026/06/18 11:35:54 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pattern.h"
+#include "object.h"
 
-t_clr	pat_chkr1(const t_pat *pat, t_pt const *p)
+// P : point in 3D space
+// returns spherical coordinates of P on a unit sphere
+t_pt	sph_cord(const t_pt *point)
 {
-	t_pt	pat_pt;
+	const double theta = atan2(-(point->z), point->x) + PI;
+	const double phi = acos(-(point->y));
+	const double u = phi / PI;
+	const double v = theta / PI;
 
-	m44_vprd(&(pat->itm), p, &pat_pt);
-	if ((int)(floor(pat_pt.x) + floor(pat_pt.y) + floor(pat_pt.z)) % 2 == 0)
-		return (pat->clr1);
-	return (pat->clr2);
+	return (pt_crt(u,v,0));
 }

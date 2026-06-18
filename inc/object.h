@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/03 12:11:44 by cybourge          #+#    #+#             */
-/*   Updated: 2026/06/17 08:13:35 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/06/18 11:48:47 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,7 @@ typedef struct s_cone
 }	t_con;
 
 // ittm : Inverse transpose tranformation matrix.
+// gcord : Function to get coordinates in a specific referetial.
 typedef struct s_object
 {
 	t_oty		type;
@@ -96,6 +97,7 @@ typedef struct s_object
 	t_mtl		mtrl;
 	bool		(*hit)(const t_obj *, const t_ray *, t_itxv *);
 	int			(*nrml)(const t_obj *, const t_pt *, t_v4 *);
+	t_pt		(*gcord)(const t_pt *);
 	union
 	{
 		t_sph	sp;
@@ -181,6 +183,8 @@ bool		sph_hit(const t_obj *obj, const t_ray *r, t_itxv *itxv);
 // at point "pt" into "nrml".
 // Returns -1 on error, 0 otherwize.
 int			sph_nrml(const t_obj *obj, const t_pt *pt, t_v4 *nrml);
+// Returns spherical coordinates of point on a unit sphere.
+t_pt		sph_cord(const t_pt *point);
 
 // Returns an instance of a plane obj with default values.
 t_obj		pln_crt(void);
@@ -197,6 +201,8 @@ bool		cld_hit(const t_obj *obj, const t_ray *r, t_itxv *itxv);
 // Writes the normalized normal vector to the cylinder at point pt in nrml.
 // Returns -1 on errors, 0 otherwise.
 int			cld_nrml(const t_obj *obj, const t_pt *pt, t_v4 *nrml);
+// Returns the coordinates of P in cylindrical form.
+t_pt		cld_cord(const t_pt *point);
 
 // Returns an instance of a cone with default values.
 t_obj		con_crt(void);

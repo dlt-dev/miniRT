@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/02 08:56:12 by cybourge          #+#    #+#             */
-/*   Updated: 2026/06/02 13:22:51 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/06/18 11:39:10 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,5 +19,7 @@ t_clr	obj_gclr(const t_obj *obj, const t_pt *p)
 	if (obj->mtrl.pat.pat == NULL)
 		return (obj->mtrl.clr);
 	m44_vprd(&(obj->itm), p, &obj_pt);
+	if (obj->gcord != NULL)
+		obj_pt = obj->gcord(&obj_pt);
 	return (obj->mtrl.pat.pat(&(obj->mtrl.pat), &obj_pt));
 }

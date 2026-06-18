@@ -1,23 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pat_chkr1.c                                        :+:      :+:    :+:   */
+/*   cld_cord.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/06/02 09:44:14 by cybourge          #+#    #+#             */
-/*   Updated: 2026/06/18 11:40:48 by cybourge         ###   ########.fr       */
+/*   Created: 2026/06/18 11:44:12 by cybourge          #+#    #+#             */
+/*   Updated: 2026/06/18 12:20:20 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pattern.h"
+#include "object.h"
 
-t_clr	pat_chkr1(const t_pat *pat, t_pt const *p)
+// P : Point in 3D Space
+// Returns the coordinates of P in cylindrical form.
+t_pt	cld_cord(const t_pt *point)
 {
-	t_pt	pat_pt;
-
-	m44_vprd(&(pat->itm), p, &pat_pt);
-	if ((int)(floor(pat_pt.x) + floor(pat_pt.y) + floor(pat_pt.z)) % 2 == 0)
-		return (pat->clr1);
-	return (pat->clr2);
+	const double theta = atan2(point->x, point->z) + PI;
+	const double u = theta / PI;
+	//const double u = 1 - raw_u + 0.5;
+	//const double v = (int) floor(point->y) % 1;
+	
+	return (pt_crt(u, point->y * (PI), 0.0));
 }
