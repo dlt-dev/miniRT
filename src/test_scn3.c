@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/16 14:27:43 by cybourge          #+#    #+#             */
-/*   Updated: 2026/06/18 12:21:57 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/06/18 15:38:19 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ int test_scn3(t_scn *scene)
 	if (lights.cap == 0)
 		return (-1);
 	lights.len = 1;
-	lgt_set(&(lights.v[0]), pt_crt(-5, 10, -3), WHITE);
+	lgt_set(&(lights.v[0]), pt_crt(-10, 0, -3), WHITE);
 	scene->world.lgts = lights;
 
 	// Ambient Light
@@ -106,15 +106,15 @@ int test_scn3(t_scn *scene)
 	// cylinder->mtrl.pat.clr2 = clr_unpack(BLACK);
 	// index++;
 
-	// Sphere test
-	// t_obj	*sphere = &(scene->world.objs.v[index]);
-	// *sphere = sph_crt();
-	// trf_ini(&transforms);
-	// //trf_rot(&transforms, PI/2.0, 0, PI/6.0);
-	// trf_trl(&transforms, 0, 0, 0);
-	// trf_scl(&transforms, 10, 10, 10);
-	// trf_trf(&transforms);
-	// obj_trf(sphere, &transforms);
+	//Sphere test
+	t_obj	*sphere = &(scene->world.objs.v[index]);
+	*sphere = sph_crt();
+	trf_ini(&transforms);
+	//trf_rot(&transforms, PI/2.0, 0, PI/6.0);
+	trf_trl(&transforms, 0, 0, 0);
+	trf_scl(&transforms, 3, 3, 3);
+	trf_trf(&transforms);
+	obj_trf(sphere, &transforms);
 	// trf_ini(&transforms);
 	// trf_scl(&transforms, 0.01, 0.01, 0.01);
 	// trf_trf(&transforms);
@@ -124,25 +124,27 @@ int test_scn3(t_scn *scene)
 	// sphere->mtrl.pat.pat = pat_chkr1;
 	// sphere->mtrl.pat.clr1 = clr_unpack(WHITE);
 	// sphere->mtrl.pat.clr2 = clr_unpack(BLACK);
-	// index++;
+	index++;
 	
 	//Cone Test
-	t_obj	*cone = &(scene->world.objs.v[index]);
-	*cone = con_crt();
-	trf_ini(&transforms);
-	//trf_rot(&transforms, 0,0,0);
-	trf_trl(&transforms, 0, 0, 0);
-	trf_scl(&transforms, 1, 5, 1);
-	trf_trf(&transforms);
-	obj_trf(cone, &transforms);
-	trf_ini(&transforms);
-	trf_scl(&transforms, 0.5, 0.5, 0.5);
-	trf_trf(&transforms);
-	pat_trf(&(cone->mtrl.pat), &transforms);
-	cone->mtrl.pat.pat = pat_chkr1;
-	cone->mtrl.pat.clr1 = clr_unpack(WHITE);
-	cone->mtrl.pat.clr2 = clr_unpack(BLACK);
-	index++;
+	// t_obj	*cone = &(scene->world.objs.v[index]);
+	// *cone = con_crt();
+	// trf_ini(&transforms);
+	// //trf_rot(&transforms, 0,0,0);
+	// trf_trl(&transforms, 0, 0, 0);
+	// trf_scl(&transforms, 1, 5, 1);
+	// trf_trf(&transforms);
+	// obj_trf(cone, &transforms);
+	// trf_ini(&transforms);
+	// trf_scl(&transforms, 0.5, 0.5, 0.5);
+	// trf_trf(&transforms);
+	// pat_trf(&(cone->mtrl.pat), &transforms);
+	// cone->mtrl.pat.pat = pat_chkr1;
+	// cone->mtrl.pat.clr1 = clr_unpack(WHITE);
+	// cone->mtrl.pat.clr2 = clr_unpack(BLACK);
+	// index++;
+
+	
 
 	return (0);
 }
