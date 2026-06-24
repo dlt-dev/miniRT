@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/30 10:33:54 by cybourge          #+#    #+#             */
-/*   Updated: 2026/06/22 11:15:16 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/06/24 18:13:43 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,4 +61,3 @@ int	main(int argc, char **argv)
 	scn_dlt(&scene);
 	return (0);
 }
-

@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/22 09:46:46 by cybourge          #+#    #+#             */
-/*   Updated: 2026/06/22 10:17:10 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/06/24 18:13:36 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,27 @@ int main(void)
 	if (ftex_load(&ftex, "earth.xpm", &data) == -1)
 	{
 		printf("error 2\n");
+		free_mlx_data(&data);
 		return (1);
 	}
-	mlx_destroy_image(data.mlx_ptr, data.img.mlx_img);
-	data.img = ftex.img;
+	printf("[%d, %d]\n", ftex.h, ftex.w);
+	printf("%p\n", ftex.img.addr);
+	for (int i = 0; i < ftex.w; i++)
+	{
+		for (int j = 0; j < ftex.h; j++)
+		{
+			//t_pt point = pt_crt((double) i / (double)ftex.w, (double) j / (double)ftex.h, 0);
+			//t_clr color = ftex_clr(&ftex, &point);
+			//uint32_t color = 0x00FF0000;
+			char *dest = ftex.img.addr + (j * ftex.img.ll + i * (ftex.img.bpp / 8));
+			int color = *(uint32_t *)(dest);
+			img_pix_put(&(data.img), i, j, color);
+		}
+	}
+	//printf("done\n");
+	
+	//mlx_destroy_image(data.mlx_ptr, data.img.mlx_img);
+	//data.img = ftex.img;
 	mlx_hook(data.mlx_win, KeyPress, KeyPressMask,
 		(void *)handle_keypress, &data);
 	mlx_loop_hook(data.mlx_ptr, (void *)simple_render, &data);
