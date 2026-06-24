@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/30 10:34:58 by cybourge          #+#    #+#             */
-/*   Updated: 2026/06/18 07:41:05 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/06/22 10:05:57 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define MINIRT_H
 
 # include "mlx.h"
+# include "mlx_utils.h"
 # include <X11/X.h>
 # include <X11/keysym.h>
 # include <stdbool.h>
@@ -31,31 +32,17 @@
 # include "object.h"
 # include "world.h"
 # include "camera.h"
+# include "textures.h"
 
-# define WIN_H		800//1080 //// // 144
-# define WIN_W  	800 //1920 //// // 256
+
+# define WIN_H		1080 //800 // 144
+# define WIN_W  	1920 //800  // 256
 # define WIN_NAME 	"miniRT"
 
 # define BAR_WIDTH 50
 
 # define COLOUR1 0x00f44336
 
-typedef struct s_img
-{
-	void	*mlx_img;
-	char	*addr;
-	int		bpp;
-	int		ll;
-	int		endian;
-}			t_img;
-
-typedef struct s_mlx_data
-{
-	void		*mlx_ptr;
-	void		*mlx_win;
-	t_img		img;
-	bool		update;
-}			t_mlx_data;
 
 typedef struct s_scene
 {
@@ -73,14 +60,6 @@ typedef struct s_render_utils
 	t_ray	ray;
 	t_clr	clr;
 }	t_rdr_utils;
-
-// MLX FUNCTIONS
-void	close_display(t_mlx_data *data);
-int		handle_keypress(int keysym, t_mlx_data *data);
-int		handle_x_button(t_scn *scene);
-void	img_pix_put(t_img *img, int x, int y, int color);
-int		init_mlx_data(t_mlx_data *d);
-void	free_mlx_data(t_mlx_data *data);
 
 // Renders the scene's world as seen through the scene's camera
 // using the scene's mlx parameters.

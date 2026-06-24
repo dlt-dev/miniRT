@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/23 12:31:48 by cybourge          #+#    #+#             */
-/*   Updated: 2026/06/16 13:25:35 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/06/24 12:58:41 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -159,10 +159,13 @@ t_clr	wld_shd(const t_wld *world, const t_itx *itx, t_itxv *itxv, int r)
 		i++;
 	}
 	clrs[1] = reflected_clr(world, itx, r);
-	clrs[0] = clr_mul(world->amb.clr,
-			world->amb.intensity * itx->obj->mtrl.amb);
+	clrs[0] = clr_bld(obj_gclr(itx->obj, &itx->ohp), world->amb.clr);
+	clrs[0] = clr_mul(clrs[0], world->amb.intensity);
 	clrs[3] = refracted_clr(world, itx, r);
 	return (add_colours(clrs, itx));
 }
 // ambclr = clr_add(obj_gclr(itx->obj, &(itx->ohp)),
 // 		clr_mul(world->amb.clr, itx->obj->mtrl.amb));
+
+// clrs[0] = clr_mul(world->amb.clr,
+// 			world->amb.intensity * itx->obj->mtrl.amb);

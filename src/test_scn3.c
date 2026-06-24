@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/16 14:27:43 by cybourge          #+#    #+#             */
-/*   Updated: 2026/06/18 15:38:19 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/06/22 10:21:14 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,32 +61,27 @@ int test_scn3(t_scn *scene)
 	scene->world.amb.intensity = 0.5;
 
 	// Object Setup 
-	scene->world.objs = objv_crt(1);
+	scene->world.objs = objv_crt(2);
 	if (scene->world.objs.cap == 0)
 		return (-1);
-	scene->world.objs.len = 1;
+	scene->world.objs.len = 2;
 	// Transformation structure to hold transformations of objects
 	t_trf	transforms;
 	// Index to keep track of which object we are working on
 	int		index = 0;
 
 	// Plane
-	// t_obj	*plane = &(scene->world.objs.v[index]);
-	// *plane = pln_crt();
-	// set_default_mats(&(plane->mtrl));
-	// set_default_wall(&(plane->mtrl));
-	// trf_ini(&transforms);
-	// trf_trl(&transforms, 0, 0, 0);
-	// trf_trf(&transforms);
-	// obj_trf(plane, &transforms);
-	// plane->mtrl.rfl = 0.1;
-	// plane->mtrl.tsp = 1.0;
-	// m44_idm(&plane->mtrl.pat.tm);
-	// m44_idm(&plane->mtrl.pat.itm);
-	// plane->mtrl.pat.pat = pat_sphckr;
-	// plane->mtrl.pat.clr1 = clr_unpack(WHITE);
-	// plane->mtrl.pat.clr2 = clr_unpack(BLACK);
-	// index++;
+	t_obj	*plane = &(scene->world.objs.v[index]);
+	*plane = pln_crt();
+	set_default_mats(&(plane->mtrl));
+	set_default_wall(&(plane->mtrl));
+	trf_ini(&transforms);
+	trf_trl(&transforms, 0, 0, 0);
+	trf_trf(&transforms);
+	obj_trf(plane, &transforms);
+	plane->mtrl.rfl = 0.1;
+	plane->mtrl.tsp = 1.0;
+	index++;
 
 	// Cylinder Test
 	// t_obj	*cylinder = &(scene->world.objs.v[index]);

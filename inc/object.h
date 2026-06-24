@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/03 12:11:44 by cybourge          #+#    #+#             */
-/*   Updated: 2026/06/18 11:48:47 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/06/24 14:05:09 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -183,7 +183,7 @@ bool		sph_hit(const t_obj *obj, const t_ray *r, t_itxv *itxv);
 // at point "pt" into "nrml".
 // Returns -1 on error, 0 otherwize.
 int			sph_nrml(const t_obj *obj, const t_pt *pt, t_v4 *nrml);
-// Returns spherical coordinates of point on a unit sphere.
+// Returns the (u,v) coordinates of a point on a unit sphere.
 t_pt		sph_cord(const t_pt *point);
 
 // Returns an instance of a plane obj with default values.
@@ -193,6 +193,8 @@ bool		pln_hit(const t_obj *obj, const t_ray *r, t_itxv *itxv);
 // Writes the normal vector of the plane object into nrml.
 // Returns -1 on errors, 0 otherwise.
 int			pln_nrml(const t_obj *obj, const t_pt *pt, t_v4 *nrml);
+// Returs the (u,v) cordinates of a point on a plane.
+t_pt		pln_cord(const t_pt *point);
 
 // Returns an instance of a cylinder with default values.
 t_obj		cld_crt(void);

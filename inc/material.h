@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/23 11:11:32 by cybourge          #+#    #+#             */
-/*   Updated: 2026/06/03 12:16:18 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/06/22 10:11:16 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include "color.h"
 # include "pattern.h"
+# include "textures.h"
 
 // Material for a Phong Lighting model.
 // clr	: Colour
@@ -36,6 +37,7 @@ typedef struct s_material
 	double	tsp;
 	double	ref;
 	t_pat	pat;
+	t_ftex	tex;
 }	t_mtl;
 
 // Sets the value of a material to default values.

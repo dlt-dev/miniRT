@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/06 09:58:03 by cybourge          #+#    #+#             */
-/*   Updated: 2026/06/18 11:41:21 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/06/24 14:12:06 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,6 @@ t_obj	pln_crt(void)
 	plane.mtrl.shi = 200.0;
 	plane.hit = pln_hit;
 	plane.nrml = pln_nrml;
-	plane.gcord = NULL;
+	plane.gcord = pln_cord;
 	return (plane);
 }

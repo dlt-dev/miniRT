@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/30 10:33:54 by cybourge          #+#    #+#             */
-/*   Updated: 2026/06/17 09:57:32 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/06/22 11:15:16 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ int	main(int argc, char **argv)
 	t_scn	scene;
 	t_prs	parser;
 
+	if (init_mlx_data(&(scene.mlx)) < 0)
+			return (1);
 	if (argc < 2)
 	{
 		printf("Return a default scene.\n");
@@ -38,18 +40,17 @@ int	main(int argc, char **argv)
 		parser.fname = argv[1];
 		parser.amb_count = 0;
 		parser.cam_count = 0;
+		
 		if (prs_rtfile(&parser) == -1)
 		{
 			scn_dlt(&scene);
 			printf("Error Encountered\n");
 			return (1);
 		}
-		scene.itxv = itxv_crt(10);
-		if (scene.itxv.v == NULL)
-			return (-1);
 	}
-	if (init_mlx_data(&(scene.mlx)) < 0)
-		return (1);
+	scene.itxv = itxv_crt(10);
+	if (scene.itxv.v == NULL)
+		return (-1);
 	mlx_hook(scene.mlx.mlx_win, DestroyNotify, StructureNotifyMask,
 		(void *)handle_x_button, &(scene));
 	mlx_hook(scene.mlx.mlx_win, KeyPress, KeyPressMask,
@@ -60,3 +61,4 @@ int	main(int argc, char **argv)
 	scn_dlt(&scene);
 	return (0);
 }
+

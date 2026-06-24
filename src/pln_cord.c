@@ -1,29 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   wld_itx.c                                          :+:      :+:    :+:   */
+/*   pln_cord.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/23 10:47:26 by cybourge          #+#    #+#             */
-/*   Updated: 2026/06/22 08:30:20 by cybourge         ###   ########.fr       */
+/*   Created: 2026/06/24 14:03:40 by cybourge          #+#    #+#             */
+/*   Updated: 2026/06/24 14:20:25 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "world.h"
+#include "object.h"
 
-int	wld_itx(const t_wld *world, const t_ray *ray, t_itxv *itxv)
+// P : point in 3D Object space
+// returns (u,v) coordinates of P on a xz plane
+// where u,v are in [0,1].
+t_pt	pln_cord(const t_pt *point)
 {
-	size_t	i;
-
-	if (!world || !ray || !itxv)
-		return (-1);
-	i = 0;
-	while (i < world->objs.len)
-	{
-		(world->objs.v[i].hit)(&(world->objs.v[i]), ray, itxv);
-		i++;
-	}
-	itxv_sort(itxv);
-	return (0);
+	return(pt_crt(fabs(floor(point->x) - point->x), fabs(floor(point->z) - point->z), 0));
 }

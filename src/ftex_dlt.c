@@ -1,29 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   wld_itx.c                                          :+:      :+:    :+:   */
+/*   ftex_dlt.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/23 10:47:26 by cybourge          #+#    #+#             */
-/*   Updated: 2026/06/22 08:30:20 by cybourge         ###   ########.fr       */
+/*   Created: 2026/06/22 09:48:42 by cybourge          #+#    #+#             */
+/*   Updated: 2026/06/22 09:54:39 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "world.h"
+#include "textures.h"
 
-int	wld_itx(const t_wld *world, const t_ray *ray, t_itxv *itxv)
+int	ftex_dlt(t_ftex *ftex, t_mlx_data *data)
 {
-	size_t	i;
-
-	if (!world || !ray || !itxv)
-		return (-1);
-	i = 0;
-	while (i < world->objs.len)
-	{
-		(world->objs.v[i].hit)(&(world->objs.v[i]), ray, itxv);
-		i++;
-	}
-	itxv_sort(itxv);
+	if (!data || !data->mlx_ptr)
+		return (1);
+	if (ftex->img.mlx_img != NULL)
+		mlx_destroy_image(data->mlx_ptr, ftex->img.mlx_img);
+	return (0);
+	ft_memset(ftex, 0, sizeof(t_ftex));
 	return (0);
 }
