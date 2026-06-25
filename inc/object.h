@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/03 12:11:44 by cybourge          #+#    #+#             */
-/*   Updated: 2026/06/25 08:58:05 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/06/25 16:59:55 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -216,6 +216,8 @@ bool		con_hit(const t_obj *obj, const t_ray *r, t_itxv *itxv);
 // Writes the normaliwed normal vector to the cone at point pt in nrml.
 // Returns -1 on errors, 0 otherwise.
 int			con_nrml(const t_obj *obj, const t_pt *pt, t_v4 *nrml);
+// Returns the UV coordinates of the point P on a cone.
+t_pt		con_cord(const t_pt *point);
 
 // Returns the color of an object at a specific point.
 t_clr		obj_gclr(const t_obj *obj, const t_pt *p);

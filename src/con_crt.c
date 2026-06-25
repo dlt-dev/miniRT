@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/17 08:13:58 by cybourge          #+#    #+#             */
-/*   Updated: 2026/06/18 11:49:10 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/06/25 17:00:02 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,6 @@ t_obj	con_crt(void)
 	mtl_ini(&(cone.mtrl));
 	cone.hit = con_hit;
 	cone.nrml = con_nrml;
-	cone.gcord = cld_cord;
+	cone.gcord = con_cord;
 	return (cone);
 }

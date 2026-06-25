@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/24 14:03:40 by cybourge          #+#    #+#             */
-/*   Updated: 2026/06/24 14:20:25 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/06/25 17:00:26 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,5 +17,11 @@
 // where u,v are in [0,1].
 t_pt	pln_cord(const t_pt *point)
 {
-	return(pt_crt(fabs(floor(point->x) - point->x), fabs(floor(point->z) - point->z), 0));
+	t_pt	uv;
+	
+	uv.x = fmod(point->x, 1);
+	uv.y = fmod(point->z, 1);
+	uv.z = 0.0;
+	uv.w = 1.0;
+	return (uv);
 }
