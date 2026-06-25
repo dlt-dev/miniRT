@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/22 08:56:07 by cybourge          #+#    #+#             */
-/*   Updated: 2026/06/25 14:48:02 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/06/25 16:41:45 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,9 +92,6 @@ int		ftex_dlt(t_ftex *ftex, t_mlx_data *data);
 
 // Returns the color of the pixel on the object relative to the texture.
 t_clr	ftex_clr(const t_ftex *ftex, const t_pt *point);
-
-// Returns the value of the height on the height map held in ftex at point.
-t_clr	hmap_nrm(const t_ftex *ftex, const t_pt *point);
 
 // returns the color of a vertical stripped pattern at point p
 t_clr	pat_strp1(const t_tex *tex, t_pt const *p);
