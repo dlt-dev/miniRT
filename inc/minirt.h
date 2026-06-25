@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/30 10:34:58 by cybourge          #+#    #+#             */
-/*   Updated: 2026/06/25 14:01:07 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/06/25 17:28:29 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,13 +34,10 @@
 # include "camera.h"
 # include "textures.h"
 
-
 # define WIN_H		1080 //800 // 144
 # define WIN_W  	1920 //800  // 256
 # define WIN_NAME 	"miniRT"
-
-# define BAR_WIDTH 50
-
+# define BAR_WIDTH	50			// Loading Bar size	
 
 typedef struct s_scene
 {

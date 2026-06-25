@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/25 08:58:12 by cybourge          #+#    #+#             */
-/*   Updated: 2026/06/25 09:03:10 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/06/25 17:19:46 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,5 +16,4 @@ void	obj_dlt(t_obj *obj)
 {
 	if (!obj)
 		return ;
-	//mtl_dlt(obj->mtrl);
 }

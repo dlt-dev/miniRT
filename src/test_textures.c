@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/22 09:46:46 by cybourge          #+#    #+#             */
-/*   Updated: 2026/06/24 18:13:36 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/06/25 17:10:11 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,10 +44,12 @@ int main(void)
 	{
 		for (int j = 0; j < ftex.h; j++)
 		{
-			//t_pt point = pt_crt((double) i / (double)ftex.w, (double) j / (double)ftex.h, 0);
+			//t_pt point = pt_crt((double) i / (double)ftex.w,
+				(double) j / (double)ftex.h, 0);
 			//t_clr color = ftex_clr(&ftex, &point);
 			//uint32_t color = 0x00FF0000;
-			char *dest = ftex.img.addr + (j * ftex.img.ll + i * (ftex.img.bpp / 8));
+			char *dest = ftex.img.addr + (j * ftex.img.ll
+				+ i * (ftex.img.bpp / 8));
 			int color = *(uint32_t *)(dest);
 			img_pix_put(&(data.img), i, j, color);
 		}
@@ -60,7 +62,7 @@ int main(void)
 		(void *)handle_keypress, &data);
 	mlx_loop_hook(data.mlx_ptr, (void *)simple_render, &data);
 	mlx_loop(data.mlx_ptr);
-	// ftex_dlt(&ftex, &data); // Already getting cleaned in free_mlx_data given we copy into it above.
+	// ftex_dlt(&ftex, &data);
 	free_mlx_data(&data);
 	return (0);
 }

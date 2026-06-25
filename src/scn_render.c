@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/24 10:14:29 by cybourge          #+#    #+#             */
-/*   Updated: 2026/06/03 09:16:53 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/06/25 17:17:16 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	scn_render(t_scn *scn)
 		while (var.x < scn->camera.hsz)
 		{
 			var.ray = cam_gen_ray(&(scn->camera), var.x, var.y);
-			var.clr = wld_clr_at(&(scn->world), &(var.ray), &(scn->itxv), REC_MAX);
+			var.clr = wld_clr_at(&(scn->world), &(var.ray), &(scn->itxv), MAX);
 			img_pix_put(&(scn->mlx.img), var.x, var.y,
 				clr_pack(var.clr));
 			var.x++;

@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/16 13:58:25 by cybourge          #+#    #+#             */
-/*   Updated: 2026/06/24 14:39:25 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/06/25 17:23:05 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 t_obj	cld_crt(void)
 {
 	t_obj	cylinder;
-	
+
 	cylinder.type = CYLINDER;
 	cylinder.u_o.cy.closed = true;
 	cylinder.u_o.cy.min = -0.5;

@@ -6,12 +6,17 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/18 11:44:12 by cybourge          #+#    #+#             */
-/*   Updated: 2026/06/25 17:00:21 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/06/25 17:23:23 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "object.h"
 
+// const double	theta = atan2(point->x, point->z);
+// const double	raw_u = theta / (2 * PI);
+// const double	u = 1.0 - (raw_u + 0.5);
+// const double	v = fabs(floor(point->y) - point->y);
+// return (pt_crt(u,v,0));
 
 // P : point in 3D Object space
 // returns (u,v) coordinates of P on a Y axis cylinder
@@ -28,10 +33,3 @@ t_pt	cld_cord(const t_pt *point)
 	uv.w = 1.0;
 	return (uv);
 }
-
-// const double	theta = atan2(point->x, point->z);
-// const double	raw_u = theta / (2 * PI);
-// const double	u = 1.0 - (raw_u + 0.5);
-// const double	v = fabs(floor(point->y) - point->y);
-
-// return (pt_crt(u,v,0));

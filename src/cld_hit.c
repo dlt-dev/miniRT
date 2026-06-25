@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/16 14:03:27 by cybourge          #+#    #+#             */
-/*   Updated: 2026/06/17 08:23:34 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/06/25 17:26:30 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,9 @@
 
 static bool	check_caps(const t_ray *ray, double t)
 {
-	const double x = ray->o.x + t * ray->dir.x;
-	const double z = ray->o.z + t * ray->dir.z;
+	const double	x = ray->o.x + t * ray->dir.x;
+	const double	z = ray->o.z + t * ray->dir.z;
+
 	if ((x * x + z * z) <= 1.0)
 		return (true);
 	return (false);
@@ -45,7 +46,7 @@ static bool	intersect_caps(const t_obj *obj, const t_ray *ray, t_itxv *itxv)
 	return (has_hit);
 }
 
-static bool intersect_walls(const t_obj *obj, const t_ray *ray, t_itxv *itxv)
+static bool	intersect_walls(const t_obj *obj, const t_ray *ray, t_itxv *itxv)
 {
 	t_pol2	cyl_eq;
 	t_itx	itx;
@@ -75,16 +76,15 @@ static bool intersect_walls(const t_obj *obj, const t_ray *ray, t_itxv *itxv)
 	{
 		itxv_add(itxv, &itx);
 		hit = true;
-	}	
+	}
 	return (hit);
 }
 
 bool	cld_hit(const t_obj *obj, const t_ray *r, t_itxv *itxv)
 {
-	
 	t_ray	trf_ray;
 	bool	hit;
-	
+
 	ray_trf(r, &(obj->itm), &trf_ray);
 	hit = false;
 	if (intersect_walls(obj, &trf_ray, itxv))

@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/17 08:16:35 by cybourge          #+#    #+#             */
-/*   Updated: 2026/06/17 09:44:06 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/06/25 17:25:01 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,15 @@
 
 static bool	check_caps(const t_ray *ray, double t, double radius)
 {
-	const double x = ray->o.x + t * ray->dir.x;
-	const double z = ray->o.z + t * ray->dir.z;
+	const double	x = ray->o.x + t * ray->dir.x;
+	const double	z = ray->o.z + t * ray->dir.z;
+
 	if ((x * x + z * z) <= radius * radius)
 		return (true);
 	return (false);
 }
 
-static bool intersect_caps(const t_obj *obj, const t_ray *ray, t_itxv *itxv)
+static bool	intersect_caps(const t_obj *obj, const t_ray *ray, t_itxv *itxv)
 {
 	t_itx	itx;
 	bool	has_hit;
@@ -45,7 +46,7 @@ static bool intersect_caps(const t_obj *obj, const t_ray *ray, t_itxv *itxv)
 	return (has_hit);
 }
 
-static bool intersect_walls(const t_obj *obj, const t_ray *ray, t_itxv *itxv)
+static bool	intersect_walls(const t_obj *obj, const t_ray *ray, t_itxv *itxv)
 {
 	t_pol2	con_eq;
 	t_itx	itx;
@@ -82,7 +83,7 @@ static bool intersect_walls(const t_obj *obj, const t_ray *ray, t_itxv *itxv)
 	{
 		itxv_add(itxv, &itx);
 		hit = true;
-	}	
+	}
 	return (hit);
 }
 

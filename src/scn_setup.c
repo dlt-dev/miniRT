@@ -6,18 +6,34 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/24 10:34:22 by cybourge          #+#    #+#             */
-/*   Updated: 2026/06/25 14:08:28 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/06/25 17:16:26 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-// int	test_scn1(t_scn *scene);
-// int	test_scn2(t_scn *scene);
-// int	test_scn3(t_scn *scene);
-// int	test_scn4(t_scn *scene);
+static int	pat_setup(t_pat *pat, t_scn *scene)
+{
+	*pat = (t_pat){.pat = pat_strp1,
+		.clr1 = clr_unpack(RED), .clr2 = clr_unpack(BLUE)};
+	if (texv_add_pat(&(scene->texv), pat) == -1)
+		return (-1);
+	*pat = (t_pat){.pat = pat_lgrad1,
+		.clr1 = clr_unpack(RED), .clr2 = clr_unpack(WHITE)};
+	if (texv_add_pat(&(scene->texv), pat) == -1)
+		return (-1);
+	*pat = (t_pat){.pat = pat_ring1,
+		.clr1 = clr_unpack(BLUE), .clr2 = clr_unpack(WHITE)};
+	if (texv_add_pat(&(scene->texv), pat) == -1)
+		return (-1);
+	*pat = (t_pat){.pat = pat_chkr1,
+		.clr1 = clr_unpack(RED), .clr2 = clr_unpack(WHITE)};
+	if (texv_add_pat(&(scene->texv), pat) == -1)
+		return (-1);
+	return (0);
+}
 
-static int tex_setup(t_scn *scene)
+static int	tex_setup(t_scn *scene)
 {
 	const size_t	tex_nb = 5;
 	t_pat			pat;
@@ -26,17 +42,7 @@ static int tex_setup(t_scn *scene)
 	if (scene->texv.v == NULL)
 		return (-1);
 	scene->texv.len = 0;
-	pat = (t_pat){.pat = pat_strp1, .clr1 = clr_unpack(RED), .clr2 = clr_unpack(BLUE)};
-	if (texv_add_pat(&(scene->texv), &pat) == -1)
-		return (-1);
-	pat = (t_pat){.pat = pat_lgrad1, .clr1 = clr_unpack(RED), .clr2 = clr_unpack(WHITE)};
-	if (texv_add_pat(&(scene->texv), &pat) == -1)
-		return (-1);
-	pat = (t_pat){.pat = pat_ring1, .clr1 = clr_unpack(BLUE), .clr2 = clr_unpack(WHITE)};
-	if (texv_add_pat(&(scene->texv), &pat) == -1)
-		return (-1);
-	pat = (t_pat){.pat = pat_chkr1, .clr1 = clr_unpack(RED), .clr2 = clr_unpack(WHITE)};
-	if (texv_add_pat(&(scene->texv), &pat) == -1)
+	if (pat_setup(&pat, scene) == -1)
 		return (-1);
 	if (texv_add_ftex(&(scene->texv), "earth.xpm", &(scene->mlx)) == -1)
 		return (-1);
@@ -68,8 +74,5 @@ int	scn_setup(t_scn *scene)
 		return (-1);
 	if (scn_dflt_cam(&(scene->camera)) < 0)
 		return (-1);
-	// if (test_scn4(scene) == -1)
-	// 	return (-1);
-
 	return (0);
 }

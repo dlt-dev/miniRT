@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/22 09:00:38 by cybourge          #+#    #+#             */
-/*   Updated: 2026/06/22 09:38:45 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/06/25 17:28:46 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include "mlx.h"
 # include <stddef.h>
 
-typedef struct s_scene t_scn;
+typedef struct s_scene	t_scn;
 
 typedef struct s_img
 {

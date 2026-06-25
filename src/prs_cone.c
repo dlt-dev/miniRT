@@ -6,15 +6,15 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/17 10:07:18 by cybourge          #+#    #+#             */
-/*   Updated: 2026/06/17 11:06:16 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/06/25 17:19:21 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parser.h"
 
-static int process_transforms(t_obj *cone, t_cyldata *data)
+static int	process_transforms(t_obj *cone, t_cyldata *data)
 {
-	const t_v4	basev = v4_crt(0,1,0);
+	const t_v4	basev = v4_crt(0, 1, 0);
 	t_trf		trfs;
 
 	trf_ini(&trfs);
@@ -41,7 +41,7 @@ int	prs_cone(t_prs *prs, char **ltab)
 {
 	t_obj		cone;
 	t_cyldata	data;
-	
+
 	if (tab_len(ltab) != 6 && tab_len(ltab) != 7)
 		return (ft_err_prt("Invalid Cone Data\n", -1));
 	if (prs_v3(ltab[1], &(data.c), false) == -1)

@@ -6,13 +6,13 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/17 08:58:40 by cybourge          #+#    #+#             */
-/*   Updated: 2026/06/17 10:01:24 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/06/25 17:24:27 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "object.h"
 
-int			con_nrml(const t_obj *obj, const t_pt *pt, t_v4 *nrml)
+int	con_nrml(const t_obj *obj, const t_pt *pt, t_v4 *nrml)
 {
 	t_v4	onrml;
 	t_pt	opt;
@@ -33,7 +33,7 @@ int			con_nrml(const t_obj *obj, const t_pt *pt, t_v4 *nrml)
 		yval = sqrt(dist);
 		if (opt.y > 0)
 			yval = -yval;
-		onrml = v4_crt(opt.x, yval, opt.z);	
+		onrml = v4_crt(opt.x, yval, opt.z);
 	}
 	if (m44_vprd(&(obj->itmt), &onrml, nrml) == -1)
 		return (-1);

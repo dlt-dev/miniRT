@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/22 08:56:07 by cybourge          #+#    #+#             */
-/*   Updated: 2026/06/25 16:41:45 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/06/25 17:29:18 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 # include "matrix.h"
 # include "transformations.h"
 
-struct s_texture;
+struct	s_texture;
 
 typedef enum e_texture_types
 {
@@ -59,7 +59,7 @@ typedef struct s_texture_vector
 {
 	size_t	len;
 	size_t	cap;
-	t_tex 	*v;
+	t_tex	*v;
 }	t_texv;
 
 // Creates an empty texture vector with a capacity of cap.

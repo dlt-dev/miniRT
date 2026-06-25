@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/03 12:11:44 by cybourge          #+#    #+#             */
-/*   Updated: 2026/06/25 16:59:55 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/06/25 17:30:56 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,25 +121,25 @@ typedef struct s_object_vector
 // Linked list structure that hold pointers to existing objects.
 typedef struct s_object_list
 {
-	const t_obj					*obj;
+	const t_obj				*obj;
 	struct s_object_list	*next;
 }	t_objl;
 
 // Adds new_obj at the end of the objl
 // Returns -1 on error, 0 otherwise.
-int		objl_add(t_objl **objl, const t_obj *new_obj);
+int			objl_add(t_objl **objl, const t_obj *new_obj);
 
 // Removes the first occurence of to_delete from objl
-void	objl_dlt(t_objl **objl, const t_obj *to_delete);
+void		objl_dlt(t_objl **objl, const t_obj *to_delete);
 
 // Returns true if to_find is in objl
-bool	objl_isin(const t_objl *objl, const t_obj *to_find);
+bool		objl_isin(const t_objl *objl, const t_obj *to_find);
 
 // Returns the last obj in objl, NULL is objl is empty.
 const t_obj	*objl_last(const t_objl *objl);
 
 // Frees each node of the objl
-void	objl_free(t_objl *objl);
+void		objl_free(t_objl *objl);
 
 // Creates an empty object vector with a capacity of cap.
 // If the allocation is unsucessfull :
@@ -165,7 +165,7 @@ void		objv_prt(const t_objv *objv);
 // OBJECT FUNCTIONS
 
 // Frees any memory allocated in the object.
-void	obj_dlt(t_obj *obj);
+void		obj_dlt(t_obj *obj);
 
 // Applies all the transformations to the object.
 // Returns -1 on error, 0 otherwise.
@@ -201,7 +201,8 @@ t_pt		pln_cord(const t_pt *point);
 
 // Returns an instance of a cylinder with default values.
 t_obj		cld_crt(void);
-// Returns wether a ray hits a cylinder object and adds the intersection to itxv.
+// Returns wether a ray hits a cylinder object,
+// adds the intersection to itxv.
 bool		cld_hit(const t_obj *obj, const t_ray *r, t_itxv *itxv);
 // Writes the normalized normal vector to the cylinder at point pt in nrml.
 // Returns -1 on errors, 0 otherwise.

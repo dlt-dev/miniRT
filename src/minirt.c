@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/30 10:33:54 by cybourge          #+#    #+#             */
-/*   Updated: 2026/06/25 12:42:30 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/06/25 17:27:08 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,13 @@
 #include "parser.h"
 #include <stdio.h>
 
-
 int	main(int argc, char **argv)
 {
 	t_scn	scene;
 	t_prs	parser;
 
 	if (init_mlx_data(&(scene.mlx)) < 0)
-			return (1);
+		return (1);
 	if (argc < 2)
 	{
 		printf("Return a default scene.\n");
@@ -39,8 +38,7 @@ int	main(int argc, char **argv)
 		memset(&scene, 0, sizeof(t_scn));
 		parser.fname = argv[1];
 		parser.amb_count = 0;
-		parser.cam_count = 0;
-		
+		parser.cam_count = 0;		
 		if (prs_rtfile(&parser) == -1)
 		{
 			scn_dlt(&scene);
@@ -59,6 +57,5 @@ int	main(int argc, char **argv)
 	mlx_loop(scene.mlx.mlx_ptr);
 	scn_dlt(&scene);
 	free_mlx_data(&(scene.mlx));
-	
 	return (0);
 }
