@@ -6,14 +6,14 @@
 #    By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/06/23 12:34:16 by cybourge          #+#    #+#              #
-#    Updated: 2026/06/22 11:07:48 by cybourge         ###   ########.fr        #
+#    Updated: 2026/06/25 17:40:37 by cybourge         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # ls -1 src | sed ':a;N;$!ba;s/\n/\\\n/g'
 
 CC = cc
-C_FLAGS = -Wall -Wextra  -MMD -g #-Werror
+C_FLAGS = -Wall -Wextra  -MMD -g -Werror
 #-o1
 
 RED = \033[31;1;3m
@@ -77,7 +77,7 @@ $(LIB_BIN): $(MLXDIR)
 	@printf "$(GREEN)MiniLibX ready!$(RESET)\n"
 
 leaks: $(NAME)
-	valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes  --track-fds=yes ./miniRT
+	valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes  --track-fds=yes ./miniRT ss.rt
 
 clean:
 	rm -rf $(OBJS_DIR)

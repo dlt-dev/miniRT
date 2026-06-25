@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/30 10:33:54 by cybourge          #+#    #+#             */
-/*   Updated: 2026/06/25 17:27:08 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/06/25 17:43:54 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ int	main(int argc, char **argv)
 	t_scn	scene;
 	t_prs	parser;
 
+	memset(&scene, 0, sizeof(t_scn));
 	if (init_mlx_data(&(scene.mlx)) < 0)
 		return (1);
 	if (argc < 2)
@@ -35,13 +36,13 @@ int	main(int argc, char **argv)
 	else
 	{
 		parser.scn = &scene;
-		memset(&scene, 0, sizeof(t_scn));
 		parser.fname = argv[1];
 		parser.amb_count = 0;
 		parser.cam_count = 0;		
 		if (prs_rtfile(&parser) == -1)
 		{
 			scn_dlt(&scene);
+			free_mlx_data(&(scene.mlx));
 			printf("Error Encountered\n");
 			return (1);
 		}
