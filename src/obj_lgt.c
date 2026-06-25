@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/21 14:19:52 by cybourge          #+#    #+#             */
-/*   Updated: 2026/06/22 10:31:47 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/06/25 10:31:28 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ t_clr	obj_lgt(
 
 	l.eff_clr = clr_bld(obj_gclr(obj, &data->ohp), light->clr);
 	l.lightv = v4_uni(v4_sub(light->pos, data->ohp));
-	l.ambient = clr_unpack(BLACK);
 	l.ldn = v4_dot(l.lightv, data->nrm);
 	if (l.ldn < 0 || shadowed)
 	{
@@ -42,5 +41,5 @@ t_clr	obj_lgt(
 			l.specular = clr_mul(light->clr,
 					obj->mtrl.spc * pow(l.rdrd, obj->mtrl.shi));
 	}
-	return (clr_add(l.ambient, clr_add(l.diffuse, l.specular)));
+	return (clr_add(l.diffuse, l.specular));
 }

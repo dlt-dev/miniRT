@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/30 10:33:54 by cybourge          #+#    #+#             */
-/*   Updated: 2026/06/24 18:13:43 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/06/25 12:42:30 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,8 @@ int	main(int argc, char **argv)
 		(void *)handle_keypress, &(scene.mlx));
 	mlx_loop_hook(scene.mlx.mlx_ptr, (void *)scn_render, &scene);
 	mlx_loop(scene.mlx.mlx_ptr);
-	free_mlx_data(&(scene.mlx));
 	scn_dlt(&scene);
+	free_mlx_data(&(scene.mlx));
+	
 	return (0);
 }

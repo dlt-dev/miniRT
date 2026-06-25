@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/03 12:11:44 by cybourge          #+#    #+#             */
-/*   Updated: 2026/06/24 14:05:09 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/06/25 08:58:05 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -163,6 +163,9 @@ void		obj_prt(const t_obj *obj);
 void		objv_prt(const t_objv *objv);
 
 // OBJECT FUNCTIONS
+
+// Frees any memory allocated in the object.
+void	obj_dlt(t_obj *obj);
 
 // Applies all the transformations to the object.
 // Returns -1 on error, 0 otherwise.

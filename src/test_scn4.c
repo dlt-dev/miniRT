@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/22 10:17:31 by cybourge          #+#    #+#             */
-/*   Updated: 2026/06/24 18:22:54 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/06/25 10:04:16 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,13 +52,13 @@ int	test_scn4(t_scn *scene)
 	trf_scl(&transforms, 3, 3, 3);
 	trf_trf(&transforms);
 	obj_trf(sphere, &transforms);
-	if (ftex_load(&(sphere->mtrl.tex), "earth.xpm", &(scene->mlx)) == -1)
-		return (1);
-	trf_ini(&transforms);
-	trf_scl(&transforms, 1, 1, 1);
-	//trf_rot(&transforms, 0, 0, PI);
-	trf_trf(&transforms);
-	pat_trf(&(sphere->mtrl.pat), &transforms);
+	// if (ftex_load(&(sphere->mtrl.tex), "earth.xpm", &(scene->mlx)) == -1)
+	// 	return (1);
+	// trf_ini(&transforms);
+	// trf_scl(&transforms, 1, 1, 1);
+	// trf_rot(&transforms, 0, 0, PI);
+	// trf_trf(&transforms);
+	// pat_trf(&(sphere->mtrl.pat), &transforms);
 	// sphere->mtrl.pat.pat = pat_chkr1;
 	// sphere->mtrl.pat.clr1 = clr_unpack(WHITE);
 	// sphere->mtrl.pat.clr2 = clr_unpack(RED);

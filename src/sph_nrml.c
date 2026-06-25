@@ -6,17 +6,28 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/21 10:38:01 by cybourge          #+#    #+#             */
-/*   Updated: 2026/06/24 12:49:17 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/06/25 16:39:17 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "object.h"
 
-void	PertubNormal(t_v4 *nv, const t_pt *point)
+static void	perturb_nrm(const t_obj *obj, t_v4 *onrml, t_pt *opt)
 {
-	const double y = ((point->y * 4)) * 2 * PI;
-	const double ofs = sin(y);
-	nv->y = nv->y + ofs * 0.75;
+	t_pt	pat_pt;
+	t_pt	fin_pt;
+	t_clr	bumpc;
+	t_v4	bumpv;
+	double	bumpl;
+
+	if (obj->gcord == NULL || obj->mtrl.hmap == NULL )
+		return ;
+	//m44_vprd(&(obj->mtrl.itm), opt, &pat_pt);
+	fin_pt = obj->gcord(&pat_pt);
+	bumpc = ftex_clr(&(obj->mtrl.hmap->u_tex.ftex), &fin_pt);
+	bumpv = v4_crt(bumpc.r, bumpc.g, bumpc.b);
+	bumpl = v4_len(bumpv);
+	onrml->y = onrml->y + bumpl * 2.0;
 }
 
 // obj	 : Sphere, wpt : Point in World Space, 
@@ -31,7 +42,7 @@ int	sph_nrml(const t_obj *obj, const t_pt *wpt, t_v4 *wnrml)
 	if (m44_vprd(&(obj->itm), wpt, &opt) == -1)
 		return (-1);
 	onrml = v4_sub(opt, pt_crt(0.0, 0.0, 0.0));
-	//PertubNormal(&onrml, &opt);
+	perturb_nrm(obj, &onrml, &opt);
 	if (m44_vprd(&(obj->itmt), &onrml, wnrml) == -1)
 		return (-1);
 	wnrml->w = 0;

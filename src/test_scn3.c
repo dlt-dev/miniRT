@@ -6,12 +6,13 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/16 14:27:43 by cybourge          #+#    #+#             */
-/*   Updated: 2026/06/22 10:21:14 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/06/25 10:57:29 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
+/*
 static void	set_default_mats(t_mtl *mtrl)
 {
 	mtrl->amb = 0.1;
@@ -143,3 +144,4 @@ int test_scn3(t_scn *scene)
 
 	return (0);
 }
+*/

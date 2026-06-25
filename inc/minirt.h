@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/30 10:34:58 by cybourge          #+#    #+#             */
-/*   Updated: 2026/06/22 10:05:57 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/06/25 14:01:07 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,6 @@
 
 # define BAR_WIDTH 50
 
-# define COLOUR1 0x00f44336
-
 
 typedef struct s_scene
 {
@@ -50,6 +48,8 @@ typedef struct s_scene
 	t_wld		world;
 	t_cam		camera;
 	t_itxv		itxv;
+	t_texv		texv;
+	t_texv		hmapv;
 }	t_scn;
 
 // Structure that holds variables used in rendering a scene : 42 norm
@@ -68,7 +68,7 @@ int		scn_render(t_scn *scene);
 
 // Utility function to setup the objects in the world
 // Returns -1 on error, 0 otherwise.
-int		scn_dflt_objs(t_wld *world);
+int		scn_dflt_objs(t_wld *world, t_scn *scene);
 
 // Utility function to setup the lights in the world.
 // Returns -1 on error, 0 otherwise.

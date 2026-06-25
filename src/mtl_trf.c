@@ -1,22 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pat_trf.c                                          :+:      :+:    :+:   */
+/*   mtl_trf.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/06/02 12:06:25 by cybourge          #+#    #+#             */
-/*   Updated: 2026/06/02 13:18:55 by cybourge         ###   ########.fr       */
+/*   Created: 2026/06/25 11:14:20 by cybourge          #+#    #+#             */
+/*   Updated: 2026/06/25 11:15:19 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pattern.h"
+#include "material.h"
 
-int	pat_trf(t_pat *pat, const t_trf *trf)
+int	mtl_trf(t_mtl *mtl, t_trf *trf)
 {
-	if (!pat || !trf)
+	if (!mtl || !trf)
 		return (-1);
-	m44_cpy(&(trf->tm), &(pat->tm));
-	m44_cpy(&(trf->itm), &(pat->itm));
+	m44_cpy(&(trf->tm), &(mtl->tm));
+	m44_cpy(&(trf->itm), &(mtl->itm));
 	return (0);
 }

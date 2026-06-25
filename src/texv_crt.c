@@ -1,20 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pat_strp1.c                                        :+:      :+:    :+:   */
+/*   texv_crt.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/06/02 08:04:34 by cybourge          #+#    #+#             */
-/*   Updated: 2026/06/25 10:21:23 by cybourge         ###   ########.fr       */
+/*   Created: 2026/06/25 09:09:05 by cybourge          #+#    #+#             */
+/*   Updated: 2026/06/25 09:11:29 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "textures.h"
 
-t_clr	pat_strp1(const t_tex *tex, t_pt const *p)
+t_texv	texv_crt(size_t cap)
 {
-	if (((int) floor(p->x) % 2) == 0)
-		return (tex->u_tex.ptex.clr1);
-	return (tex->u_tex.ptex.clr2);
+	t_texv	texv;
+
+	texv.len = 0;
+	texv.cap = cap;
+	if (cap == 0)
+	{
+		texv.v = NULL;
+		return (texv);
+	}
+	texv.v = malloc(sizeof(t_tex) * cap);
+	if (!texv.v)
+	{
+		texv.cap = 0;
+		return (texv);
+	}
+	return (texv);
 }

@@ -1,20 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pat_strp1.c                                        :+:      :+:    :+:   */
+/*   obj_dlt.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/06/02 08:04:34 by cybourge          #+#    #+#             */
-/*   Updated: 2026/06/25 10:21:23 by cybourge         ###   ########.fr       */
+/*   Created: 2026/06/25 08:58:12 by cybourge          #+#    #+#             */
+/*   Updated: 2026/06/25 09:03:10 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "textures.h"
+#include "object.h"
 
-t_clr	pat_strp1(const t_tex *tex, t_pt const *p)
+void	obj_dlt(t_obj *obj)
 {
-	if (((int) floor(p->x) % 2) == 0)
-		return (tex->u_tex.ptex.clr1);
-	return (tex->u_tex.ptex.clr2);
+	if (!obj)
+		return ;
+	//mtl_dlt(obj->mtrl);
 }

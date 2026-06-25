@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/23 11:11:32 by cybourge          #+#    #+#             */
-/*   Updated: 2026/06/22 10:11:16 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/06/25 14:00:41 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 # define MATERIAL_H
 
 # include "color.h"
-# include "pattern.h"
 # include "textures.h"
 
 // Material for a Phong Lighting model.
@@ -36,11 +35,16 @@ typedef struct s_material
 	double	rfl;
 	double	tsp;
 	double	ref;
-	t_pat	pat;
-	t_ftex	tex;
+	t_tex	*tex;
+	t_m44	tm;
+	t_m44	itm;
+	t_tex	*hmap;
 }	t_mtl;
 
 // Sets the value of a material to default values.
 void	mtl_ini(t_mtl *mtl);
+
+// Applies the transformations to the material.
+int		mtl_trf(t_mtl *mtl, t_trf *trf);
 
 #endif
