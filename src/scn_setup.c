@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/24 10:34:22 by cybourge          #+#    #+#             */
-/*   Updated: 2026/06/26 11:55:35 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/06/26 16:01:37 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ static int	tex_setup(t_scn *scene)
 	scene->texv.len = 0;
 	if (pat_setup(&pat, scene) == -1)
 		return (-1);
-	if (texv_add_ftex(&(scene->texv), "earth.xpm", &(scene->mlx)) == -1)
+	if (texv_add_ftex(&(scene->texv), "tex/earth.xpm", &(scene->mlx)) == -1)
 		return (-1);
 	return (0);
 }
@@ -57,7 +57,7 @@ static int	hmap_setup(t_scn *scene)
 	if (scene->hmapv.v == NULL)
 		return (-1);
 	scene->hmapv.len = 0;
-	if (texv_add_ftex(&(scene->hmapv), "bump.xpm", &(scene->mlx)) == -1)
+	if (texv_add_ftex(&(scene->hmapv), "tex/bump.xpm", &(scene->mlx)) == -1)
 		return (-1);
 	return (0);
 }
