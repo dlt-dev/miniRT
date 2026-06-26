@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/30 10:34:58 by cybourge          #+#    #+#             */
-/*   Updated: 2026/06/25 17:28:29 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/06/26 10:08:18 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,8 @@
 # include "camera.h"
 # include "textures.h"
 
-# define WIN_H		1080 //800 // 144
-# define WIN_W  	1920 //800  // 256
+# define WIN_H		800 //1080 //800 // 144
+# define WIN_W  	800 //1920 //800  // 256
 # define WIN_NAME 	"miniRT"
 # define BAR_WIDTH	50			// Loading Bar size	
 

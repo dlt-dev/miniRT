@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/23 11:11:32 by cybourge          #+#    #+#             */
-/*   Updated: 2026/06/25 14:00:41 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/06/26 09:53:16 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include "color.h"
 # include "textures.h"
+# include <stdio.h>
 
 // Material for a Phong Lighting model.
 // clr	: Colour
@@ -46,5 +47,8 @@ void	mtl_ini(t_mtl *mtl);
 
 // Applies the transformations to the material.
 int		mtl_trf(t_mtl *mtl, t_trf *trf);
+
+// Displays the material on stdout.
+void	mtl_prt(const t_mtl *mtl);
 
 #endif

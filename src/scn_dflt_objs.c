@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/24 10:22:42 by cybourge          #+#    #+#             */
-/*   Updated: 2026/06/25 17:18:24 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/06/25 18:15:16 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,11 @@ static void	setup_ele(t_wld *world, t_scn *scene, size_t offset)
 	obj_trf(&(world->objs.v[offset]), &trf);
 	trf_ini(&trf);
 	//trf_scl(&trf, 0.01, 0.01, 0.01);
-	trf_rot(&trf, 0, -PI / 2, PI / 4);
+	trf_rot(&trf, PI, -PI / 2, 0);
 	trf_trf(&trf);
 	mtl_trf(&(world->objs.v[offset].mtrl), &trf);
-	world->objs.v[offset].mtrl.tex = &(scene->texv.v[4]);
-	world->objs.v[offset].mtrl.hmap = &(scene->hmapv.v[0]);
+	world->objs.v[offset].mtrl.tex = &(scene->texv.v[3]);
+	//world->objs.v[offset].mtrl.hmap = &(scene->hmapv.v[0]);
 	world->objs.v[offset].gcord = sph_cord;
 }
 
