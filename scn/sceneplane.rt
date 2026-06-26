@@ -1,0 +1,31 @@
+# Ambiance globale
+A 0.1 255,255,255
+
+# Camera
+C -4.5,0.85,-4 0.75,0,0.66 50
+
+# Lumiere blanche, intensite max
+L -4.9,4.9,1 1.0 255,255,255
+
+# Sol | damier noir et blanc
+pl 0,0,0 0,1,0 191,191,191
+
+# Mur droite | damier noir et blanc
+pl 5,0,0 -1,0,0 255,255,255
+
+# Mur gauche | damier noir et blanc
+pl 0,0,5 0,0,1 255,255,255
+
+# Grande sphere rouge (diametre 2)
+sp 4,1,4 2 204,26,77
+
+# Sphere verte (scale 0.4 -> diametre 0.8)
+sp 4.6,0.4,2.9 0.8 26,204,51
+
+# Sphere bleue foncee (diametre 1.2)
+sp 2.6,0.6,4.4 1.2 51,26,204
+
+# Grande sphere "verre" (diametre 2)
+# transparence 0.8 | indice de refraction 1.57
+sp 0.25,1,0 2 204,204,230
+
