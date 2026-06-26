@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/02 08:56:12 by cybourge          #+#    #+#             */
-/*   Updated: 2026/06/25 13:42:21 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/06/26 12:57:59 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,15 +21,15 @@ t_clr	obj_gclr(const t_obj *obj, const t_pt *p)
 	if (obj->mtrl.tex == NULL)
 		return (obj->mtrl.clr);
 	m44_vprd(&(obj->itm), p, &obj_pt);
-	m44_vprd(&(obj->mtrl.itm), &obj_pt, &pat_pt);
 	if (obj->gcord != NULL)
-		fin_pt = obj->gcord(&pat_pt);
+		fin_pt = obj->gcord(&obj_pt);
 	else
-		fin_pt = pat_pt;
+		fin_pt = obj_pt;
+	m44_vprd(&(obj->mtrl.itm), &fin_pt, &pat_pt);
 	if (obj->mtrl.tex->type == FILE_TEX)
-		return (ftex_clr(&(obj->mtrl.tex->u_tex.ftex), &fin_pt));
+		return (ftex_clr(&(obj->mtrl.tex->u_tex.ftex), &pat_pt));
 	else if (obj->mtrl.tex->type == PATTERN_TEX)
-		return (obj->mtrl.tex->u_tex.ptex.pat(obj->mtrl.tex, &fin_pt));
+		return (obj->mtrl.tex->u_tex.ptex.pat(obj->mtrl.tex, &pat_pt));
 	else
 		return (obj->mtrl.clr);
 }

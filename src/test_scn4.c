@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/22 10:17:31 by cybourge          #+#    #+#             */
-/*   Updated: 2026/06/26 10:11:36 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/06/26 10:22:00 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,12 @@ int	test_scn4(t_scn *scene)
 	scene->world.amb.intensity = 0.5;
 	scene->world.amb.clr = clr_mul(clr_unpack(WHITE), scene->world.amb.intensity);
 
-	// Object Setup 
-	scene->world.objs = objv_crt(2);
+	// Object Setup
+	const size_t	nb_obj = 3;
+	scene->world.objs = objv_crt(nb_obj);
 	if (scene->world.objs.cap == 0)
 		return (-1);
-	scene->world.objs.len = 2;
+	scene->world.objs.len = nb_obj;
 	// Transformation structure to hold transformations of objects
 	t_trf	transforms;
 	// Index to keep track of which object we are working on
@@ -78,7 +79,7 @@ int	test_scn4(t_scn *scene)
 	plane->mtrl.tsp = 0;
 	plane->mtrl.ref = 1.57;
 	trf_ini(&transforms);
-	trf_trl(&transforms, 0, -1, 0);
+	trf_trl(&transforms, 0, -20, 0);
 	//trf_scl(&transforms, 1, 5, 2);
 	trf_trf(&transforms);
 	obj_trf(plane, &transforms);
@@ -88,6 +89,27 @@ int	test_scn4(t_scn *scene)
 	// pat_trf(&(plane->mtrl.pat), &transforms);
 	// if (ftex_load(&(plane->mtrl.tex), "earth.xpm", &(scene->mlx)) == -1)
 	// 	return (1);
+	index++;
+
+	// Sphere
+	sphere = &(scene->world.objs.v[index]);
+	*sphere = sph_crt();
+	sphere->mtrl.clr = clr_crt(0, 1.0, 1.0, 1.0);
+	trf_ini(&transforms);
+	trf_trl(&transforms, 2, -9, 0);
+	trf_scl(&transforms, 0.5, 0.5, 0.5);
+	trf_trf(&transforms);
+	obj_trf(sphere, &transforms);
+	// if (ftex_load(&(sphere->mtrl.tex), "earth.xpm", &(scene->mlx)) == -1)
+	// 	return (1);
+	// trf_ini(&transforms);
+	// trf_scl(&transforms, 1, 1, 1);
+	// trf_rot(&transforms, 0, 0, PI);
+	// trf_trf(&transforms);
+	// pat_trf(&(sphere->mtrl.pat), &transforms);
+	// sphere->mtrl.pat.pat = pat_chkr1;
+	// sphere->mtrl.pat.clr1 = clr_unpack(WHITE);
+	// sphere->mtrl.pat.clr2 = clr_unpack(RED);
 	index++;
 
 	// Cylinder
