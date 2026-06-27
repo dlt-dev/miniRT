@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   prs_mat.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jdelattr <jdelattr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/06 08:47:31 by cybourge          #+#    #+#             */
-/*   Updated: 2026/06/16 16:36:47 by jdelattr         ###   ########.fr       */
+/*   Updated: 2026/06/27 15:48:24 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,22 +59,15 @@ int	prs_mat(const char *str, t_mtl *mat)
 	abcd = ft_split(str, ",");
 	len = tab_len(abcd);
 	if (len != 7)
-	{
-		tab_dlt(abcd);
-		return (-1);
-	}
+		return (tab_dlt(abcd), -1);
 	if (!is_validf(abcd[0]) || !is_validf(abcd[1])
 		|| !is_validf(abcd[2]) || !is_validf(abcd[3]) || !is_validf(abcd[4])
 		|| !is_validf(abcd[5]) || !is_validf(abcd[6]))
 	{
-		tab_dlt(abcd);
-		return (-1);
+		return (tab_dlt(abcd), -1);
 	}
 	if (check_n_write(mat, abcd) == -1)
-	{
-		tab_dlt(abcd);
-		return (-1);
-	}
+		return (tab_dlt(abcd), -1);
 	tab_dlt(abcd);
 	return (0);
 }

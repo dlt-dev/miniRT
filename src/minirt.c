@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/30 10:33:54 by cybourge          #+#    #+#             */
-/*   Updated: 2026/06/26 09:42:49 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/06/27 16:02:38 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,36 +27,36 @@ static int	parse_scene(t_scn *scene, char **argv)
 	return (0);
 }
 
-int	main(int argc, char **argv)
+static int	setup_scene(t_scn *scene, char **argv, int argc)
 {
-	t_scn	scene;
-
-	memset(&scene, 0, sizeof(t_scn));
-	if (init_mlx_data(&(scene.mlx)) < 0)
-		return (1);
+	memset(scene, 0, sizeof(t_scn));
+	if (init_mlx_data(&(scene->mlx)) < 0)
+		return (-1);
 	if (argc < 2)
 	{
 		printf("Rendering the default scene.\n");
-		if (scn_setup(&scene) < 0)
-			return (free_mlx_data(&(scene.mlx)), 1);
+		if (scn_setup(scene) < 0)
+			return (free_mlx_data(&(scene->mlx)), -1);
 	}
 	else if (argc > 2)
 	{
 		printf("Too many files given in argument\n");
-		return (free_mlx_data(&(scene.mlx)), 1);
+		return (free_mlx_data(&(scene->mlx)), -1);
 	}
-	else if (parse_scene(&scene, argv) == -1)
-	{
-		scn_dlt(&scene);
-		free_mlx_data(&(scene.mlx));
-		printf("Error Encountered\n");
-		return (1);
-	}
-	scene.itxv = itxv_crt(10);
-	if (scene.itxv.v == NULL)
-		return (-1);
-	wld_prt(&(scene.world));
-	cam_prt(&(scene.camera));
+	else if (parse_scene(scene, argv) == -1)
+		return (scn_dlt(scene), free_mlx_data(&(scene->mlx)), -1);
+	scene->itxv = itxv_crt(10);
+	if (scene->itxv.v == NULL)
+		return (scn_dlt(scene), free_mlx_data(&(scene->mlx)), -1);
+	return (0);
+}
+
+int	main(int argc, char **argv)
+{
+	t_scn	scene;
+
+	if (setup_scene(&scene, argv, argc) == -1)
+		return (printf("Error Encountered\n"), 1);
 	mlx_hook(scene.mlx.mlx_win, DestroyNotify, StructureNotifyMask,
 		(void *)handle_x_button, &(scene));
 	mlx_hook(scene.mlx.mlx_win, KeyPress, KeyPressMask,

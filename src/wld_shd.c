@@ -6,57 +6,11 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/23 12:31:48 by cybourge          #+#    #+#             */
-/*   Updated: 2026/06/27 12:31:10 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/06/27 17:54:18 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "world.h"
-
-// Function that checks if any non transparent objects have been hit by the 
-// shadow ray
-// returns true if there is shadow, false otherwise.
-static bool	check_obj(const t_itxv *itxv, double dist)
-{
-	size_t	i;
-
-	i = 0;
-	while (i < itxv->len)
-	{
-		if (itxv->v[i].t <= 0 || itxv->v[i].t > dist)
-			i++;
-		else
-		{
-			if (itxv->v[i].obj->mtrl.tsp < 1.0)
-				return (true);
-		}
-		i++;
-	}
-	return (false);
-}
-
-// lthp : (Over Hit Point) to (Light) vector.
-static double	is_shadowed(
-	const t_wld *world,
-	const t_lgt *light,
-	const t_itx *itx,
-	t_itxv *itxv)
-{
-	t_v4	lthp;
-	t_v4	dir;
-	t_ray	shadow_ray;
-	double	dist;
-	bool	test;
-
-	itxv_clr(itxv);
-	lthp = v4_sub(light->pos, itx->ohp);
-	dist = v4_len(lthp);
-	dir = v4_uni(lthp);
-	shadow_ray = (t_ray){.dir = dir, .o = itx->ohp};
-	wld_itx(world, &shadow_ray, itxv);
-	test = check_obj(itxv, dist);
-	itxv_clr(itxv);
-	return (test);
-}
 
 // TBD : Better Error Handling
 static t_clr	reflected_clr(const t_wld *world, const t_itx *itx, int r)
@@ -79,27 +33,25 @@ static t_clr	reflected_clr(const t_wld *world, const t_itx *itx, int r)
 
 static t_clr	refracted_clr(const t_wld *world, const t_itx *itx, int r)
 {
-	const double	n_ratio = itx->n1 / itx->n2;
-	const double	cos_i = v4_dot(itx->rd, itx->nrm);
-	const double	sin2_t = n_ratio * n_ratio * (1 - cos_i * cos_i);
-	double			cos_t;
-	t_ray			rfr_ray;
-	t_clr			ref_clr;
-	t_itxv			rfr_itxv;
+	t_rfrd	data;
+	t_itxv	rfr_itxv;
 
-	if (deql(itx->obj->mtrl.tsp, 0.0) || r == 0 || sin2_t > 1.0)
+	data.nr = itx->n1 / itx->n2;
+	data.cosi = v4_dot(itx->rd, itx->nrm);
+	data.sin2t = data.nr * data.nr * (1 - data.cosi * data.cosi);
+	if (deql(itx->obj->mtrl.tsp, 0.0) || r == 0 || data.sin2t > 1.0)
 		return (clr_unpack(BLACK));
-	cos_t = sqrt(1.0 - sin2_t);
-	rfr_ray.dir = v4_sub(v4_mul(itx->nrm, n_ratio * cos_i - cos_t),
-			v4_mul(itx->rd, n_ratio));
-	rfr_ray.o = itx->uhp;
+	data.cost = sqrt(1.0 - data.sin2t);
+	data.rfr_ray.dir = v4_sub(v4_mul(itx->nrm, data.nr * data.cosi - data.cost),
+			v4_mul(itx->rd, data.nr));
+	data.rfr_ray.o = itx->uhp;
 	rfr_itxv = itxv_crt(2);
 	if (rfr_itxv.cap == 0)
 		return (ft_err_prt("Refraction ERROR\n", 1), clr_unpack(BLACK));
-	ref_clr = clr_mul(wld_clr_at(world, &rfr_ray, &rfr_itxv, r - 1),
+	data.ref_clr = clr_mul(wld_clr_at(world, &data.rfr_ray, &rfr_itxv, r - 1),
 			itx->obj->mtrl.tsp);
 	itxv_dlt(&rfr_itxv);
-	return (ref_clr);
+	return (data.ref_clr);
 }
 
 static double	schlick(const t_itx *itx)
@@ -136,10 +88,10 @@ static t_clr	add_colours(t_clr clrs[4], const t_itx *itx)
 		rfl = schlick(itx);
 		clr1 = clr_add(clrs[2], clr_add(clr_mul(clrs[1], rfl),
 					clr_mul(clrs[3], 1 - rfl)));
-		return (clr_add(clr1, clrs[0]));
+		return (clr_add(clr1, clr_mul(clrs[0], itx->obj->mtrl.amb)));
 	}
 	clr1 = clr_add(clrs[2], clr_add(clrs[1], clrs[3]));
-	return (clr_add(clr1, clrs[0]));
+	return (clr_add(clr1, clr_mul(clrs[0], itx->obj->mtrl.amb)));
 }
 
 // clrs : [ambient, reflected, surface, refracted]
@@ -164,8 +116,3 @@ t_clr	wld_shd(const t_wld *world, const t_itx *itx, t_itxv *itxv, int r)
 	clrs[3] = refracted_clr(world, itx, r);
 	return (add_colours(clrs, itx));
 }
-// ambclr = clr_add(obj_gclr(itx->obj, &(itx->ohp)),
-// 		clr_mul(world->amb.clr, itx->obj->mtrl.amb));
-
-// clrs[0] = clr_mul(world->amb.clr,
-// 			world->amb.intensity * itx->obj->mtrl.amb);

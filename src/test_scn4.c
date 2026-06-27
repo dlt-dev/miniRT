@@ -6,12 +6,12 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/22 10:17:31 by cybourge          #+#    #+#             */
-/*   Updated: 2026/06/27 10:26:09 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/06/27 17:58:12 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
-
+/*
 int	test_scn4(t_scn *scene)
 {
 	t_cam		*cam = &(scene->camera);
@@ -33,7 +33,8 @@ int	test_scn4(t_scn *scene)
 
 	// Ambient Light
 	scene->world.amb.intensity = 0.5;
-	scene->world.amb.clr = clr_mul(clr_unpack(WHITE), scene->world.amb.intensity);
+	scene->world.amb.clr = clr_mul(clr_unpack(WHITE),
+		scene->world.amb.intensity);
 
 	// Object Setup
 	const size_t	nb_obj = 3;
@@ -141,3 +142,4 @@ int	test_scn4(t_scn *scene)
 	// index++;
 	return (0);
 }
+*/

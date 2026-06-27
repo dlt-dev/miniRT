@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/06 09:58:03 by cybourge          #+#    #+#             */
-/*   Updated: 2026/06/24 14:12:06 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/06/27 17:55:56 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,6 @@ t_obj	pln_crt(void)
 	m44_idm(&(plane.itmt));
 	mtl_ini(&(plane.mtrl));
 	plane.mtrl.clr = clr_unpack(WHITE);
-	plane.mtrl.amb = 0.1;
-	plane.mtrl.dif = 0.9;
-	plane.mtrl.spc = 0.9;
-	plane.mtrl.shi = 200.0;
 	plane.hit = pln_hit;
 	plane.nrml = pln_nrml;
 	plane.gcord = pln_cord;

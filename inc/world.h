@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/22 11:37:45 by cybourge          #+#    #+#             */
-/*   Updated: 2026/06/25 17:17:30 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/06/27 15:53:57 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,16 @@ typedef struct s_world
 	t_lgtv	lgts;
 	t_ambl	amb;
 }	t_wld;
+
+typedef struct s_refracted_data
+{
+	double	nr;
+	double	cosi;
+	double	sin2t;
+	double	cost;
+	t_ray	rfr_ray;
+	t_clr	ref_clr;
+}	t_rfrd;
 
 // Initilizes a world defined by default.
 int		wld_ini_dflt(t_wld *wld);
@@ -65,5 +75,12 @@ t_clr	wld_shd(const t_wld *world, const t_itx *itx, t_itxv *itxv, int r);
 // itxv is given to reduce memory allocations,
 // it should have been created before calling this function.
 t_clr	wld_clr_at(const t_wld *world, const t_ray *ray, t_itxv *itxv, int r);
+
+// Returns true if an itx object is in the shadow.
+bool	is_shadowed(
+			const t_wld *world,
+			const t_lgt *light,
+			const t_itx *itx,
+			t_itxv *itxv);
 
 #endif

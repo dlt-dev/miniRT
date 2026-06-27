@@ -6,69 +6,120 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/24 10:22:42 by cybourge          #+#    #+#             */
-/*   Updated: 2026/06/26 14:50:08 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/06/27 17:57:04 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-static void	setup_ele(t_wld *world, t_scn *scene, size_t offset)
+static void	setup_spheres(t_wld *world, t_scn *scene, size_t offset)
 {
 	t_trf	trf;
 
+	// Sphere 1 : Texture + BUMP
 	world->objs.v[offset] = sph_crt();
-	world->objs.v[offset].mtrl.clr = clr_unpack(WHITE);
 	trf_ini(&trf);
-	trf_trl(&trf, 2, 0, 0);
-	//trf_scl(&trf, 2, 2, 2);
-	trf_rot(&trf, 0, 0, 0);
+	trf_trl(&trf, 20, 0, 10);
+	trf_scl(&trf, 2, 2, 2);
 	trf_trf(&trf);
 	obj_trf(&(world->objs.v[offset]), &trf);
 	trf_ini(&trf);
-	//trf_scl(&trf, 0.1, 0.1, 0.1);
-	//trf_rot(&trf, 0, 0, PI/2);
 	trf_trf(&trf);
 	mtl_trf(&(world->objs.v[offset].mtrl), &trf);
 	world->objs.v[offset].mtrl.tex = &(scene->texv.v[4]);
 	world->objs.v[offset].mtrl.hmap = &(scene->hmapv.v[0]);
 	world->objs.v[offset].gcord = sph_cord;
+	offset++;
 
-	t_obj	*plane = &(scene->world.objs.v[offset + 1]);
-	*plane = pln_crt();
-	plane->mtrl.clr = clr_crt(0, 0, 0, 0);
-	plane->mtrl.amb = 1.0;
-	plane->mtrl.spc = 0.0;
-	plane->mtrl.dif = 0.0;
-	plane->mtrl.shi = 200;
-	plane->mtrl.rfl = 0.0;
-	plane->mtrl.tsp = 0;
-	plane->mtrl.ref = 1.57;
+	// Sphere 2 : Checkers + Scale
+	world->objs.v[offset] = sph_crt();
 	trf_ini(&trf);
-	trf_rot(&trf, PI/2,0, 0);
-	trf_trl(&trf, 0, 0, 5);
-	//trf_scl(&trf, 10,10,10);
+	trf_trl(&trf, 15, 0, 10);
+	trf_scl(&trf, 2, 2, 2);
 	trf_trf(&trf);
-	obj_trf(plane, &trf);
+	obj_trf(&(world->objs.v[offset]), &trf);
 	trf_ini(&trf);
-	//trf_scl(&trf, 2, 2, 2);
-	trf_scl(&trf, 0.01, 0.01, 0.01);
+	trf_scl(&trf, 0.1, 0.1, 0.1);
 	trf_trf(&trf);
-	mtl_trf(&(world->objs.v[offset + 1].mtrl), &trf);
-	world->objs.v[offset + 1].mtrl.tex = &(scene->texv.v[2]);
+	mtl_trf(&(world->objs.v[offset].mtrl), &trf);
+	world->objs.v[offset].mtrl.tex = &(scene->texv.v[2]);
+	world->objs.v[offset].gcord = sph_cord2;
+	offset++;
+
+	//Sphere 3 : Striped
+	world->objs.v[offset] = sph_crt();
+	trf_ini(&trf);
+	trf_trl(&trf, 10, 0, 10);
+	trf_scl(&trf, 2, 2, 2);
+	trf_trf(&trf);
+	obj_trf(&(world->objs.v[offset]), &trf);
+	trf_ini(&trf);
+	trf_scl(&trf, 0.07, 0.07, 0.07);
+	trf_trf(&trf);
+	mtl_trf(&(world->objs.v[offset].mtrl), &trf);
+	world->objs.v[offset].mtrl.tex = &(scene->texv.v[0]);
+	world->objs.v[offset].gcord = sph_cord;
+	offset++;
+
+	// Sphere 4 : BUMP only
+	world->objs.v[offset] = sph_crt();
+	world->objs.v[offset].mtrl.clr = clr_unpack(WHITE);
+	trf_ini(&trf);
+	trf_trl(&trf, 5, 0, 10);
+	trf_scl(&trf, 2, 2, 2);
+	trf_trf(&trf);
+	obj_trf(&(world->objs.v[offset]), &trf);
+	trf_ini(&trf);
+	trf_rot(&trf, PI/2, 0,0);
+	trf_trf(&trf);
+	mtl_trf(&(world->objs.v[offset].mtrl), &trf);
 	world->objs.v[offset].mtrl.hmap = &(scene->hmapv.v[0]);
-	world->objs.v[offset + 1].gcord = pln_cord;
+	world->objs.v[offset].gcord = sph_cord;
+	offset++;
+}
+
+static void	setup_planes(t_wld *world, t_scn *scene, size_t offset)
+{
+	t_trf	trf;
 	
+	// Left Plane : Checkers
+	scene->world.objs.v[offset] = pln_crt();
+	trf_ini(&trf);
+	trf_rot(&trf, 0, 0, PI / 2.0);
+	trf_scl(&trf, 3, 3, 3);
+	trf_trl(&trf, -10, 0, 0);
+	trf_trf(&trf);
+	obj_trf(&(scene->world.objs.v[offset]), &trf);
+	trf_ini(&trf);
+	trf_trf(&trf);
+	mtl_trf(&(world->objs.v[offset].mtrl), &trf);
+	world->objs.v[offset].mtrl.tex = &(scene->texv.v[2]);
+	world->objs.v[offset].gcord = pln_cord;
+	offset++;
+
+	// Floor : Mirror
+	scene->world.objs.v[offset] = pln_crt();
+	trf_ini(&trf);
+	trf_rot(&trf, 0, 0, 0);
+	trf_trl(&trf, 0, -5, 0);
+	scene->world.objs.v[offset].mtrl.rfl = 1.0;
+	scene->world.objs.v[offset].mtrl.dif = 0.5;
+	scene->world.objs.v[offset].mtrl.amb = 0.0;
+	trf_trf(&trf);
+	obj_trf(&(scene->world.objs.v[offset]), &trf);
+	offset++;
 }
 
 int	scn_dflt_objs(t_wld *world, t_scn *scene)
 {
-	const size_t	obj_nb = 2;
+	const size_t	obj_nb = 6;
 
 	world->objs = objv_crt(obj_nb);
 	if (world->objs.cap == 0)
 		return (-1);
 	world->objs.len = obj_nb;
-	setup_ele(world, scene, 0);
+	setup_spheres(world, scene, 0);
+	setup_planes(world, scene, 4);
 	return (0);
 }
 /*

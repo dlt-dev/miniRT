@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jdelattr <jdelattr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/26 12:16:48 by cybourge          #+#    #+#             */
-/*   Updated: 2026/06/26 17:50:51 by jdelattr         ###   ########.fr       */
+/*   Updated: 2026/06/27 15:30:55 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,13 +36,11 @@ typedef struct s_tuple
 
 // Utility Functions
 
-int		is_sep(char c, char *sep);
-int		ft_count(char const *s, char *sep);
-char	**ft_allocsplit(int wordcount);
-char	**ft_freesplit(char **split, int j);
-char	**ft_fillsplit(char **split, char const *s, char *sep);
-
-
+int			is_sep(char c, char *sep);
+int			ft_count(char const *s, char *sep);
+char		**ft_allocsplit(int wordcount);
+char		**ft_freesplit(char **split, int j);
+char		**ft_fillsplit(char **split, char const *s, char *sep);
 
 void		*ft_memset(void *s, int c, size_t n);
 void		*ft_memcpy(void *dest, const void *src, size_t n);

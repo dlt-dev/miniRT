@@ -6,12 +6,20 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/22 08:12:48 by cybourge          #+#    #+#             */
-/*   Updated: 2026/06/25 18:00:03 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/06/27 16:09:39 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "intersection.h"
 #include "object.h"
+
+static void	set_n(double *n, t_objl *objl)
+{
+	if (!objl || !objl->obj)
+		*n = 1.0;
+	else
+		*n = objl_last(objl)->mtrl.ref;
+}
 
 static int	set_refraction(t_itx *itx, const t_itxv *itxv)
 {
@@ -23,12 +31,7 @@ static int	set_refraction(t_itx *itx, const t_itxv *itxv)
 	while (i < itxv->len)
 	{
 		if (itxv->v[i].t == itx->t)
-		{
-			if (!objl || !objl->obj)
-				itx->n1 = 1.0;
-			else
-				itx->n1 = objl_last(objl)->mtrl.ref;
-		}
+			set_n(&(itx->n1), objl);
 		if (objl_isin(objl, itxv->v[i].obj))
 			objl_dlt(&objl, itxv->v[i].obj);
 		else
@@ -40,14 +43,7 @@ static int	set_refraction(t_itx *itx, const t_itxv *itxv)
 			}
 		}
 		if (itxv->v[i].t == itx->t)
-		{
-			if (!objl || !objl->obj)
-				itx->n2 = 1.0;
-			else
-				itx->n2 = objl_last(objl)->mtrl.ref;
-			objl_free(objl);
-			return (0);
-		}
+			return (set_n(&(itx->n2), objl), objl_free(objl), 0);
 		i++;
 	}
 	return (-1);

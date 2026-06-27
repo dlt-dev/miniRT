@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/22 08:56:07 by cybourge          #+#    #+#             */
-/*   Updated: 2026/06/25 17:29:18 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/06/27 17:19:44 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,10 @@ t_clr	pat_lgrad1(const t_tex *tex, t_pt const *p);
 // returns the color of a ring pattern.
 t_clr	pat_ring1(const t_tex *tex, t_pt const *p);
 
-// returns the color of a Checker pattern.
+// returns the color of a Square Checker pattern.
 t_clr	pat_chkr1(const t_tex *tex, t_pt const *p);
+
+// returns the color of a Rectangular Checker pattern.
+t_clr	pat_chkr2(const t_tex *tex, t_pt const *p);
 
 #endif

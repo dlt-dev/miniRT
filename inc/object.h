@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/03 12:11:44 by cybourge          #+#    #+#             */
-/*   Updated: 2026/06/25 17:30:56 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/06/27 17:26:08 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -188,6 +188,7 @@ bool		sph_hit(const t_obj *obj, const t_ray *r, t_itxv *itxv);
 int			sph_nrml(const t_obj *obj, const t_pt *pt, t_v4 *nrml);
 // Returns the (u,v) coordinates of a point on a unit sphere.
 t_pt		sph_cord(const t_pt *point);
+t_pt		sph_cord2(const t_pt *point);
 
 // Returns an instance of a plane obj with default values.
 t_obj		pln_crt(void);

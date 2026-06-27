@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/26 12:07:44 by cybourge          #+#    #+#             */
-/*   Updated: 2026/06/27 09:24:46 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/06/27 15:31:31 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 
 # define M44_SIZE 4
 
-typedef double			t_m44[M44_SIZE * M44_SIZE];
+typedef double			t_m44[4 * 4];
 // Exists the shorten function prototypes due to the 42 norm.
 typedef const t_m44*	t_cpm44;
 

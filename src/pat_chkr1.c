@@ -6,13 +6,14 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/02 09:44:14 by cybourge          #+#    #+#             */
-/*   Updated: 2026/06/26 12:57:24 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/06/27 17:17:49 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "textures.h"
 
 // P are (u,v) coordinates : u,v are in [0,1]
+// Square Checkers pattern.
 t_clr	pat_chkr1(const t_tex *tex, t_pt const *p)
 {
 	double	u2;
