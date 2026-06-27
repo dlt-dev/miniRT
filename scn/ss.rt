@@ -26,5 +26,7 @@ sp 10,0,0 5 255,255,150 0.1,0.9,0.9,200,0,0,1
 #sp 30,-2.5,30 5 255,255,150 1.0,0.5,0.5,100,0.0,0.0,1
 # Sphere : Center Diameter Color {Ambient, Specular, Diffuse, Shininess, Reflectiveness, Transparency, Refraction}
 #sp -20,0,30 10 0,0,0 1.0,0.0,0.0,100,1.0,0.0,1.5
+
+
 # Plane : Point Normal Vector Color {Ambient, Specular, Diffuse, Shininess, Reflectiveness, Transparency, Refraction}
 #pl 0,0,40 0,0,-1, 255,255,255 1.0,0,0,100,0.5,0.5,1
