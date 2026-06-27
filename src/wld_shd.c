@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/23 12:31:48 by cybourge          #+#    #+#             */
-/*   Updated: 2026/06/24 12:58:41 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/06/27 12:31:10 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ static t_clr	refracted_clr(const t_wld *world, const t_itx *itx, int r)
 	const double	sin2_t = n_ratio * n_ratio * (1 - cos_i * cos_i);
 	double			cos_t;
 	t_ray			rfr_ray;
-	t_clr			clrs[3];
+	t_clr			ref_clr;
 	t_itxv			rfr_itxv;
 
 	if (deql(itx->obj->mtrl.tsp, 0.0) || r == 0 || sin2_t > 1.0)
@@ -96,10 +96,10 @@ static t_clr	refracted_clr(const t_wld *world, const t_itx *itx, int r)
 	rfr_itxv = itxv_crt(2);
 	if (rfr_itxv.cap == 0)
 		return (ft_err_prt("Refraction ERROR\n", 1), clr_unpack(BLACK));
-	clrs[3] = clr_mul(wld_clr_at(world, &rfr_ray, &rfr_itxv, r - 1),
+	ref_clr = clr_mul(wld_clr_at(world, &rfr_ray, &rfr_itxv, r - 1),
 			itx->obj->mtrl.tsp);
 	itxv_dlt(&rfr_itxv);
-	return (clrs[3]);
+	return (ref_clr);
 }
 
 static double	schlick(const t_itx *itx)
@@ -120,7 +120,7 @@ static double	schlick(const t_itx *itx)
 		cos_t = sqrt(1.0 - sin2_t);
 		cos = cos_t;
 	}
-	r0 = (itx->n1 - itx->n2) / ((itx->n1 + itx->n2) * (itx->n1 + itx->n2));
+	r0 = (itx->n1 - itx->n2) / ((itx->n1 + itx->n2));
 	r0 = r0 * r0;
 	return (r0 + (1 - r0) * pow((1 - cos), 5));
 }

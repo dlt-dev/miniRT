@@ -6,15 +6,36 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/07 08:05:00 by cybourge          #+#    #+#             */
-/*   Updated: 2026/06/26 16:42:30 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/06/27 11:34:36 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "matrix.h"
+#include "transformations.h"
 
 // Algo from :
-// https://b3d.interplanety.org/en/
-// calculating-a-rotation-matrix-from-one-vector-to-another/
+// https://b3d.interplanety.org/en/calculating-a-rotation-matrix-from-one-vector-to-another/
+
+// mat stores the rotation matrix, imat the inverse
+int	m44_rotm(const t_v4 *orient, t_m44 *mat, t_m44 *imat)
+{
+	double	alpha;
+	double	beta;
+	t_trf	trf;
+	t_v4	orientn;
+	
+	orientn = v4_uni(*orient);
+	alpha = atan2(sqrt(orientn.x * orientn.x + orientn.z * orientn.z),
+		orientn.y);
+	beta = atan2(orientn.z, orientn.x);
+	trf_ini(&trf);
+	trf_rot(&trf, 0, 0, -alpha);
+	trf_rot(&trf, 0, -beta, 0);
+	trf_trf(&trf);
+	m44_cpy(&(trf.tm), mat);
+	m44_cpy(&(trf.itm), imat);
+	return (0);
+}
 
 static void	write_rotation(double cos_ang, const t_v4 *axis, t_m44 *res)
 {
@@ -42,15 +63,17 @@ int	m44_vrv(const t_v4 *src, const t_v4 *dst, t_m44 *res)
 {
 	const t_v4		srcn = v4_uni(*src);
 	const t_v4		dstn = v4_uni(*dst);
-	const t_v4		axis = v4_xpr(dstn, srcn);
+	const t_v4		axis = v4_uni(v4_xpr(dstn, srcn));
 	const double	cos_ang = v4_dot(dstn, srcn);
+	t_m44			test;
 
 	if (deql(cos_ang, -1.0))
 	{
-		m44_idm(res);
-		m44_mul(res, -1.0, res);
+		m44_idm(&test);
+		m44_mul(&test, -1.0, res);
 		return (0);
 	}
-	write_rotation(cos_ang, &axis, res);
+	write_rotation(cos_ang, &axis, &test);
+	m44_trp(&test, res);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/17 10:07:18 by cybourge          #+#    #+#             */
-/*   Updated: 2026/06/25 17:19:21 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/06/27 11:50:04 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ static int	process_transforms(t_obj *cone, t_cyldata *data)
 	trf_ini(&trfs);
 	if (trf_trl(&trfs, data->c.x, data->c.y, data->c.z) == -1)
 		return (-1);
+	// if (m44_rotm(&(data->ax), &(trfs.rotm), &(trfs.irotm)) == -1)
+	// 	return (-1);
 	if (m44_vrv(&basev, &(data->ax), &(trfs.rotm)) == -1)
 		return (-1);
 	if (m44_inv_rot(&(trfs.rotm), &(trfs.irotm)) == -1)

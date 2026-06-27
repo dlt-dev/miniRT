@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/22 10:17:31 by cybourge          #+#    #+#             */
-/*   Updated: 2026/06/26 10:22:00 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/06/27 10:26:09 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,14 +92,14 @@ int	test_scn4(t_scn *scene)
 	index++;
 
 	// Sphere
-	sphere = &(scene->world.objs.v[index]);
-	*sphere = sph_crt();
-	sphere->mtrl.clr = clr_crt(0, 1.0, 1.0, 1.0);
-	trf_ini(&transforms);
-	trf_trl(&transforms, 2, -9, 0);
-	trf_scl(&transforms, 0.5, 0.5, 0.5);
-	trf_trf(&transforms);
-	obj_trf(sphere, &transforms);
+	// sphere = &(scene->world.objs.v[index]);
+	// *sphere = sph_crt();
+	// sphere->mtrl.clr = clr_crt(0, 1.0, 1.0, 1.0);
+	// trf_ini(&transforms);
+	// trf_trl(&transforms, 2, -9, 0);
+	// trf_scl(&transforms, 0.5, 0.5, 0.5);
+	// trf_trf(&transforms);
+	// obj_trf(sphere, &transforms);
 	// if (ftex_load(&(sphere->mtrl.tex), "earth.xpm", &(scene->mlx)) == -1)
 	// 	return (1);
 	// trf_ini(&transforms);
@@ -110,25 +110,18 @@ int	test_scn4(t_scn *scene)
 	// sphere->mtrl.pat.pat = pat_chkr1;
 	// sphere->mtrl.pat.clr1 = clr_unpack(WHITE);
 	// sphere->mtrl.pat.clr2 = clr_unpack(RED);
-	index++;
+	// index++;
 
 	// Cylinder
-	// t_obj	*cylinder = &(scene->world.objs.v[index]);
-	// *cylinder = cld_crt();
-	// trf_ini(&transforms);
-	// //trf_rot(&transforms, PI/8.0, 0, PI/6.0);
-	// trf_trl(&transforms, 0, 3, 0);
-	// trf_scl(&transforms, 1, 5, 1);
-	// trf_trf(&transforms);
-	// obj_trf(cylinder, &transforms);
-	// trf_ini(&transforms);
-	// trf_scl(&transforms, 0.5, 0.5, 0.5);
-	// trf_trf(&transforms);
-	// pat_trf(&(cylinder->mtrl.pat), &transforms);
-	// cylinder->mtrl.pat.pat = pat_chkr1;
-	// cylinder->mtrl.pat.clr1 = clr_unpack(WHITE);
-	// cylinder->mtrl.pat.clr2 = clr_unpack(RED);
-	// index++;
+	t_obj	*cylinder = &(scene->world.objs.v[index]);
+	*cylinder = cld_crt();
+	trf_ini(&transforms);
+	trf_rot(&transforms, PI/4.0, 0, -PI/4.0);
+	//trf_trl(&transforms, 0, 3, 0);
+	trf_scl(&transforms, 1, 2, 1);
+	trf_trf(&transforms);
+	obj_trf(cylinder, &transforms);
+	index++;
 
 	// Cone
 	// t_obj	*cone = &(scene->world.objs.v[index]);
