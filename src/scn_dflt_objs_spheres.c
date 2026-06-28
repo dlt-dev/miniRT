@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/28 11:52:28 by cybourge          #+#    #+#             */
-/*   Updated: 2026/06/28 11:57:00 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/06/28 14:52:28 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ static void	setup_sphere1(t_wld *world, t_scn *scene, size_t offset)
 	world->objs.v[offset] = sph_crt();
 	trf_ini(&trf);
 	trf_trl(&trf, 20, 0, 10);
+	trf_rot(&trf, 0, 3 * PI / 4, 0);
 	trf_scl(&trf, 2, 2, 2);
 	trf_trf(&trf);
 	obj_trf(&(world->objs.v[offset]), &trf);
@@ -31,6 +32,7 @@ static void	setup_sphere1(t_wld *world, t_scn *scene, size_t offset)
 	world->objs.v[offset].gcord = sph_cord;
 }
 
+// Sphere 2 : Checkers
 static void	setup_sphere2(t_wld *world, t_scn *scene, size_t offset)
 {
 	t_trf	trf;
@@ -49,6 +51,7 @@ static void	setup_sphere2(t_wld *world, t_scn *scene, size_t offset)
 	world->objs.v[offset].gcord = sph_cord2;
 }
 
+// Sphere 3 : Stripped
 static void	setup_sphere3(t_wld *world, t_scn *scene, size_t offset)
 {
 	t_trf	trf;
@@ -67,6 +70,7 @@ static void	setup_sphere3(t_wld *world, t_scn *scene, size_t offset)
 	world->objs.v[offset].gcord = sph_cord;
 }
 
+// Sphere 4 : BUMP only
 static void	setup_sphere4(t_wld *world, t_scn *scene, size_t offset)
 {
 	t_trf	trf;
