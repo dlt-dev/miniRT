@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/22 09:39:51 by cybourge          #+#    #+#             */
-/*   Updated: 2026/04/22 14:16:26 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/06/28 12:08:48 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	lgtv_add(t_lgtv *lgtv, const t_lgt *light)
 		new_v = malloc(sizeof(t_lgt) * new_cap);
 		if (!new_v)
 			return (-1);
-		memcpy(new_v, lgtv->v, sizeof(t_lgt) * lgtv->len);
+		ft_memcpy(new_v, lgtv->v, sizeof(t_lgt) * lgtv->len);
 		free(lgtv->v);
 		lgtv->v = new_v;
 		lgtv->cap = new_cap;

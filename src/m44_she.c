@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/01 09:19:37 by cybourge          #+#    #+#             */
-/*   Updated: 2026/04/08 10:39:38 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/06/28 12:09:06 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,6 @@ int	m44_she(t_spara p, t_m44 *res)
 
 	if (!res || she_det(&tmp) == 0)
 		return (-1);
-	memcpy(*res, tmp, sizeof(t_m44));
+	ft_memcpy(*res, tmp, sizeof(t_m44));
 	return (0);
 }

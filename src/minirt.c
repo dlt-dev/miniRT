@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/30 10:33:54 by cybourge          #+#    #+#             */
-/*   Updated: 2026/06/27 16:02:38 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/06/28 12:08:06 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static int	parse_scene(t_scn *scene, char **argv)
 
 static int	setup_scene(t_scn *scene, char **argv, int argc)
 {
-	memset(scene, 0, sizeof(t_scn));
+	ft_memset(scene, 0, sizeof(t_scn));
 	if (init_mlx_data(&(scene->mlx)) < 0)
 		return (-1);
 	if (argc < 2)

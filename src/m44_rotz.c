@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/01 09:16:11 by cybourge          #+#    #+#             */
-/*   Updated: 2026/04/03 10:22:46 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/06/28 12:08:59 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,6 @@ int	m44_rotz(double r, t_m44 *res)
 
 	if (!res)
 		return (-1);
-	memcpy(*res, tmp, sizeof(t_m44));
+	ft_memcpy(*res, tmp, sizeof(t_m44));
 	return (0);
 }

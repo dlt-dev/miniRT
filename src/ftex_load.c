@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/22 09:34:03 by cybourge          #+#    #+#             */
-/*   Updated: 2026/06/27 16:10:53 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/06/28 12:08:02 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	ftex_load(t_ftex *ftex, char *fpath, t_mlx_data *data)
 {
-	memset(ftex, 0, sizeof(t_ftex));
+	ft_memset(ftex, 0, sizeof(t_ftex));
 	ftex->img.mlx_img = mlx_xpm_file_to_image(data->mlx_ptr,
 			fpath, &(ftex->w), &(ftex->h));
 	if (ftex->img.mlx_img == NULL)

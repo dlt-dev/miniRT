@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/01 09:00:16 by cybourge          #+#    #+#             */
-/*   Updated: 2026/04/03 10:22:28 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/06/28 12:09:02 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,6 @@ int	m44_scl(double sx, double sy, double sz, t_m44 *res)
 
 	if (!res)
 		return (-1);
-	memcpy(*res, tmp, sizeof(t_m44));
+	ft_memcpy(*res, tmp, sizeof(t_m44));
 	return (0);
 }

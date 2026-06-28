@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/29 08:15:36 by cybourge          #+#    #+#             */
-/*   Updated: 2026/04/30 09:31:01 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/06/28 12:08:11 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	main(int argc, char **argv)
 		return (1);
 	}
 	parser.scn = &scene;
-	memset(&scene, 0, sizeof(t_scn));
+	ft_memset(&scene, 0, sizeof(t_scn));
 	parser.fname = argv[1];
 	parser.amb_count = 0;
 	parser.cam_count = 0;
