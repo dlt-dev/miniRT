@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/28 11:58:15 by cybourge          #+#    #+#             */
-/*   Updated: 2026/06/28 12:05:51 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/06/29 07:58:46 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ static void	setup_plane2(t_wld *world, t_scn *scene, size_t offset)
 	(void) world;
 	scene->world.objs.v[offset] = pln_crt();
 	trf_ini(&trf);
-	trf_rot(&trf, 0, 0, 0);
 	trf_trl(&trf, 0, -5, 0);
 	scene->world.objs.v[offset].mtrl.rfl = 1.0;
 	scene->world.objs.v[offset].mtrl.dif = 0.5;

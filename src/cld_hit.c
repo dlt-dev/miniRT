@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/16 14:03:27 by cybourge          #+#    #+#             */
-/*   Updated: 2026/06/27 17:10:05 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/06/29 07:57:23 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,19 @@ static void	solve_eq(t_pol2 *cyl_eq, const t_ray *ray)
 	cyl_eq->b = 2 * ray->o.x * ray->dir.x + 2 * ray->o.z * ray->dir.z;
 	cyl_eq->c = ray->o.x * ray->o.x + ray->o.z * ray->o.z - 1;
 	cyl_eq->delta = cyl_eq->b * cyl_eq->b - (4 * cyl_eq->a * cyl_eq->c);
-	if (cyl_eq->delta >= 0.0)
+	if (cyl_eq->delta >= 0.0 && !deql(cyl_eq->a, 0.0))
 	{
 		cyl_eq->r1 = (-cyl_eq->b - sqrt(cyl_eq->delta)) / (2.0 * cyl_eq->a);
 		cyl_eq->r2 = (-cyl_eq->b + sqrt(cyl_eq->delta)) / (2.0 * cyl_eq->a);
 	}
+	else
+	{
+		cyl_eq->r1 = NAN;
+		cyl_eq->r2 = NAN;
+	}
 }
 
-static bool	solve_root(t_pol2 *con_eq, const t_ray *ray,
+static bool	solve_root(t_pol2 *cyl_eq, const t_ray *ray,
 	const t_obj *obj, t_itxv *itxv)
 {
 	t_itx	itx;
@@ -34,14 +39,14 @@ static bool	solve_root(t_pol2 *con_eq, const t_ray *ray,
 
 	hit = false;
 	itx.obj = obj;
-	itx.t = con_eq->r1;
+	itx.t = cyl_eq->r1;
 	height = ray->o.y + itx.t * ray->dir.y;
 	if (height > obj->u_o.cy.min && height < obj->u_o.cy.max)
 	{
 		itxv_add(itxv, &itx);
 		hit = true;
 	}
-	itx.t = con_eq->r2;
+	itx.t = cyl_eq->r2;
 	height = ray->o.y + itx.t * ray->dir.y;
 	if (height > obj->u_o.cy.min && height < obj->u_o.cy.max)
 	{

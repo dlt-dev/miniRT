@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/06 10:01:47 by cybourge          #+#    #+#             */
-/*   Updated: 2026/06/27 17:37:37 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/06/29 07:49:52 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ int	pln_nrml(const t_obj *obj, const t_pt *pt, t_v4 *nrml)
 	(void) pt;
 	if (!obj || !nrml)
 		return (-1);
-	m44_vprd(&(obj->itm), &base, nrml);
+	m44_vprd(&(obj->itmt), &base, nrml);
+	nrml->w = 0;
+	*nrml = v4_uni(*nrml);
 	return (0);
 }

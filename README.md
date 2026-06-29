@@ -35,6 +35,9 @@ AI was used further along the project to generate parts of the .rt files when im
 became either tedius due to repetitiveness or hard to visualize.
 
 **.rt file syntax**
+Z axis is into the screen.
+Y axis is from the bottom to the top of the screen.
+X axis is from the left to the right of the screen.
 Each element is defined on a single line.
 '#' mark comment lines and are ignored.
 Each element starts with an identifier and is then followed by space-seperated parameters.
@@ -73,8 +76,8 @@ Example:
 	Height					: 10
 	RGB Color [0,255]		: 0,0,255
  - Cone : co 0,2,0 1,1,0 5 10 0,0,255
-	Identifier				: 'cy'
-	Center of the cylinder	: 0,2,0
+	Identifier				: 'c0'
+	Tip of the cone			: 0,2,0
 	Axis					: 1,1,0
 	Diameter				: 5
 	Height					: 10

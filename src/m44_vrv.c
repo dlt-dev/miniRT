@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/07 08:05:00 by cybourge          #+#    #+#             */
-/*   Updated: 2026/06/27 16:03:45 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/06/29 07:52:49 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int	m44_rotm(const t_v4 *orient, t_m44 *mat, t_m44 *imat)
 
 static void	write_rotation(double cos_ang, const t_v4 *axis, t_m44 *res)
 {
-	const double	k = 1.0 + (1.0 + cos_ang);
+	const double	k = 1.0 / (1.0 + cos_ang);
 
 	(*res)[0] = axis->x * axis->x * k + cos_ang;
 	(*res)[1] = axis->y * axis->x * k - axis->z;
@@ -72,6 +72,7 @@ int	m44_vrv(const t_v4 *src, const t_v4 *dst, t_m44 *res)
 	{
 		m44_idm(&test);
 		m44_mul(&test, -1.0, res);
+		test[15] = 1;
 		return (0);
 	}
 	write_rotation(cos_ang, &axis, &test);

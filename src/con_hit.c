@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/17 08:16:35 by cybourge          #+#    #+#             */
-/*   Updated: 2026/06/27 17:09:50 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/06/29 07:57:46 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,15 @@ static void	solve_eq(t_pol2 *con_eq, const t_ray *ray)
 	con_eq->c = ray->o.x * ray->o.x - ray->o.y * ray->o.y
 		+ ray->o.z * ray->o.z;
 	con_eq->delta = con_eq->b * con_eq->b - (4 * con_eq->a * con_eq->c);
-	if (con_eq->delta >= 0)
+	if (con_eq->delta >= 0 && !deql(con_eq->a, 0.0))
 	{
 		con_eq->r1 = (-con_eq->b - sqrt(con_eq->delta)) / (2.0 * con_eq->a);
 		con_eq->r2 = (-con_eq->b + sqrt(con_eq->delta)) / (2.0 * con_eq->a);
+	}
+	else
+	{
+		con_eq->r1 = NAN;
+		con_eq->r2 = NAN;
 	}
 }
 
