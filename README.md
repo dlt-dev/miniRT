@@ -83,6 +83,24 @@ Example:
 	Height					: 10
 	RGB Color [0,255]		: 0,0,255
 
+Objects can receive another optional argument list to describe the material properties:
+	Ambient Light	[0.0, 1.0]
+	Diffuse Light	[0.0, 1.0]
+	Specular Light	[0.0, 1.0]
+	Shininess		>0.0
+	Reflectiveness	[0.0, 1.0]
+	Transparency	[0.0, 1.0]
+	Refraction		>= 1.0
+If one is specified all must be specified.
+Example : sp 0,0,0 2 255,255,255 1.0,0.5,0.5,20,1.0,0.0,1.0
+	White unit sphere centered at the origin whose material properties are :
+	Ambient light	: 1.0
+	Diffuse light	: 0.5
+	Specular light	: 0.5
+	Shininess		: 20
+	Reflectiveness	: 1.0
+	Transparency	: 0.0
+	Refraction		: 1.0
 
 
 
