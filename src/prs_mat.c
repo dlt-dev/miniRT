@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/06 08:47:31 by cybourge          #+#    #+#             */
-/*   Updated: 2026/06/27 15:48:24 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/06/29 08:19:38 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,11 @@ static int	check_n_write(t_mtl *mat, char **abcd)
 	mat->amb = ft_atof(abcd[0]);
 	if (!(mat->amb >= 0.0 && mat->amb <= 1.0))
 		return (ft_err_prt("Material Ambient must be in [0, 1.0]\n", -1));
-	mat->dif = ft_atof(abcd[1]);
-	if (!(mat->dif >= 0.0 && mat->dif <= 1.0))
-		return (ft_err_prt("Material Specular must be in [0, 1.0]\n", -1));
-	mat->spc = ft_atof(abcd[2]);
+	mat->spc = ft_atof(abcd[1]);
 	if (!(mat->spc >= 0.0 && mat->spc <= 1.0))
+		return (ft_err_prt("Material Specular must be in [0, 1.0]\n", -1));
+	mat->dif = ft_atof(abcd[2]);
+	if (!(mat->dif >= 0.0 && mat->dif <= 1.0))
 		return (ft_err_prt("Material Diffuse must be in [0, 1.0]\n", -1));
 	mat->shi = ft_atof(abcd[3]);
 	if (!(mat->shi > 0.0))
