@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/17 10:07:18 by cybourge          #+#    #+#             */
-/*   Updated: 2026/06/28 16:05:14 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/06/29 08:05:18 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ static int	process_data(t_cyldata *data, char **ltab)
 	if (tab_len(ltab) != 6 && tab_len(ltab) != 7)
 		return (ft_err_prt("Invalid Cone Data\n", -1));
 	if (prs_v3(ltab[1], &(data->c), false) == -1)
-		return (ft_err_prt("Invalid Cone Center\n", -1));
+		return (ft_err_prt("Invalid Cone Tip\n", -1));
 	if (prs_v3(ltab[2], &(data->ax), true) == -1)
 		return (ft_err_prt("Invalid Cone Axis\n", -1));
 	if (!is_validf(ltab[3]))
