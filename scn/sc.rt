@@ -2,7 +2,7 @@
 A 0.5 255,255,255
 
 # Point Light : Position Intensity Color
-L 5,10,-10 1.0 255,255,255
+l 5,10,-10 1.0 255,255,255
 
 # Camera : Position Orientation FOV(degrees)
 C 0,4,-20 0,0,1 130

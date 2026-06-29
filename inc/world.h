@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/22 11:37:45 by cybourge          #+#    #+#             */
-/*   Updated: 2026/06/27 15:53:57 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/06/29 08:28:26 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include "light.h"
 # include <stdio.h>
 
-# define MAX	20 // Limits the maximum number of recursion.
+# define MAX	5 // Limits the maximum number of recursion.
 
 // Structure that Holds the Ambient light for the world.
 typedef struct s_ambient_light

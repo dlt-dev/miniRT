@@ -5,10 +5,10 @@ A 0.1 20,10,10
 C 0,0,-120 0,0,1 60
 
 # Lumiere centrale de l'etoile (blanc chaud)
-L 25,30,15 1.0 255,200,100
+l 25,30,15 1.0 255,200,100
 
 # Lumiere d'ambiance froide (simule le vide spatial)
-L -50,30,-20 0.15 100,80,255
+l -50,30,-20 0.15 100,80,255
 
 # ============================================================
 # Planete (grosse sphere sombre rouge-brun, premier plan)

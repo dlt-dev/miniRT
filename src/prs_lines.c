@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   prs_lines.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jdelattr <jdelattr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/29 14:34:22 by cybourge          #+#    #+#             */
-/*   Updated: 2026/06/17 12:19:48 by jdelattr         ###   ########.fr       */
+/*   Updated: 2026/06/29 08:25:18 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static t_parsef	match_obj_id(const char *identifier)
 	static const t_prs_func	parsef_list[] = {
 	{"A", prs_ambient},
 	{"C", prs_camera},
-	{"L", prs_light},
+	{"l", prs_light},
 	{"sp", prs_sphere},
 	{"pl", prs_plane},
 	{"cy", prs_cylinder},
