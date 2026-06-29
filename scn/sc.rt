@@ -7,14 +7,14 @@ l 5,10,-10 1.0 255,255,255
 # Camera : Position Orientation FOV(degrees)
 C 0,4,-20 0,0,1 130
 
-# Cone : Center Axis Diameter Height Color {Ambient, Specular, Diffuse, Shininess, Reflectiveness, Transparency, Refraction}
+# Cone : Center Axis Diameter Height Color {Ambient, Diffuse, Specular, Shininess, Reflectiveness, Transparency, Refraction}
 co 0,2,0 1,1,0 5 10 0,255,0
 
-# Plane : Point Normal Vector Color {Ambient, Specular, Diffuse, Shininess, Reflectiveness, Transparency, Refraction}
+# Plane : Point Normal Vector Color {Ambient, Diffuse, Specular, Shininess, Reflectiveness, Transparency, Refraction}
 pl 0,-5,0 0,1,0 0,255,0 1.0,0.0,0.0,200,1.0,0,1.57
 
-# Plane : Point Normal Vector Color {Ambient, Specular, Diffuse, Shininess, Reflectiveness, Transparency, Refraction}
+# Plane : Point Normal Vector Color {Ambient, Diffuse, Specular, Shininess, Reflectiveness, Transparency, Refraction}
 pl 5,-5,0 1,0,0 0,0,255 1.0,0.0,0.0,200,1.0,0,1.57
 
-# Sphere : Center Diameter Color {Ambient, Specular, Diffuse, Shininess, Reflectiveness, Transparency, Refraction}
+# Sphere : Center Diameter Color {Ambient, Diffuse, Specular, Shininess, Reflectiveness, Transparency, Refraction}
 sp 2,-9,0 5 255,255,255
