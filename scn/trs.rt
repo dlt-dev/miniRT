@@ -3,9 +3,7 @@ A 0.5 255,255,255
 l -10,10,-5 1.0 255,255,255
 
 
-# Camera : Position Orientation FOV(degrees)
-#C -4,-4,-4 1,1,1 70
-C 0,1,-20 0,0,1 70
+
 
 # Sphere : Center Diameter Color {Ambient, Diffuse, Specular, Shininess, Reflectiveness, Transparency, Refraction}
 sp -4,-4,-4 1 255,0,0 0,1.0,1.0,10,0,0,1.0
@@ -22,3 +20,7 @@ pl 0,-5,0 0,1,0 255,255,255 0.5,0.8,0.9,200,0,0,1.0
 
 # Cylinder : Center Axis Diameter Height Color {Ambient, Diffuse, Specular, Shininess, Reflectiveness, Transparency, Refraction}
 cy -0,0,-0 1,1,1 20 1 0,0,0 1.0,0.0,0.0,200,1.0,0.0,1.57
+
+# Camera : Position Orientation FOV(degrees)
+#C -4,-4,-4 1,1,1 70
+C 0,1,-20 0,0,1 70

@@ -6,7 +6,7 @@
 /*   By: cybourge <cybourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/30 10:33:54 by cybourge          #+#    #+#             */
-/*   Updated: 2026/06/28 13:33:22 by cybourge         ###   ########.fr       */
+/*   Updated: 2026/06/29 09:39:59 by cybourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static int	setup_scene(t_scn *scene, char **argv, int argc)
 	{
 		printf("Rendering the default scene.\n");
 		if (scn_setup(scene) < 0)
-			return (free_mlx_data(&(scene->mlx)), -1);
+			return (scn_dlt(scene), free_mlx_data(&(scene->mlx)), -1);
 	}
 	else if (argc > 2)
 	{
